@@ -20,7 +20,7 @@
 }
 
 html {
-  background: var(--gradient-hero);
+  background: var(--gradient-page-background);
   background-color: var(--color-bg);
 }
 

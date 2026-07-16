@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border: 1px solid transparent;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   padding: 0.9rem 1.3rem;
   min-height: 2.95rem;
@@ -11,7 +11,7 @@
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: none;
+  box-shadow: var(--shadow-sm);
   transition:
     border-color var(--transition-fast),
     background-color var(--transition-fast),
@@ -25,28 +25,31 @@
 }
 
 .primary {
-  background: var(--gradient-accent);
-  color: var(--color-bg);
-  box-shadow: var(--shadow-accent);
+  background: var(--gradient-button);
+  color: #110d06;
+  border-color: rgba(255, 217, 138, 0.24);
+  box-shadow: var(--shadow-gold);
 }
 
 .secondary {
-  background: transparent;
+  background: var(--gradient-surface);
   color: var(--color-text);
   border-color: var(--color-border);
+  box-shadow: var(--shadow-surface);
 }
 
 .primary:hover {
-  background: var(--gradient-accent);
-  box-shadow: var(--shadow-md);
+  background: var(--gradient-metallic-gold-horizontal);
+  box-shadow: var(--shadow-gold-hover);
 }
 
 .secondary:hover {
-  border-color: var(--color-border-strong);
-  background: var(--gradient-accent-soft);
+  border-color: var(--color-border-hover);
+  background: var(--gradient-surface-hover);
+  box-shadow: var(--shadow-gold);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--color-accent-bright);
+  outline: 2px solid var(--color-accent-highlight);
   outline-offset: 3px;
 }

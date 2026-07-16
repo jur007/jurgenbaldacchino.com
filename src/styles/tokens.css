@@ -1,105 +1,144 @@
 :root {
-  /* Core surfaces */
-  --color-bg: #000000;
-  --color-bg-soft: #050505;
-  --color-surface: #0b0b0b;
-  --color-surface-strong: #131313;
-  --color-surface-elevated: #1a1a1a;
+  /* ==========================================================
+     BACKGROUNDS
+     ========================================================== */
 
-  /* Typography */
-  --color-text: #f4efe6;
-  --color-text-soft: #d9d0c2;
-  --color-text-muted: #9f9789;
-  --color-text-subtle: #6f695f;
+  --color-bg: #0b0e11;
+  --color-bg-soft: #101317;
+  --color-surface: #15191e;
+  --color-surface-strong: #1b2026;
+  --color-surface-elevated: #232931;
 
-  /* Luxury accent */
-  --color-accent: #b89652;
-  --color-accent-strong: #d0b06a;
-  --color-accent-bright: #e3c786;
-  --color-accent-deep: #80662f;
+  /* ==========================================================
+     TYPOGRAPHY
+     ========================================================== */
 
-  /* Borders */
-  --color-border: rgba(184, 150, 82, 0.16);
-  --color-border-strong: rgba(184, 150, 82, 0.32);
-  --color-border-neutral: rgba(255, 255, 255, 0.08);
+  --color-text: #f0eee8;
+  --color-text-soft: #d4d1ca;
+  --color-text-muted: #9b9da1;
+  --color-text-subtle: #6e7379;
 
-  /* Transparent accent states */
-  --color-accent-soft: rgba(184, 150, 82, 0.1);
-  --color-accent-medium: rgba(184, 150, 82, 0.18);
-  --color-accent-glow: rgba(184, 150, 82, 0.26);
+  /* ==========================================================
+     METALLIC GOLD
+     ========================================================== */
 
-  /* Gradients */
-  --gradient-accent: linear-gradient(
+  --color-accent-shadow: #5a431f;
+  --color-accent-dark: #84632d;
+  --color-accent: #c5943f;
+  --color-accent-light: #e1b75f;
+  --color-accent-highlight: #ffd98a;
+
+  /* ==========================================================
+     BORDERS
+     ========================================================== */
+
+  --color-border-neutral: rgba(255, 255, 255, 0.06);
+  --color-border: rgba(197, 148, 63, 0.18);
+  --color-border-hover: rgba(225, 183, 95, 0.48);
+
+  /* ==========================================================
+     TRANSPARENT STATES
+     ========================================================== */
+
+  --color-accent-soft: rgba(197, 148, 63, 0.09);
+  --color-accent-medium: rgba(197, 148, 63, 0.17);
+  --color-accent-glow: rgba(255, 200, 105, 0.24);
+
+  /* ==========================================================
+     METALLIC GRADIENTS
+     ========================================================== */
+
+  --gradient-metallic-gold: linear-gradient(
     135deg,
-    #8f7137 0%,
-    #b89652 28%,
-    #e0c17b 52%,
-    #b89652 76%,
-    #765c2b 100%
+    #5a431f 0%,
+    #84632d 18%,
+    #c5943f 36%,
+    #ffd98a 50%,
+    #e1b75f 62%,
+    #8d6a31 82%,
+    #543d1c 100%
   );
 
-  --gradient-accent-soft: linear-gradient(
-    135deg,
-    rgba(184, 150, 82, 0.18) 0%,
-    rgba(224, 193, 123, 0.08) 45%,
-    rgba(184, 150, 82, 0.03) 100%
+  --gradient-metallic-gold-horizontal: linear-gradient(
+    90deg,
+    #684d22 0%,
+    #a97a33 22%,
+    #e2b65b 42%,
+    #ffe09a 50%,
+    #d8a94c 62%,
+    #8d672c 82%,
+    #5d441f 100%
   );
+
+  --gradient-page-background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(223, 176, 81, 0.13) 0%,
+      rgba(197, 148, 63, 0.05) 26%,
+      transparent 58%
+    ),
+    radial-gradient(circle at 15% 35%, rgba(54, 66, 78, 0.16) 0%, transparent 42%),
+    linear-gradient(180deg, #11151a 0%, #0b0e11 42%, #080a0c 100%);
 
   --gradient-surface: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.025) 0%,
-    rgba(255, 255, 255, 0) 100%
+    155deg,
+    rgba(255, 255, 255, 0.045) 0%,
+    rgba(255, 255, 255, 0.012) 35%,
+    rgba(0, 0, 0, 0.12) 100%
   );
 
-  --gradient-hero:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(184, 150, 82, 0.14) 0%,
-      rgba(184, 150, 82, 0.04) 28%,
-      transparent 62%
-    ),
-    linear-gradient(180deg, #050505 0%, #000000 68%);
+  --gradient-surface-hover:
+    radial-gradient(circle at 50% 0%, rgba(255, 210, 125, 0.08) 0%, transparent 48%),
+    linear-gradient(
+      155deg,
+      rgba(255, 255, 255, 0.055) 0%,
+      rgba(255, 255, 255, 0.014) 42%,
+      rgba(0, 0, 0, 0.16) 100%
+    );
 
-  --gradient-text-gold: linear-gradient(
+  --gradient-divider: linear-gradient(
     90deg,
-    #8b6d32 0%,
-    #c5a563 32%,
-    #ead49b 50%,
-    #c5a563 68%,
-    #8b6d32 100%
+    transparent,
+    rgba(255, 208, 117, 0.16) 14%,
+    rgba(255, 217, 138, 0.72) 50%,
+    rgba(255, 208, 117, 0.16) 86%,
+    transparent
   );
 
-  /* Semantic states */
-  --color-success: #4f9f6a;
-  --color-warning: #c29a54;
-  --color-error: #c76565;
+  /* ==========================================================
+     SHADOWS
+     ========================================================== */
 
-  /* Shadows */
-  --color-shadow: rgba(0, 0, 0, 0.55);
-  --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.28);
-  --shadow-md: 0 14px 40px rgba(0, 0, 0, 0.42);
-  --shadow-lg: 0 28px 80px rgba(0, 0, 0, 0.58);
-  --shadow-accent:
-    0 0 0 1px rgba(184, 150, 82, 0.14), 0 16px 45px rgba(0, 0, 0, 0.48),
-    0 0 30px rgba(184, 150, 82, 0.08);
+  --shadow-surface: 0 24px 70px rgba(0, 0, 0, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.035);
 
-  /* Typography */
+  --shadow-gold:
+    0 0 0 1px rgba(197, 148, 63, 0.16), 0 18px 46px rgba(0, 0, 0, 0.55),
+    0 0 28px rgba(255, 190, 85, 0.12);
+
+  --shadow-gold-hover:
+    0 0 0 1px rgba(225, 183, 95, 0.28), 0 22px 54px rgba(0, 0, 0, 0.62),
+    0 0 38px rgba(255, 200, 105, 0.18);
+
+  /* ==========================================================
+     TYPOGRAPHY
+     ========================================================== */
+
   --font-sans:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  --font-serif: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
 
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   --text-xs: clamp(0.75rem, 0.72rem + 0.12vw, 0.82rem);
   --text-sm: clamp(0.875rem, 0.84rem + 0.15vw, 0.95rem);
-  --text-base: clamp(1rem, 0.97rem + 0.15vw, 1.075rem);
-  --text-lg: clamp(1.125rem, 1.06rem + 0.3vw, 1.28rem);
-  --text-xl: clamp(1.35rem, 1.2rem + 0.65vw, 1.68rem);
-  --text-2xl: clamp(1.8rem, 1.52rem + 1.15vw, 2.45rem);
-  --text-3xl: clamp(2.4rem, 1.95rem + 1.9vw, 3.4rem);
-  --text-4xl: clamp(3.25rem, 2.35rem + 3.6vw, 5.2rem);
-  --text-display: clamp(4rem, 2.8rem + 5vw, 7rem);
+  --text-base: clamp(1rem, 0.97rem + 0.15vw, 1.05rem);
+  --text-lg: clamp(1.125rem, 1.05rem + 0.3vw, 1.28rem);
+  --text-xl: clamp(1.4rem, 1.2rem + 0.6vw, 1.7rem);
+  --text-2xl: clamp(1.9rem, 1.55rem + 1vw, 2.5rem);
+  --text-3xl: clamp(2.5rem, 2rem + 1.8vw, 3.6rem);
+  --text-4xl: clamp(3.4rem, 2.5rem + 3vw, 5rem);
+  --text-display: clamp(4.5rem, 3rem + 5vw, 7rem);
 
   --leading-tight: 1.05;
   --leading-heading: 1.12;
@@ -108,9 +147,12 @@
   --tracking-tight: -0.03em;
   --tracking-normal: 0;
   --tracking-wide: 0.14em;
-  --tracking-wider: 0.22em;
+  --tracking-wider: 0.24em;
 
-  /* Spacing */
+  /* ==========================================================
+     SPACING
+     ========================================================== */
+
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
@@ -122,7 +164,10 @@
   --space-10: 8rem;
   --space-12: 10rem;
 
-  /* Radii */
+  /* ==========================================================
+     RADII
+     ========================================================== */
+
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.875rem;
@@ -130,12 +175,18 @@
   --radius-2xl: 1.75rem;
   --radius-pill: 999px;
 
-  /* Layout */
+  /* ==========================================================
+     LAYOUT
+     ========================================================== */
+
   --container-width: min(1120px, calc(100% - 2rem));
   --container-width-wide: min(1320px, calc(100% - 2rem));
   --content-width: 720px;
 
-  /* Motion */
+  /* ==========================================================
+     MOTION
+     ========================================================== */
+
   --transition-fast: 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
   --transition-medium: 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
   --transition-slow: 360ms cubic-bezier(0.16, 1, 0.3, 1);
