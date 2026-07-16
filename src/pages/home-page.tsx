@@ -1,10 +1,10 @@
 import PageLayout from '@components/page-layout';
-import HomeSection from '@components/home-section';
+import DesignSystemPage from '@pages/design-system-page';
 
 function HomePage() {
   return (
     <PageLayout>
-      <HomeSection />
+      <DesignSystemPage />
     </PageLayout>
   );
 }

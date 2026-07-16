@@ -1,0 +1,11 @@
+.container {
+  width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+}
