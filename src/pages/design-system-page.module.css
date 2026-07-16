@@ -7,14 +7,18 @@
   gap: var(--space-3);
   padding-block: var(--space-6);
   border-bottom: 1px solid var(--color-border);
+  background: var(--gradient-hero);
+  border-radius: var(--radius-2xl);
+  padding-inline: var(--space-3);
+  margin-bottom: var(--space-5);
 }
 
 .kicker {
   margin: 0;
-  color: var(--color-accent);
+  color: var(--color-accent-bright);
   font-size: var(--text-xs);
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
 }
 
@@ -48,7 +52,8 @@
   padding: var(--space-3);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: var(--color-surface);
+  background: var(--gradient-surface), var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 
 .swatch p {
@@ -71,7 +76,8 @@
   padding: var(--space-4);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.06), transparent);
+  background: var(--gradient-accent-soft);
+  box-shadow: var(--shadow-sm);
 }
 
 .typographyCard h3,
@@ -84,10 +90,10 @@
 
 .label {
   margin: 0 0 var(--space-2);
-  color: var(--color-accent);
+  color: var(--color-accent-bright);
   font-size: var(--text-xs);
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
 }
 
