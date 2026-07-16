@@ -1,11 +1,11 @@
-import type { ReactNode } from 'react'
+import type { ReactNode } from 'react';
 
 type PageLayoutProps = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 function PageLayout({ children }: PageLayoutProps) {
-  return <div className="page-layout">{children}</div>
+  return <div className="page-layout">{children}</div>;
 }
 
-export default PageLayout
+export default PageLayout;
