@@ -1,0 +1,31 @@
+.containerWrapper {
+  position: relative;
+  background: var(--gradient-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-surface);
+}
+
+.interactiveCard {
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.interactiveCard:hover {
+  border-color: var(--color-border-strong);
+  transform: translateY(-4px);
+}
+
+.flatCard {
+  box-shadow: none;
+}
+
+.raisedCard {
+  box-shadow: var(--shadow-surface);
+}
+
+.accentCard {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-surface), var(--shadow-gold);
+}

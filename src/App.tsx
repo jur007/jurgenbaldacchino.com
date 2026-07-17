@@ -1,7 +1,7 @@
-import HomePage from '@pages/home-page';
+import { HomePage } from "@pages/home-page"
 
-function App() {
-  return <HomePage />;
+export const App = () => {
+  return <HomePage />
 }
 
-export default App;
+export default App

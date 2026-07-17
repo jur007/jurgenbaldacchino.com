@@ -1,13 +1,15 @@
 import { render, screen } from "@testing-library/react"
 import { describe, expect, it } from "vitest"
-import App from "./App"
 
-describe("App", () => {
-  it("renders the home page heading", () => {
-    render(<App />)
+import { HomeSection } from "./home-section"
+
+describe("HomeSection", () => {
+  it("renders the introduction and all expertise areas", () => {
+    render(<HomeSection />)
 
     expect(
       screen.getByRole("heading", { name: /I build frontend teams and products/i }),
     ).toBeInTheDocument()
+    expect(screen.getAllByRole("article")).toHaveLength(3)
   })
 })

@@ -1,0 +1,47 @@
+# Project coding standards
+
+## React and TypeScript
+
+- Use named exported arrow-function components. A default export may be retained for compatibility.
+- Prefix component prop and domain interfaces with `I`, for example `IPageLayout`.
+- Use straightforward enums for fixed component variants and sizes.
+- Use `import type` when `verbatimModuleSyntax` requires a type-only import.
+- Name event callbacks with the `handle...` prefix and include the event when useful, for example
+  `handleContactClick`.
+- Keep reusable constants and interfaces above the component.
+- Group imports in this order: React, third-party packages, local styles, then project modules.
+- Use double quotes, no semicolons, trailing commas, and a 100-character print width.
+
+## CSS
+
+- Use CSS Modules for component classes.
+- Name CSS Module classes in camelCase, for example `heroSection` and `buttonPrimary`.
+- Name every component's top-level CSS class `containerWrapper`.
+- Use fully qualified, readable English class names. Do not use acronyms or abbreviated names.
+- Access classes through the imported `styles` object; do not use raw component class strings.
+- Keep CSS custom properties in kebab-case.
+- Prefer design tokens over repeated literal colours, spacing, radii, shadows, and transitions.
+- Use `rem` for font sizes and unitless values for line heights.
+- Use whole pixel values for spacing, dimensions, radii, borders, and media-query breakpoints.
+- Support 320px mobile widths, use 768px as the tablet breakpoint, and 1024px as the desktop
+  breakpoint.
+- Order layout declarations before visual decoration and interaction states.
+
+## Components and files
+
+- Use kebab-case for component directories and filenames.
+- Every component owns a colocated CSS Module and unit test using the same component filename.
+- Re-export public components from the component directory's `index.ts`.
+- Keep only global resets and design tokens in `src/styles`; never share a component CSS Module.
+- Preserve semantic HTML, keyboard focus visibility, reduced-motion support, and responsive behaviour.
+
+## Verification
+
+Run these commands before completing a change:
+
+```bash
+npm run format:check
+npm run lint
+npm run test:run
+npm run build
+```
