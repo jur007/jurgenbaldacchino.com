@@ -4,6 +4,7 @@
 
 - Use named exported arrow-function components. A default export may be retained for compatibility.
 - Prefix component prop and domain interfaces with `I`, for example `IPageLayout`.
+- Use straightforward enums for fixed component variants and sizes.
 - Use `import type` when `verbatimModuleSyntax` requires a type-only import.
 - Name event callbacks with the `handle...` prefix and include the event when useful, for example
   `handleContactClick`.

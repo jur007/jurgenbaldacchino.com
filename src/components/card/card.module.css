@@ -1,0 +1,31 @@
+.card {
+  position: relative;
+  background: var(--gradient-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-surface);
+}
+
+.interactive {
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.interactive:hover {
+  border-color: var(--color-border-strong);
+  transform: translateY(-4px);
+}
+
+.flat {
+  box-shadow: none;
+}
+
+.raised {
+  box-shadow: var(--shadow-surface);
+}
+
+.accent {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-surface), var(--shadow-gold);
+}

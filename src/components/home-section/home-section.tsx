@@ -1,5 +1,9 @@
 import styles from "@styles/app.module.css"
 
+import { Badge, IBadgeSize } from "@components/badge"
+import { ButtonLink, IButtonSize, IButtonType } from "@components/button"
+import { Card } from "@components/card"
+
 interface IExpertiseItem {
   index: string
   title: string
@@ -34,10 +38,9 @@ export const HomeSection = () => {
       <section className={styles.heroSection} aria-labelledby="hero-title">
         <div className={styles.heroGlow} aria-hidden="true"></div>
         <div className={styles.heroCopy}>
-          <div className={styles.availability}>
-            <span aria-hidden="true"></span>
+          <Badge className={styles.availability} size={IBadgeSize.MEDIUM} dot>
             Open to the right opportunity
-          </div>
+          </Badge>
           <p className={styles.eyebrow}>Senior Frontend Developer · Head of Frontend</p>
           <h1 id="hero-title">
             I build frontend teams and products that <em>endure.</em>
@@ -47,16 +50,16 @@ export const HomeSection = () => {
             helping the engineers behind them grow.
           </p>
           <div className={styles.heroActions}>
-            <a className={`${styles.button} ${styles.buttonPrimary}`} href="#expertise">
+            <ButtonLink href="#expertise" size={IButtonSize.LARGE}>
               Explore my expertise <span aria-hidden="true">↓</span>
-            </a>
-            <a className={`${styles.button} ${styles.buttonSecondary}`} href="#contact">
+            </ButtonLink>
+            <ButtonLink href="#contact" type={IButtonType.SECONDARY} size={IButtonSize.LARGE}>
               Start a conversation
-            </a>
+            </ButtonLink>
           </div>
         </div>
 
-        <aside className={styles.heroPanel} aria-label="Experience overview">
+        <Card as="aside" className={styles.heroPanel} aria-label="Experience overview">
           <div className={styles.heroMonogram} aria-hidden="true">
             <span>JB</span>
           </div>
@@ -87,7 +90,7 @@ export const HomeSection = () => {
             <i></i>
             <i></i>
           </div>
-        </aside>
+        </Card>
       </section>
 
       <section className={styles.proofStrip} aria-label="Professional qualities">
@@ -112,19 +115,21 @@ export const HomeSection = () => {
 
         <div className={styles.expertiseGrid}>
           {expertise.map((item) => (
-            <article className={styles.expertiseCard} key={item.index}>
+            <Card as="article" className={styles.expertiseCard} interactive key={item.index}>
               <span className={styles.cardIndex}>{item.index}</span>
               <div className={styles.cardIcon} aria-hidden="true">
                 <span></span>
               </div>
               <h3>{item.title}</h3>
               <p>{item.copy}</p>
-              <ul aria-label={`${item.title} skills`}>
+              <ul className={styles.skillList} aria-label={`${item.title} skills`}>
                 {item.tags.map((tag) => (
-                  <li key={tag}>{tag}</li>
+                  <li key={tag}>
+                    <Badge>{tag}</Badge>
+                  </li>
                 ))}
               </ul>
-            </article>
+            </Card>
           ))}
         </div>
       </section>
