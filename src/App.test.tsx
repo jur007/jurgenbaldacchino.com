@@ -6,6 +6,8 @@ describe('App', () => {
   it('renders the home page heading', () => {
     render(<App />);
 
-    expect(screen.getByRole('heading', { name: /get started/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /I build frontend teams and products/i }),
+    ).toBeInTheDocument();
   });
 });
