@@ -1,12 +1,12 @@
-import PageLayout from '@components/page-layout';
-import HomeSection from '@components/home-section';
+import { HomeSection } from "@components/home-section"
+import { PageLayout } from "@components/page-layout"
 
-function HomePage() {
+export const HomePage = () => {
   return (
     <PageLayout>
       <HomeSection />
     </PageLayout>
-  );
+  )
 }
 
-export default HomePage;
+export default HomePage

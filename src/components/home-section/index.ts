@@ -1,1 +1,1 @@
-export { default } from './home-section';
+export { HomeSection, default } from "./home-section"

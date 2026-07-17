@@ -1,13 +1,13 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import App from './App';
+import { render, screen } from "@testing-library/react"
+import { describe, expect, it } from "vitest"
+import App from "./App"
 
-describe('App', () => {
-  it('renders the home page heading', () => {
-    render(<App />);
+describe("App", () => {
+  it("renders the home page heading", () => {
+    render(<App />)
 
     expect(
-      screen.getByRole('heading', { name: /I build frontend teams and products/i }),
-    ).toBeInTheDocument();
-  });
-});
+      screen.getByRole("heading", { name: /I build frontend teams and products/i }),
+    ).toBeInTheDocument()
+  })
+})
