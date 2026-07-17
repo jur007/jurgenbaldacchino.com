@@ -1,11 +1,11 @@
 export enum IButtonType {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
-  TERTIARY = "tertiary",
+  PRIMARY = "primaryButton",
+  SECONDARY = "secondaryButton",
+  TERTIARY = "tertiaryButton",
 }
 
 export enum IButtonSize {
-  SMALL = "small",
-  MEDIUM = "medium",
-  LARGE = "large",
+  SMALL = "smallButton",
+  MEDIUM = "mediumButton",
+  LARGE = "largeButton",
 }

@@ -24,9 +24,9 @@ export const Badge = ({
   return (
     <span
       {...badgeProps}
-      className={getClassNames(styles.badge, styles[type], styles[size], className)}
+      className={getClassNames(styles.containerWrapper, styles[type], styles[size], className)}
     >
-      {dot && <span className={styles.dot} aria-hidden="true"></span>}
+      {dot && <span className={styles.statusIndicator} aria-hidden="true"></span>}
       {children}
     </span>
   )

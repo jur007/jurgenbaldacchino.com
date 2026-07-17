@@ -41,7 +41,11 @@ const InputComponent = (
         {...inputProps}
         ref={ref}
         id={id}
-        className={getClassNames(styles.input, errorMessage && styles.error, className)}
+        className={getClassNames(
+          styles.inputElement,
+          errorMessage && styles.inputErrorState,
+          className,
+        )}
         required={required}
         disabled={disabled}
         aria-invalid={Boolean(errorMessage)}
@@ -50,7 +54,7 @@ const InputComponent = (
       {message && (
         <span
           id={messageId}
-          className={getClassNames(styles.message, errorMessage && styles.errorMessage)}
+          className={getClassNames(styles.supportingMessage, errorMessage && styles.errorMessage)}
         >
           {message}
         </span>

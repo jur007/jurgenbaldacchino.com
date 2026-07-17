@@ -20,12 +20,16 @@ export const Label = ({
   return (
     <label
       {...labelProps}
-      className={getClassNames(styles.label, disabled && styles.disabled, className)}
+      className={getClassNames(
+        styles.containerWrapper,
+        disabled && styles.disabledState,
+        className,
+      )}
     >
       {children}
       {required && (
         <>
-          <span className={styles.required} aria-hidden="true">
+          <span className={styles.requiredIndicator} aria-hidden="true">
             *
           </span>
           <span className={styles.visuallyHidden}>required</span>

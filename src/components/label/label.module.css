@@ -1,4 +1,4 @@
-.label {
+.containerWrapper {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -9,11 +9,11 @@
   text-transform: uppercase;
 }
 
-.required {
+.requiredIndicator {
   color: var(--color-accent);
 }
 
-.disabled {
+.disabledState {
   opacity: 0.45;
 }
 

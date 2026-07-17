@@ -39,12 +39,16 @@ const SelectComponent = (
           {label}
         </Label>
       )}
-      <div className={styles.selectWrapper}>
+      <div className={styles.selectElementContainer}>
         <select
           {...selectProps}
           ref={ref}
           id={id}
-          className={getClassNames(styles.select, errorMessage && styles.error, className)}
+          className={getClassNames(
+            styles.selectElement,
+            errorMessage && styles.selectErrorState,
+            className,
+          )}
           required={required}
           disabled={disabled}
           aria-invalid={Boolean(errorMessage)}
@@ -52,14 +56,14 @@ const SelectComponent = (
         >
           {children}
         </select>
-        <span className={styles.indicator} aria-hidden="true">
+        <span className={styles.dropdownIndicator} aria-hidden="true">
           ▼
         </span>
       </div>
       {message && (
         <span
           id={messageId}
-          className={getClassNames(styles.message, errorMessage && styles.errorMessage)}
+          className={getClassNames(styles.supportingMessage, errorMessage && styles.errorMessage)}
         >
           {message}
         </span>

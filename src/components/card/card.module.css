@@ -1,4 +1,4 @@
-.card {
+.containerWrapper {
   position: relative;
   background: var(--gradient-surface);
   border: 1px solid var(--color-border-default);
@@ -6,26 +6,26 @@
   box-shadow: var(--shadow-surface);
 }
 
-.interactive {
+.interactiveCard {
   transition:
     transform var(--transition-fast),
     border-color var(--transition-fast);
 }
 
-.interactive:hover {
+.interactiveCard:hover {
   border-color: var(--color-border-strong);
   transform: translateY(-4px);
 }
 
-.flat {
+.flatCard {
   box-shadow: none;
 }
 
-.raised {
+.raisedCard {
   box-shadow: var(--shadow-surface);
 }
 
-.accent {
+.accentCard {
   border-color: var(--color-border-strong);
   box-shadow: var(--shadow-surface), var(--shadow-gold);
 }

@@ -1,5 +1,5 @@
 export enum ICardType {
-  FLAT = "flat",
-  RAISED = "raised",
-  ACCENT = "accent",
+  FLAT = "flatCard",
+  RAISED = "raisedCard",
+  ACCENT = "accentCard",
 }

@@ -1,4 +1,4 @@
-.button {
+.containerWrapper {
   display: inline-flex;
   min-height: 48px;
   padding: 11px 18px;
@@ -21,61 +21,61 @@
     background var(--transition-fast);
 }
 
-.button:hover:not(:disabled) {
+.containerWrapper:hover:not(:disabled) {
   transform: translateY(-2px);
 }
 
-.button:active:not(:disabled) {
+.containerWrapper:active:not(:disabled) {
   transform: translateY(0);
 }
 
-.primary {
+.primaryButton {
   color: var(--color-text-on-accent);
   background: var(--gradient-gold-horizontal);
   box-shadow: var(--shadow-gold);
 }
 
-.secondary {
+.secondaryButton {
   color: var(--color-text-primary);
   background: var(--color-overlay-light);
   border-color: var(--color-border-neutral);
 }
 
-.secondary:hover:not(:disabled) {
+.secondaryButton:hover:not(:disabled) {
   border-color: var(--color-border-strong);
 }
 
-.tertiary {
+.tertiaryButton {
   color: var(--color-accent-bright);
   background: transparent;
   border-color: transparent;
 }
 
-.tertiary:hover:not(:disabled) {
+.tertiaryButton:hover:not(:disabled) {
   background: var(--color-gold-soft);
 }
 
-.small {
+.smallButton {
   min-height: 38px;
   padding: 9px 14px;
   font-size: 0.68rem;
 }
 
-.medium {
+.mediumButton {
   min-height: 48px;
 }
 
-.large {
+.largeButton {
   min-height: 53px;
   padding-inline: 20px;
 }
 
-.fullWidth {
+.fullWidthButton {
   width: 100%;
 }
 
-.button:disabled,
-.disabled {
+.containerWrapper:disabled,
+.disabledButton {
   cursor: not-allowed;
   opacity: 0.42;
   transform: none;

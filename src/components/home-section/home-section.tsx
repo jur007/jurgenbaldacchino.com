@@ -1,4 +1,4 @@
-import styles from "@styles/app.module.css"
+import styles from "./home-section.module.css"
 
 import { Badge, IBadgeSize } from "@components/badge"
 import { ButtonLink, IButtonSize, IButtonType } from "@components/button"
@@ -34,22 +34,22 @@ const expertise: IExpertiseItem[] = [
 
 export const HomeSection = () => {
   return (
-    <div id="top">
-      <section className={styles.heroSection} aria-labelledby="hero-title">
-        <div className={styles.heroGlow} aria-hidden="true"></div>
-        <div className={styles.heroCopy}>
-          <Badge className={styles.availability} size={IBadgeSize.MEDIUM} dot>
+    <div className={styles.containerWrapper} id="top">
+      <section className={styles.heroSectionContainer} aria-labelledby="hero-title">
+        <div className={styles.heroBackgroundGlow} aria-hidden="true"></div>
+        <div className={styles.heroContentContainer}>
+          <Badge className={styles.availabilityBadge} size={IBadgeSize.MEDIUM} dot>
             Open to the right opportunity
           </Badge>
-          <p className={styles.eyebrow}>Senior Frontend Developer · Head of Frontend</p>
+          <p className={styles.sectionEyebrow}>Senior Frontend Developer · Head of Frontend</p>
           <h1 id="hero-title">
             I build frontend teams and products that <em>endure.</em>
           </h1>
-          <p className={styles.heroIntro}>
+          <p className={styles.heroIntroduction}>
             Twelve years turning complex product challenges into clear, scalable experiences—and
             helping the engineers behind them grow.
           </p>
-          <div className={styles.heroActions}>
+          <div className={styles.heroActionsContainer}>
             <ButtonLink href="#expertise" size={IButtonSize.LARGE}>
               Explore my expertise <span aria-hidden="true">↓</span>
             </ButtonLink>
@@ -59,15 +59,15 @@ export const HomeSection = () => {
           </div>
         </div>
 
-        <Card as="aside" className={styles.heroPanel} aria-label="Experience overview">
-          <div className={styles.heroMonogram} aria-hidden="true">
+        <Card as="aside" className={styles.experiencePanel} aria-label="Experience overview">
+          <div className={styles.experienceMonogramContainer} aria-hidden="true">
             <span>JB</span>
           </div>
-          <div className={styles.panelStatus}>
+          <div className={styles.experienceStatusContainer}>
             <span>Current focus</span>
             <strong>Frontend at scale</strong>
           </div>
-          <dl className={styles.metrics}>
+          <dl className={styles.experienceMetricsList}>
             <div>
               <dt>Experience</dt>
               <dd>
@@ -81,7 +81,7 @@ export const HomeSection = () => {
               </dd>
             </div>
           </dl>
-          <div className={styles.signal} aria-hidden="true">
+          <div className={styles.experienceSignalBars} aria-hidden="true">
             <i></i>
             <i></i>
             <i></i>
@@ -93,7 +93,10 @@ export const HomeSection = () => {
         </Card>
       </section>
 
-      <section className={styles.proofStrip} aria-label="Professional qualities">
+      <section
+        className={styles.professionalQualitiesContainer}
+        aria-label="Professional qualities"
+      >
         <p>Strategy with technical depth</p>
         <span aria-hidden="true">◆</span>
         <p>Systems built for people</p>
@@ -101,10 +104,14 @@ export const HomeSection = () => {
         <p>Quality without theatre</p>
       </section>
 
-      <section className={styles.expertiseSection} id="expertise" aria-labelledby="expertise-title">
-        <div className={styles.sectionHeading}>
+      <section
+        className={styles.expertiseSectionContainer}
+        id="expertise"
+        aria-labelledby="expertise-title"
+      >
+        <div className={styles.sectionHeadingContainer}>
           <div>
-            <p className={styles.eyebrow}>What I bring</p>
+            <p className={styles.sectionEyebrow}>What I bring</p>
             <h2 id="expertise-title">From interface detail to organisational direction.</h2>
           </div>
           <p>
@@ -113,16 +120,21 @@ export const HomeSection = () => {
           </p>
         </div>
 
-        <div className={styles.expertiseGrid}>
+        <div className={styles.expertiseCardsGrid}>
           {expertise.map((item) => (
-            <Card as="article" className={styles.expertiseCard} interactive key={item.index}>
-              <span className={styles.cardIndex}>{item.index}</span>
-              <div className={styles.cardIcon} aria-hidden="true">
+            <Card
+              as="article"
+              className={styles.expertiseCardContainer}
+              interactive
+              key={item.index}
+            >
+              <span className={styles.expertiseCardIndex}>{item.index}</span>
+              <div className={styles.expertiseCardIcon} aria-hidden="true">
                 <span></span>
               </div>
               <h3>{item.title}</h3>
               <p>{item.copy}</p>
-              <ul className={styles.skillList} aria-label={`${item.title} skills`}>
+              <ul className={styles.expertiseSkillsList} aria-label={`${item.title} skills`}>
                 {item.tags.map((tag) => (
                   <li key={tag}>
                     <Badge>{tag}</Badge>
@@ -134,22 +146,26 @@ export const HomeSection = () => {
         </div>
       </section>
 
-      <section className={styles.approachSection} id="approach" aria-labelledby="approach-title">
-        <div className={styles.approachVisual} aria-hidden="true">
-          <div className={`${styles.orbit} ${styles.orbitOne}`}></div>
-          <div className={`${styles.orbit} ${styles.orbitTwo}`}></div>
-          <div className={styles.core}>12</div>
+      <section
+        className={styles.leadershipSectionContainer}
+        id="approach"
+        aria-labelledby="approach-title"
+      >
+        <div className={styles.leadershipVisualContainer} aria-hidden="true">
+          <div className={`${styles.leadershipOrbit} ${styles.leadershipOuterOrbit}`}></div>
+          <div className={`${styles.leadershipOrbit} ${styles.leadershipInnerOrbit}`}></div>
+          <div className={styles.leadershipExperienceValue}>12</div>
           <span>years of perspective</span>
         </div>
-        <div className={styles.approachCopy}>
-          <p className={styles.eyebrow}>How I lead</p>
+        <div className={styles.leadershipContentContainer}>
+          <p className={styles.sectionEyebrow}>How I lead</p>
           <h2 id="approach-title">Clarity creates momentum.</h2>
           <p>
             The best frontend organisations combine high standards with low ego. I make the
             important decisions visible, turn ambiguity into a workable path, and keep quality
             connected to real customer outcomes.
           </p>
-          <div className={styles.principles}>
+          <div className={styles.leadershipPrinciplesList}>
             <div>
               <span>01</span>
               <strong>Make the system legible</strong>

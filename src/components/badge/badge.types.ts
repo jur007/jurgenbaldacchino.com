@@ -1,9 +1,9 @@
 export enum IBadgeType {
-  NEUTRAL = "neutral",
-  ACCENT = "accent",
+  NEUTRAL = "neutralBadge",
+  ACCENT = "accentBadge",
 }
 
 export enum IBadgeSize {
-  SMALL = "small",
-  MEDIUM = "medium",
+  SMALL = "smallBadge",
+  MEDIUM = "mediumBadge",
 }

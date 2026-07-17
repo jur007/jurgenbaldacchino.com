@@ -3,7 +3,7 @@
   gap: 8px;
 }
 
-.input {
+.inputElement {
   width: 100%;
   min-height: 48px;
   padding: 12px 14px;
@@ -17,30 +17,30 @@
     box-shadow var(--transition-fast);
 }
 
-.input::placeholder {
+.inputElement::placeholder {
   color: var(--color-text-subtle);
 }
 
-.input:hover:not(:disabled) {
+.inputElement:hover:not(:disabled) {
   border-color: var(--color-border-strong);
 }
 
-.input:focus {
+.inputElement:focus {
   border-color: var(--color-border-accent);
   outline: none;
   box-shadow: var(--shadow-focus);
 }
 
-.input:disabled {
+.inputElement:disabled {
   cursor: not-allowed;
   opacity: 0.45;
 }
 
-.error {
+.inputErrorState {
   border-color: #c87861;
 }
 
-.message {
+.supportingMessage {
   color: var(--color-text-muted);
   font-size: 0.72rem;
 }

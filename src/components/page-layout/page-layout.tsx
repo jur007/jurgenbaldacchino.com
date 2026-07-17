@@ -1,6 +1,6 @@
 import type { ReactNode } from "react"
 
-import styles from "@styles/app.module.css"
+import styles from "./page-layout.module.css"
 
 export interface IPageLayout {
   children: ReactNode
@@ -8,35 +8,35 @@ export interface IPageLayout {
 
 export const PageLayout = ({ children }: IPageLayout) => {
   return (
-    <div className={styles.pageLayout}>
-      <a className={styles.skipLink} href="#main-content">
+    <div className={styles.containerWrapper}>
+      <a className={styles.skipToContentLink} href="#main-content">
         Skip to content
       </a>
-      <header className={styles.siteHeader}>
-        <a className={styles.brand} href="#top" aria-label="Jurgen Baldacchino — home">
-          <span className={styles.brandMark} aria-hidden="true">
+      <header className={styles.headerContainer}>
+        <a className={styles.brandLink} href="#top" aria-label="Jurgen Baldacchino — home">
+          <span className={styles.brandMonogram} aria-hidden="true">
             JB
           </span>
-          <span className={styles.brandCopy}>
+          <span className={styles.brandTextContainer}>
             Jurgen Baldacchino
             <small>Frontend engineering · Leadership</small>
           </span>
         </a>
-        <nav className={styles.siteNav} aria-label="Primary navigation">
+        <nav className={styles.navigationContainer} aria-label="Primary navigation">
           <a href="#expertise">Expertise</a>
           <a href="#approach">Approach</a>
-          <a className={styles.navCta} href="#contact">
+          <a className={styles.navigationCallToAction} href="#contact">
             Let&apos;s talk
           </a>
         </nav>
       </header>
       <main id="main-content">{children}</main>
-      <footer className={styles.siteFooter} id="contact">
+      <footer className={styles.footerContainer} id="contact">
         <div>
-          <span className={styles.eyebrow}>Start a conversation</span>
+          <span className={styles.footerEyebrow}>Start a conversation</span>
           <h2>Building something ambitious?</h2>
         </div>
-        <a className={styles.textLink} href="mailto:hello@jurgenbaldacchino.com">
+        <a className={styles.contactLink} href="mailto:hello@jurgenbaldacchino.com">
           hello@jurgenbaldacchino.com <span aria-hidden="true">↗</span>
         </a>
       </footer>

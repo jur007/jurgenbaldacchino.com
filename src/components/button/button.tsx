@@ -37,11 +37,11 @@ const getButtonClassName = (
   className?: string,
 ) => {
   return getClassNames(
-    styles.button,
+    styles.containerWrapper,
     styles[type],
     styles[size],
-    fullWidth && styles.fullWidth,
-    disabled && styles.disabled,
+    fullWidth && styles.fullWidthButton,
+    disabled && styles.disabledButton,
     className,
   )
 }

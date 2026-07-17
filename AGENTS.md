@@ -16,6 +16,8 @@
 
 - Use CSS Modules for component classes.
 - Name CSS Module classes in camelCase, for example `heroSection` and `buttonPrimary`.
+- Name every component's top-level CSS class `containerWrapper`.
+- Use fully qualified, readable English class names. Do not use acronyms or abbreviated names.
 - Access classes through the imported `styles` object; do not use raw component class strings.
 - Keep CSS custom properties in kebab-case.
 - Prefer design tokens over repeated literal colours, spacing, radii, shadows, and transitions.
@@ -28,8 +30,9 @@
 ## Components and files
 
 - Use kebab-case for component directories and filenames.
+- Every component owns a colocated CSS Module and unit test using the same component filename.
 - Re-export public components from the component directory's `index.ts`.
-- Keep global resets and design tokens in `src/styles`; keep component styling in CSS Modules.
+- Keep only global resets and design tokens in `src/styles`; never share a component CSS Module.
 - Preserve semantic HTML, keyboard focus visibility, reduced-motion support, and responsive behaviour.
 
 ## Verification

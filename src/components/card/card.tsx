@@ -25,9 +25,9 @@ export const Card = ({
     <Component
       {...cardProps}
       className={getClassNames(
-        styles.card,
+        styles.containerWrapper,
         styles[type],
-        interactive && styles.interactive,
+        interactive && styles.interactiveCard,
         className,
       )}
     >
