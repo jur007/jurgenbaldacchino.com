@@ -1,7 +1,7 @@
 .label {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 6px;
   color: var(--color-text-secondary);
   font-size: 0.72rem;
   font-weight: 600;

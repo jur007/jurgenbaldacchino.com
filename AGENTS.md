@@ -19,6 +19,10 @@
 - Access classes through the imported `styles` object; do not use raw component class strings.
 - Keep CSS custom properties in kebab-case.
 - Prefer design tokens over repeated literal colours, spacing, radii, shadows, and transitions.
+- Use `rem` for font sizes and unitless values for line heights.
+- Use whole pixel values for spacing, dimensions, radii, borders, and media-query breakpoints.
+- Support 320px mobile widths, use 768px as the tablet breakpoint, and 1024px as the desktop
+  breakpoint.
 - Order layout declarations before visual decoration and interaction states.
 
 ## Components and files
