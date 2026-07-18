@@ -13,7 +13,7 @@ export const PageLayout = ({ children }: IPageLayout) => {
         Skip to content
       </a>
       <header className={styles.headerContainer}>
-        <a className={styles.brandLink} href="#top" aria-label="Jurgen Baldacchino — home">
+        <a className={styles.brandLink} href="/" aria-label="Jurgen Baldacchino — home">
           <span className={styles.brandMonogram} aria-hidden="true">
             JB
           </span>
@@ -23,8 +23,9 @@ export const PageLayout = ({ children }: IPageLayout) => {
           </span>
         </a>
         <nav className={styles.navigationContainer} aria-label="Primary navigation">
-          <a href="#expertise">Expertise</a>
-          <a href="#approach">Approach</a>
+          <a href="/#expertise">Expertise</a>
+          <a href="/#approach">Approach</a>
+          <a href="/about">About</a>
           <a className={styles.navigationCallToAction} href="#contact">
             Let&apos;s talk
           </a>
