@@ -8,6 +8,8 @@
   background: var(--color-black-russian);
   border-top: 1px solid var(--color-white-lilac-7);
   text-align: center;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 240px;
 }
 
 .socialLinksList {

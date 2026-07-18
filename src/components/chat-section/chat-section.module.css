@@ -9,6 +9,8 @@
     radial-gradient(circle at 16% 42%, var(--color-electric-violet-10), transparent 36%),
     var(--color-black-russian);
   border-top: 1px solid var(--color-white-lilac-7);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
 }
 
 .introductionContainer {

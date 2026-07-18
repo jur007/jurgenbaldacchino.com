@@ -6,7 +6,14 @@ export const AboutSection = () => {
   return (
     <section className={styles.containerWrapper} id="top" aria-labelledby="about-title">
       <div className={styles.imagePanelContainer}>
-        <img src={aboutProfileImage} alt="Jur overlooking a snow-covered mountain landscape" />
+        <img
+          src={aboutProfileImage}
+          alt="Jur overlooking a snow-covered mountain landscape"
+          decoding="async"
+          fetchPriority="high"
+          height="2166"
+          width="1624"
+        />
       </div>
 
       <div className={styles.aboutContentContainer}>
