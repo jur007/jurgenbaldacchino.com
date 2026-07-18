@@ -99,10 +99,64 @@
 }
 
 .navigationContainer .navigationCallToAction {
+  position: relative;
   padding: 10px 16px;
+  overflow: hidden;
+  isolation: isolate;
   color: var(--color-mauve);
+  background: var(--color-black-russian);
   border: 1px solid var(--color-mauve-30);
   border-radius: var(--radius-round);
+  box-shadow:
+    inset 0 1px 0 var(--color-white-lilac-4),
+    0 8px 24px var(--color-black-45);
+}
+
+.navigationCallToAction::before {
+  position: absolute;
+  z-index: -2;
+  content: "";
+  width: 150%;
+  aspect-ratio: 1;
+  background: conic-gradient(
+    transparent 0deg,
+    transparent 285deg,
+    var(--color-electric-violet) 320deg,
+    var(--color-heliotrope) 344deg,
+    transparent 360deg
+  );
+  animation: rotateNavigationCallToActionBorder 3.2s linear infinite;
+}
+
+.navigationCallToAction::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  background: linear-gradient(145deg, var(--color-haiti), var(--color-black-russian));
+  border-radius: var(--radius-round);
+  inset: 1px;
+  transition: background var(--transition-fast);
+}
+
+.navigationContainer .navigationCallToAction:hover,
+.navigationContainer .navigationCallToAction:focus-visible {
+  color: var(--color-white-lilac);
+  border-color: var(--color-heliotrope-34);
+  box-shadow:
+    inset 0 1px 0 var(--color-white-lilac-7),
+    0 12px 30px var(--color-black-45),
+    0 0 20px var(--color-electric-violet-13);
+}
+
+.navigationCallToAction:hover::after,
+.navigationCallToAction:focus-visible::after {
+  background: linear-gradient(145deg, var(--color-revolver), var(--color-black-russian));
+}
+
+@keyframes rotateNavigationCallToActionBorder {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 767px) {
@@ -214,6 +268,10 @@
   .mobileMenuIcon,
   .mobileMenuCloseIcon {
     transition: none;
+  }
+
+  .navigationCallToAction::before {
+    animation: none;
   }
 }
 

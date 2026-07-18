@@ -130,7 +130,7 @@
     var(--color-heliotrope) 344deg,
     transparent 360deg
   );
-  animation: rotateSubmitButtonBorder 5s linear infinite;
+  animation: rotateSubmitButtonBorder 3.2s linear infinite;
 }
 
 .submitButton::after {
