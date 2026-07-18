@@ -28,11 +28,16 @@
 }
 
 .heroEyebrow {
+  opacity: 0;
   color: var(--color-heliotrope);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-lg);
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  transform: translateY(12px);
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease;
 }
 
 .heroIntroductionContainer h1 {
@@ -45,18 +50,67 @@
   line-height: 0.94;
 }
 
-.heroIntroductionContainer h1 em {
+.headingWord {
+  display: inline-block;
+  margin-right: 0.22em;
+  white-space: nowrap;
+}
+
+.headingWord:last-child {
+  margin-right: 0;
+}
+
+.headingWordEmphasized {
   color: var(--color-mauve);
   font-family: var(--font-family-serif);
   font-weight: var(--font-weight-regular);
 }
 
+.headingCharacter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.18em);
+}
+
+.heroIntroductionVisible .headingCharacter {
+  animation: typeCharacter 80ms ease forwards;
+  animation-delay: calc(220ms + var(--animation-index) * 42ms);
+}
+
+.heroIntroductionContainer h1::after {
+  display: inline-block;
+  content: "";
+  width: 2px;
+  height: 0.78em;
+  margin-left: 8px;
+  opacity: 0;
+  background: var(--color-heliotrope);
+  vertical-align: -0.04em;
+}
+
+.heroIntroductionVisible h1::after {
+  animation:
+    showTypingCursor 500ms steps(1) 200ms 7,
+    hideTypingCursor 1ms linear 3.7s forwards;
+}
+
 .heroIntroduction {
   max-width: 704px;
   margin-top: 28px;
+  opacity: 0;
   color: var(--color-lavender-grey);
   font-size: clamp(var(--font-size-4xl), 1.5vw, var(--font-size-5xl));
   line-height: var(--line-height-relaxed);
+  transform: translateY(16px);
+  transition:
+    opacity 650ms ease 2.45s,
+    transform 650ms ease 2.45s;
+}
+
+.heroIntroductionVisible .heroEyebrow,
+.heroIntroductionVisible .heroIntroduction {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .capabilityShowcaseContainer {
@@ -77,6 +131,8 @@
   border: 1px solid var(--color-heliotrope-14);
   border-radius: 50%;
   transform: rotate(-4deg);
+  opacity: 0;
+  transition: opacity 900ms ease 100ms;
 }
 
 .orbitInner {
@@ -125,6 +181,8 @@
   height: 480px;
   background: var(--gradient-electric-violet-ambient);
   filter: blur(12px);
+  opacity: 0;
+  transition: opacity 900ms ease 100ms;
 }
 
 .profileCardContainer {
@@ -141,6 +199,11 @@
   border: 1px solid var(--color-mauve-30);
   border-radius: var(--radius-large);
   box-shadow: var(--shadow-black), var(--shadow-electric-violet);
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+  transition:
+    opacity 600ms ease 150ms,
+    transform 700ms ease 150ms;
 }
 
 .profileCardContainer::before {
@@ -219,12 +282,52 @@
   border-radius: var(--radius-medium);
   box-shadow: var(--shadow-black), var(--shadow-electric-violet);
   backdrop-filter: blur(18px);
+  opacity: 0;
   transition:
+    opacity 600ms ease,
     border-color var(--transition-fast),
-    transform var(--transition-fast);
+    transform 600ms ease;
 }
 
-.capabilityCardContainer:hover {
+.capabilityShowcaseVisible .orbitOuter,
+.capabilityShowcaseVisible .orbitInner {
+  opacity: 1;
+}
+
+.capabilityShowcaseVisible .orbitGlow {
+  opacity: 0.75;
+}
+
+.capabilityShowcaseVisible .profileCardContainer {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.capabilityShowcaseVisible .capabilityCardContainer {
+  opacity: 1;
+}
+
+.capabilityShowcaseVisible .capabilityCardContainer:nth-child(1) {
+  transform: rotate(-4deg) scale(1);
+}
+
+.capabilityShowcaseVisible .capabilityCardContainer:nth-child(2) {
+  transform: rotate(4deg) scale(1);
+}
+
+.capabilityShowcaseVisible .capabilityCardContainer:nth-child(3) {
+  transform: rotate(3deg) scale(1);
+}
+
+.capabilityShowcaseVisible .capabilityCardContainer:nth-child(4) {
+  transform: rotate(-3deg) scale(1);
+}
+
+.capabilityShowcaseVisible .capabilityCardContainer:nth-child(5) {
+  transform: rotate(3deg) scale(1);
+}
+
+.capabilityShowcaseVisible .capabilityCardContainer:hover {
   border-color: var(--color-mauve-62);
   transform: translateY(-5px);
 }
@@ -232,50 +335,55 @@
 .capabilityCardContainer:nth-child(1) {
   top: 6%;
   left: 8%;
-  transform: rotate(-4deg);
+  transform: rotate(-4deg) scale(0.88);
+  transition-delay: 500ms;
 }
 
-.capabilityCardContainer:nth-child(1):hover {
+.capabilityShowcaseVisible .capabilityCardContainer:nth-child(1):hover {
   transform: rotate(-4deg) translateY(-5px);
 }
 
 .capabilityCardContainer:nth-child(2) {
   top: 2%;
   right: 10%;
-  transform: rotate(4deg);
+  transform: rotate(4deg) scale(0.88);
+  transition-delay: 680ms;
 }
 
-.capabilityCardContainer:nth-child(2):hover {
+.capabilityShowcaseVisible .capabilityCardContainer:nth-child(2):hover {
   transform: rotate(4deg) translateY(-5px);
 }
 
 .capabilityCardContainer:nth-child(3) {
   top: 39%;
   right: 1%;
-  transform: rotate(3deg);
+  transform: rotate(3deg) scale(0.88);
+  transition-delay: 860ms;
 }
 
-.capabilityCardContainer:nth-child(3):hover {
+.capabilityShowcaseVisible .capabilityCardContainer:nth-child(3):hover {
   transform: rotate(3deg) translateY(-5px);
 }
 
 .capabilityCardContainer:nth-child(4) {
   bottom: 4%;
   right: 14%;
-  transform: rotate(-3deg);
+  transform: rotate(-3deg) scale(0.88);
+  transition-delay: 1040ms;
 }
 
-.capabilityCardContainer:nth-child(4):hover {
+.capabilityShowcaseVisible .capabilityCardContainer:nth-child(4):hover {
   transform: rotate(-3deg) translateY(-5px);
 }
 
 .capabilityCardContainer:nth-child(5) {
   bottom: 8%;
   left: 9%;
-  transform: rotate(3deg);
+  transform: rotate(3deg) scale(0.88);
+  transition-delay: 1220ms;
 }
 
-.capabilityCardContainer:nth-child(5):hover {
+.capabilityShowcaseVisible .capabilityCardContainer:nth-child(5):hover {
   transform: rotate(3deg) translateY(-5px);
 }
 
@@ -367,15 +475,64 @@
     position: static;
     width: auto;
     min-height: 168px;
-    transform: none;
+    transform: translateY(20px);
   }
 
-  .capabilityCardContainer:nth-child(n):hover {
+  .capabilityShowcaseVisible .capabilityCardContainer:nth-child(n),
+  .capabilityShowcaseVisible .capabilityCardContainer:nth-child(n):hover {
     transform: translateY(-5px);
   }
 
   .capabilityCardContainer:last-child {
     grid-column: 1 / -1;
+  }
+}
+
+@keyframes typeCharacter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes showTypingCursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hideTypingCursor {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroEyebrow,
+  .headingCharacter,
+  .heroIntroduction,
+  .orbitOuter,
+  .orbitInner,
+  .orbitGlow,
+  .profileCardContainer,
+  .capabilityCardContainer {
+    opacity: 1;
+    transform: none;
+  }
+
+  .heroIntroductionVisible .headingCharacter,
+  .heroIntroductionVisible h1::after {
+    animation: none;
+  }
+
+  .heroIntroductionContainer h1::after {
+    display: none;
   }
 }
 
