@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import type { FormEvent } from "react"
 
 import styles from "./chat-section.module.css"
@@ -9,6 +9,31 @@ import { Label } from "@components/label"
 
 const contactEmailAddress = "hello@jurgenbaldacchino.com"
 const formspreeEndpoint = "https://formspree.io/f/mzdnrraj"
+const turnstileScriptId = "cloudflare-turnstile-script"
+const turnstileScriptSource =
+  "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+const turnstileSiteKey = "0x4AAAAAAD4Ln3Tjx0zdSTWF"
+
+interface ITurnstileOptions {
+  callback: () => void
+  "error-callback": () => void
+  "expired-callback": () => void
+  sitekey: string
+  size: "flexible"
+  theme: "dark"
+}
+
+interface ITurnstileApi {
+  remove: (widgetId: string) => void
+  render: (container: HTMLElement, options: ITurnstileOptions) => string
+  reset: (widgetId: string) => void
+}
+
+declare global {
+  interface Window {
+    turnstile?: ITurnstileApi
+  }
+}
 
 enum SubmissionStatus {
   IDLE = "idle",
@@ -17,14 +42,108 @@ enum SubmissionStatus {
   FAILED = "failed",
 }
 
+enum TurnstileStatus {
+  CHECKING = "checking",
+  VERIFIED = "verified",
+  ERROR = "error",
+}
+
+const loadTurnstile = () => {
+  if (window.turnstile) {
+    return Promise.resolve(window.turnstile)
+  }
+
+  return new Promise<ITurnstileApi>((resolve, reject) => {
+    const existingScript = document.getElementById(turnstileScriptId) as HTMLScriptElement | null
+    const script: HTMLScriptElement = existingScript ?? document.createElement("script")
+
+    const handleLoad = () => {
+      if (window.turnstile) {
+        resolve(window.turnstile)
+        return
+      }
+
+      reject(new Error("Cloudflare Turnstile did not initialise"))
+    }
+
+    script.addEventListener("load", handleLoad, { once: true })
+    script.addEventListener(
+      "error",
+      () => reject(new Error("Cloudflare Turnstile failed to load")),
+      {
+        once: true,
+      },
+    )
+
+    if (!existingScript) {
+      script.id = turnstileScriptId
+      script.src = turnstileScriptSource
+      script.async = true
+      script.defer = true
+      document.head.append(script)
+    }
+  })
+}
+
 export const ChatSection = () => {
   const [submissionStatus, setSubmissionStatus] = useState(SubmissionStatus.IDLE)
+  const [turnstileStatus, setTurnstileStatus] = useState(TurnstileStatus.CHECKING)
+  const turnstileContainerReference = useRef<HTMLDivElement>(null)
+  const turnstileWidgetReference = useRef<string | null>(null)
   const isSubmitting = submissionStatus === SubmissionStatus.SUBMITTING
+  const isVerified = turnstileStatus === TurnstileStatus.VERIFIED
+
+  useEffect(() => {
+    const container = turnstileContainerReference.current
+    let isMounted = true
+
+    if (!container) {
+      return
+    }
+
+    loadTurnstile()
+      .then((turnstile) => {
+        if (!isMounted) {
+          return
+        }
+
+        turnstileWidgetReference.current = turnstile.render(container, {
+          callback: () => setTurnstileStatus(TurnstileStatus.VERIFIED),
+          "error-callback": () => setTurnstileStatus(TurnstileStatus.ERROR),
+          "expired-callback": () => setTurnstileStatus(TurnstileStatus.CHECKING),
+          sitekey: turnstileSiteKey,
+          size: "flexible",
+          theme: "dark",
+        })
+      })
+      .catch(() => {
+        if (isMounted) {
+          setTurnstileStatus(TurnstileStatus.ERROR)
+        }
+      })
+
+    return () => {
+      isMounted = false
+
+      if (turnstileWidgetReference.current && window.turnstile) {
+        window.turnstile.remove(turnstileWidgetReference.current)
+        turnstileWidgetReference.current = null
+      }
+    }
+  }, [])
+
+  const resetTurnstile = () => {
+    if (turnstileWidgetReference.current && window.turnstile) {
+      window.turnstile.reset(turnstileWidgetReference.current)
+    }
+
+    setTurnstileStatus(TurnstileStatus.CHECKING)
+  }
 
   const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    if (isSubmitting) {
+    if (isSubmitting || !isVerified) {
       return
     }
 
@@ -49,6 +168,8 @@ export const ChatSection = () => {
       setSubmissionStatus(SubmissionStatus.SUCCEEDED)
     } catch {
       setSubmissionStatus(SubmissionStatus.FAILED)
+    } finally {
+      resetTurnstile()
     }
   }
 
@@ -98,7 +219,29 @@ export const ChatSection = () => {
             rows={6}
           ></textarea>
         </div>
-        <Button className={styles.submitButton} fullWidth htmlType="submit" loading={isSubmitting}>
+        <div
+          className={styles.turnstileContainer}
+          ref={turnstileContainerReference}
+          aria-label="Spam protection"
+        ></div>
+        {turnstileStatus === TurnstileStatus.CHECKING && (
+          <p className={styles.turnstileStatusMessage} id="turnstile-status" role="status">
+            Checking that you&apos;re human…
+          </p>
+        )}
+        {turnstileStatus === TurnstileStatus.ERROR && (
+          <p className={styles.submissionErrorMessage} id="turnstile-status" role="alert">
+            Spam protection could not load. Please refresh the page or use the direct email link.
+          </p>
+        )}
+        <Button
+          aria-describedby={isVerified ? undefined : "turnstile-status"}
+          className={styles.submitButton}
+          disabled={!isVerified}
+          fullWidth
+          htmlType="submit"
+          loading={isSubmitting}
+        >
           {isSubmitting ? "Sending message" : "Send message"}
         </Button>
         {submissionStatus === SubmissionStatus.SUCCEEDED && (
