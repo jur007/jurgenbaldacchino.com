@@ -59,7 +59,7 @@ describe("ChatSection", () => {
     expect(window.turnstile?.render).toHaveBeenCalledWith(
       expect.any(HTMLElement),
       expect.objectContaining({
-        sitekey: "0x4AAAAAAD4ln3Ijx0zdSTWF",
+        sitekey: "0x4AAAAAAD4ln3IjxOzdSTWF",
         size: "flexible",
         theme: "dark",
       }),
