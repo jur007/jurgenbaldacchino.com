@@ -1,12 +1,25 @@
+import { useState } from "react"
 import type { ReactNode } from "react"
 
 import styles from "./page-layout.module.css"
+
+import { getClassNames } from "@utils/class-names"
 
 export interface IPageLayout {
   children: ReactNode
 }
 
 export const PageLayout = ({ children }: IPageLayout) => {
+  const [isNavigationOpen, setIsNavigationOpen] = useState(false)
+
+  const handleMenuToggle = () => {
+    setIsNavigationOpen((isOpen) => !isOpen)
+  }
+
+  const handleNavigationClick = () => {
+    setIsNavigationOpen(false)
+  }
+
   return (
     <div className={styles.containerWrapper}>
       <a className={styles.skipToContentLink} href="#main-content">
@@ -22,11 +35,43 @@ export const PageLayout = ({ children }: IPageLayout) => {
             <small>Frontend engineering · Leadership</small>
           </span>
         </a>
-        <nav className={styles.navigationContainer} aria-label="Primary navigation">
-          <a href="/#expertise">Expertise</a>
-          <a href="/#approach">Approach</a>
-          <a href="/about">About</a>
-          <a className={styles.navigationCallToAction} href="#contact">
+        <button
+          className={getClassNames(
+            styles.mobileMenuButton,
+            isNavigationOpen && styles.mobileMenuButtonOpen,
+          )}
+          type="button"
+          aria-controls="primary-navigation"
+          aria-expanded={isNavigationOpen}
+          aria-label={isNavigationOpen ? "Close navigation" : "Open navigation"}
+          onClick={handleMenuToggle}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav
+          className={getClassNames(
+            styles.navigationContainer,
+            isNavigationOpen && styles.navigationContainerOpen,
+          )}
+          id="primary-navigation"
+          aria-label="Primary navigation"
+        >
+          <a href="/#expertise" onClick={handleNavigationClick}>
+            Expertise
+          </a>
+          <a href="/#approach" onClick={handleNavigationClick}>
+            Approach
+          </a>
+          <a href="/about" onClick={handleNavigationClick}>
+            About
+          </a>
+          <a
+            className={styles.navigationCallToAction}
+            href="#contact"
+            onClick={handleNavigationClick}
+          >
             Let&apos;s talk
           </a>
         </nav>
