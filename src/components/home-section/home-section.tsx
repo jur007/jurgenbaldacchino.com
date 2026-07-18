@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 
 import styles from "./home-section.module.css"
 
+import profileImage from "@/assets/profile.jpg"
 import { StrengthCard } from "@components/strength-card"
 import { getClassNames } from "@utils/class-names"
 
@@ -175,8 +176,8 @@ export const HomeSection = () => {
           <div className={styles.orbitGlow} aria-hidden="true"></div>
 
           <div className={styles.profileCardContainer} id="approach">
-            <div className={styles.profileMonogram} aria-hidden="true">
-              JB
+            <div className={styles.profileImageContainer}>
+              <img src={profileImage} alt="Jur Baldacchino" />
             </div>
             <p>Frontend engineering · Leadership</p>
             <h2>Building the systems and teams behind excellent products.</h2>

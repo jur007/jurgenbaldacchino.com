@@ -17,6 +17,7 @@ describe("HomeSection", () => {
         name: /Building the systems and teams behind excellent products/i,
       }),
     ).toBeInTheDocument()
+    expect(screen.getByRole("img", { name: "Jur Baldacchino" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Core strengths" })).toBeInTheDocument()
     expect(screen.getByRole("list", { name: "Core strengths" })).toBeInTheDocument()
     expect(screen.getAllByRole("article")).toHaveLength(5)
