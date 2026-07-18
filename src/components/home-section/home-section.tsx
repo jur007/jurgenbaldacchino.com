@@ -1,62 +1,58 @@
 import { useEffect, useRef, useState } from "react"
-import type { CSSProperties } from "react"
 
 import styles from "./home-section.module.css"
 
+import profileImage from "@/assets/profile.jpg"
+import { StrengthCard } from "@components/strength-card"
 import { getClassNames } from "@utils/class-names"
 
-interface ICapabilityItem {
+interface IStrengthItem {
+  description: string
   index: string
+  prominent?: boolean
+  technicalDetail: string
   title: string
-  copy: string
 }
 
-interface IAnimationProperties extends CSSProperties {
-  "--animation-index": number
-}
+const heading =
+  "Turning ideas into thoughtful frontend experiences, built together and made to last."
+const emphasizedHeading = "made to last."
+const regularHeading = heading.slice(0, -emphasizedHeading.length)
 
-interface IHeadingWord {
-  emphasized?: boolean
-  text: string
-}
-
-const heading = "I build frontend teams and products that endure."
-const headingWords: IHeadingWord[] = [
-  { text: "I" },
-  { text: "build" },
-  { text: "frontend" },
-  { text: "teams" },
-  { text: "and" },
-  { text: "products" },
-  { text: "that" },
-  { emphasized: true, text: "endure." },
-]
-
-const capabilities: ICapabilityItem[] = [
+const strengths: IStrengthItem[] = [
   {
+    description: "Building scalable, maintainable frontend applications with React and TypeScript.",
     index: "01",
-    title: "Frontend architecture",
-    copy: "Scalable foundations for ambitious digital products.",
+    prominent: true,
+    technicalDetail: "React · TypeScript",
+    title: "React Engineering",
   },
   {
+    description:
+      "Combining engineering with creativity through interactive experiences and 2D development.",
     index: "02",
-    title: "Engineering leadership",
-    copy: "Direction, mentorship, and healthy delivery practices.",
+    technicalDetail: "Interactive experiences · Phaser",
+    title: "Creative Development",
   },
   {
+    description: "Automating reliable frontend delivery across modern platforms and environments.",
     index: "03",
-    title: "Design systems",
-    copy: "Shared language that helps teams build with confidence.",
+    technicalDetail: "YAML · Azure DevOps · Cloudflare",
+    title: "Frontend DevOps",
   },
   {
+    description:
+      "Creating readable, intentional solutions that remain easy to understand, maintain and evolve.",
     index: "04",
-    title: "Product experience",
-    copy: "Accessible interfaces shaped around real user needs.",
+    technicalDetail: "Readable · Intentional · Adaptable",
+    title: "Simplicity and Clarity",
   },
   {
+    description:
+      "Bringing design, product and engineering together around shared goals and collective ownership.",
     index: "05",
-    title: "Technical strategy",
-    copy: "Practical paths through complex product decisions.",
+    technicalDetail: "Design · Product · Engineering",
+    title: "One-Team Collaboration",
   },
 ]
 
@@ -95,10 +91,50 @@ const useRevealOnIntersection = <TElement extends HTMLElement>() => {
   return [elementReference, isVisible] as const
 }
 
+const useTypedHeading = (isActive: boolean) => {
+  const [visibleCharacterCount, setVisibleCharacterCount] = useState(0)
+
+  useEffect(() => {
+    if (!isActive) {
+      return
+    }
+
+    const prefersReducedMotion =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+    if (prefersReducedMotion) {
+      const reducedMotionTimer = window.setTimeout(
+        () => setVisibleCharacterCount(heading.length),
+        0,
+      )
+
+      return () => window.clearTimeout(reducedMotionTimer)
+    }
+
+    const typingTimer = window.setInterval(() => {
+      setVisibleCharacterCount((currentCount) => {
+        if (currentCount >= heading.length) {
+          window.clearInterval(typingTimer)
+          return currentCount
+        }
+
+        return currentCount + 1
+      })
+    }, 42)
+
+    return () => window.clearInterval(typingTimer)
+  }, [isActive])
+
+  return heading.slice(0, visibleCharacterCount)
+}
+
 export const HomeSection = () => {
   const [introductionReference, isIntroductionVisible] = useRevealOnIntersection<HTMLDivElement>()
   const [showcaseReference, isShowcaseVisible] = useRevealOnIntersection<HTMLDivElement>()
-  let characterIndex = 0
+  const visibleHeading = useTypedHeading(isIntroductionVisible)
+  const visibleRegularHeading = visibleHeading.slice(0, regularHeading.length)
+  const visibleEmphasizedHeading = visibleHeading.slice(regularHeading.length)
 
   return (
     <div className={styles.containerWrapper} id="top">
@@ -113,40 +149,18 @@ export const HomeSection = () => {
           <p className={styles.heroEyebrow}>Senior Frontend Developer · Head of Frontend</p>
           <h1 id="hero-title" aria-label={heading}>
             <span aria-hidden="true">
-              {headingWords.map((word) => (
-                <span
-                  className={getClassNames(
-                    styles.headingWord,
-                    word.emphasized && styles.headingWordEmphasized,
-                  )}
-                  key={word.text}
-                >
-                  {[...word.text].map((character) => {
-                    const animationIndex = characterIndex
-                    characterIndex += 1
-
-                    return (
-                      <span
-                        className={styles.headingCharacter}
-                        key={`${word.text}-${animationIndex}`}
-                        style={{ "--animation-index": animationIndex } as IAnimationProperties}
-                      >
-                        {character}
-                      </span>
-                    )
-                  })}
-                </span>
-              ))}
+              {visibleRegularHeading}
+              <em>{visibleEmphasizedHeading}</em>
             </span>
           </h1>
           <p className={styles.heroIntroduction}>
-            I&apos;m Jurgen, a frontend engineer and technical leader focused on turning complex
-            product challenges into clear, scalable experiences—and helping the people behind them
-            grow.
+            I’m Jur 👋—a frontend engineer and technical leader who enjoys turning complex ideas
+            into clear, scalable experiences while helping the people around me do their best work.
           </p>
         </div>
 
-        <div
+        <section
+          aria-labelledby="strengths-title"
           className={getClassNames(
             styles.capabilityShowcaseContainer,
             isShowcaseVisible && styles.capabilityShowcaseVisible,
@@ -154,13 +168,16 @@ export const HomeSection = () => {
           id="expertise"
           ref={showcaseReference}
         >
+          <h2 className={styles.visuallyHidden} id="strengths-title">
+            Core strengths
+          </h2>
           <div className={styles.orbitOuter} aria-hidden="true"></div>
           <div className={styles.orbitInner} aria-hidden="true"></div>
           <div className={styles.orbitGlow} aria-hidden="true"></div>
 
           <div className={styles.profileCardContainer} id="approach">
-            <div className={styles.profileMonogram} aria-hidden="true">
-              JB
+            <div className={styles.profileImageContainer}>
+              <img src={profileImage} alt="Jur Baldacchino" />
             </div>
             <p>Frontend engineering · Leadership</p>
             <h2>Building the systems and teams behind excellent products.</h2>
@@ -169,19 +186,14 @@ export const HomeSection = () => {
             </a>
           </div>
 
-          <div className={styles.capabilityCardsContainer}>
-            {capabilities.map((capability) => (
-              <article className={styles.capabilityCardContainer} key={capability.index}>
-                <div className={styles.capabilityCardHeader}>
-                  <span>{capability.index}</span>
-                  <span className={styles.capabilityCardSymbol} aria-hidden="true"></span>
-                </div>
-                <h2>{capability.title}</h2>
-                <p>{capability.copy}</p>
-              </article>
+          <ul className={styles.strengthsList} aria-label="Core strengths">
+            {strengths.map((strength) => (
+              <li className={styles.strengthListItem} key={strength.index}>
+                <StrengthCard {...strength} />
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </section>
       </section>
     </div>
   )

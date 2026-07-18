@@ -2,6 +2,18 @@
   display: block;
 }
 
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .heroSectionContainer {
   position: relative;
   min-height: calc(100vh - 104px);
@@ -41,6 +53,7 @@
 }
 
 .heroIntroductionContainer h1 {
+  min-height: 2.82em;
   max-width: 13ch;
   margin-top: 20px;
   color: var(--color-white-lilac);
@@ -50,31 +63,10 @@
   line-height: 0.94;
 }
 
-.headingWord {
-  display: inline-block;
-  margin-right: 0.22em;
-  white-space: nowrap;
-}
-
-.headingWord:last-child {
-  margin-right: 0;
-}
-
-.headingWordEmphasized {
+.heroIntroductionContainer h1 em {
   color: var(--color-mauve);
   font-family: var(--font-family-serif);
   font-weight: var(--font-weight-regular);
-}
-
-.headingCharacter {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(0.18em);
-}
-
-.heroIntroductionVisible .headingCharacter {
-  animation: typeCharacter 80ms ease forwards;
-  animation-delay: calc(220ms + var(--animation-index) * 42ms);
 }
 
 .heroIntroductionContainer h1::after {
@@ -215,22 +207,25 @@
   pointer-events: none;
 }
 
-.profileMonogram {
+.profileImageContainer {
   position: absolute;
-  display: grid;
   width: 176px;
   height: 176px;
   top: 56px;
   left: 50%;
-  place-items: center;
-  color: var(--color-white-lilac);
   background: var(--color-black-russian-74);
   border: 1px solid var(--color-mauve-62);
   border-radius: 50%;
   box-shadow: var(--shadow-heliotrope);
-  font-family: var(--font-family-serif);
-  font-size: 3.5rem;
   transform: translateX(-50%);
+  overflow: hidden;
+}
+
+.profileImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 36%;
 }
 
 .profileCardContainer > p,
@@ -267,25 +262,21 @@
   text-decoration: none;
 }
 
-.capabilityCardsContainer {
+.strengthsList {
   position: absolute;
   inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.capabilityCardContainer {
+.strengthListItem {
   position: absolute;
   width: 224px;
-  min-height: 176px;
-  padding: 22px;
-  background: var(--color-black-russian-90);
-  border: 1px solid var(--color-mauve-30);
-  border-radius: var(--radius-medium);
-  box-shadow: var(--shadow-black), var(--shadow-electric-violet);
-  backdrop-filter: blur(18px);
+  min-height: 264px;
   opacity: 0;
   transition:
     opacity 600ms ease,
-    border-color var(--transition-fast),
     transform 600ms ease;
 }
 
@@ -303,142 +294,93 @@
   transform: translateY(0) scale(1);
 }
 
-.capabilityShowcaseVisible .capabilityCardContainer {
+.capabilityShowcaseVisible .strengthListItem {
   opacity: 1;
 }
 
-.capabilityShowcaseVisible .capabilityCardContainer:nth-child(1) {
+.capabilityShowcaseVisible .strengthListItem:nth-child(1) {
   transform: rotate(-4deg) scale(1);
 }
 
-.capabilityShowcaseVisible .capabilityCardContainer:nth-child(2) {
-  transform: rotate(4deg) scale(1);
+.capabilityShowcaseVisible .strengthListItem:nth-child(2) {
+  transform: rotate(4deg) translateY(-96px) translateX(20px) scale(1);
 }
 
-.capabilityShowcaseVisible .capabilityCardContainer:nth-child(3) {
+.capabilityShowcaseVisible .strengthListItem:nth-child(3) {
   transform: rotate(3deg) scale(1);
 }
 
-.capabilityShowcaseVisible .capabilityCardContainer:nth-child(4) {
-  transform: rotate(-3deg) scale(1);
+.capabilityShowcaseVisible .strengthListItem:nth-child(4) {
+  transform: rotate(-3deg) translateY(112px) scale(1);
 }
 
-.capabilityShowcaseVisible .capabilityCardContainer:nth-child(5) {
+.capabilityShowcaseVisible .strengthListItem:nth-child(5) {
   transform: rotate(3deg) scale(1);
 }
 
-.capabilityShowcaseVisible .capabilityCardContainer:hover {
-  border-color: var(--color-mauve-62);
+.capabilityShowcaseVisible .strengthListItem:hover,
+.capabilityShowcaseVisible .strengthListItem:focus-within {
   transform: translateY(-5px);
 }
 
-.capabilityCardContainer:nth-child(1) {
+.strengthListItem:nth-child(1) {
   top: 6%;
   left: 8%;
   transform: rotate(-4deg) scale(0.88);
   transition-delay: 500ms;
 }
 
-.capabilityShowcaseVisible .capabilityCardContainer:nth-child(1):hover {
+.capabilityShowcaseVisible .strengthListItem:nth-child(1):hover,
+.capabilityShowcaseVisible .strengthListItem:nth-child(1):focus-within {
   transform: rotate(-4deg) translateY(-5px);
 }
 
-.capabilityCardContainer:nth-child(2) {
+.strengthListItem:nth-child(2) {
   top: 2%;
   right: 10%;
-  transform: rotate(4deg) scale(0.88);
+  transform: rotate(4deg) translateY(-96px) scale(0.88);
   transition-delay: 680ms;
 }
 
-.capabilityShowcaseVisible .capabilityCardContainer:nth-child(2):hover {
-  transform: rotate(4deg) translateY(-5px);
+.capabilityShowcaseVisible .strengthListItem:nth-child(2):hover,
+.capabilityShowcaseVisible .strengthListItem:nth-child(2):focus-within {
+  transform: rotate(4deg) translateY(-101px);
 }
 
-.capabilityCardContainer:nth-child(3) {
-  top: 39%;
+.strengthListItem:nth-child(3) {
+  top: 25%;
   right: 1%;
   transform: rotate(3deg) scale(0.88);
   transition-delay: 860ms;
 }
 
-.capabilityShowcaseVisible .capabilityCardContainer:nth-child(3):hover {
+.capabilityShowcaseVisible .strengthListItem:nth-child(3):hover,
+.capabilityShowcaseVisible .strengthListItem:nth-child(3):focus-within {
   transform: rotate(3deg) translateY(-5px);
 }
 
-.capabilityCardContainer:nth-child(4) {
-  bottom: 4%;
+.strengthListItem:nth-child(4) {
   right: 14%;
-  transform: rotate(-3deg) scale(0.88);
+  bottom: 4%;
+  transform: rotate(-3deg) translateY(112px) scale(0.88);
   transition-delay: 1040ms;
 }
 
-.capabilityShowcaseVisible .capabilityCardContainer:nth-child(4):hover {
-  transform: rotate(-3deg) translateY(-5px);
+.capabilityShowcaseVisible .strengthListItem:nth-child(4):hover,
+.capabilityShowcaseVisible .strengthListItem:nth-child(4):focus-within {
+  transform: rotate(-3deg) translateY(107px);
 }
 
-.capabilityCardContainer:nth-child(5) {
+.strengthListItem:nth-child(5) {
   bottom: 8%;
   left: 9%;
   transform: rotate(3deg) scale(0.88);
   transition-delay: 1220ms;
 }
 
-.capabilityShowcaseVisible .capabilityCardContainer:nth-child(5):hover {
+.capabilityShowcaseVisible .strengthListItem:nth-child(5):hover,
+.capabilityShowcaseVisible .strengthListItem:nth-child(5):focus-within {
   transform: rotate(3deg) translateY(-5px);
-}
-
-.capabilityCardHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--color-mobster);
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-sm);
-}
-
-.capabilityCardSymbol {
-  position: relative;
-  width: 24px;
-  height: 24px;
-  border: 1px solid var(--color-heliotrope);
-  border-radius: 50%;
-}
-
-.capabilityCardSymbol::before,
-.capabilityCardSymbol::after {
-  position: absolute;
-  content: "";
-  background: var(--color-heliotrope);
-}
-
-.capabilityCardSymbol::before {
-  width: 10px;
-  height: 1px;
-  top: 11px;
-  left: 6px;
-}
-
-.capabilityCardSymbol::after {
-  width: 1px;
-  height: 10px;
-  top: 6px;
-  left: 11px;
-}
-
-.capabilityCardContainer h2 {
-  margin-top: 24px;
-  color: var(--color-white-lilac);
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.01em;
-  line-height: var(--line-height-snug);
-}
-
-.capabilityCardContainer p {
-  margin-top: 9px;
-  color: var(--color-mobster);
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-normal);
 }
 
 @media (max-width: 1023px) {
@@ -462,7 +404,7 @@
     margin: 0 auto;
   }
 
-  .capabilityCardsContainer {
+  .strengthsList {
     position: static;
     display: grid;
     margin-top: 24px;
@@ -470,28 +412,22 @@
     gap: 16px;
   }
 
-  .capabilityCardContainer,
-  .capabilityCardContainer:nth-child(n) {
+  .strengthListItem,
+  .strengthListItem:nth-child(n) {
     position: static;
     width: auto;
-    min-height: 168px;
+    min-height: 264px;
     transform: translateY(20px);
   }
 
-  .capabilityShowcaseVisible .capabilityCardContainer:nth-child(n),
-  .capabilityShowcaseVisible .capabilityCardContainer:nth-child(n):hover {
+  .capabilityShowcaseVisible .strengthListItem:nth-child(n),
+  .capabilityShowcaseVisible .strengthListItem:nth-child(n):hover,
+  .capabilityShowcaseVisible .strengthListItem:nth-child(n):focus-within {
     transform: translateY(-5px);
   }
 
-  .capabilityCardContainer:last-child {
+  .strengthListItem:last-child {
     grid-column: 1 / -1;
-  }
-}
-
-@keyframes typeCharacter {
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -515,18 +451,16 @@
 
 @media (prefers-reduced-motion: reduce) {
   .heroEyebrow,
-  .headingCharacter,
   .heroIntroduction,
   .orbitOuter,
   .orbitInner,
   .orbitGlow,
   .profileCardContainer,
-  .capabilityCardContainer {
+  .strengthListItem {
     opacity: 1;
     transform: none;
   }
 
-  .heroIntroductionVisible .headingCharacter,
   .heroIntroductionVisible h1::after {
     animation: none;
   }
@@ -551,11 +485,11 @@
     margin-top: 56px;
   }
 
-  .capabilityCardsContainer {
+  .strengthsList {
     grid-template-columns: 1fr;
   }
 
-  .capabilityCardContainer:last-child {
+  .strengthListItem:last-child {
     grid-column: auto;
   }
 }
@@ -570,7 +504,7 @@
     padding: 28px;
   }
 
-  .profileMonogram {
+  .profileImageContainer {
     width: 152px;
     height: 152px;
   }
