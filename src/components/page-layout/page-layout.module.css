@@ -7,22 +7,6 @@
   box-shadow: 0 0 100px var(--color-black-45);
 }
 
-.skipToContentLink {
-  position: fixed;
-  z-index: 100;
-  top: 16px;
-  left: 16px;
-  padding: 11px 16px;
-  color: var(--color-black-russian);
-  background: var(--color-mauve);
-  border-radius: var(--radius-small);
-  transform: translateY(-200%);
-}
-
-.skipToContentLink:focus {
-  transform: translateY(0);
-}
-
 .headerContainer {
   position: relative;
   z-index: 10;

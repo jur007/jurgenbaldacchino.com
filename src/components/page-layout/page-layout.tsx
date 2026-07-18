@@ -36,9 +36,6 @@ export const PageLayout = ({ children }: IPageLayout) => {
 
   return (
     <div className={styles.containerWrapper}>
-      <a className={styles.skipToContentLink} href="#main-content">
-        Skip to content
-      </a>
       <header className={styles.headerContainer}>
         <a className={styles.brandLink} href="/" aria-label="Jurgen Baldacchino — home">
           <span className={styles.brandMonogram} aria-hidden="true">
