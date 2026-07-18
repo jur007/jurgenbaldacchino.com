@@ -122,14 +122,19 @@
   aspect-ratio: 1.9;
   border: 1px solid var(--color-heliotrope-14);
   border-radius: 50%;
+  filter: drop-shadow(0 0 5px var(--color-heliotrope-20));
   transform: rotate(-4deg);
+  transform-origin: center;
   opacity: 0;
-  transition: opacity 900ms ease 100ms;
+  transition:
+    opacity 900ms ease 100ms,
+    border-color 900ms ease 100ms;
 }
 
 .orbitInner {
   width: min(68%, 840px);
   border-color: var(--color-mauve-30);
+  filter: drop-shadow(0 0 7px var(--color-electric-violet-20));
   transform: rotate(7deg);
 }
 
@@ -144,6 +149,7 @@
   background: var(--color-mauve);
   border-radius: 50%;
   box-shadow: var(--shadow-electric-violet);
+  animation: orbitNodePulse 3.2s ease-in-out infinite;
 }
 
 .orbitOuter::before {
@@ -154,16 +160,19 @@
 .orbitOuter::after {
   right: 8%;
   bottom: 24%;
+  animation-delay: -1.6s;
 }
 
 .orbitInner::before {
   top: 5%;
   right: 24%;
+  animation-delay: -0.8s;
 }
 
 .orbitInner::after {
   bottom: 8%;
   left: 22%;
+  animation-delay: -2.4s;
 }
 
 .orbitGlow {
@@ -253,13 +262,34 @@
 }
 
 .profileCardContainer > a {
+  display: inline-flex;
   margin-top: 24px;
   padding-bottom: 5px;
+  align-items: center;
+  gap: 6px;
   color: var(--color-mauve);
   border-bottom: 1px solid var(--color-mauve-62);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-lg);
   text-decoration: none;
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.profileCardContainer > a span {
+  transition: transform var(--transition-fast);
+}
+
+.profileCardContainer > a:hover,
+.profileCardContainer > a:focus-visible {
+  color: var(--color-white-lilac);
+  border-color: var(--color-heliotrope);
+}
+
+.profileCardContainer > a:hover span,
+.profileCardContainer > a:focus-visible span {
+  transform: translate(2px, -2px);
 }
 
 .strengthsList {
@@ -283,10 +313,21 @@
 .capabilityShowcaseVisible .orbitOuter,
 .capabilityShowcaseVisible .orbitInner {
   opacity: 1;
+  border-color: var(--color-heliotrope-28);
+}
+
+.capabilityShowcaseVisible .orbitOuter {
+  animation: orbitOuterMovement 34s linear infinite;
+}
+
+.capabilityShowcaseVisible .orbitInner {
+  border-color: var(--color-mauve-30);
+  animation: orbitInnerMovement 26s linear infinite;
 }
 
 .capabilityShowcaseVisible .orbitGlow {
   opacity: 0.75;
+  animation: orbitGlowPulse 5.5s ease-in-out infinite;
 }
 
 .capabilityShowcaseVisible .profileCardContainer {
@@ -383,6 +424,28 @@
   transform: rotate(3deg) translateY(-5px);
 }
 
+.expandedStrengthCardOverlay {
+  position: fixed;
+  z-index: 100;
+  display: grid;
+  padding: 20px;
+  place-items: center;
+  background: var(--color-black-russian-74);
+  backdrop-filter: blur(12px);
+  inset: 0;
+  animation: revealStrengthCardOverlay 220ms ease;
+}
+
+@keyframes revealStrengthCardOverlay {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 1023px) {
   .heroSectionContainer {
     padding-top: 72px;
@@ -443,6 +506,52 @@
   }
 }
 
+@keyframes orbitOuterMovement {
+  from {
+    transform: rotate(-4deg);
+  }
+
+  to {
+    transform: rotate(356deg);
+  }
+}
+
+@keyframes orbitInnerMovement {
+  from {
+    transform: rotate(7deg);
+  }
+
+  to {
+    transform: rotate(-353deg);
+  }
+}
+
+@keyframes orbitNodePulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes orbitGlowPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 0.82;
+    transform: scale(1.04);
+  }
+}
+
 @keyframes hideTypingCursor {
   to {
     opacity: 0;
@@ -467,6 +576,25 @@
 
   .heroIntroductionContainer h1::after {
     display: none;
+  }
+
+  .capabilityShowcaseVisible .orbitOuter,
+  .capabilityShowcaseVisible .orbitInner,
+  .capabilityShowcaseVisible .orbitGlow,
+  .orbitOuter::before,
+  .orbitOuter::after,
+  .orbitInner::before,
+  .orbitInner::after {
+    animation: none;
+  }
+
+  .expandedStrengthCardOverlay {
+    animation: none;
+  }
+
+  .profileCardContainer > a,
+  .profileCardContainer > a span {
+    transition: none;
   }
 }
 

@@ -8,6 +8,7 @@ import { getClassNames } from "@utils/class-names"
 
 interface IStrengthItem {
   description: string
+  expandedDescription: string
   index: string
   prominent?: boolean
   technicalDetail: string
@@ -21,7 +22,10 @@ const regularHeading = heading.slice(0, -emphasizedHeading.length)
 
 const strengths: IStrengthItem[] = [
   {
-    description: "Building scalable, maintainable frontend applications with React and TypeScript.",
+    description:
+      "Building fast, scalable and mobile-first React products designed for users, search and long-term growth.",
+    expandedDescription:
+      "I build fast, discoverable and mobile-first products with performance, accessibility and SEO considered from the beginning. My experience across React, Next.js, Gatsby and different state-management approaches helps me choose solutions around the product’s needs—not a preferred tool.",
     index: "01",
     prominent: true,
     technicalDetail: "React · TypeScript",
@@ -29,29 +33,37 @@ const strengths: IStrengthItem[] = [
   },
   {
     description:
-      "Combining engineering with creativity through interactive experiences and 2D development.",
+      "Turning creative ideas into engaging interactive experiences, including custom 2D products built with Phaser.",
+    expandedDescription:
+      "I enjoy turning ambitious ideas into engaging digital experiences. This has included developing an in-house 2D game with Phaser, bringing creativity and engineering together to take an interactive concept through to a finished product.",
     index: "02",
-    technicalDetail: "Interactive experiences · Phaser",
+    technicalDetail: "Phaser · Interaction",
     title: "Creative Development",
   },
   {
-    description: "Automating reliable frontend delivery across modern platforms and environments.",
+    description:
+      "Creating reliable delivery pipelines that move frontend products from validation to production with confidence.",
+    expandedDescription:
+      "I create dependable paths from development to production, helping teams release with greater speed and confidence. Using Azure DevOps, Docker, Cloudflare, GitHub Actions and YAML, I’ve built validation, development and production pipelines that reduce manual work and catch problems earlier.",
     index: "03",
-    technicalDetail: "YAML · Azure DevOps · Cloudflare",
+    technicalDetail: "Azure · Cloudflare",
     title: "Frontend DevOps",
   },
   {
-    description:
-      "Creating readable, intentional solutions that remain easy to understand, maintain and evolve.",
+    description: "Making tasks, code and architecture easier to understand, maintain and evolve.",
+    expandedDescription:
+      "I believe successful delivery starts with work that people can clearly understand. From well-defined tasks to readable, maintainable code, I focus on reducing unnecessary complexity so teams can move confidently and products can evolve more easily.",
     index: "04",
-    technicalDetail: "Readable · Intentional · Adaptable",
+    technicalDetail: "Readable · Maintainable",
     title: "Simplicity and Clarity",
   },
   {
     description:
-      "Bringing design, product and engineering together around shared goals and collective ownership.",
+      "Aligning people, disciplines and goals to guide teams and products successfully from idea to delivery.",
+    expandedDescription:
+      "I’ve led frontend teams and guided projects from their earliest stages through delivery. My priority is creating an environment where people have clear goals, feel supported and work as one team around the success of the product.",
     index: "05",
-    technicalDetail: "Design · Product · Engineering",
+    technicalDetail: "People · Ownership",
     title: "One-Team Collaboration",
   },
 ]
@@ -130,11 +142,36 @@ const useTypedHeading = (isActive: boolean) => {
 }
 
 export const HomeSection = () => {
+  const [activeStrength, setActiveStrength] = useState<IStrengthItem | null>(null)
+  const activeCardReference = useRef<HTMLElement | null>(null)
   const [introductionReference, isIntroductionVisible] = useRevealOnIntersection<HTMLDivElement>()
   const [showcaseReference, isShowcaseVisible] = useRevealOnIntersection<HTMLDivElement>()
   const visibleHeading = useTypedHeading(isIntroductionVisible)
   const visibleRegularHeading = visibleHeading.slice(0, regularHeading.length)
   const visibleEmphasizedHeading = visibleHeading.slice(regularHeading.length)
+
+  useEffect(() => {
+    if (!activeStrength) {
+      return
+    }
+
+    const originalBodyOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow
+    }
+  }, [activeStrength])
+
+  const handleStrengthOpen = (strength: IStrengthItem, sourceElement: HTMLElement) => {
+    activeCardReference.current = sourceElement
+    setActiveStrength(strength)
+  }
+
+  const handleStrengthClose = () => {
+    setActiveStrength(null)
+    window.requestAnimationFrame(() => activeCardReference.current?.focus())
+  }
 
   return (
     <div className={styles.containerWrapper} id="top">
@@ -146,7 +183,7 @@ export const HomeSection = () => {
           )}
           ref={introductionReference}
         >
-          <p className={styles.heroEyebrow}>Senior Frontend Developer · Head of Frontend</p>
+          <p className={styles.heroEyebrow}>12+ Years · Products · People</p>
           <h1 id="hero-title" aria-label={heading}>
             <span aria-hidden="true">
               {visibleRegularHeading}
@@ -179,7 +216,7 @@ export const HomeSection = () => {
             <div className={styles.profileImageContainer}>
               <img src={profileImage} alt="Jur Baldacchino" />
             </div>
-            <p>Frontend engineering · Leadership</p>
+            <p>Head of Frontend · React Engineer</p>
             <h2>Building the systems and teams behind excellent products.</h2>
             <a href="#contact">
               Let&apos;s work together <span aria-hidden="true">↗</span>
@@ -189,12 +226,20 @@ export const HomeSection = () => {
           <ul className={styles.strengthsList} aria-label="Core strengths">
             {strengths.map((strength) => (
               <li className={styles.strengthListItem} key={strength.index}>
-                <StrengthCard {...strength} />
+                <StrengthCard
+                  {...strength}
+                  onOpen={(sourceElement) => handleStrengthOpen(strength, sourceElement)}
+                />
               </li>
             ))}
           </ul>
         </section>
       </section>
+      {activeStrength && (
+        <div className={styles.expandedStrengthCardOverlay}>
+          <StrengthCard {...activeStrength} isExpanded onClose={handleStrengthClose} />
+        </div>
+      )}
     </div>
   )
 }

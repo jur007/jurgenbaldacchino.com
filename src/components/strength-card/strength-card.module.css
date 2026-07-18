@@ -28,7 +28,7 @@
 }
 
 .containerWrapper:hover,
-.containerWrapper:focus-visible {
+.containerWrapper:focus-within {
   border-color: var(--color-mauve-62);
   box-shadow:
     var(--shadow-black),
@@ -37,11 +37,11 @@
 }
 
 .containerWrapper:hover::before,
-.containerWrapper:focus-visible::before {
+.containerWrapper:focus-within::before {
   opacity: 0.45;
 }
 
-.containerWrapper:focus-visible {
+.containerWrapper:focus-within {
   outline: 2px solid var(--color-heliotrope);
   outline-offset: 4px;
 }
@@ -61,39 +61,33 @@
 .cardHeaderContainer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  color: var(--color-mobster);
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-sm);
+  justify-content: flex-end;
 }
 
 .cardSymbol {
-  position: relative;
+  display: grid;
   width: 24px;
   height: 24px;
+  place-items: center;
+  color: var(--color-heliotrope);
   border: 1px solid var(--color-heliotrope);
   border-radius: 50%;
 }
 
-.cardSymbol::before,
-.cardSymbol::after {
+.cardActionIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.cardOpenButton {
   position: absolute;
-  content: "";
-  background: var(--color-heliotrope);
-}
-
-.cardSymbol::before {
-  width: 10px;
-  height: 1px;
-  top: 11px;
-  left: 6px;
-}
-
-.cardSymbol::after {
-  width: 1px;
-  height: 10px;
-  top: 6px;
-  left: 11px;
+  z-index: 2;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  border-radius: inherit;
+  inset: 0;
 }
 
 .containerWrapper h3 {
@@ -112,6 +106,11 @@
   line-height: var(--line-height-normal);
 }
 
+.expandedDescription {
+  padding-top: 8px;
+  color: var(--color-lavender-grey);
+}
+
 .technicalDetail {
   margin-top: auto;
   padding-top: 18px;
@@ -121,13 +120,92 @@
   letter-spacing: 0.04em;
 }
 
+.expandedStrengthCard {
+  width: min(calc(100vw - 40px), 620px);
+  min-height: min(520px, calc(100vh - 40px));
+  max-height: calc(100vh - 40px);
+  padding: clamp(28px, 5vw, 48px);
+  overflow-y: auto;
+  background: var(--gradient-revolver);
+  border-color: var(--color-mauve-62);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-black), var(--shadow-heliotrope);
+  animation: revealExpandedStrengthCard 280ms ease;
+}
+
+.expandedStrengthCard:hover,
+.expandedStrengthCard:focus-within {
+  outline: none;
+  transform: none;
+}
+
+.expandedStrengthCard::before {
+  opacity: 0.3;
+}
+
+.expandedStrengthCard h3 {
+  max-width: 16ch;
+  margin-top: clamp(36px, 7vw, 72px);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+.expandedStrengthCard p {
+  max-width: 46ch;
+  margin-top: 20px;
+  font-size: clamp(var(--font-size-4xl), 2vw, var(--font-size-5xl));
+  line-height: var(--line-height-relaxed);
+}
+
+.cardCloseButton {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  place-items: center;
+  cursor: pointer;
+  color: var(--color-heliotrope);
+  background: var(--color-white-lilac-4);
+  border: 1px solid var(--color-heliotrope);
+  border-radius: 50%;
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.cardCloseButton:hover {
+  color: var(--color-white-lilac);
+  background: var(--color-mauve-8);
+  transform: rotate(90deg);
+}
+
+@keyframes revealExpandedStrengthCard {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .containerWrapper {
+  .containerWrapper,
+  .cardCloseButton {
     transition: none;
   }
 
   .containerWrapper:hover,
-  .containerWrapper:focus-visible {
+  .containerWrapper:focus-within,
+  .cardCloseButton:hover {
     transform: none;
+  }
+
+  .expandedStrengthCard {
+    animation: none;
   }
 }

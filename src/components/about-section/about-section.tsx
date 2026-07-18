@@ -25,7 +25,7 @@ export const AboutSection = () => {
           <strong>Malta</strong>
           <span aria-hidden="true">→</span>
           <span>Now</span>
-          <strong>Everywhere</strong>
+          <strong>Wherever next</strong>
         </div>
       </div>
     </section>

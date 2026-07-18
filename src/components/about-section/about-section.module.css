@@ -23,10 +23,14 @@
   position: relative;
   height: min(780px, calc(100vh - 104px));
   min-height: 640px;
+  margin-left: var(--layout-page-gutter);
   opacity: 0;
-  border: 1px solid var(--color-mauve-30);
-  border-radius: 38% 31% 37% 34% / 13% 22% 17% 19%;
-  box-shadow: var(--shadow-black);
+  border: 8px solid var(--color-revolver);
+  border-radius: 50% 50% 0 0 / 28% 28% 0 0;
+  outline: 1px solid var(--color-mauve-30);
+  box-shadow:
+    var(--shadow-black),
+    inset 0 0 28px var(--color-black-52);
   transform: translateX(-32px);
   overflow: hidden;
   animation: revealImagePanel 850ms ease 100ms forwards;
@@ -34,6 +38,7 @@
 
 .imagePanelContainer::after {
   position: absolute;
+  z-index: 1;
   content: "";
   inset: 0;
   background: linear-gradient(180deg, transparent 60%, var(--color-black-russian-74));
@@ -135,7 +140,7 @@
     height: 560px;
     min-height: 0;
     margin: 56px auto 0;
-    border-radius: 32% 26% 31% 24% / 12% 18% 15% 18%;
+    border-radius: 50% 50% 0 0 / 34% 34% 0 0;
   }
 
   .imagePanelContainer img {
@@ -152,7 +157,7 @@
   .imagePanelContainer {
     height: 440px;
     margin-top: 32px;
-    border-radius: 28% 22% 27% 20% / 10% 15% 12% 15%;
+    border-radius: 50% 50% 0 0 / 30% 30% 0 0;
   }
 
   .imagePanelContainer img {
