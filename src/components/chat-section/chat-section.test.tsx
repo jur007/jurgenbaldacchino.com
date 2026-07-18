@@ -17,7 +17,6 @@ describe("ChatSection", () => {
   let turnstileOptions: ITurnstileTestOptions
 
   beforeEach(() => {
-    vi.stubEnv("VITE_TURNSTILE_SITE_KEY", "test-turnstile-site-key")
     window.turnstile = {
       remove: vi.fn(),
       render: vi.fn((container, options) => {
@@ -34,7 +33,6 @@ describe("ChatSection", () => {
 
   afterEach(() => {
     vi.restoreAllMocks()
-    vi.unstubAllEnvs()
     delete window.turnstile
   })
 
@@ -61,7 +59,7 @@ describe("ChatSection", () => {
     expect(window.turnstile?.render).toHaveBeenCalledWith(
       expect.any(HTMLElement),
       expect.objectContaining({
-        sitekey: "test-turnstile-site-key",
+        sitekey: "0x4AAAAAAD4Ln3Tjx0zdSTWF",
         size: "flexible",
         theme: "dark",
       }),
