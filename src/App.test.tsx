@@ -7,7 +7,9 @@ describe("App", () => {
     render(<App />)
 
     expect(
-      screen.getByRole("heading", { name: /I build frontend teams and products/i }),
+      screen.getByRole("heading", {
+        name: /Turning ideas into thoughtful frontend experiences, built together and made to last/i,
+      }),
     ).toBeInTheDocument()
   })
 })

@@ -13,8 +13,9 @@ interface IStrengthItem {
   title: string
 }
 
-const heading = "I build frontend teams and products that endure."
-const emphasizedHeading = "endure."
+const heading =
+  "Turning ideas into thoughtful frontend experiences, built together and made to last."
+const emphasizedHeading = "made to last."
 const regularHeading = heading.slice(0, -emphasizedHeading.length)
 
 const strengths: IStrengthItem[] = [
