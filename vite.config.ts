@@ -16,7 +16,10 @@ export default defineConfig({
   },
   resolve: {
     alias: [
-      { find: /^@\/(.*)$/, replacement: `${fileURLToPath(new URL("./src/", import.meta.url))}$1` },
+      {
+        find: /^@\/(.*)$/,
+        replacement: `${fileURLToPath(new URL("./src/", import.meta.url))}$1`,
+      },
       {
         find: /^@components\/(.*)$/,
         replacement: `${fileURLToPath(new URL("./src/components/", import.meta.url))}$1`,

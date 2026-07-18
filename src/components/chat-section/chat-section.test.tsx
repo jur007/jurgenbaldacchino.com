@@ -1,15 +1,47 @@
-import { render, screen } from "@testing-library/react"
+import { act, render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { afterEach, describe, expect, it, vi } from "vitest"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 import { ChatSection } from "./chat-section"
 
+interface ITurnstileTestOptions {
+  callback: () => void
+  "error-callback": () => void
+  "expired-callback": () => void
+  sitekey: string
+  size: string
+  theme: string
+}
+
 describe("ChatSection", () => {
-  afterEach(() => {
-    vi.restoreAllMocks()
+  let turnstileOptions: ITurnstileTestOptions
+
+  beforeEach(() => {
+    window.turnstile = {
+      remove: vi.fn(),
+      render: vi.fn((container, options) => {
+        turnstileOptions = options
+        const responseField = document.createElement("input")
+        responseField.name = "cf-turnstile-response"
+        responseField.value = "verified-turnstile-token"
+        container.append(responseField)
+        return "contact-turnstile"
+      }),
+      reset: vi.fn(),
+    }
   })
 
-  it("renders the contact heading and required email fields", () => {
+  afterEach(() => {
+    vi.restoreAllMocks()
+    delete window.turnstile
+  })
+
+  const verifyHuman = async () => {
+    await waitFor(() => expect(window.turnstile?.render).toHaveBeenCalled())
+    act(() => turnstileOptions.callback())
+  }
+
+  it("renders the contact heading, required email fields, and spam protection", async () => {
     render(<ChatSection />)
 
     expect(
@@ -18,6 +50,20 @@ describe("ChatSection", () => {
     expect(screen.getByRole("textbox", { name: /Full name.*required/i })).toBeRequired()
     expect(screen.getByRole("textbox", { name: /Email address.*required/i })).toBeRequired()
     expect(screen.getByRole("textbox", { name: /Message.*required/i })).toBeRequired()
+    expect(screen.getByLabelText("Spam protection")).toBeInTheDocument()
+    expect(screen.getByRole("button", { name: "Send message" })).toBeDisabled()
+
+    await verifyHuman()
+
+    expect(screen.getByRole("button", { name: "Send message" })).toBeEnabled()
+    expect(window.turnstile?.render).toHaveBeenCalledWith(
+      expect.any(HTMLElement),
+      expect.objectContaining({
+        sitekey: "0x4AAAAAAD4ln3IjxOzdSTWF",
+        size: "flexible",
+        theme: "dark",
+      }),
+    )
   })
 
   it("submits the supplied details and confirms success", async () => {
@@ -26,6 +72,7 @@ describe("ChatSection", () => {
       .spyOn(globalThis, "fetch")
       .mockResolvedValue({ ok: true } as Response)
     render(<ChatSection />)
+    await verifyHuman()
 
     await user.type(screen.getByRole("textbox", { name: /Full name.*required/i }), "Alex Smith")
     await user.type(
@@ -50,14 +97,17 @@ describe("ChatSection", () => {
     expect(submittedFormData.get("fullName")).toBe("Alex Smith")
     expect(submittedFormData.get("email")).toBe("alex@example.com")
     expect(submittedFormData.get("message")).toBe("Let's discuss the idea.")
-    expect(await screen.findByRole("status")).toHaveTextContent("your message is on its way")
+    expect(submittedFormData.get("cf-turnstile-response")).toBe("verified-turnstile-token")
+    expect(await screen.findByText(/your message is on its way/i)).toBeInTheDocument()
     expect(screen.getByRole("textbox", { name: /Full name.*required/i })).toHaveValue("")
+    expect(window.turnstile?.reset).toHaveBeenCalledWith("contact-turnstile")
   })
 
   it("shows a failure message when the submission is rejected", async () => {
     const user = userEvent.setup()
     vi.spyOn(globalThis, "fetch").mockResolvedValue({ ok: false } as Response)
     render(<ChatSection />)
+    await verifyHuman()
 
     await user.type(screen.getByRole("textbox", { name: /Full name.*required/i }), "Alex Smith")
     await user.type(
@@ -81,6 +131,7 @@ describe("ChatSection", () => {
         }),
     )
     render(<ChatSection />)
+    await verifyHuman()
 
     await user.type(screen.getByRole("textbox", { name: /Full name.*required/i }), "Alex Smith")
     await user.type(
@@ -95,6 +146,26 @@ describe("ChatSection", () => {
     expect(sendingButton).toHaveAttribute("aria-busy", "true")
 
     resolveSubmission?.({ ok: true } as Response)
-    expect(await screen.findByRole("status")).toBeInTheDocument()
+    expect(await screen.findByText(/your message is on its way/i)).toBeInTheDocument()
+  })
+
+  it("requires a fresh verification after the Turnstile token expires", async () => {
+    render(<ChatSection />)
+    await verifyHuman()
+
+    expect(screen.getByRole("button", { name: "Send message" })).toBeEnabled()
+    act(() => turnstileOptions["expired-callback"]())
+
+    expect(screen.getByRole("button", { name: "Send message" })).toBeDisabled()
+    expect(screen.getByRole("status")).toHaveTextContent("Checking that you're human")
+  })
+
+  it("shows an accessible error when Turnstile cannot verify the visitor", async () => {
+    render(<ChatSection />)
+    await waitFor(() => expect(window.turnstile?.render).toHaveBeenCalled())
+    act(() => turnstileOptions["error-callback"]())
+
+    expect(screen.getByRole("alert")).toHaveTextContent("Spam protection could not load")
+    expect(screen.getByRole("button", { name: "Send message" })).toBeDisabled()
   })
 })
