@@ -80,6 +80,10 @@
   gap: clamp(16px, 3vw, 38px);
 }
 
+.mobileMenuButton {
+  display: none;
+}
+
 .navigationContainer a {
   color: var(--color-lavender-grey);
   font-size: var(--font-size-xl);
@@ -149,15 +153,108 @@
     min-height: 84px;
   }
 
-  .brandTextContainer,
-  .navigationContainer > a:not(.navigationCallToAction) {
+  .brandTextContainer {
     display: none;
+  }
+
+  .mobileMenuButton {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    padding: 11px;
+    place-content: center;
+    gap: 5px;
+    cursor: pointer;
+    color: var(--color-mauve);
+    background: var(--color-white-lilac-4);
+    border: 1px solid var(--color-white-lilac-10);
+    border-radius: 50%;
+  }
+
+  .mobileMenuButton span {
+    display: block;
+    width: 18px;
+    height: 1px;
+    background: currentColor;
+    transition:
+      opacity var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .mobileMenuButtonOpen span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .mobileMenuButtonOpen span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobileMenuButtonOpen span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .navigationContainer {
+    position: absolute;
+    display: none;
+    top: calc(100% + 1px);
+    right: 16px;
+    left: 16px;
+    padding: 16px;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 4px;
+    background: var(--color-black-russian-90);
+    border: 1px solid var(--color-white-lilac-10);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-black);
+    backdrop-filter: blur(18px) saturate(1.15);
+  }
+
+  .navigationContainerOpen {
+    display: flex;
+    animation: revealMobileNavigation 180ms ease;
+  }
+
+  .navigationContainer a {
+    padding: 14px 16px;
+  }
+
+  .navigationContainer a:hover,
+  .navigationContainer a:focus-visible {
+    color: var(--color-white-lilac);
+  }
+
+  .navigationContainer .navigationCallToAction {
+    margin-top: 4px;
+    text-align: center;
   }
 
   .footerContainer {
     align-items: start;
     flex-direction: column;
     justify-content: center;
+  }
+}
+
+@keyframes revealMobileNavigation {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navigationContainerOpen {
+    animation: none;
+  }
+
+  .mobileMenuButton span {
+    transition: none;
   }
 }
 
