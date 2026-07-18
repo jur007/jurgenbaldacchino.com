@@ -12,7 +12,7 @@ const formspreeEndpoint = "https://formspree.io/f/mzdnrraj"
 const turnstileScriptId = "cloudflare-turnstile-script"
 const turnstileScriptSource =
   "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
-const turnstileSiteKey = "0x4AAAAAAD4Ln3Tjx0zdSTWF"
+const turnstileSiteKey = "0x4AAAAAAD4ln3IjxOzdSTWF"
 
 interface ITurnstileOptions {
   callback: () => void
