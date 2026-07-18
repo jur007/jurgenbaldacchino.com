@@ -7,11 +7,11 @@
   gap: 12px;
   cursor: pointer;
   border: 1px solid transparent;
-  border-radius: var(--radius-sm);
-  font-size: 0.78rem;
-  font-weight: 650;
+  border-radius: var(--radius-small);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
   letter-spacing: 0.05em;
-  line-height: 1;
+  line-height: var(--line-height-none);
   text-decoration: none;
   text-transform: uppercase;
   transition:
@@ -30,29 +30,29 @@
 }
 
 .primaryButton {
-  color: var(--color-text-on-accent);
-  background: var(--gradient-gold-horizontal);
-  box-shadow: var(--shadow-gold);
+  color: var(--color-black-russian);
+  background: var(--gradient-electric-violet);
+  box-shadow: var(--shadow-electric-violet);
 }
 
 .secondaryButton {
-  color: var(--color-text-primary);
-  background: var(--color-overlay-light);
-  border-color: var(--color-border-neutral);
+  color: var(--color-white-lilac);
+  background: var(--color-white-lilac-4);
+  border-color: var(--color-white-lilac-10);
 }
 
 .secondaryButton:hover:not(:disabled) {
-  border-color: var(--color-border-strong);
+  border-color: var(--color-mauve-30);
 }
 
 .tertiaryButton {
-  color: var(--color-accent-bright);
+  color: var(--color-mauve);
   background: transparent;
   border-color: transparent;
 }
 
 .tertiaryButton:hover:not(:disabled) {
-  background: var(--color-gold-soft);
+  background: var(--color-electric-violet-12);
 }
 
 .smallButton {
