@@ -183,7 +183,7 @@ export const HomeSection = () => {
           )}
           ref={introductionReference}
         >
-          <p className={styles.heroEyebrow}>Senior Frontend Developer · Head of Frontend</p>
+          <p className={styles.heroEyebrow}>12+ Years · Products · People</p>
           <h1 id="hero-title" aria-label={heading}>
             <span aria-hidden="true">
               {visibleRegularHeading}
@@ -216,7 +216,7 @@ export const HomeSection = () => {
             <div className={styles.profileImageContainer}>
               <img src={profileImage} alt="Jur Baldacchino" />
             </div>
-            <p>Frontend engineering · Leadership</p>
+            <p>Head of Frontend · React Engineer</p>
             <h2>Building the systems and teams behind excellent products.</h2>
             <a href="#contact">
               Let&apos;s work together <span aria-hidden="true">↗</span>

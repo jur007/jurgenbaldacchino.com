@@ -3,6 +3,7 @@ import type { ReactNode } from "react"
 
 import styles from "./page-layout.module.css"
 
+import { ChatSection } from "@components/chat-section"
 import { SiteFooter } from "@components/site-footer"
 import { getClassNames } from "@utils/class-names"
 
@@ -45,7 +46,7 @@ export const PageLayout = ({ children }: IPageLayout) => {
           </span>
           <span className={styles.brandTextContainer}>
             Jurgen Baldacchino
-            <small>Frontend engineering · Leadership</small>
+            <small>Head of Frontend · React Engineer</small>
           </span>
         </a>
         <button
@@ -81,11 +82,12 @@ export const PageLayout = ({ children }: IPageLayout) => {
             href="#contact"
             onClick={handleNavigationClick}
           >
-            Let&apos;s talk
+            Let&apos;s chat
           </a>
         </nav>
       </header>
       <main id="main-content">{children}</main>
+      <ChatSection />
       <SiteFooter />
     </div>
   )

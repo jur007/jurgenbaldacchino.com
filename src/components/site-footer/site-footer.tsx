@@ -50,14 +50,7 @@ export const SiteFooter = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className={styles.containerWrapper} id="contact">
-      <div className={styles.contactContainer}>
-        <span className={styles.contactEyebrow}>Start a conversation</span>
-        <a className={styles.contactLink} href="mailto:hello@jurgenbaldacchino.com">
-          hello@jurgenbaldacchino.com
-        </a>
-      </div>
-
+    <footer className={styles.containerWrapper}>
       <nav aria-label="Social media">
         <ul className={styles.socialLinksList}>
           {socialLinks.map(({ href, icon, label }) => (

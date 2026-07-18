@@ -4,14 +4,10 @@ import { describe, expect, it, vi } from "vitest"
 import { SiteFooter } from "./site-footer"
 
 describe("SiteFooter", () => {
-  it("renders the contact and social links", () => {
+  it("renders the social links", () => {
     render(<SiteFooter />)
 
     expect(screen.getByRole("contentinfo")).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: "hello@jurgenbaldacchino.com" })).toHaveAttribute(
-      "href",
-      "mailto:hello@jurgenbaldacchino.com",
-    )
 
     const socialLinks = [
       ["GitHub", "https://github.com/jur007"],
