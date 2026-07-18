@@ -1,0 +1,123 @@
+.containerWrapper {
+  display: grid;
+  min-height: 360px;
+  padding: 72px var(--layout-page-gutter) 48px;
+  place-items: center;
+  align-content: center;
+  gap: 48px;
+  background: var(--color-black-russian);
+  border-top: 1px solid var(--color-white-lilac-7);
+  text-align: center;
+}
+
+.contactContainer {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+
+.contactEyebrow {
+  color: var(--color-heliotrope);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.contactLink {
+  color: var(--color-white-lilac);
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.03em;
+  line-height: var(--line-height-snug);
+  text-decoration-color: var(--color-mauve-62);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  transition:
+    color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
+}
+
+.contactLink:hover {
+  color: var(--color-mauve);
+  text-decoration-color: var(--color-heliotrope);
+}
+
+.socialLinksList {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+}
+
+.socialLink {
+  display: inline-flex;
+  padding: 10px 14px;
+  align-items: center;
+  gap: 9px;
+  color: var(--color-lavender-grey);
+  border: 1px solid transparent;
+  border-radius: var(--radius-round);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.socialIcon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+
+.socialLink:hover,
+.socialLink:focus-visible {
+  color: var(--color-white-lilac);
+  background: var(--color-white-lilac-4);
+  border-color: var(--color-mauve-30);
+}
+
+.copyrightText {
+  margin: 0;
+  color: var(--color-mobster);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-relaxed);
+}
+
+@media (max-width: 767px) {
+  .containerWrapper {
+    min-height: 320px;
+    padding-block: 56px 40px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 374px) {
+  .containerWrapper {
+    padding-inline: 16px;
+  }
+
+  .socialLinksList {
+    gap: 4px;
+  }
+
+  .socialLink {
+    padding-inline: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contactLink,
+  .socialLink {
+    transition: none;
+  }
+}

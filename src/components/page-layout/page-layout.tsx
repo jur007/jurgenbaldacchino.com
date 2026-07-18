@@ -3,6 +3,7 @@ import type { ReactNode } from "react"
 
 import styles from "./page-layout.module.css"
 
+import { SiteFooter } from "@components/site-footer"
 import { getClassNames } from "@utils/class-names"
 
 export interface IPageLayout {
@@ -74,15 +75,7 @@ export const PageLayout = ({ children }: IPageLayout) => {
         </nav>
       </header>
       <main id="main-content">{children}</main>
-      <footer className={styles.footerContainer} id="contact">
-        <div>
-          <span className={styles.footerEyebrow}>Start a conversation</span>
-          <h2>Building something ambitious?</h2>
-        </div>
-        <a className={styles.contactLink} href="mailto:hello@jurgenbaldacchino.com">
-          hello@jurgenbaldacchino.com <span aria-hidden="true">↗</span>
-        </a>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
