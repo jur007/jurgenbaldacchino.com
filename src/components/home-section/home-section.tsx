@@ -22,7 +22,8 @@ const regularHeading = heading.slice(0, -emphasizedHeading.length)
 
 const strengths: IStrengthItem[] = [
   {
-    description: "Building scalable, maintainable frontend applications with React and TypeScript.",
+    description:
+      "Building fast, scalable and mobile-first React products designed for users, search and long-term growth.",
     expandedDescription:
       "I build fast, discoverable and mobile-first products with performance, accessibility and SEO considered from the beginning. My experience across React, Next.js, Gatsby and different state-management approaches helps me choose solutions around the product’s needs—not a preferred tool.",
     index: "01",
@@ -32,7 +33,7 @@ const strengths: IStrengthItem[] = [
   },
   {
     description:
-      "Combining engineering with creativity through interactive experiences and 2D development.",
+      "Turning creative ideas into engaging interactive experiences, including custom 2D products built with Phaser.",
     expandedDescription:
       "I enjoy turning ambitious ideas into engaging digital experiences. This has included developing an in-house 2D game with Phaser, bringing creativity and engineering together to take an interactive concept through to a finished product.",
     index: "02",
@@ -40,7 +41,8 @@ const strengths: IStrengthItem[] = [
     title: "Creative Development",
   },
   {
-    description: "Automating reliable frontend delivery across modern platforms and environments.",
+    description:
+      "Creating reliable delivery pipelines that move frontend products from validation to production with confidence.",
     expandedDescription:
       "I create dependable paths from development to production, helping teams release with greater speed and confidence. Using Azure DevOps, Docker, Cloudflare, GitHub Actions and YAML, I’ve built validation, development and production pipelines that reduce manual work and catch problems earlier.",
     index: "03",
@@ -48,8 +50,7 @@ const strengths: IStrengthItem[] = [
     title: "Frontend DevOps",
   },
   {
-    description:
-      "Creating readable, intentional solutions that remain easy to understand, maintain and evolve.",
+    description: "Making tasks, code and architecture easier to understand, maintain and evolve.",
     expandedDescription:
       "I believe successful delivery starts with work that people can clearly understand. From well-defined tasks to readable, maintainable code, I focus on reducing unnecessary complexity so teams can move confidently and products can evolve more easily.",
     index: "04",
@@ -58,7 +59,7 @@ const strengths: IStrengthItem[] = [
   },
   {
     description:
-      "Bringing design, product and engineering together around shared goals and collective ownership.",
+      "Aligning people, disciplines and goals to guide teams and products successfully from idea to delivery.",
     expandedDescription:
       "I’ve led frontend teams and guided projects from their earliest stages through delivery. My priority is creating an environment where people have clear goals, feel supported and work as one team around the success of the product.",
     index: "05",
