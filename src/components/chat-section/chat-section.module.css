@@ -167,6 +167,27 @@
   background: linear-gradient(145deg, var(--color-revolver), var(--color-black-russian));
 }
 
+.submissionSuccessMessage,
+.submissionErrorMessage {
+  padding: 12px 14px;
+  border: 1px solid;
+  border-radius: var(--radius-small);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-normal);
+}
+
+.submissionSuccessMessage {
+  color: var(--color-mauve);
+  background: var(--color-electric-violet-8);
+  border-color: var(--color-mauve-30);
+}
+
+.submissionErrorMessage {
+  color: var(--color-mona-lisa);
+  background: var(--color-white-lilac-3);
+  border-color: var(--color-persian-red);
+}
+
 @keyframes rotateSubmitButtonBorder {
   to {
     transform: rotate(360deg);

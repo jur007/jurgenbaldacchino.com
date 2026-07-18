@@ -1,3 +1,4 @@
+import { useState } from "react"
 import type { FormEvent } from "react"
 
 import styles from "./chat-section.module.css"
@@ -7,22 +8,48 @@ import { Input } from "@components/input"
 import { Label } from "@components/label"
 
 const contactEmailAddress = "hello@jurgenbaldacchino.com"
+const formspreeEndpoint = "https://formspree.io/f/mzdnrraj"
+
+enum SubmissionStatus {
+  IDLE = "idle",
+  SUBMITTING = "submitting",
+  SUCCEEDED = "succeeded",
+  FAILED = "failed",
+}
 
 export const ChatSection = () => {
-  const handleContactSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const [submissionStatus, setSubmissionStatus] = useState(SubmissionStatus.IDLE)
+  const isSubmitting = submissionStatus === SubmissionStatus.SUBMITTING
+
+  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const formData = new FormData(event.currentTarget)
-    const fullName = String(formData.get("fullName") ?? "")
-    const emailAddress = String(formData.get("emailAddress") ?? "")
-    const message = String(formData.get("message") ?? "")
-    const subject = `Website enquiry from ${fullName}`
-    const emailBody = `Name: ${fullName}\nEmail: ${emailAddress}\n\n${message}`
-    const emailLink = `mailto:${contactEmailAddress}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(emailBody)}`
+    if (isSubmitting) {
+      return
+    }
 
-    window.open(emailLink, "_self")
+    const contactForm = event.currentTarget
+    const formData = new FormData(contactForm)
+    setSubmissionStatus(SubmissionStatus.SUBMITTING)
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      })
+
+      if (!response.ok) {
+        throw new Error("Formspree rejected the contact form submission")
+      }
+
+      contactForm.reset()
+      setSubmissionStatus(SubmissionStatus.SUCCEEDED)
+    } catch {
+      setSubmissionStatus(SubmissionStatus.FAILED)
+    }
   }
 
   return (
@@ -53,7 +80,7 @@ export const ChatSection = () => {
           autoComplete="email"
           id="contact-email-address"
           label="Email address"
-          name="emailAddress"
+          name="email"
           placeholder="you@example.com"
           required
           type="email"
@@ -71,9 +98,20 @@ export const ChatSection = () => {
             rows={6}
           ></textarea>
         </div>
-        <Button className={styles.submitButton} fullWidth htmlType="submit">
-          Send message
+        <Button className={styles.submitButton} fullWidth htmlType="submit" loading={isSubmitting}>
+          {isSubmitting ? "Sending message" : "Send message"}
         </Button>
+        {submissionStatus === SubmissionStatus.SUCCEEDED && (
+          <p className={styles.submissionSuccessMessage} role="status">
+            Thanks — your message is on its way. I&apos;ll get back to you soon.
+          </p>
+        )}
+        {submissionStatus === SubmissionStatus.FAILED && (
+          <p className={styles.submissionErrorMessage} role="alert">
+            Your message could not be sent. Please try again or use the email link alongside the
+            form.
+          </p>
+        )}
       </form>
     </section>
   )
