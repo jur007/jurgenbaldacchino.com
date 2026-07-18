@@ -26,4 +26,13 @@ describe("App", () => {
       await screen.findByRole("heading", { name: /Curiosity keeps me moving/i }),
     ).toBeInTheDocument()
   })
+
+  it("renders the about page with a trailing slash", async () => {
+    window.history.pushState({}, "", "/about/")
+    render(<App />)
+
+    expect(
+      await screen.findByRole("heading", { name: /Curiosity keeps me moving/i }),
+    ).toBeInTheDocument()
+  })
 })

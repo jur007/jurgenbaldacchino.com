@@ -9,7 +9,9 @@ describe("AboutSection", () => {
 
     expect(screen.getByRole("heading", { name: /Curiosity keeps me moving/i })).toBeInTheDocument()
     expect(
-      screen.getByRole("img", { name: /Jur overlooking a snow-covered mountain landscape/i }),
+      screen.getByRole("img", {
+        name: /Jurgen Baldacchino overlooking a snow-covered mountain landscape/i,
+      }),
     ).toBeInTheDocument()
     expect(
       screen.getByText(/Originally from Malta and now living as a digital nomad/i),

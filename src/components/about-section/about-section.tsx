@@ -8,7 +8,7 @@ export const AboutSection = () => {
       <div className={styles.imagePanelContainer}>
         <img
           src={aboutProfileImage}
-          alt="Jur overlooking a snow-covered mountain landscape"
+          alt="Jurgen Baldacchino overlooking a snow-covered mountain landscape"
           decoding="async"
           fetchPriority="high"
           height="2166"
