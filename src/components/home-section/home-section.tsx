@@ -37,7 +37,7 @@ const strengths: IStrengthItem[] = [
     expandedDescription:
       "I enjoy turning ambitious ideas into engaging digital experiences. This has included developing an in-house 2D game with Phaser, bringing creativity and engineering together to take an interactive concept through to a finished product.",
     index: "02",
-    technicalDetail: "Interactive experiences · Phaser",
+    technicalDetail: "Phaser · Interaction",
     title: "Creative Development",
   },
   {
@@ -46,7 +46,7 @@ const strengths: IStrengthItem[] = [
     expandedDescription:
       "I create dependable paths from development to production, helping teams release with greater speed and confidence. Using Azure DevOps, Docker, Cloudflare, GitHub Actions and YAML, I’ve built validation, development and production pipelines that reduce manual work and catch problems earlier.",
     index: "03",
-    technicalDetail: "YAML · Azure DevOps · Cloudflare",
+    technicalDetail: "Azure · Cloudflare",
     title: "Frontend DevOps",
   },
   {
@@ -54,7 +54,7 @@ const strengths: IStrengthItem[] = [
     expandedDescription:
       "I believe successful delivery starts with work that people can clearly understand. From well-defined tasks to readable, maintainable code, I focus on reducing unnecessary complexity so teams can move confidently and products can evolve more easily.",
     index: "04",
-    technicalDetail: "Readable · Intentional · Adaptable",
+    technicalDetail: "Readable · Maintainable",
     title: "Simplicity and Clarity",
   },
   {
@@ -63,7 +63,7 @@ const strengths: IStrengthItem[] = [
     expandedDescription:
       "I’ve led frontend teams and guided projects from their earliest stages through delivery. My priority is creating an environment where people have clear goals, feel supported and work as one team around the success of the product.",
     index: "05",
-    technicalDetail: "Design · Product · Engineering",
+    technicalDetail: "People · Ownership",
     title: "One-Team Collaboration",
   },
 ]
