@@ -217,7 +217,7 @@ export const HomeSection = () => {
             <div className={styles.profileImageContainer}>
               <img
                 src={profileImage}
-                alt="Jur Baldacchino"
+                alt="Portrait of Jurgen Baldacchino"
                 decoding="async"
                 height="479"
                 loading="lazy"

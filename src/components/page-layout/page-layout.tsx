@@ -74,7 +74,7 @@ export const PageLayout = ({ children }: IPageLayout) => {
           <a href="/" onClick={handleNavigationClick}>
             Home
           </a>
-          <a href="/about" onClick={handleNavigationClick}>
+          <a href="/about/" onClick={handleNavigationClick}>
             About
           </a>
           <a

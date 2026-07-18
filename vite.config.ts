@@ -5,6 +5,14 @@ import react from "@vitejs/plugin-react"
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      input: {
+        home: fileURLToPath(new URL("./index.html", import.meta.url)),
+        about: fileURLToPath(new URL("./about/index.html", import.meta.url)),
+      },
+    },
+  },
   resolve: {
     alias: [
       { find: /^@\/(.*)$/, replacement: `${fileURLToPath(new URL("./src/", import.meta.url))}$1` },
