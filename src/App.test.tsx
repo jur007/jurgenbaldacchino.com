@@ -35,4 +35,14 @@ describe("App", () => {
       await screen.findByRole("heading", { name: /Curiosity keeps me moving/i }),
     ).toBeInTheDocument()
   })
+
+  it("renders the not found page for an unknown path", async () => {
+    window.history.pushState({}, "", "/missing-page")
+    render(<App />)
+
+    expect(
+      await screen.findByRole("heading", { name: "This page wandered off." }),
+    ).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: "Return home" })).toHaveAttribute("href", "/")
+  })
 })
