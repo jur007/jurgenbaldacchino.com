@@ -153,9 +153,8 @@ export const HomeSection = () => {
             </span>
           </h1>
           <p className={styles.heroIntroduction}>
-            I&apos;m Jurgen, a frontend engineer and technical leader focused on turning complex
-            product challenges into clear, scalable experiences—and helping the people behind them
-            grow.
+            I’m Jur 👋—a frontend engineer and technical leader who enjoys turning complex ideas
+            into clear, scalable experiences while helping the people around me do their best work.
           </p>
         </div>
 
