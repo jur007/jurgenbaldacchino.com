@@ -13,6 +13,9 @@ describe("PageLayout", () => {
     )
 
     expect(screen.getByRole("navigation", { name: "Primary navigation" })).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: "Home" })).toBeInTheDocument()
+    expect(screen.queryByRole("link", { name: "Expertise" })).not.toBeInTheDocument()
+    expect(screen.queryByRole("link", { name: "Approach" })).not.toBeInTheDocument()
     expect(screen.getByText("Page content")).toBeInTheDocument()
     expect(screen.getByRole("contentinfo")).toBeInTheDocument()
   })

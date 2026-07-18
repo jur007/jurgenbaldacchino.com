@@ -58,11 +58,8 @@ export const PageLayout = ({ children }: IPageLayout) => {
           id="primary-navigation"
           aria-label="Primary navigation"
         >
-          <a href="/#expertise" onClick={handleNavigationClick}>
-            Expertise
-          </a>
-          <a href="/#approach" onClick={handleNavigationClick}>
-            Approach
+          <a href="/" onClick={handleNavigationClick}>
+            Home
           </a>
           <a href="/about" onClick={handleNavigationClick}>
             About
