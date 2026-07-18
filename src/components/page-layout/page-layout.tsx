@@ -10,6 +10,18 @@ export interface IPageLayout {
   children: ReactNode
 }
 
+const MenuIcon = () => (
+  <svg aria-hidden="true" className={styles.mobileMenuIcon} fill="none" viewBox="0 0 24 24">
+    <path d="M4 7.5H20M4 12H20M4 16.5H20" stroke="currentColor" strokeLinecap="round" />
+  </svg>
+)
+
+const CloseIcon = () => (
+  <svg aria-hidden="true" className={styles.mobileMenuCloseIcon} fill="none" viewBox="0 0 24 24">
+    <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeLinecap="round" />
+  </svg>
+)
+
 export const PageLayout = ({ children }: IPageLayout) => {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false)
 
@@ -47,9 +59,8 @@ export const PageLayout = ({ children }: IPageLayout) => {
           aria-label={isNavigationOpen ? "Close navigation" : "Open navigation"}
           onClick={handleMenuToggle}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <MenuIcon />
+          <CloseIcon />
         </button>
         <nav
           className={getClassNames(

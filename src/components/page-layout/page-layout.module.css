@@ -119,12 +119,12 @@
   }
 
   .mobileMenuButton {
+    position: relative;
     display: grid;
     width: 44px;
     height: 44px;
-    padding: 11px;
+    padding: 10px;
     place-content: center;
-    gap: 5px;
     cursor: pointer;
     color: var(--color-mauve);
     background: var(--color-white-lilac-4);
@@ -132,26 +132,29 @@
     border-radius: 50%;
   }
 
-  .mobileMenuButton span {
-    display: block;
-    width: 18px;
-    height: 1px;
-    background: currentColor;
+  .mobileMenuIcon,
+  .mobileMenuCloseIcon {
+    grid-area: 1 / 1;
+    width: 22px;
+    height: 22px;
     transition:
       opacity var(--transition-fast),
       transform var(--transition-fast);
   }
 
-  .mobileMenuButtonOpen span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-
-  .mobileMenuButtonOpen span:nth-child(2) {
+  .mobileMenuCloseIcon {
     opacity: 0;
+    transform: rotate(-90deg) scale(0.8);
   }
 
-  .mobileMenuButtonOpen span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+  .mobileMenuButtonOpen .mobileMenuIcon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.8);
+  }
+
+  .mobileMenuButtonOpen .mobileMenuCloseIcon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
   }
 
   .navigationContainer {
@@ -208,7 +211,8 @@
     animation: none;
   }
 
-  .mobileMenuButton span {
+  .mobileMenuIcon,
+  .mobileMenuCloseIcon {
     transition: none;
   }
 }
