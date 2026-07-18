@@ -13,24 +13,24 @@
   padding: 12px 40px 12px 14px;
   appearance: none;
   cursor: pointer;
-  color: var(--color-text-primary);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
+  color: var(--color-white-lilac);
+  background: var(--color-revolver);
+  border: 1px solid var(--color-heliotrope-14);
+  border-radius: var(--radius-small);
+  font-size: var(--font-size-3xl);
   transition:
     border-color var(--transition-fast),
     box-shadow var(--transition-fast);
 }
 
 .selectElement:hover:not(:disabled) {
-  border-color: var(--color-border-strong);
+  border-color: var(--color-mauve-30);
 }
 
 .selectElement:focus {
-  border-color: var(--color-border-accent);
+  border-color: var(--color-mauve-62);
   outline: none;
-  box-shadow: var(--shadow-focus);
+  box-shadow: var(--shadow-electric-violet);
 }
 
 .selectElement:disabled {
@@ -42,21 +42,21 @@
   position: absolute;
   top: 50%;
   right: 14px;
-  color: var(--color-accent);
-  font-size: 0.7rem;
+  color: var(--color-heliotrope);
+  font-size: var(--font-size-md);
   transform: translateY(-50%);
   pointer-events: none;
 }
 
 .selectErrorState {
-  border-color: #c87861;
+  border-color: var(--color-persian-red);
 }
 
 .supportingMessage {
-  color: var(--color-text-muted);
-  font-size: 0.72rem;
+  color: var(--color-mobster);
+  font-size: var(--font-size-lg);
 }
 
 .errorMessage {
-  color: #df927d;
+  color: var(--color-mona-lisa);
 }

@@ -1,9 +1,9 @@
 .containerWrapper {
   position: relative;
-  background: var(--gradient-surface);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-surface);
+  background: var(--gradient-revolver);
+  border: 1px solid var(--color-heliotrope-14);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-black);
 }
 
 .interactiveCard {
@@ -13,7 +13,7 @@
 }
 
 .interactiveCard:hover {
-  border-color: var(--color-border-strong);
+  border-color: var(--color-mauve-30);
   transform: translateY(-4px);
 }
 
@@ -22,10 +22,10 @@
 }
 
 .raisedCard {
-  box-shadow: var(--shadow-surface);
+  box-shadow: var(--shadow-black);
 }
 
 .accentCard {
-  border-color: var(--color-border-strong);
-  box-shadow: var(--shadow-surface), var(--shadow-gold);
+  border-color: var(--color-mauve-30);
+  box-shadow: var(--shadow-black), var(--shadow-electric-violet);
 }

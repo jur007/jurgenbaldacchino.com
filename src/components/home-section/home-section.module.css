@@ -6,7 +6,7 @@
   position: relative;
   display: grid;
   min-height: min(768px, calc(100vh - 104px));
-  padding: clamp(72px, 9vw, 136px) var(--space-page);
+  padding: clamp(72px, 9vw, 136px) var(--layout-page-gutter);
   grid-template-columns: minmax(0, 1.45fr) minmax(288px, 0.55fr);
   align-items: center;
   gap: clamp(48px, 8vw, 128px);
@@ -20,7 +20,7 @@
   height: 672px;
   right: -256px;
   bottom: -352px;
-  background: var(--gradient-gold-ambient);
+  background: var(--gradient-electric-violet-ambient);
   pointer-events: none;
 }
 
@@ -30,7 +30,7 @@
   height: 512px;
   top: -256px;
   left: 12%;
-  background: radial-gradient(circle, rgba(128, 103, 65, 0.1), transparent 68%);
+  background: radial-gradient(circle, var(--color-electric-violet-10), transparent 68%);
   pointer-events: none;
 }
 
@@ -47,9 +47,9 @@
 
 .sectionEyebrow {
   display: block;
-  color: var(--color-accent);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  color: var(--color-heliotrope);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-lg);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -57,25 +57,25 @@
 .heroContentContainer h1 {
   max-width: 14ch;
   margin-top: 21px;
-  color: var(--color-text-primary);
+  color: var(--color-white-lilac);
   font-size: clamp(3.3rem, 7vw, 7.1rem);
-  font-weight: 470;
+  font-weight: var(--font-weight-book);
   letter-spacing: -0.065em;
   line-height: 0.96;
 }
 
 .heroContentContainer h1 em {
-  color: var(--color-accent-bright);
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 400;
+  color: var(--color-mauve);
+  font-family: var(--font-family-serif);
+  font-weight: var(--font-weight-regular);
 }
 
 .heroIntroduction {
   max-width: 672px;
   margin-top: 32px;
-  color: var(--color-text-secondary);
+  color: var(--color-lavender-grey);
   font-size: clamp(1rem, 1.5vw, 1.2rem);
-  line-height: 1.7;
+  line-height: var(--line-height-relaxed);
 }
 
 .heroActionsContainer {
@@ -90,10 +90,10 @@
   z-index: 1;
   min-height: 512px;
   padding: 16px;
-  background: var(--gradient-surface);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-surface);
+  background: var(--gradient-revolver);
+  border: 1px solid var(--color-heliotrope-14);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-black);
   overflow: hidden;
 }
 
@@ -101,7 +101,7 @@
   position: absolute;
   content: "";
   inset: 0;
-  background: linear-gradient(125deg, transparent 35%, rgba(255, 255, 255, 0.035), transparent 65%);
+  background: linear-gradient(125deg, transparent 35%, var(--color-white-lilac-3), transparent 65%);
   pointer-events: none;
 }
 
@@ -111,10 +111,10 @@
   height: 288px;
   place-items: center;
   background:
-    radial-gradient(circle at 50% 80%, rgba(215, 179, 108, 0.13), transparent 46%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: calc(var(--radius-lg) - 7px);
+    radial-gradient(circle at 50% 80%, var(--color-electric-violet-13), transparent 46%),
+    linear-gradient(180deg, var(--color-white-lilac-3), transparent);
+  border: 1px solid var(--color-mauve-8);
+  border-radius: calc(var(--radius-large) - 7px);
   overflow: hidden;
 }
 
@@ -123,18 +123,18 @@
   content: "";
   width: 176px;
   height: 176px;
-  border: 1px solid var(--color-border-accent);
+  border: 1px solid var(--color-mauve-62);
   border-radius: 50%;
   box-shadow:
-    inset 0 0 35px rgba(215, 179, 108, 0.08),
-    var(--shadow-gold-strong);
+    inset 0 0 35px var(--color-electric-violet-8),
+    var(--shadow-heliotrope);
 }
 
 .experienceMonogramContainer span {
   position: relative;
   z-index: 1;
-  color: var(--color-text-primary);
-  font-family: Georgia, serif;
+  color: var(--color-white-lilac);
+  font-family: var(--font-family-serif);
   font-size: 4rem;
   letter-spacing: -0.08em;
 }
@@ -145,22 +145,22 @@
   grid-template-columns: 1fr auto;
   align-items: end;
   gap: 12px;
-  border-bottom: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-white-lilac-7);
 }
 
 .experienceStatusContainer span,
 .experienceMetricsList dt {
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
+  color: var(--color-mobster);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .experienceStatusContainer strong {
-  color: var(--color-text-primary);
-  font-size: 0.78rem;
-  font-weight: 550;
+  color: var(--color-white-lilac);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
 }
 
 .experienceMetricsList {
@@ -173,20 +173,20 @@
 
 .experienceMetricsList div + div {
   padding-left: 16px;
-  border-left: 1px solid var(--color-divider);
+  border-left: 1px solid var(--color-white-lilac-7);
 }
 
 .experienceMetricsList dd {
   margin: 5px 0 0;
-  color: var(--color-accent-bright);
-  font-size: 1.8rem;
-  line-height: 1;
+  color: var(--color-mauve);
+  font-size: var(--font-size-7xl);
+  line-height: var(--line-height-none);
 }
 
 .experienceMetricsList dd small {
   margin-left: 6px;
-  color: var(--color-text-muted);
-  font-size: 0.6rem;
+  color: var(--color-mobster);
+  font-size: var(--font-size-xs);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -202,7 +202,7 @@
 .experienceSignalBars i {
   width: 100%;
   height: 35%;
-  background: var(--color-gold-700);
+  background: var(--color-electric-violet);
   border-radius: 1px;
 }
 
@@ -218,36 +218,36 @@
 
 .experienceSignalBars i:nth-child(4) {
   height: 100%;
-  background: var(--color-gold-300);
+  background: var(--color-heliotrope);
 }
 
 .professionalQualitiesContainer {
   display: grid;
   min-height: 88px;
-  padding-inline: var(--space-page);
+  padding-inline: var(--layout-page-gutter);
   grid-template-columns: 1fr auto 1fr auto 1fr;
   align-items: center;
   gap: 24px;
-  border-block: 1px solid var(--color-divider);
+  border-block: 1px solid var(--color-white-lilac-7);
   text-align: center;
 }
 
 .professionalQualitiesContainer p {
-  color: var(--color-text-muted);
-  font-size: 0.7rem;
-  font-weight: 550;
+  color: var(--color-mobster);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .professionalQualitiesContainer span {
-  color: var(--color-gold-700);
+  color: var(--color-electric-violet);
   font-size: 0.45rem;
 }
 
 .expertiseSectionContainer,
 .leadershipSectionContainer {
-  padding: clamp(80px, 10vw, 144px) var(--space-page);
+  padding: clamp(80px, 10vw, 144px) var(--layout-page-gutter);
 }
 
 .sectionHeadingContainer {
@@ -261,17 +261,17 @@
 .leadershipContentContainer h2 {
   max-width: 16ch;
   margin-top: 16px;
-  color: var(--color-text-primary);
+  color: var(--color-white-lilac);
   font-size: clamp(2.25rem, 4.5vw, 4.5rem);
-  font-weight: 480;
+  font-weight: var(--font-weight-book);
   letter-spacing: -0.05em;
-  line-height: 1.05;
+  line-height: var(--line-height-tight);
 }
 
 .sectionHeadingContainer > p,
 .leadershipContentContainer > p {
-  color: var(--color-text-muted);
-  line-height: 1.8;
+  color: var(--color-mobster);
+  line-height: var(--line-height-loose);
 }
 
 .expertiseCardsGrid {
@@ -294,13 +294,13 @@
   height: 160px;
   top: -96px;
   right: -80px;
-  background: var(--gradient-gold-ambient);
+  background: var(--gradient-electric-violet-ambient);
 }
 
 .expertiseCardIndex {
-  color: var(--color-text-subtle);
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
+  color: var(--color-trout);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
 }
 
 .expertiseCardIcon {
@@ -309,30 +309,30 @@
   aspect-ratio: 1;
   margin-top: 48px;
   place-items: center;
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--color-mauve-30);
   border-radius: 50%;
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-electric-violet);
 }
 
 .expertiseCardIcon span {
   width: 16px;
   height: 16px;
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-heliotrope);
   transform: rotate(45deg);
 }
 
 .expertiseCardContainer h3 {
   margin-top: 32px;
-  color: var(--color-text-primary);
-  font-size: 1.35rem;
-  font-weight: 550;
+  color: var(--color-white-lilac);
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-semibold);
   letter-spacing: -0.02em;
 }
 
 .expertiseCardContainer > p {
   margin-top: 14px;
-  color: var(--color-text-muted);
-  font-size: 0.9rem;
+  color: var(--color-mobster);
+  font-size: var(--font-size-3xl);
   line-height: 1.75;
 }
 
@@ -354,7 +354,7 @@
   grid-template-columns: minmax(288px, 0.8fr) minmax(0, 1fr);
   align-items: center;
   gap: clamp(48px, 10vw, 144px);
-  border-top: 1px solid var(--color-divider);
+  border-top: 1px solid var(--color-white-lilac-7);
 }
 
 .leadershipVisualContainer {
@@ -363,8 +363,8 @@
   width: min(100%, 464px);
   aspect-ratio: 1;
   place-items: center;
-  background: radial-gradient(circle, rgba(215, 179, 108, 0.11), transparent 60%);
-  border: 1px solid var(--color-border-subtle);
+  background: radial-gradient(circle, var(--color-electric-violet-11), transparent 60%);
+  border: 1px solid var(--color-mauve-8);
   border-radius: 50%;
 }
 
@@ -372,7 +372,7 @@
 .leadershipVisualContainer::after {
   position: absolute;
   content: "";
-  background: var(--color-divider);
+  background: var(--color-white-lilac-7);
 }
 
 .leadershipVisualContainer::before {
@@ -387,7 +387,7 @@
 
 .leadershipOrbit {
   position: absolute;
-  border: 1px solid var(--color-border-default);
+  border: 1px solid var(--color-heliotrope-14);
   border-radius: 50%;
 }
 
@@ -397,26 +397,26 @@
 
 .leadershipInnerOrbit {
   inset: 30%;
-  border-color: var(--color-border-accent);
-  box-shadow: var(--shadow-gold);
+  border-color: var(--color-mauve-62);
+  box-shadow: var(--shadow-electric-violet);
 }
 
 .leadershipExperienceValue {
   position: relative;
   z-index: 1;
-  color: var(--color-accent-bright);
-  font-family: Georgia, serif;
+  color: var(--color-mauve);
+  font-family: var(--font-family-serif);
   font-size: clamp(4rem, 9vw, 7.5rem);
-  line-height: 1;
+  line-height: var(--line-height-none);
 }
 
 .leadershipVisualContainer > span {
   position: absolute;
   z-index: 2;
   bottom: 17%;
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
+  color: var(--color-mobster);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-2xs);
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
@@ -429,26 +429,26 @@
 .leadershipPrinciplesList {
   display: grid;
   margin-top: 40px;
-  border-top: 1px solid var(--color-divider);
+  border-top: 1px solid var(--color-white-lilac-7);
 }
 
 .leadershipPrinciplesList div {
   display: grid;
   padding: 16px 0;
   grid-template-columns: 48px 1fr;
-  border-bottom: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-white-lilac-7);
 }
 
 .leadershipPrinciplesList span {
-  color: var(--color-accent);
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
+  color: var(--color-heliotrope);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
 }
 
 .leadershipPrinciplesList strong {
-  color: var(--color-text-secondary);
-  font-size: 0.85rem;
-  font-weight: 500;
+  color: var(--color-lavender-grey);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
 }
 
 /* Tablet and smaller: 0–1023px */

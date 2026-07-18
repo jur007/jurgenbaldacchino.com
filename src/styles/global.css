@@ -1,19 +1,44 @@
 @import "./colors.css";
 
 :root {
-  --font-sans:
+  --font-family-sans:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  --space-page: clamp(20px, 4vw, 72px);
-  --content-width: 1440px;
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --font-family-serif: Georgia, "Times New Roman", serif;
+  --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-size-2xs: 0.58rem;
+  --font-size-xs: 0.6rem;
+  --font-size-sm: 0.65rem;
+  --font-size-md: 0.7rem;
+  --font-size-lg: 0.72rem;
+  --font-size-xl: 0.78rem;
+  --font-size-2xl: 0.85rem;
+  --font-size-3xl: 0.9rem;
+  --font-size-4xl: 1rem;
+  --font-size-5xl: 1.2rem;
+  --font-size-6xl: 1.35rem;
+  --font-size-7xl: 1.8rem;
+  --font-weight-regular: 400;
+  --font-weight-book: 470;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 650;
+  --line-height-none: 1;
+  --line-height-tight: 1.05;
+  --line-height-snug: 1.25;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.7;
+  --line-height-loose: 1.8;
+  --layout-page-gutter: clamp(20px, 4vw, 72px);
+  --layout-content-width: 1440px;
+  --radius-small: 10px;
+  --radius-medium: 16px;
+  --radius-large: 24px;
+  --radius-round: 999px;
   --transition-fast: 180ms ease;
 
-  font: 1rem/1.6 var(--font-sans);
-  color: var(--color-text-secondary);
-  background: var(--color-background);
+  font: var(--font-size-4xl) / var(--line-height-normal) var(--font-family-sans);
+  color: var(--color-lavender-grey);
+  background: var(--color-black-russian);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -33,9 +58,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    var(--gradient-background);
+    linear-gradient(var(--color-white-lilac-3) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-white-lilac-3) 1px, transparent 1px),
+    var(--gradient-black-russian);
   background-size: 64px 64px;
 }
 
@@ -62,7 +87,7 @@ svg {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-focus-ring);
+  outline: 2px solid var(--color-mauve);
   outline-offset: 4px;
 }
 

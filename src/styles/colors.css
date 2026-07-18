@@ -1,147 +1,91 @@
 :root {
-  /* Core neutral palette */
-  --color-black: #020305;
-  --color-black-soft: #03060a;
-  --color-ink: #060b0e;
-  --color-ink-soft: #080e12;
-  --color-charcoal: #0d1115;
-  --color-charcoal-soft: #101418;
-  --color-graphite: #14181b;
-  --color-graphite-light: #1a1e20;
-  --color-steel: #292c2d;
+  --color-black-russian: #0b0714;
+  --color-haiti: #171021;
+  --color-revolver: #241831;
+  --color-jagger: #3a1d52;
+  --color-electric-violet: #8c00ff;
+  --color-heliotrope: #d66efd;
+  --color-mauve: #e0b0ff;
+  --color-white-lilac: #f8f7fc;
+  --color-lavender-grey: #c5bfd0;
+  --color-mobster: #827a8f;
+  --color-trout: #514b5d;
+  --color-persian-red: #d94a4a;
+  --color-mona-lisa: #ff8a8a;
+  --color-black-russian-74: rgba(11, 7, 20, 0.74);
+  --color-black-russian-90: rgba(11, 7, 20, 0.9);
+  --color-electric-violet-3: rgba(140, 0, 255, 0.03);
+  --color-electric-violet-8: rgba(140, 0, 255, 0.08);
+  --color-electric-violet-10: rgba(140, 0, 255, 0.1);
+  --color-electric-violet-11: rgba(140, 0, 255, 0.11);
+  --color-electric-violet-12: rgba(140, 0, 255, 0.12);
+  --color-electric-violet-13: rgba(140, 0, 255, 0.13);
+  --color-electric-violet-16: rgba(140, 0, 255, 0.16);
+  --color-electric-violet-20: rgba(140, 0, 255, 0.2);
+  --color-electric-violet-30: rgba(140, 0, 255, 0.3);
+  --color-heliotrope-9: rgba(214, 110, 253, 0.09);
+  --color-heliotrope-14: rgba(214, 110, 253, 0.14);
+  --color-heliotrope-20: rgba(214, 110, 253, 0.2);
+  --color-heliotrope-28: rgba(214, 110, 253, 0.28);
+  --color-heliotrope-34: rgba(214, 110, 253, 0.34);
+  --color-heliotrope-48: rgba(214, 110, 253, 0.48);
+  --color-mauve-8: rgba(224, 176, 255, 0.08);
+  --color-mauve-30: rgba(224, 176, 255, 0.3);
+  --color-mauve-62: rgba(224, 176, 255, 0.62);
+  --color-white-lilac-3: rgba(248, 247, 252, 0.03);
+  --color-white-lilac-4: rgba(248, 247, 252, 0.04);
+  --color-white-lilac-7: rgba(248, 247, 252, 0.07);
+  --color-white-lilac-10: rgba(248, 247, 252, 0.1);
+  --color-black-45: rgba(0, 0, 0, 0.45);
+  --color-black-52: rgba(0, 0, 0, 0.52);
+  --color-haiti-98: rgba(23, 16, 33, 0.98);
+  --color-revolver-96: rgba(36, 24, 49, 0.96);
+  --color-revolver-98: rgba(36, 24, 49, 0.98);
+  --color-jagger-98: rgba(58, 29, 82, 0.98);
 
-  /* Text */
-  --color-text-primary: #f2f0ea;
-  --color-text-secondary: #b8b4aa;
-  --color-text-muted: #85827b;
-  --color-text-subtle: #5f6060;
-  --color-text-inverse: #060b0e;
-  --color-text-on-accent: #171109;
-
-  /* Champagne-gold scale */
-  --color-gold-950: #2f2416;
-  --color-gold-900: #4e3d26;
-  --color-gold-800: #604f35;
-  --color-gold-700: #806741;
-  --color-gold-600: #a4834e;
-  --color-gold-500: #c89c50;
-  --color-gold-400: #d7b36c;
-  --color-gold-300: #e5c982;
-  --color-gold-200: #f1dba4;
-  --color-gold-100: #fff0c2;
-
-  /* Semantic backgrounds */
-  --color-background: var(--color-black);
-  --color-background-soft: var(--color-ink);
-  --color-surface: var(--color-charcoal);
-  --color-surface-raised: var(--color-graphite);
-  --color-surface-hover: var(--color-graphite-light);
-  --color-surface-active: #22221f;
-
-  /* Semantic accent colors */
-  --color-accent: var(--color-gold-400);
-  --color-accent-bright: var(--color-gold-200);
-  --color-accent-muted: var(--color-gold-700);
-  --color-accent-dark: var(--color-gold-900);
-  --color-accent-contrast: var(--color-black);
-
-  /* Borders and separators */
-  --color-border-subtle: rgba(241, 219, 164, 0.08);
-  --color-border-default: rgba(241, 219, 164, 0.14);
-  --color-border-strong: rgba(215, 179, 108, 0.3);
-  --color-border-accent: rgba(215, 179, 108, 0.62);
-  --color-divider: rgba(255, 255, 255, 0.07);
-  --color-border-neutral: rgba(255, 255, 255, 0.1);
-
-  /* Translucent overlays */
-  --color-overlay-light: rgba(255, 255, 255, 0.04);
-  --color-overlay-dark: rgba(2, 3, 5, 0.72);
-  --color-overlay-heavy: rgba(2, 3, 5, 0.9);
-  --color-gold-soft: rgba(215, 179, 108, 0.12);
-  --color-gold-glow: rgba(241, 219, 164, 0.28);
-  --color-gold-glow-strong: rgba(241, 219, 164, 0.48);
-
-  /* Metallic gradients */
-  --gradient-gold: linear-gradient(
-    135deg,
-    #4e3d26 0%,
-    #806741 18%,
-    #d7b36c 42%,
-    #f1dba4 56%,
-    #a4834e 76%,
-    #563f21 100%
+  --gradient-black-russian: linear-gradient(
+    145deg,
+    var(--color-black-russian) 0%,
+    var(--color-haiti) 46%,
+    var(--color-revolver) 100%
   );
-
-  --gradient-gold-horizontal: linear-gradient(
+  --gradient-revolver: linear-gradient(
+    145deg,
+    var(--color-revolver-96) 0%,
+    var(--color-haiti-98) 52%,
+    var(--color-black-russian) 100%
+  );
+  --gradient-revolver-hover: linear-gradient(
+    145deg,
+    var(--color-jagger-98) 0%,
+    var(--color-revolver-98) 55%,
+    var(--color-haiti) 100%
+  );
+  --gradient-electric-violet: linear-gradient(
     90deg,
-    #604f35 0%,
-    #c89c50 28%,
-    #f1dba4 50%,
-    #d7b36c 68%,
-    #806741 100%
+    var(--color-electric-violet) 0%,
+    var(--color-heliotrope) 52%,
+    var(--color-mauve) 100%
   );
-
-  --gradient-gold-text: linear-gradient(
-    110deg,
-    #a4834e 0%,
-    #f1dba4 40%,
-    #fff0c2 52%,
-    #c89c50 78%,
-    #806741 100%
-  );
-
-  --gradient-gold-ring: conic-gradient(from 210deg, #4e3d26, #d7b36c, #fff0c2, #a4834e, #4e3d26);
-
-  /* Surface gradients */
-  --gradient-background: linear-gradient(145deg, #020305 0%, #060b0e 46%, #0d1115 100%);
-
-  --gradient-surface: linear-gradient(
-    145deg,
-    rgba(26, 30, 32, 0.96) 0%,
-    rgba(13, 17, 21, 0.98) 52%,
-    rgba(6, 11, 14, 1) 100%
-  );
-
-  --gradient-surface-hover: linear-gradient(
-    145deg,
-    rgba(34, 34, 31, 0.98) 0%,
-    rgba(20, 24, 27, 0.98) 55%,
-    rgba(8, 14, 18, 1) 100%
-  );
-
-  --gradient-gold-ambient: radial-gradient(
+  --gradient-electric-violet-ambient: radial-gradient(
     circle,
-    rgba(241, 219, 164, 0.2) 0%,
-    rgba(215, 179, 108, 0.09) 30%,
-    rgba(128, 103, 65, 0.03) 55%,
+    var(--color-heliotrope-20) 0%,
+    var(--color-electric-violet-10) 36%,
+    var(--color-electric-violet-3) 58%,
     transparent 72%
   );
 
-  --gradient-hero-overlay: linear-gradient(
-    180deg,
-    rgba(2, 3, 5, 0.08) 0%,
-    rgba(2, 3, 5, 0.42) 48%,
-    rgba(2, 3, 5, 0.96) 100%
-  );
-
-  /* Shadows and illumination */
-  --shadow-surface: 0 18px 50px rgba(0, 0, 0, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.035);
-
-  --shadow-gold: 0 0 12px rgba(241, 219, 164, 0.2), 0 0 32px rgba(215, 179, 108, 0.13);
-
-  --shadow-gold-strong:
-    0 0 8px rgba(255, 240, 194, 0.5), 0 0 24px rgba(215, 179, 108, 0.34),
-    0 0 60px rgba(200, 156, 80, 0.16);
-
-  /* Interaction */
-  --color-focus-ring: var(--color-gold-200);
-  --color-selection-background: rgba(215, 179, 108, 0.3);
-  --color-selection-text: var(--color-text-primary);
+  --shadow-black: 0 18px 50px var(--color-black-52), inset 0 1px 0 var(--color-white-lilac-3);
+  --shadow-electric-violet:
+    0 0 12px var(--color-heliotrope-20), 0 0 32px var(--color-electric-violet-13);
+  --shadow-heliotrope:
+    0 0 8px var(--color-heliotrope-48), 0 0 24px var(--color-electric-violet-30),
+    0 0 60px var(--color-electric-violet-16);
 
   color-scheme: dark;
 }
 
 ::selection {
-  color: var(--color-selection-text);
-  background: var(--color-selection-background);
+  color: var(--color-white-lilac);
+  background: var(--color-mauve-30);
 }
