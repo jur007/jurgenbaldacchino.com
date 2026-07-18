@@ -12,7 +12,7 @@ const formspreeEndpoint = "https://formspree.io/f/mzdnrraj"
 const turnstileScriptId = "cloudflare-turnstile-script"
 const turnstileScriptSource =
   "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
-const turnstileSiteKey = "0x4AAAAAAD4Ln3Tjx0zdSTWF"
+const getTurnstileSiteKey = () => import.meta.env.VITE_TURNSTILE_SITE_KEY
 
 interface ITurnstileOptions {
   callback: () => void
@@ -111,7 +111,7 @@ export const ChatSection = () => {
           callback: () => setTurnstileStatus(TurnstileStatus.VERIFIED),
           "error-callback": () => setTurnstileStatus(TurnstileStatus.ERROR),
           "expired-callback": () => setTurnstileStatus(TurnstileStatus.CHECKING),
-          sitekey: turnstileSiteKey,
+          sitekey: getTurnstileSiteKey(),
           size: "flexible",
           theme: "dark",
         })
