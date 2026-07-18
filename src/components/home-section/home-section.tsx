@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import styles from "./home-section.module.css"
 
 import profileImage from "@/assets/profile.jpg"
+import { AiSection } from "@components/ai-section"
 import { StrengthCard } from "@components/strength-card"
 import { getClassNames } from "@utils/class-names"
 
@@ -235,6 +236,7 @@ export const HomeSection = () => {
           </ul>
         </section>
       </section>
+      <AiSection />
       {activeStrength && (
         <div className={styles.expandedStrengthCardOverlay}>
           <StrengthCard {...activeStrength} isExpanded onClose={handleStrengthClose} />
