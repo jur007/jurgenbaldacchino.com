@@ -16,6 +16,8 @@
     72px 72px,
     auto;
   border-top: 1px solid var(--color-heliotrope-14);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
 }
 
 .containerWrapper::before {

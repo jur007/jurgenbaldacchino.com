@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 
 import styles from "./home-section.module.css"
 
-import profileImage from "@/assets/profile.jpg"
+import profileImage from "@/assets/profile-optimized.jpg"
 import { AiSection } from "@components/ai-section"
 import { StrengthCard } from "@components/strength-card"
 import { getClassNames } from "@utils/class-names"
@@ -134,7 +134,7 @@ const useTypedHeading = (isActive: boolean) => {
 
         return currentCount + 1
       })
-    }, 42)
+    }, 18)
 
     return () => window.clearInterval(typingTimer)
   }, [isActive])
@@ -215,7 +215,14 @@ export const HomeSection = () => {
 
           <div className={styles.profileCardContainer} id="approach">
             <div className={styles.profileImageContainer}>
-              <img src={profileImage} alt="Jur Baldacchino" />
+              <img
+                src={profileImage}
+                alt="Jur Baldacchino"
+                decoding="async"
+                height="479"
+                loading="lazy"
+                width="480"
+              />
             </div>
             <p>Head of Frontend · React Engineer</p>
             <h2>Building the systems and teams behind excellent products.</h2>

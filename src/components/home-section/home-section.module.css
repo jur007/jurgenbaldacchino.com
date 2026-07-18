@@ -82,8 +82,8 @@
 
 .heroIntroductionVisible h1::after {
   animation:
-    showTypingCursor 500ms steps(1) 200ms 7,
-    hideTypingCursor 1ms linear 3.7s forwards;
+    showTypingCursor 400ms steps(1) 100ms 4,
+    hideTypingCursor 1ms linear 1.7s forwards;
 }
 
 .heroIntroduction {
@@ -95,8 +95,8 @@
   line-height: var(--line-height-relaxed);
   transform: translateY(16px);
   transition:
-    opacity 650ms ease 2.45s,
-    transform 650ms ease 2.45s;
+    opacity 500ms ease 1.15s,
+    transform 500ms ease 1.15s;
 }
 
 .heroIntroductionVisible .heroEyebrow,

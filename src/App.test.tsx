@@ -18,10 +18,12 @@ describe("App", () => {
     ).toBeInTheDocument()
   })
 
-  it("renders the about page at the about path", () => {
+  it("renders the about page at the about path", async () => {
     window.history.pushState({}, "", "/about")
     render(<App />)
 
-    expect(screen.getByRole("heading", { name: /Curiosity keeps me moving/i })).toBeInTheDocument()
+    expect(
+      await screen.findByRole("heading", { name: /Curiosity keeps me moving/i }),
+    ).toBeInTheDocument()
   })
 })
