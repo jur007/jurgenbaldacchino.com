@@ -186,7 +186,11 @@ export const HomeSection = () => {
         >
           <p className={styles.heroEyebrow}>12+ Years · Products · People</p>
           <h1 id="hero-title" aria-label={heading}>
-            <span aria-hidden="true">
+            <span className={styles.heroHeadingSizer} aria-hidden="true">
+              {regularHeading}
+              <em>{emphasizedHeading}</em>
+            </span>
+            <span className={styles.heroHeadingTypedText} aria-hidden="true">
               {visibleRegularHeading}
               <em>{visibleEmphasizedHeading}</em>
             </span>

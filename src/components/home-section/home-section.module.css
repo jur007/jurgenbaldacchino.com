@@ -53,7 +53,7 @@
 }
 
 .heroIntroductionContainer h1 {
-  min-height: 2.82em;
+  position: relative;
   max-width: 13ch;
   margin-top: 20px;
   color: var(--color-white-lilac);
@@ -63,13 +63,22 @@
   line-height: 0.94;
 }
 
+.heroHeadingSizer {
+  visibility: hidden;
+}
+
+.heroHeadingTypedText {
+  position: absolute;
+  inset: 0;
+}
+
 .heroIntroductionContainer h1 em {
   color: var(--color-mauve);
   font-family: var(--font-family-serif);
   font-weight: var(--font-weight-regular);
 }
 
-.heroIntroductionContainer h1::after {
+.heroHeadingTypedText::after {
   display: inline-block;
   content: "";
   width: 2px;
@@ -80,7 +89,7 @@
   vertical-align: -0.04em;
 }
 
-.heroIntroductionVisible h1::after {
+.heroIntroductionVisible .heroHeadingTypedText::after {
   animation:
     showTypingCursor 400ms steps(1) 100ms 4,
     hideTypingCursor 1ms linear 1.7s forwards;
@@ -570,11 +579,11 @@
     transform: none;
   }
 
-  .heroIntroductionVisible h1::after {
+  .heroIntroductionVisible .heroHeadingTypedText::after {
     animation: none;
   }
 
-  .heroIntroductionContainer h1::after {
+  .heroHeadingTypedText::after {
     display: none;
   }
 
