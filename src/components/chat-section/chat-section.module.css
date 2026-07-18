@@ -56,6 +56,15 @@
   font-family: var(--font-family-mono);
   text-decoration-color: var(--color-mauve-62);
   text-underline-offset: 5px;
+  transition:
+    color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
+}
+
+.directContactCopy a:hover,
+.directContactCopy a:focus-visible {
+  color: var(--color-white-lilac);
+  text-decoration-color: var(--color-heliotrope);
 }
 
 .contactForm {
@@ -197,6 +206,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .messageInput {
+    transition: none;
+  }
+
+  .directContactCopy a {
     transition: none;
   }
 
