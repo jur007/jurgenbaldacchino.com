@@ -24,7 +24,7 @@ const strengths: IStrengthItem[] = [
   {
     description: "Building scalable, maintainable frontend applications with React and TypeScript.",
     expandedDescription:
-      "This expanded space will explore how thoughtful architecture, dependable patterns and pragmatic technical decisions help frontend products scale without becoming difficult to change.",
+      "I build fast, discoverable and mobile-first products with performance, accessibility and SEO considered from the beginning. My experience across React, Next.js, Gatsby and different state-management approaches helps me choose solutions around the product’s needs—not a preferred tool.",
     index: "01",
     prominent: true,
     technicalDetail: "React · TypeScript",
@@ -34,7 +34,7 @@ const strengths: IStrengthItem[] = [
     description:
       "Combining engineering with creativity through interactive experiences and 2D development.",
     expandedDescription:
-      "This expanded space will cover the creative development process, from translating an idea into an interaction through to building engaging browser experiences with tools such as Phaser.",
+      "I enjoy turning ambitious ideas into engaging digital experiences. This has included developing an in-house 2D game with Phaser, bringing creativity and engineering together to take an interactive concept through to a finished product.",
     index: "02",
     technicalDetail: "Interactive experiences · Phaser",
     title: "Creative Development",
@@ -42,7 +42,7 @@ const strengths: IStrengthItem[] = [
   {
     description: "Automating reliable frontend delivery across modern platforms and environments.",
     expandedDescription:
-      "This expanded space will explain how delivery pipelines, platform automation and clear operational practices make frontend releases safer, faster and easier for teams to own.",
+      "I create dependable paths from development to production, helping teams release with greater speed and confidence. Using Azure DevOps, Docker, Cloudflare, GitHub Actions and YAML, I’ve built validation, development and production pipelines that reduce manual work and catch problems earlier.",
     index: "03",
     technicalDetail: "YAML · Azure DevOps · Cloudflare",
     title: "Frontend DevOps",
@@ -51,7 +51,7 @@ const strengths: IStrengthItem[] = [
     description:
       "Creating readable, intentional solutions that remain easy to understand, maintain and evolve.",
     expandedDescription:
-      "This expanded space will look at the value of reducing accidental complexity, choosing clear abstractions and leaving systems easier for the next person to understand and evolve.",
+      "I believe successful delivery starts with work that people can clearly understand. From well-defined tasks to readable, maintainable code, I focus on reducing unnecessary complexity so teams can move confidently and products can evolve more easily.",
     index: "04",
     technicalDetail: "Readable · Intentional · Adaptable",
     title: "Simplicity and Clarity",
@@ -60,7 +60,7 @@ const strengths: IStrengthItem[] = [
     description:
       "Bringing design, product and engineering together around shared goals and collective ownership.",
     expandedDescription:
-      "This expanded space will describe a collaborative approach that connects disciplines early, keeps decisions visible and helps everyone share responsibility for the product outcome.",
+      "I’ve led frontend teams and guided projects from their earliest stages through delivery. My priority is creating an environment where people have clear goals, feel supported and work as one team around the success of the product.",
     index: "05",
     technicalDetail: "Design · Product · Engineering",
     title: "One-Team Collaboration",

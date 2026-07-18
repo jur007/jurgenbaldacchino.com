@@ -38,7 +38,7 @@ describe("HomeSection", () => {
 
     expect(screen.getByRole("dialog", { name: "React Engineering" })).toBeInTheDocument()
     expect(
-      screen.getByText(/This expanded space will explore how thoughtful architecture/i),
+      screen.getByText(/I build fast, discoverable and mobile-first products/i),
     ).toBeInTheDocument()
 
     await user.click(screen.getByRole("button", { name: "Close React Engineering details" }))
