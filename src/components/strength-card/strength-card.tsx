@@ -80,7 +80,6 @@ export const StrengthCard = ({
       role={isExpanded ? "dialog" : undefined}
     >
       <div className={styles.cardHeaderContainer}>
-        <span>{index}</span>
         {isExpanded ? (
           <button
             aria-label={`Close ${title} details`}
