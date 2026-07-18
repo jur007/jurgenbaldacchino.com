@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
 import { describe, expect, it } from "vitest"
 
 import { HomeSection } from "./home-section"
@@ -26,5 +27,22 @@ describe("HomeSection", () => {
     expect(screen.getByRole("heading", { name: "Frontend DevOps" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Simplicity and Clarity" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "One-Team Collaboration" })).toBeInTheDocument()
+  })
+
+  it("opens and closes expanded strength details", async () => {
+    const user = userEvent.setup()
+    render(<HomeSection />)
+
+    const openButton = screen.getByRole("button", { name: "Open React Engineering details" })
+    await user.click(openButton)
+
+    expect(screen.getByRole("dialog", { name: "React Engineering" })).toBeInTheDocument()
+    expect(
+      screen.getByText(/This expanded space will explore how thoughtful architecture/i),
+    ).toBeInTheDocument()
+
+    await user.click(screen.getByRole("button", { name: "Close React Engineering details" }))
+
+    expect(screen.queryByRole("dialog", { name: "React Engineering" })).not.toBeInTheDocument()
   })
 })

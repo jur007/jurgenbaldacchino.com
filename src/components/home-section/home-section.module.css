@@ -383,6 +383,28 @@
   transform: rotate(3deg) translateY(-5px);
 }
 
+.expandedStrengthCardOverlay {
+  position: fixed;
+  z-index: 100;
+  display: grid;
+  padding: 20px;
+  place-items: center;
+  background: var(--color-black-russian-74);
+  backdrop-filter: blur(12px);
+  inset: 0;
+  animation: revealStrengthCardOverlay 220ms ease;
+}
+
+@keyframes revealStrengthCardOverlay {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 1023px) {
   .heroSectionContainer {
     padding-top: 72px;
@@ -467,6 +489,10 @@
 
   .heroIntroductionContainer h1::after {
     display: none;
+  }
+
+  .expandedStrengthCardOverlay {
+    animation: none;
   }
 }
 

@@ -8,6 +8,7 @@ import { getClassNames } from "@utils/class-names"
 
 interface IStrengthItem {
   description: string
+  expandedDescription: string
   index: string
   prominent?: boolean
   technicalDetail: string
@@ -22,6 +23,8 @@ const regularHeading = heading.slice(0, -emphasizedHeading.length)
 const strengths: IStrengthItem[] = [
   {
     description: "Building scalable, maintainable frontend applications with React and TypeScript.",
+    expandedDescription:
+      "This expanded space will explore how thoughtful architecture, dependable patterns and pragmatic technical decisions help frontend products scale without becoming difficult to change.",
     index: "01",
     prominent: true,
     technicalDetail: "React · TypeScript",
@@ -30,12 +33,16 @@ const strengths: IStrengthItem[] = [
   {
     description:
       "Combining engineering with creativity through interactive experiences and 2D development.",
+    expandedDescription:
+      "This expanded space will cover the creative development process, from translating an idea into an interaction through to building engaging browser experiences with tools such as Phaser.",
     index: "02",
     technicalDetail: "Interactive experiences · Phaser",
     title: "Creative Development",
   },
   {
     description: "Automating reliable frontend delivery across modern platforms and environments.",
+    expandedDescription:
+      "This expanded space will explain how delivery pipelines, platform automation and clear operational practices make frontend releases safer, faster and easier for teams to own.",
     index: "03",
     technicalDetail: "YAML · Azure DevOps · Cloudflare",
     title: "Frontend DevOps",
@@ -43,6 +50,8 @@ const strengths: IStrengthItem[] = [
   {
     description:
       "Creating readable, intentional solutions that remain easy to understand, maintain and evolve.",
+    expandedDescription:
+      "This expanded space will look at the value of reducing accidental complexity, choosing clear abstractions and leaving systems easier for the next person to understand and evolve.",
     index: "04",
     technicalDetail: "Readable · Intentional · Adaptable",
     title: "Simplicity and Clarity",
@@ -50,6 +59,8 @@ const strengths: IStrengthItem[] = [
   {
     description:
       "Bringing design, product and engineering together around shared goals and collective ownership.",
+    expandedDescription:
+      "This expanded space will describe a collaborative approach that connects disciplines early, keeps decisions visible and helps everyone share responsibility for the product outcome.",
     index: "05",
     technicalDetail: "Design · Product · Engineering",
     title: "One-Team Collaboration",
@@ -130,11 +141,36 @@ const useTypedHeading = (isActive: boolean) => {
 }
 
 export const HomeSection = () => {
+  const [activeStrength, setActiveStrength] = useState<IStrengthItem | null>(null)
+  const activeCardReference = useRef<HTMLElement | null>(null)
   const [introductionReference, isIntroductionVisible] = useRevealOnIntersection<HTMLDivElement>()
   const [showcaseReference, isShowcaseVisible] = useRevealOnIntersection<HTMLDivElement>()
   const visibleHeading = useTypedHeading(isIntroductionVisible)
   const visibleRegularHeading = visibleHeading.slice(0, regularHeading.length)
   const visibleEmphasizedHeading = visibleHeading.slice(regularHeading.length)
+
+  useEffect(() => {
+    if (!activeStrength) {
+      return
+    }
+
+    const originalBodyOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow
+    }
+  }, [activeStrength])
+
+  const handleStrengthOpen = (strength: IStrengthItem, sourceElement: HTMLElement) => {
+    activeCardReference.current = sourceElement
+    setActiveStrength(strength)
+  }
+
+  const handleStrengthClose = () => {
+    setActiveStrength(null)
+    window.requestAnimationFrame(() => activeCardReference.current?.focus())
+  }
 
   return (
     <div className={styles.containerWrapper} id="top">
@@ -189,12 +225,20 @@ export const HomeSection = () => {
           <ul className={styles.strengthsList} aria-label="Core strengths">
             {strengths.map((strength) => (
               <li className={styles.strengthListItem} key={strength.index}>
-                <StrengthCard {...strength} />
+                <StrengthCard
+                  {...strength}
+                  onOpen={(sourceElement) => handleStrengthOpen(strength, sourceElement)}
+                />
               </li>
             ))}
           </ul>
         </section>
       </section>
+      {activeStrength && (
+        <div className={styles.expandedStrengthCardOverlay}>
+          <StrengthCard {...activeStrength} isExpanded onClose={handleStrengthClose} />
+        </div>
+      )}
     </div>
   )
 }
