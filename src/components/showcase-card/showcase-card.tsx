@@ -26,6 +26,15 @@ export const ShowcaseCard = ({ project, onSelect, className }: IShowcaseCard) =>
     onSelect(project)
   }
 
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    const card = event.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = event.clientX - rect.left
+    const y = event.clientY - rect.top
+    card.style.setProperty("--mouse-x", `${x}px`)
+    card.style.setProperty("--mouse-y", `${y}px`)
+  }
+
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault()
@@ -41,6 +50,7 @@ export const ShowcaseCard = ({ project, onSelect, className }: IShowcaseCard) =>
       className={getClassNames(styles.containerWrapper, className)}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
+      onMouseMove={handleMouseMove}
       role="button"
       tabIndex={0}
     >

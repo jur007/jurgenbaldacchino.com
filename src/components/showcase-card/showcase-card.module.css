@@ -8,22 +8,40 @@
   background: var(--color-glass-surface);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-cyan-card);
   overflow: hidden;
   cursor: pointer;
   outline: none;
   transition:
-    transform var(--transition-fast),
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
     border-color var(--transition-fast),
     box-shadow var(--transition-fast);
 }
 
+.containerWrapper::before {
+  position: absolute;
+  content: "";
+  border-radius: inherit;
+  background: radial-gradient(
+    380px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(0, 240, 255, 0.1),
+    transparent 70%
+  );
+  opacity: 0;
+  inset: 0;
+  transition: opacity 280ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.containerWrapper:hover::before {
+  opacity: 1;
+}
+
 .containerWrapper:hover {
   transform: translateY(-4px);
-  border-color: var(--color-glass-border-hover);
-  box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.6),
-    0 0 24px rgba(0, 240, 255, 0.18);
+  border-color: var(--color-cyan-border-hover);
+  box-shadow: var(--shadow-cyan-card-hover);
 }
 
 .containerWrapper:focus-visible {
@@ -33,6 +51,7 @@
 
 .previewContainer {
   position: relative;
+  z-index: 2;
   width: 100%;
   aspect-ratio: 16 / 10;
   background: var(--color-navy-elevated);
@@ -80,6 +99,8 @@
 }
 
 .contentContainer {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex: 1;
   flex-direction: column;
