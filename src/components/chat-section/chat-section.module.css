@@ -70,15 +70,45 @@
 }
 
 .contactForm {
+  position: relative;
   display: grid;
   padding: clamp(24px, 4vw, 40px);
   gap: 22px;
+  overflow: hidden;
   background: var(--color-navy-card);
   border: 1px solid var(--color-cyan-border);
   border-radius: var(--radius-large);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: var(--shadow-cyan-card);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.contactForm::before {
+  position: absolute;
+  content: "";
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(0, 240, 255, 0.08),
+    transparent 70%
+  );
+  opacity: 0;
+  inset: 0;
+  transition: opacity 280ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contactForm:hover::before {
+  opacity: 1;
+}
+
+.contactForm > * {
+  position: relative;
+  z-index: 2;
 }
 
 .messageFieldContainer {

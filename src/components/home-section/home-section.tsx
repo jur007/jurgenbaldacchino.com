@@ -200,15 +200,35 @@ const UsersIcon = () => (
   </svg>
 )
 
+interface IParticle {
+  alpha: number
+  color: string
+  radius: number
+  speedX: number
+  speedY: number
+  x: number
+  y: number
+}
+
 export const HomeSection = () => {
   const [heroReference, isHeroVisible] = useRevealOnIntersection<HTMLDivElement>()
   const [bentoReference, isBentoVisible] = useRevealOnIntersection<HTMLDivElement>()
   const [activeParticleCount, setActiveParticleCount] = useState(0)
   const canvasReference = useRef<HTMLCanvasElement>(null)
+  const particlesReference = useRef<IParticle[]>([])
 
   const visibleHeading = useTypedHeading(isHeroVisible)
   const visibleRegularHeading = visibleHeading.slice(0, regularHeading.length)
   const visibleEmphasizedHeading = visibleHeading.slice(regularHeading.length)
+
+  const handleCardMouseMove = (event: MouseEvent<HTMLElement>) => {
+    const card = event.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = event.clientX - rect.left
+    const y = event.clientY - rect.top
+    card.style.setProperty("--mouse-x", `${x}px`)
+    card.style.setProperty("--mouse-y", `${y}px`)
+  }
 
   useEffect(() => {
     const canvas = canvasReference.current
@@ -225,30 +245,22 @@ export const HomeSection = () => {
     const width = (canvas.width = canvas.offsetWidth || 280)
     const height = (canvas.height = canvas.offsetHeight || 130)
 
-    interface IParticle {
-      alpha: number
-      color: string
-      radius: number
-      speedX: number
-      speedY: number
-      x: number
-      y: number
+    if (particlesReference.current.length === 0) {
+      particlesReference.current = Array.from({ length: 24 }, () => ({
+        alpha: Math.random() * 0.7 + 0.3,
+        color: Math.random() > 0.35 ? "#00f0ff" : "#f59e0b",
+        radius: Math.random() * 2.2 + 1.5,
+        speedX: (Math.random() - 0.5) * 1.4,
+        speedY: (Math.random() - 0.5) * 1.4,
+        x: Math.random() * width,
+        y: Math.random() * height,
+      }))
     }
-
-    const particles: IParticle[] = Array.from({ length: 22 }, () => ({
-      alpha: Math.random() * 0.7 + 0.3,
-      color: Math.random() > 0.4 ? "#00f0ff" : "#0077fe",
-      radius: Math.random() * 2 + 1.5,
-      speedX: (Math.random() - 0.5) * 1.2,
-      speedY: (Math.random() - 0.5) * 1.2,
-      x: Math.random() * width,
-      y: Math.random() * height,
-    }))
 
     const render = () => {
       context.clearRect(0, 0, width, height)
 
-      // Draw grid lines
+      // Draw subtle grid
       context.strokeStyle = "rgba(0, 240, 255, 0.08)"
       context.lineWidth = 1
       for (let x = 0; x < width; x += 24) {
@@ -264,7 +276,9 @@ export const HomeSection = () => {
         context.stroke()
       }
 
-      // Draw particle connections
+      const particles = particlesReference.current
+
+      // Update and draw particles
       for (let indexA = 0; indexA < particles.length; indexA += 1) {
         const particleA = particles[indexA]
         if (!particleA) {
@@ -274,10 +288,11 @@ export const HomeSection = () => {
         particleA.x += particleA.speedX
         particleA.y += particleA.speedY
 
-        if (particleA.x < 0 || particleA.x > width) {
+        // Bounce on boundaries
+        if (particleA.x <= particleA.radius || particleA.x >= width - particleA.radius) {
           particleA.speedX *= -1
         }
-        if (particleA.y < 0 || particleA.y > height) {
+        if (particleA.y <= particleA.radius || particleA.y >= height - particleA.radius) {
           particleA.speedY *= -1
         }
 
@@ -285,7 +300,7 @@ export const HomeSection = () => {
         context.arc(particleA.x, particleA.y, particleA.radius, 0, Math.PI * 2)
         context.fillStyle = particleA.color
         context.shadowColor = particleA.color
-        context.shadowBlur = 8
+        context.shadowBlur = 10
         context.fill()
 
         for (let indexB = indexA + 1; indexB < particles.length; indexB += 1) {
@@ -295,11 +310,11 @@ export const HomeSection = () => {
           }
 
           const distance = Math.hypot(particleA.x - particleB.x, particleA.y - particleB.y)
-          if (distance < 55) {
+          if (distance < 58) {
             context.beginPath()
             context.moveTo(particleA.x, particleA.y)
             context.lineTo(particleB.x, particleB.y)
-            context.strokeStyle = `rgba(0, 240, 255, ${0.35 * (1 - distance / 55)})`
+            context.strokeStyle = `rgba(0, 240, 255, ${0.4 * (1 - distance / 58)})`
             context.stroke()
           }
         }
@@ -317,6 +332,27 @@ export const HomeSection = () => {
 
   const handleCanvasInteraction = (event: MouseEvent<HTMLDivElement>) => {
     event.preventDefault()
+    const canvas = canvasReference.current
+    if (!canvas) {
+      return
+    }
+
+    const rect = canvas.getBoundingClientRect()
+    const clickX = event.clientX - rect.left
+    const clickY = event.clientY - rect.top
+
+    // Spawn interactive burst of 6 particles from click position
+    const burstParticles: IParticle[] = Array.from({ length: 6 }, () => ({
+      alpha: 1,
+      color: Math.random() > 0.5 ? "#00f0ff" : "#f59e0b",
+      radius: Math.random() * 2.5 + 2,
+      speedX: (Math.random() - 0.5) * 3.5,
+      speedY: (Math.random() - 0.5) * 3.5,
+      x: clickX,
+      y: clickY,
+    }))
+
+    particlesReference.current = [...particlesReference.current.slice(-24), ...burstParticles]
     setActiveParticleCount((count) => count + 1)
   }
 
@@ -438,7 +474,10 @@ export const HomeSection = () => {
         <ul className={styles.bentoGrid} aria-label="Core strengths and capabilities">
           {/* Card 1: React Engineering & Frontend Architecture (Span 2 cols desktop) */}
           <li className={getClassNames(styles.bentoGridItem, styles.bentoGridItemArchitecture)}>
-            <article className={getClassNames(styles.bentoCard, styles.bentoCardArchitecture)}>
+            <article
+              className={getClassNames(styles.bentoCard, styles.bentoCardArchitecture)}
+              onMouseMove={handleCardMouseMove}
+            >
               <div className={styles.bentoCardHeader}>
                 <div className={styles.bentoCardIconContainer}>
                   <CodeIcon />
@@ -448,33 +487,57 @@ export const HomeSection = () => {
               <div className={styles.bentoCardBody}>
                 <h3>React Engineering & Frontend Architecture</h3>
                 <p>
-                  Building fast, scalable, discoverable and resilient web applications with
-                  performance, accessibility, and state management engineered from day one. Deep
-                  expertise across modern React, TypeScript, scalable component systems, and design
-                  token architecture.
+                  I build fast, scalable, and accessible web applications where performance and
+                  maintainability are treated as core features from day one. I specialize in modern
+                  React, strict TypeScript, component systems, and predictable state architectures
+                  that grow effortlessly alongside your product and team.
                 </p>
               </div>
               <div className={styles.bentoMetricsBar}>
                 <div className={styles.metricIndicatorItem}>
-                  <span className={styles.metricIndicatorValue}>100%</span>
+                  <span className={styles.metricIndicatorValue}>500k+ MAU</span>
+                  <span className={styles.metricIndicatorLabel}>Scaled Architecture</span>
+                </div>
+                <div className={styles.metricIndicatorItem}>
+                  <span className={styles.metricIndicatorValue}>100/100</span>
                   <span className={styles.metricIndicatorLabel}>Lighthouse Perf</span>
                 </div>
                 <div className={styles.metricIndicatorItem}>
                   <span className={styles.metricIndicatorValue}>WCAG AA</span>
-                  <span className={styles.metricIndicatorLabel}>Accessibility</span>
-                </div>
-                <div className={styles.metricIndicatorItem}>
-                  <span className={styles.metricIndicatorValue}>Strict</span>
-                  <span className={styles.metricIndicatorLabel}>TypeScript</span>
+                  <span className={styles.metricIndicatorLabel}>Accessible by Default</span>
                 </div>
               </div>
               <div className={styles.bentoTechBadgeList}>
-                <span className={styles.bentoTechBadge}>React</span>
-                <span className={styles.bentoTechBadge}>TypeScript</span>
-                <span className={styles.bentoTechBadge}>Vite</span>
-                <span className={styles.bentoTechBadge}>TailwindCSS</span>
-                <span className={styles.bentoTechBadge}>Design Systems</span>
-                <span className={styles.bentoTechBadge}>State Management</span>
+                <span
+                  className={getClassNames(styles.bentoTechBadge, styles.badgeArchitectureCyan)}
+                >
+                  React
+                </span>
+                <span
+                  className={getClassNames(styles.bentoTechBadge, styles.badgeArchitectureCyan)}
+                >
+                  TypeScript
+                </span>
+                <span
+                  className={getClassNames(styles.bentoTechBadge, styles.badgeArchitectureCyan)}
+                >
+                  Vite
+                </span>
+                <span
+                  className={getClassNames(styles.bentoTechBadge, styles.badgeArchitectureCyan)}
+                >
+                  TailwindCSS
+                </span>
+                <span
+                  className={getClassNames(styles.bentoTechBadge, styles.badgeArchitectureCyan)}
+                >
+                  Design Systems
+                </span>
+                <span
+                  className={getClassNames(styles.bentoTechBadge, styles.badgeArchitectureCyan)}
+                >
+                  State Management
+                </span>
               </div>
             </article>
           </li>
@@ -484,9 +547,15 @@ export const HomeSection = () => {
             <article
               className={getClassNames(styles.bentoCard, styles.bentoCardCreative)}
               onClick={handleCanvasInteraction}
+              onMouseMove={handleCardMouseMove}
             >
               <div className={styles.bentoCardHeader}>
-                <div className={styles.bentoCardIconContainer}>
+                <div
+                  className={getClassNames(
+                    styles.bentoCardIconContainer,
+                    styles.bentoCardIconCreative,
+                  )}
+                >
                   <GamepadIcon />
                 </div>
                 <span className={styles.bentoCardIndex}>02 / INTERACTIVE</span>
@@ -494,28 +563,48 @@ export const HomeSection = () => {
               <div className={styles.bentoCardBody}>
                 <h3>Creative Dev & Interactive Canvas</h3>
                 <p>
-                  Crafting engaging digital experiences, custom 2D canvas engines, and web games
-                  with Phaser and WebGL micro-interactions.
+                  I love bringing creative, playful ideas to life in the browser. From custom 2D
+                  canvas engines and interactive micro-experiences to full in-house Phaser games, I
+                  blend web standards with smooth 60FPS canvas graphics.
                 </p>
               </div>
-              <div className={styles.canvasPreviewContainer} title="Click to pulse particle engine">
+              <div
+                className={styles.canvasPreviewContainer}
+                title="Click anywhere to burst particles!"
+              >
                 <canvas className={styles.canvasElement} ref={canvasReference} />
-                <span className={styles.canvasLiveBadge}>Live 2D Canvas · 60FPS</span>
+                <span className={styles.canvasLiveBadge}>Live 2D Physics · Click to Play</span>
               </div>
               <div className={styles.bentoTechBadgeList}>
-                <span className={styles.bentoTechBadge}>Phaser 3</span>
-                <span className={styles.bentoTechBadge}>HTML5 Canvas</span>
-                <span className={styles.bentoTechBadge}>WebGL</span>
-                <span className={styles.bentoTechBadge}>Web Games</span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeCreativeAmber)}>
+                  Phaser 3
+                </span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeCreativeAmber)}>
+                  HTML5 Canvas
+                </span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeCreativeAmber)}>
+                  WebGL
+                </span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeCreativeAmber)}>
+                  Web Games
+                </span>
               </div>
             </article>
           </li>
 
           {/* Card 3: DevOps, CI/CD & Engineering Standards (Span 1 col) */}
           <li className={getClassNames(styles.bentoGridItem, styles.bentoGridItemDevOps)}>
-            <article className={getClassNames(styles.bentoCard, styles.bentoCardDevOps)}>
+            <article
+              className={getClassNames(styles.bentoCard, styles.bentoCardDevOps)}
+              onMouseMove={handleCardMouseMove}
+            >
               <div className={styles.bentoCardHeader}>
-                <div className={styles.bentoCardIconContainer}>
+                <div
+                  className={getClassNames(
+                    styles.bentoCardIconContainer,
+                    styles.bentoCardIconDevOps,
+                  )}
+                >
                   <TerminalIcon />
                 </div>
                 <span className={styles.bentoCardIndex}>03 / STANDARDS</span>
@@ -523,8 +612,10 @@ export const HomeSection = () => {
               <div className={styles.bentoCardBody}>
                 <h3>DevOps, CI/CD & Engineering Standards</h3>
                 <p>
-                  Automating quality gates from commit to production with GitHub Actions, Husky
-                  hooks, Commitlint, and automated ESLint/Vitest pipelines.
+                  Great developer experience leads directly to great user experience. I set up
+                  automated pipelines with GitHub Actions, Husky hooks, Commitlint, and strict
+                  ESLint/Vitest gates so teams can ship with total confidence — dropping build
+                  cycles down to under 90 seconds.
                 </p>
               </div>
               <div className={styles.pipelineVisualContainer}>
@@ -544,21 +635,41 @@ export const HomeSection = () => {
                 </div>
               </div>
               <div className={styles.bentoTechBadgeList}>
-                <span className={styles.bentoTechBadge}>GitHub Actions</span>
-                <span className={styles.bentoTechBadge}>Husky</span>
-                <span className={styles.bentoTechBadge}>Commitlint</span>
-                <span className={styles.bentoTechBadge}>ESLint</span>
-                <span className={styles.bentoTechBadge}>Docker</span>
-                <span className={styles.bentoTechBadge}>Cloudflare</span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeDevOpsIndigo)}>
+                  GitHub Actions
+                </span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeDevOpsIndigo)}>
+                  Husky
+                </span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeDevOpsIndigo)}>
+                  Commitlint
+                </span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeDevOpsIndigo)}>
+                  ESLint
+                </span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeDevOpsIndigo)}>
+                  Docker
+                </span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeDevOpsIndigo)}>
+                  Cloudflare
+                </span>
               </div>
             </article>
           </li>
 
           {/* Card 4: Technical Leadership & AI-Assisted Workflows (Span 2 cols desktop) */}
           <li className={getClassNames(styles.bentoGridItem, styles.bentoGridItemLeadership)}>
-            <article className={getClassNames(styles.bentoCard, styles.bentoCardLeadership)}>
+            <article
+              className={getClassNames(styles.bentoCard, styles.bentoCardLeadership)}
+              onMouseMove={handleCardMouseMove}
+            >
               <div className={styles.bentoCardHeader}>
-                <div className={styles.bentoCardIconContainer}>
+                <div
+                  className={getClassNames(
+                    styles.bentoCardIconContainer,
+                    styles.bentoCardIconLeadership,
+                  )}
+                >
                   <UsersIcon />
                 </div>
                 <span className={styles.bentoCardIndex}>04 / LEADERSHIP</span>
@@ -566,9 +677,10 @@ export const HomeSection = () => {
               <div className={styles.bentoCardBody}>
                 <h3>Technical Leadership & AI-Assisted Workflows</h3>
                 <p>
-                  Empowering frontend teams through hands-on technical mentoring, pragmatic code
-                  review standards, and modern AI-assisted developer workflows that accelerate
-                  velocity while keeping human engineering judgment paramount.
+                  True leadership is about listening, unblocking people, and helping everyone do
+                  their finest work. I guide frontend teams through hands-on technical mentoring,
+                  thoughtful code reviews, and pragmatic AI developer workflows that speed up
+                  exploration while keeping human craft at the helm.
                 </p>
               </div>
               <div className={styles.leadershipHighlights}>
@@ -578,10 +690,18 @@ export const HomeSection = () => {
                 <div className={styles.leadershipPill}>Human-Led Quality</div>
               </div>
               <div className={styles.bentoTechBadgeList}>
-                <span className={styles.bentoTechBadge}>Team Mentoring</span>
-                <span className={styles.bentoTechBadge}>Code Reviews</span>
-                <span className={styles.bentoTechBadge}>AI Workflows</span>
-                <span className={styles.bentoTechBadge}>Architecture</span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeLeadershipTeal)}>
+                  Team Mentoring
+                </span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeLeadershipTeal)}>
+                  Code Reviews
+                </span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeLeadershipTeal)}>
+                  AI Workflows
+                </span>
+                <span className={getClassNames(styles.bentoTechBadge, styles.badgeLeadershipTeal)}>
+                  Architecture
+                </span>
               </div>
             </article>
           </li>

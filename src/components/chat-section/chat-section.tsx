@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import type { ChangeEvent, FormEvent } from "react"
+import type { ChangeEvent, FormEvent, MouseEvent } from "react"
 
 import styles from "./chat-section.module.css"
 
@@ -194,6 +194,15 @@ export const ChatSection = () => {
     }
   }
 
+  const handleFormMouseMove = (event: MouseEvent<HTMLFormElement>) => {
+    const form = event.currentTarget
+    const rect = form.getBoundingClientRect()
+    const x = event.clientX - rect.left
+    const y = event.clientY - rect.top
+    form.style.setProperty("--mouse-x", `${x}px`)
+    form.style.setProperty("--mouse-y", `${y}px`)
+  }
+
   return (
     <section aria-labelledby="chat-section-title" className={styles.containerWrapper} id="contact">
       <div className={styles.introductionContainer}>
@@ -209,7 +218,11 @@ export const ChatSection = () => {
         </p>
       </div>
 
-      <form className={styles.contactForm} onSubmit={handleContactSubmit}>
+      <form
+        className={styles.contactForm}
+        onMouseMove={handleFormMouseMove}
+        onSubmit={handleContactSubmit}
+      >
         <Input
           autoComplete="name"
           id="contact-full-name"

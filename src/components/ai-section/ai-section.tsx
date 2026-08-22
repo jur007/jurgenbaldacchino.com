@@ -1,4 +1,4 @@
-import type { ReactNode } from "react"
+import type { MouseEvent, ReactNode } from "react"
 
 import styles from "./ai-section.module.css"
 
@@ -6,6 +6,12 @@ interface IProcessStep {
   description: string
   icon: ReactNode
   stepNumber: string
+  title: string
+}
+
+interface ITenet {
+  description: string
+  icon: string
   title: string
 }
 
@@ -109,7 +115,36 @@ const processSteps: IProcessStep[] = [
   },
 ]
 
+const personalTenets: ITenet[] = [
+  {
+    description: "Clean, readable, and predictable code beats clever shortcuts every single time.",
+    icon: "🌟",
+    title: "Predictability First",
+  },
+  {
+    description:
+      "Strong opinions, weakly held — always guided by user feedback and real-world metrics.",
+    icon: "💡",
+    title: "Pragmatic Evolution",
+  },
+  {
+    description:
+      "Investing in developer happiness and ergonomic tooling directly shapes exceptional products.",
+    icon: "🚀",
+    title: "DX Multiplier",
+  },
+]
+
 export const AiSection = () => {
+  const handleStepMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    const card = event.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = event.clientX - rect.left
+    const y = event.clientY - rect.top
+    card.style.setProperty("--mouse-x", `${x}px`)
+    card.style.setProperty("--mouse-y", `${y}px`)
+  }
+
   return (
     <section className={styles.containerWrapper} aria-labelledby="ai-section-title" id="process">
       <div className={styles.headerContainer}>
@@ -128,7 +163,7 @@ export const AiSection = () => {
         <ol className={styles.processRoadmap} aria-label="4-step engineering process">
           {processSteps.map((step) => (
             <li className={styles.stepItem} key={step.stepNumber}>
-              <div className={styles.stepCard}>
+              <div className={styles.stepCard} onMouseMove={handleStepMouseMove}>
                 <div className={styles.stepCardHeader}>
                   <div className={styles.stepIconContainer}>{step.icon}</div>
                   <span className={styles.stepNumberBadge}>{step.stepNumber}</span>
@@ -139,6 +174,21 @@ export const AiSection = () => {
             </li>
           ))}
         </ol>
+
+        {/* 3 Core Guiding Tenets */}
+        <div className={styles.tenetsContainer} aria-label="Core engineering tenets">
+          {personalTenets.map((tenet) => (
+            <div className={styles.tenetCard} key={tenet.title} onMouseMove={handleStepMouseMove}>
+              <div className={styles.tenetHeader}>
+                <span className={styles.tenetIcon} aria-hidden="true">
+                  {tenet.icon}
+                </span>
+                <h4 className={styles.tenetTitle}>{tenet.title}</h4>
+              </div>
+              <p className={styles.tenetDescription}>{tenet.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

@@ -75,11 +75,13 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    var(--color-electric-cyan) 20%,
-    var(--color-cobalt-blue) 80%,
+    var(--color-electric-cyan) 30%,
+    var(--color-cobalt-blue) 70%,
     transparent 100%
   );
-  opacity: 0.35;
+  background-size: 200% 100%;
+  animation: processBeamMove 6s ease-in-out infinite;
+  opacity: 0.45;
 }
 
 .stepItem {
@@ -89,10 +91,12 @@
 }
 
 .stepCard {
+  position: relative;
   display: flex;
   width: 100%;
   padding: 28px 24px;
   flex-direction: column;
+  overflow: hidden;
   background: var(--color-navy-card);
   border: 1px solid var(--color-cyan-border);
   border-radius: var(--radius-medium);
@@ -100,15 +104,42 @@
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-cyan-card);
   transition:
-    transform var(--transition-fast),
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
     border-color var(--transition-fast),
     box-shadow var(--transition-fast);
+}
+
+.stepCard::before {
+  position: absolute;
+  content: "";
+  border-radius: inherit;
+  background: radial-gradient(
+    320px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(0, 240, 255, 0.09),
+    transparent 70%
+  );
+  opacity: 0;
+  inset: 0;
+  transition: opacity 280ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stepCard:hover::before {
+  opacity: 1;
 }
 
 .stepCard:hover {
   border-color: var(--color-cyan-border-hover);
   box-shadow: var(--shadow-cyan-card-hover);
   transform: translateY(-4px);
+}
+
+.stepCardHeader,
+.stepTitle,
+.stepDescription {
+  position: relative;
+  z-index: 2;
 }
 
 .stepCardHeader {
@@ -166,6 +197,98 @@
   line-height: var(--line-height-relaxed);
 }
 
+/* 3 Core Guiding Tenets */
+.tenetsContainer {
+  display: grid;
+  margin-top: 48px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tenetCard {
+  position: relative;
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(11, 19, 43, 0.5);
+  border: 1px solid var(--color-slate-border-subtle);
+  border-radius: var(--radius-medium);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tenetCard::before {
+  position: absolute;
+  content: "";
+  border-radius: inherit;
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(0, 240, 255, 0.08),
+    transparent 70%
+  );
+  opacity: 0;
+  inset: 0;
+  transition: opacity 280ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tenetCard:hover::before {
+  opacity: 1;
+}
+
+.tenetCard:hover {
+  border-color: var(--color-cyan-border);
+  box-shadow: var(--shadow-cyan-sm);
+  transform: translateY(-3px);
+}
+
+.tenetHeader,
+.tenetDescription {
+  position: relative;
+  z-index: 2;
+}
+
+.tenetHeader {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+  gap: 10px;
+}
+
+.tenetIcon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.tenetTitle {
+  color: var(--color-white);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.tenetDescription {
+  color: var(--color-slate-muted);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+}
+
+@keyframes processBeamMove {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 @media (max-width: 1023px) {
   .processRoadmap {
     grid-template-columns: repeat(2, 1fr);
@@ -174,6 +297,11 @@
 
   .processRoadmap::before {
     display: none;
+  }
+
+  .tenetsContainer {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
@@ -202,17 +330,24 @@
     padding-inline: 16px;
   }
 
-  .stepCard {
+  .stepCard,
+  .tenetCard {
     padding: 20px 16px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .stepCard {
+  .processRoadmap::before {
+    animation: none;
+  }
+
+  .stepCard,
+  .tenetCard {
     transition: none;
   }
 
-  .stepCard:hover {
+  .stepCard:hover,
+  .tenetCard:hover {
     transform: none;
   }
 }

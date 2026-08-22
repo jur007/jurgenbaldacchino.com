@@ -73,6 +73,6 @@ describe("HomeSection", () => {
       await user.click(creativeCard)
     }
 
-    expect(screen.getByText(/Live 2D Canvas · 60FPS/i)).toBeInTheDocument()
+    expect(screen.getByText(/Live 2D Physics · Click to Play/i)).toBeInTheDocument()
   })
 })
