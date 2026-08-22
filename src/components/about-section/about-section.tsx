@@ -19,13 +19,12 @@ export const AboutSection = () => {
       <div className={styles.aboutContentContainer}>
         <p className={styles.aboutEyebrow}>A life in motion</p>
         <h1 id="about-title">
-          Curiosity keeps me <em>moving.</em>
+          Driven by curiosity, craft, and <em>exploration.</em>
         </h1>
         <p className={styles.aboutIntroduction}>
-          Originally from Malta and now living as a digital nomad, I’m drawn to travel, mountains,
-          adventure and anything with an engine. Exploring new places and experiencing different
-          ways of life keeps me curious, offers fresh perspectives and brings new energy to how I
-          approach products, challenges and people.
+          Originally from Malta and working globally, I’m drawn to mountain trails, exploration, and
+          anything with an engine. Stepping into new environments keeps my thinking sharp and brings
+          fresh energy to how I solve complex architecture problems and lead teams.
         </p>
         <div className={styles.aboutLocationContainer} aria-label="Location">
           <span>From</span>

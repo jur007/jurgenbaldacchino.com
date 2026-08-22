@@ -1,73 +1,97 @@
-# React + TypeScript + Vite
+# jurgenbaldacchino.com
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal engineering portfolio and technical leadership showcase for **Jurgen Baldacchino** (Head of Frontend & React Engineer).
 
-Currently, two official plugins are available:
+Built with **React 19**, **TypeScript**, **Vite**, and **CSS Modules**, engineered for speed, strict accessibility (WCAG AA), and modular architecture.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ⚡ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Core:** React 19, TypeScript
+- **Build Tool & Bundler:** Vite 8
+- **Styling:** CSS Modules with Design Tokens (CSS custom properties, 0 runtime overhead)
+- **Security & Spam Protection:** Cloudflare Turnstile
+- **Testing:** Vitest, Testing Library (`@testing-library/react`, `@testing-library/user-event`)
+- **Code Quality & Linting:** ESLint 9 (flat config), Prettier
+- **Git Hooks & Standards:** Husky, Commitlint (Conventional Commits), lint-staged
+- **CI/CD:** GitHub Actions automated quality pipeline
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Node.js**: `v20.x` or higher
+- **npm**: `v10.x` or higher
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development Server
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x"
-import reactDom from "eslint-plugin-react-dom"
+Starts the local development server with Hot Module Replacement (HMR):
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Visit `http://localhost:5173` to view the site.
+
+---
+
+## 🛠️ Scripts & Quality Gates
+
+| Command                 | Description                                                     |
+| :---------------------- | :-------------------------------------------------------------- |
+| `npm run dev`           | Starts the local Vite development server                        |
+| `npm run build`         | Typechecks with `tsc` and compiles production bundle to `dist/` |
+| `npm run preview`       | Previews the local production build                             |
+| `npm run test`          | Runs the test suite in watch mode with Vitest                   |
+| `npm run test:run`      | Runs the full unit test suite once                              |
+| `npm run test:coverage` | Generates a test coverage report                                |
+| `npm run lint`          | Lints all files using ESLint                                    |
+| `npm run lint:fix`      | Automatically fixes autofixable ESLint issues                   |
+| `npm run format:check`  | Verifies code formatting with Prettier                          |
+| `npm run format`        | Formats all files with Prettier                                 |
+| `npm run typecheck`     | Runs static type checking across the project                    |
+
+---
+
+## 🏛️ Project Architecture
+
+```text
+jurgenbaldacchino.com/
+├── public/               # Static assets & favicons
+├── src/
+│   ├── assets/           # Optimized images & media assets
+│   ├── components/       # Self-contained, modular UI components
+│   │   ├── about-section/
+│   │   ├── ai-section/
+│   │   ├── badge/
+│   │   ├── button/
+│   │   ├── card/
+│   │   ├── chat-section/
+│   │   ├── home-section/
+│   │   ├── input/
+│   │   ├── page-layout/
+│   │   └── site-footer/
+│   ├── pages/            # Page routing components
+│   ├── styles/           # Global design tokens (colors, typography, grid)
+│   ├── test/             # Test setup and shared mocks
+│   ├── utils/            # Utility helpers
+│   ├── App.tsx           # Client-side router and root layout
+│   └── main.tsx          # Application entry point
+├── .github/workflows/    # GitHub Actions CI/CD workflows
+└── index.html            # HTML entry point with semantic metadata
+```
+
+---
+
+## 📄 License
+
+Private repository. © [Jurgen Baldacchino](https://jurgenbaldacchino.com). All rights reserved.

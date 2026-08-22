@@ -45,7 +45,7 @@ describe("ChatSection", () => {
     render(<ChatSection />)
 
     expect(
-      screen.getByRole("heading", { name: "Have an idea? Let's build it together." }),
+      screen.getByRole("heading", { name: "Have a project in mind? Let's talk." }),
     ).toBeInTheDocument()
     expect(screen.getByRole("textbox", { name: /Full name.*required/i })).toBeRequired()
     expect(screen.getByRole("textbox", { name: /Email address.*required/i })).toBeRequired()

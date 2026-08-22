@@ -4,10 +4,12 @@
   min-height: 264px;
   padding: 22px;
   flex-direction: column;
-  background: var(--color-black-russian-90);
-  border: 1px solid var(--color-mauve-30);
+  background: var(--color-navy-card);
+  border: 1px solid var(--color-cyan-border);
   border-radius: var(--radius-medium);
-  box-shadow: var(--shadow-black);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-cyan-card);
   outline: none;
   transition:
     background var(--transition-fast),
@@ -16,38 +18,20 @@
     transform var(--transition-fast);
 }
 
-.containerWrapper::before {
-  position: absolute;
-  content: "";
-  inset: 0;
-  opacity: 0;
-  background: var(--gradient-revolver-hover);
-  border-radius: inherit;
-  transition: opacity var(--transition-fast);
-  pointer-events: none;
-}
-
 .containerWrapper:hover,
 .containerWrapper:focus-within {
-  border-color: var(--color-mauve-62);
-  box-shadow:
-    var(--shadow-black),
-    0 0 24px var(--color-electric-violet-13);
+  border-color: var(--color-cyan-border-hover);
+  box-shadow: var(--shadow-cyan-card-hover);
   transform: translateY(-3px);
 }
 
-.containerWrapper:hover::before,
-.containerWrapper:focus-within::before {
-  opacity: 0.45;
-}
-
 .containerWrapper:focus-within {
-  outline: 2px solid var(--color-heliotrope);
+  outline: 2px solid var(--color-electric-cyan);
   outline-offset: 4px;
 }
 
 .prominentStrengthCard {
-  border-color: var(--color-heliotrope-34);
+  border-color: var(--color-cyan-border-hover);
 }
 
 .cardHeaderContainer,
@@ -69,8 +53,8 @@
   width: 24px;
   height: 24px;
   place-items: center;
-  color: var(--color-heliotrope);
-  border: 1px solid var(--color-heliotrope);
+  color: var(--color-electric-cyan);
+  border: 1px solid var(--color-cyan-border);
   border-radius: 50%;
 }
 
@@ -92,7 +76,7 @@
 
 .containerWrapper h3 {
   margin-top: 24px;
-  color: var(--color-white-lilac);
+  color: var(--color-white);
   font-size: var(--font-size-4xl);
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
@@ -101,20 +85,20 @@
 
 .containerWrapper p {
   margin-top: 9px;
-  color: var(--color-lavender-grey);
+  color: var(--color-slate-muted);
   font-size: var(--font-size-lg);
   line-height: var(--line-height-normal);
 }
 
 .expandedDescription {
   padding-top: 8px;
-  color: var(--color-lavender-grey);
+  color: var(--color-slate-muted);
 }
 
 .technicalDetail {
   margin-top: auto;
   padding-top: 18px;
-  color: var(--color-heliotrope);
+  color: var(--color-electric-cyan);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
   letter-spacing: 0.04em;
@@ -126,10 +110,10 @@
   max-height: calc(100vh - 40px);
   padding: clamp(28px, 5vw, 48px);
   overflow-y: auto;
-  background: var(--gradient-revolver);
-  border-color: var(--color-mauve-62);
+  background: var(--color-navy-card-opaque);
+  border: 1px solid var(--color-cyan-border-hover);
   border-radius: var(--radius-large);
-  box-shadow: var(--shadow-black), var(--shadow-heliotrope);
+  box-shadow: var(--shadow-cyan-card-hover);
   animation: revealExpandedStrengthCard 280ms ease;
 }
 
@@ -137,10 +121,6 @@
 .expandedStrengthCard:focus-within {
   outline: none;
   transform: none;
-}
-
-.expandedStrengthCard::before {
-  opacity: 0.3;
 }
 
 .expandedStrengthCard h3 {
@@ -165,9 +145,9 @@
   padding: 0;
   place-items: center;
   cursor: pointer;
-  color: var(--color-heliotrope);
-  background: var(--color-white-lilac-4);
-  border: 1px solid var(--color-heliotrope);
+  color: var(--color-electric-cyan);
+  background: var(--color-slate-glass);
+  border: 1px solid var(--color-cyan-border);
   border-radius: 50%;
   transition:
     color var(--transition-fast),
@@ -176,8 +156,8 @@
 }
 
 .cardCloseButton:hover {
-  color: var(--color-white-lilac);
-  background: var(--color-mauve-8);
+  color: var(--color-white);
+  background: var(--color-cyan-subtle);
   transform: rotate(90deg);
 }
 

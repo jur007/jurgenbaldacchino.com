@@ -5,8 +5,8 @@
   place-items: center;
   align-content: center;
   gap: 36px;
-  background: var(--color-black-russian);
-  border-top: 1px solid var(--color-white-lilac-7);
+  background: var(--color-midnight-slate);
+  border-top: 1px solid var(--color-slate-border-subtle);
   text-align: center;
   content-visibility: auto;
   contain-intrinsic-size: auto 240px;
@@ -27,9 +27,10 @@
   padding: 10px 14px;
   align-items: center;
   gap: 9px;
-  color: var(--color-lavender-grey);
-  border: 1px solid transparent;
+  color: var(--color-slate-muted);
+  border: 1px solid var(--color-slate-border-subtle);
   border-radius: var(--radius-round);
+  background: var(--color-slate-glass);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
@@ -37,7 +38,8 @@
   transition:
     color var(--transition-fast),
     background-color var(--transition-fast),
-    border-color var(--transition-fast);
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .socialIcon {
@@ -48,14 +50,15 @@
 
 .socialLink:hover,
 .socialLink:focus-visible {
-  color: var(--color-white-lilac);
-  background: var(--color-white-lilac-4);
-  border-color: var(--color-mauve-30);
+  color: var(--color-electric-cyan);
+  background: var(--color-cyan-subtle);
+  border-color: var(--color-cyan-border-hover);
+  box-shadow: var(--shadow-cyan-sm);
 }
 
 .copyrightText {
   margin: 0;
-  color: var(--color-mobster);
+  color: var(--color-slate-dark);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-relaxed);

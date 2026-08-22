@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react"
-import type { FormEvent } from "react"
+import type { ChangeEvent, FormEvent, MouseEvent } from "react"
 
 import styles from "./chat-section.module.css"
 
 import { Button } from "@components/button"
 import { Input } from "@components/input"
 import { Label } from "@components/label"
+import { getClassNames } from "@utils/class-names"
 
 const contactEmailAddress = "hello@jurgenbaldacchino.com"
 const formspreeEndpoint = "https://formspree.io/f/mzdnrraj"
@@ -88,10 +89,15 @@ const loadTurnstile = () => {
 export const ChatSection = () => {
   const [submissionStatus, setSubmissionStatus] = useState(SubmissionStatus.IDLE)
   const [turnstileStatus, setTurnstileStatus] = useState(TurnstileStatus.CHECKING)
+  const [fullName, setFullName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
+
   const turnstileContainerReference = useRef<HTMLDivElement>(null)
   const turnstileWidgetReference = useRef<string | null>(null)
   const isSubmitting = submissionStatus === SubmissionStatus.SUBMITTING
   const isVerified = turnstileStatus === TurnstileStatus.VERIFIED
+  const isFormComplete = Boolean(fullName.trim() && email.trim() && message.trim() && isVerified)
 
   useEffect(() => {
     const container = turnstileContainerReference.current
@@ -140,6 +146,18 @@ export const ChatSection = () => {
     setTurnstileStatus(TurnstileStatus.CHECKING)
   }
 
+  const handleFullNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setFullName(event.target.value)
+  }
+
+  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value)
+  }
+
+  const handleMessageChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(event.target.value)
+  }
+
   const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -165,6 +183,9 @@ export const ChatSection = () => {
       }
 
       contactForm.reset()
+      setFullName("")
+      setEmail("")
+      setMessage("")
       setSubmissionStatus(SubmissionStatus.SUCCEEDED)
     } catch {
       setSubmissionStatus(SubmissionStatus.FAILED)
@@ -173,14 +194,23 @@ export const ChatSection = () => {
     }
   }
 
+  const handleFormMouseMove = (event: MouseEvent<HTMLFormElement>) => {
+    const form = event.currentTarget
+    const rect = form.getBoundingClientRect()
+    const x = event.clientX - rect.left
+    const y = event.clientY - rect.top
+    form.style.setProperty("--mouse-x", `${x}px`)
+    form.style.setProperty("--mouse-y", `${y}px`)
+  }
+
   return (
     <section aria-labelledby="chat-section-title" className={styles.containerWrapper} id="contact">
       <div className={styles.introductionContainer}>
         <p className={styles.eyebrow}>Let&apos;s chat</p>
-        <h2 id="chat-section-title">Have an idea? Let&apos;s build it together.</h2>
+        <h2 id="chat-section-title">Have a project in mind? Let&apos;s talk.</h2>
         <p className={styles.introductionCopy}>
-          Whether you&apos;re shaping a product, growing a frontend team or exploring something new,
-          share a few details and let&apos;s start a conversation.
+          Whether you&apos;re scaling a frontend application, leveling up engineering standards, or
+          looking for senior technical leadership, I’d love to hear from you.
         </p>
         <p className={styles.directContactCopy}>
           Prefer email? Reach me directly at
@@ -188,23 +218,31 @@ export const ChatSection = () => {
         </p>
       </div>
 
-      <form className={styles.contactForm} onSubmit={handleContactSubmit}>
+      <form
+        className={styles.contactForm}
+        onMouseMove={handleFormMouseMove}
+        onSubmit={handleContactSubmit}
+      >
         <Input
           autoComplete="name"
           id="contact-full-name"
           label="Full name"
           name="fullName"
+          onChange={handleFullNameChange}
           placeholder="Your full name"
           required
+          value={fullName}
         />
         <Input
           autoComplete="email"
           id="contact-email-address"
           label="Email address"
           name="email"
+          onChange={handleEmailChange}
           placeholder="you@example.com"
           required
           type="email"
+          value={email}
         />
         <div className={styles.messageFieldContainer}>
           <Label htmlFor="contact-message" required>
@@ -214,9 +252,11 @@ export const ChatSection = () => {
             className={styles.messageInput}
             id="contact-message"
             name="message"
+            onChange={handleMessageChange}
             placeholder="Tell me a little about your idea, product or team."
             required
             rows={6}
+            value={message}
           ></textarea>
         </div>
         <div
@@ -236,7 +276,10 @@ export const ChatSection = () => {
         )}
         <Button
           aria-describedby={isVerified ? undefined : "turnstile-status"}
-          className={styles.submitButton}
+          className={getClassNames(
+            styles.submitButton,
+            isFormComplete && styles.submitButtonActive,
+          )}
           disabled={!isVerified}
           fullWidth
           htmlType="submit"

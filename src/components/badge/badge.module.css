@@ -3,22 +3,22 @@
   width: fit-content;
   align-items: center;
   gap: 8px;
-  color: var(--color-lavender-grey);
-  background: var(--color-white-lilac-4);
-  border: 1px solid var(--color-white-lilac-7);
+  color: var(--color-slate-muted);
+  background: var(--color-slate-glass);
+  border: 1px solid var(--color-slate-border);
   border-radius: var(--radius-round);
   font-family: var(--font-family-mono);
   letter-spacing: 0.04em;
 }
 
 .neutralBadge {
-  color: var(--color-lavender-grey);
+  color: var(--color-slate-muted);
 }
 
 .accentBadge {
-  color: var(--color-mauve);
-  background: var(--color-electric-violet-12);
-  border-color: var(--color-mauve-30);
+  color: var(--color-electric-cyan);
+  background: var(--color-cyan-subtle);
+  border-color: var(--color-cyan-border);
 }
 
 .smallBadge {
@@ -34,7 +34,7 @@
 .statusIndicator {
   width: 7px;
   height: 7px;
-  background: var(--color-heliotrope);
+  background: var(--color-emerald);
   border-radius: 50%;
-  box-shadow: 0 0 14px var(--color-heliotrope-48);
+  box-shadow: 0 0 10px var(--color-emerald-glow);
 }
