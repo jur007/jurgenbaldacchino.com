@@ -16,10 +16,10 @@ export const PhaserCanvas = ({
 
   useEffect(() => {
     let isCancelled = false
+    const mountNode = mountReference.current
 
     const initPhaser = async () => {
-      const mount = mountReference.current
-      if (!mount || isCancelled || typeof window === "undefined") {
+      if (!mountNode || isCancelled || typeof window === "undefined") {
         return
       }
 
@@ -30,8 +30,8 @@ export const PhaserCanvas = ({
           return
         }
 
-        const width = mount.clientWidth || 300
-        const height = mount.clientHeight || 130
+        const width = mountNode.clientWidth || 300
+        const height = mountNode.clientHeight || 130
 
         class PhysicsScene extends PhaserModule.Scene {
           private orbs!: Phaser.Physics.Arcade.Group
@@ -172,7 +172,7 @@ export const PhaserCanvas = ({
 
         const config: Phaser.Types.Core.GameConfig = {
           type: PhaserModule.AUTO,
-          parent: mount,
+          parent: mountNode,
           width,
           height,
           transparent: true,
@@ -191,7 +191,13 @@ export const PhaserCanvas = ({
           banner: false,
         }
 
-        gameReference.current = new PhaserModule.Game(config)
+        const game = new PhaserModule.Game(config)
+        if (isCancelled) {
+          game.destroy(true)
+          return
+        }
+
+        gameReference.current = game
       } catch {
         // Fallback gracefully in environments without full WebGL/Canvas (e.g. testing)
       }
@@ -204,6 +210,9 @@ export const PhaserCanvas = ({
       if (gameReference.current) {
         gameReference.current.destroy(true)
         gameReference.current = null
+      }
+      if (mountNode) {
+        mountNode.replaceChildren()
       }
     }
   }, [])

@@ -3,6 +3,8 @@
   display: block;
   width: 100%;
   height: 130px;
+  min-height: 130px;
+  max-height: 130px;
   margin: 20px 0 16px;
   overflow: hidden;
   background: #040915;
@@ -10,6 +12,7 @@
   border-radius: var(--radius-small);
   cursor: pointer;
   touch-action: none;
+  contain: paint layout;
 }
 
 .canvasLiveBadge {
