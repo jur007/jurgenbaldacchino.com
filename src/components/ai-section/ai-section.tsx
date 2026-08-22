@@ -87,28 +87,27 @@ const DeliverIcon = () => (
 const processSteps: IProcessStep[] = [
   {
     description:
-      "Rapid requirements analysis, domain modeling, and AI-accelerated technical exploration.",
+      "Understanding the problem, aligning on goals, and validating technical ideas early.",
     icon: <DiscoverIcon />,
     stepNumber: "01",
     title: "Discover & Align",
   },
   {
     description:
-      "Modular system design, strict TypeScript contracts, accessibility, and performance budgets.",
+      "Designing modular systems with strict TypeScript contracts and accessible UI foundations.",
     icon: <ArchitectIcon />,
     stepNumber: "02",
     title: "Architect & Prototype",
   },
   {
     description:
-      "High-precision React engineering, automated test coverage, and clean component architecture.",
+      "Writing clean React code backed by thorough test coverage and smooth performance.",
     icon: <DevelopIcon />,
     stepNumber: "03",
     title: "Build & Optimize",
   },
   {
-    description:
-      "Automated CI/CD pipelines, Cloudflare edge delivery, and production performance monitoring.",
+    description: "Automating CI/CD pipelines for fast, reliable, and continuous delivery at scale.",
     icon: <DeliverIcon />,
     stepNumber: "04",
     title: "Deliver & Scale",
@@ -117,19 +116,18 @@ const processSteps: IProcessStep[] = [
 
 const personalTenets: ITenet[] = [
   {
-    description: "Clean, readable, and predictable code beats clever shortcuts every single time.",
+    description: "Clean, readable, and predictable code beats clever shortcuts every time.",
     icon: "🌟",
     title: "Predictability First",
   },
   {
-    description:
-      "Strong opinions, weakly held — always guided by user feedback and real-world metrics.",
+    description: "Strong opinions, weakly held — guided by user feedback and real-world metrics.",
     icon: "💡",
     title: "Pragmatic Evolution",
   },
   {
     description:
-      "Investing in developer happiness and ergonomic tooling directly shapes exceptional products.",
+      "Great developer tooling and ergonomics directly shape exceptional user experiences.",
     icon: "🚀",
     title: "DX Multiplier",
   },
