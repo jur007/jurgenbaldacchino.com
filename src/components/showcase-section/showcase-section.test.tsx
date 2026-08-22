@@ -19,8 +19,8 @@ describe("ShowcaseSection", () => {
 
     expect(screen.getByRole("heading", { level: 3, name: "Metaspins" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 3, name: "Mines Classic" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { level: 3, name: "Guts" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { level: 3, name: "Rizk" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Guts Sportsbook" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Rizk Sportsbook" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 3, name: "Wetten.com" })).toBeInTheDocument()
   })
 
@@ -33,13 +33,15 @@ describe("ShowcaseSection", () => {
 
     expect(screen.getByRole("heading", { level: 3, name: "Mines Classic" })).toBeInTheDocument()
     expect(screen.queryByRole("heading", { level: 3, name: "Metaspins" })).not.toBeInTheDocument()
-    expect(screen.queryByRole("heading", { level: 3, name: "Guts" })).not.toBeInTheDocument()
+    expect(
+      screen.queryByRole("heading", { level: 3, name: "Guts Sportsbook" }),
+    ).not.toBeInTheDocument()
 
     const allFilter = screen.getByRole("button", { name: /all \(5\)/i })
     await user.click(allFilter)
 
     expect(screen.getByRole("heading", { level: 3, name: "Metaspins" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { level: 3, name: "Guts" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Guts Sportsbook" })).toBeInTheDocument()
   })
 
   it("opens case study modal when a card is selected and closes when back is clicked", async () => {
