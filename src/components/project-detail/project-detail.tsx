@@ -118,7 +118,7 @@ export const ProjectDetail = ({ project, onBack, className }: IProjectDetail) =>
                 onClick={handleToggleSolutions}
                 type="button"
               >
-                <span>How I Built It</span>
+                <span>Under the Hood</span>
                 <span className={styles.accordionToggleSymbol} aria-hidden="true">
                   {isSolutionsOpen ? "−" : "+"}
                 </span>
