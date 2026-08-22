@@ -16,7 +16,7 @@ const mockProject: IProject = {
   clientOrOrg: "Metaspins",
   summary: "Comprehensive test summary for Metaspins.",
   whatIDid: ["Led frontend team.", "Built WebSockets state."],
-  howIBuiltIt: ["Isolated state slices.", "Optimized bundle size."],
+  technicalApproach: ["Isolated state slices.", "Optimized bundle size."],
   technologies: ["React", "TypeScript", "Vite"],
   metrics: "Sub-second LCP",
   thumbnailUrl: "/assets/showcase/metaspins.png",
@@ -77,5 +77,14 @@ describe("CaseStudyModal", () => {
 
     await user.click(whatIDidButton)
     expect(screen.getByText("Led frontend team.")).toBeInTheDocument()
+
+    const underTheHoodButton = screen.getByRole("button", { name: /under the hood/i })
+    expect(screen.getByText("Isolated state slices.")).toBeInTheDocument()
+
+    await user.click(underTheHoodButton)
+    expect(screen.queryByText("Isolated state slices.")).not.toBeInTheDocument()
+
+    await user.click(underTheHoodButton)
+    expect(screen.getByText("Isolated state slices.")).toBeInTheDocument()
   })
 })

@@ -10,7 +10,7 @@ export interface IProject {
   clientOrOrg: string
   summary: string
   whatIDid: string[]
-  howIBuiltIt: string[]
+  technicalApproach: string[]
   technologies: string[]
   metrics?: string
   thumbnailUrl: string
@@ -34,13 +34,13 @@ export const showcaseProjects: IProject[] = [
       "Built key interactive engagement features including daily drops, custom lootboxes, and native in-house games.",
       "Set up automated continuous delivery pipelines to speed up internal feature releases and ship with confidence.",
     ],
-    howIBuiltIt: [
+    technicalApproach: [
       "Optimized our Gatsby build processes and caching strategies to cut compilation times and deploy updates faster.",
       "Worked hand in hand across product, design, and backend teams to turn complex feature concepts into smooth, shippable web experiences.",
     ],
-    technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "CSS3 Modules", "Cloudflare"],
+    technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "TailwindCSS", "Cloudflare"],
     metrics: "Built from the ground up",
-    thumbnailUrl: "/assets/showcase/metaspins.png",
+    thumbnailUrl: "/assets/showcase/metaspins.jpg",
     liveUrl: "https://metaspins.com",
     badgeColor: "#00F0FF",
   },
@@ -59,7 +59,7 @@ export const showcaseProjects: IProject[] = [
       "Created a clean state bridge between React UI controls and the WebGL game canvas.",
       "Packaged the game engine into an independent module ready for easy host-app embedding.",
     ],
-    howIBuiltIt: [
+    technicalApproach: [
       "Handled strict context cleanup on unmount to completely eliminate GPU and WebGL memory leaks.",
       "Optimized sprite sheets and render budgets to maintain an unbroken 60 FPS on mobile browsers.",
       "Worked hand in hand with designers to shape the visual identity, feel, and narrative flow of the game.",
@@ -78,19 +78,19 @@ export const showcaseProjects: IProject[] = [
     role: "Head of Frontend",
     clientOrOrg: "Bombastic.com",
     summary:
-      "Modernized a legacy platform into a contemporary crypto casino and sportsbook web app, delivering smooth wallet streaming and high-converting reward mechanics.",
+      "Modernized a legacy platform into a contemporary crypto casino and sportsbook web app, delivering seamless wallet streaming and high-converting reward mechanics.",
     whatIDid: [
       "Led the frontend brand revamp and migrated legacy views to a modular React architecture.",
       "Built core casino and sportsbook features, including daily lootboxes, rakeback rewards, and in-house originals.",
       "Integrated real-time crypto wallet synchronization and seamless game launching flows.",
     ],
-    howIBuiltIt: [
+    technicalApproach: [
       "Standardized reusable UI tokens and responsive layout systems for seamless multi-device play.",
       "Optimized WebSocket state streams and bundle splitting to ensure fast, responsive page transitions.",
     ],
-    technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "CSS3 Modules", "Cloudflare"],
+    technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "TailwindCSS", "Cloudflare"],
     metrics: "Modern architecture revamp",
-    thumbnailUrl: "/assets/showcase/bombastic.png",
+    thumbnailUrl: "/assets/showcase/bombastic.jpg",
     liveUrl: "https://bombastic.com",
     badgeColor: "#F97316",
   },
@@ -109,13 +109,13 @@ export const showcaseProjects: IProject[] = [
       "Engineered interactive betslip validation, combination bets, and live odds tickers.",
       "Unified the betting UI design system across desktop and mobile browsers.",
     ],
-    howIBuiltIt: [
+    technicalApproach: [
       "Decoupled betslip state calculations from the DOM to eliminate UI stutter when odds change rapidly.",
       "Streamlined WebSocket event handling to keep live scores updating with minimal network overhead.",
     ],
     technologies: ["React", "TypeScript", "Redux Toolkit", "WebSockets", "SCSS Modules"],
     metrics: "Fast & responsive betslip",
-    thumbnailUrl: "/assets/showcase/guts.png",
+    thumbnailUrl: "/assets/showcase/guts.jpg",
     liveUrl: "https://guts.com",
     badgeColor: "#E11D48",
   },
@@ -133,13 +133,13 @@ export const showcaseProjects: IProject[] = [
       "Built live betting dashboards, multi-sport category trees, and real-time match visualizations.",
       "Integrated brand design tokens and custom assets into a shared multi-brand frontend library.",
     ],
-    howIBuiltIt: [
+    technicalApproach: [
       "Used virtualized lists for large betting markets to guarantee smooth 60 FPS scrolling on mobile.",
       "Refined keyboard navigation and accessibility standards across complex betting dialogs.",
     ],
-    technologies: ["React", "TypeScript", "External Teams", "CSS Modules"],
+    technologies: ["React", "TypeScript", "State Machines", "CSS Modules"],
     metrics: "High-traffic reliability",
-    thumbnailUrl: "/assets/showcase/rizk.png",
+    thumbnailUrl: "/assets/showcase/rizk.jpg",
     liveUrl: "https://rizk.com",
     badgeColor: "#FACC15",
   },
@@ -157,13 +157,13 @@ export const showcaseProjects: IProject[] = [
       "Developed high-converting sign-up flows, account verification steps, and localized sport hubs.",
       "Built responsive betting tables and bet placement widgets tailored for mobile screens.",
     ],
-    howIBuiltIt: [
+    technicalApproach: [
       "Created modular multi-step form validation with instant client-side error feedback.",
       "Optimized layout rendering so live odds updates never cause content jumping or layout shifts.",
     ],
     technologies: ["React", "TypeScript", "REST APIs", "Styled Components"],
     metrics: "Clean betting flow & fast onboarding",
-    thumbnailUrl: "/assets/showcase/wetten.png",
+    thumbnailUrl: "/assets/showcase/wetten.jpg",
     liveUrl: "https://wetten.com",
     badgeColor: "#38BDF8",
   },

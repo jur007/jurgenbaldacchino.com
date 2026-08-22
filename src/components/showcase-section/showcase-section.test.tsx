@@ -65,4 +65,13 @@ describe("ShowcaseSection", () => {
 
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
   })
+
+  it("supports deep-linking via initialProjectId prop", () => {
+    render(<ShowcaseSection initialProjectId="mines-classic-game" />)
+
+    expect(screen.getByRole("dialog")).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 1, name: "Mines Classic" })).toBeInTheDocument()
+    expect(screen.getByText("Under the Hood")).toBeInTheDocument()
+    expect(screen.getByText("Independent Production", { selector: "dd" })).toBeInTheDocument()
+  })
 })

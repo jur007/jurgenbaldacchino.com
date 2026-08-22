@@ -125,14 +125,14 @@ export const ProjectDetail = ({ project, onBack, className }: IProjectDetail) =>
               </button>
               {isSolutionsOpen && (
                 <div className={styles.accordionContent} id="accordion-solutions">
-                  {Array.isArray(project.howIBuiltIt) ? (
+                  {Array.isArray(project.technicalApproach) ? (
                     <ul>
-                      {project.howIBuiltIt.map((item, index) => (
+                      {project.technicalApproach.map((item, index) => (
                         <li key={index}>{item}</li>
                       ))}
                     </ul>
                   ) : (
-                    <p>{project.howIBuiltIt}</p>
+                    <p>{project.technicalApproach}</p>
                   )}
                 </div>
               )}

@@ -219,7 +219,7 @@ export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStu
                   {isSolutionsOpen && (
                     <div className={styles.accordionContent} id="accordion-solutions">
                       <ul className={styles.bulletList}>
-                        {project.howIBuiltIt.map((item, index) => (
+                        {project.technicalApproach.map((item, index) => (
                           <li className={styles.bulletListItem} key={index}>
                             {item}
                           </li>

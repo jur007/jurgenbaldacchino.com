@@ -96,7 +96,10 @@ export const ShowcaseCard = ({ project, onSelect, className }: IShowcaseCard) =>
               </span>
             ))}
           </div>
-          <span className={styles.viewDetailsAction}>
+          <span
+            aria-label={`View Case Study for ${project.title}`}
+            className={styles.viewDetailsAction}
+          >
             <span>View Case Study</span>
             <ArrowRightIcon />
           </span>

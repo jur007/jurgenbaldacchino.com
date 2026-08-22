@@ -16,7 +16,7 @@ const mockProject: IProject = {
   clientOrOrg: "Test Org",
   summary: "A test summary description for the showcase card.",
   whatIDid: ["Built core architecture."],
-  howIBuiltIt: ["Applied state management."],
+  technicalApproach: ["Applied state management."],
   technologies: ["React", "TypeScript", "Vite"],
   metrics: "Sub-second sync",
   thumbnailUrl: "/assets/showcase/metaspins.png",

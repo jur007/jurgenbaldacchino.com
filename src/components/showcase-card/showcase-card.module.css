@@ -6,8 +6,8 @@
   border-radius: var(--radius-medium);
   border: 1px solid var(--color-glass-border);
   background: var(--color-glass-surface);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   cursor: pointer;

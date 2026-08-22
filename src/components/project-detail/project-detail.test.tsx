@@ -16,7 +16,7 @@ const mockProject: IProject = {
   clientOrOrg: "Metaspins",
   summary: "Comprehensive summary of the test application platform.",
   whatIDid: ["Designed component state layers and WebSocket integration."],
-  howIBuiltIt: ["Applied immutable cache keys and fine-grained DOM updates."],
+  technicalApproach: ["Applied immutable cache keys and fine-grained DOM updates."],
   technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
   metrics: "Sub-second real-time sync",
   thumbnailUrl: "/assets/showcase/metaspins.png",
@@ -62,6 +62,23 @@ describe("ProjectDetail", () => {
     await user.click(whatIDidButton)
     expect(
       screen.getByText("Designed component state layers and WebSocket integration."),
+    ).toBeInTheDocument()
+
+    const underTheHoodButton = screen.getByRole("button", {
+      name: /under the hood/i,
+    })
+    expect(
+      screen.getByText("Applied immutable cache keys and fine-grained DOM updates."),
+    ).toBeInTheDocument()
+
+    await user.click(underTheHoodButton)
+    expect(
+      screen.queryByText("Applied immutable cache keys and fine-grained DOM updates."),
+    ).not.toBeInTheDocument()
+
+    await user.click(underTheHoodButton)
+    expect(
+      screen.getByText("Applied immutable cache keys and fine-grained DOM updates."),
     ).toBeInTheDocument()
   })
 
