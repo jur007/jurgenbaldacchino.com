@@ -493,16 +493,16 @@ export const HomeSection = () => {
               </div>
               <div className={styles.bentoMetricsBar}>
                 <div className={styles.metricIndicatorItem}>
-                  <span className={styles.metricIndicatorValue}>500k+ MAU</span>
-                  <span className={styles.metricIndicatorLabel}>Scaled Architecture</span>
+                  <span className={styles.metricIndicatorValue}>Sub-Second</span>
+                  <span className={styles.metricIndicatorLabel}>Fast Load Times</span>
                 </div>
                 <div className={styles.metricIndicatorItem}>
-                  <span className={styles.metricIndicatorValue}>100/100</span>
-                  <span className={styles.metricIndicatorLabel}>Lighthouse Perf</span>
+                  <span className={styles.metricIndicatorValue}>Design Systems</span>
+                  <span className={styles.metricIndicatorLabel}>Reusable & Modular</span>
                 </div>
                 <div className={styles.metricIndicatorItem}>
-                  <span className={styles.metricIndicatorValue}>WCAG AA</span>
-                  <span className={styles.metricIndicatorLabel}>Accessible by Default</span>
+                  <span className={styles.metricIndicatorValue}>Accessible</span>
+                  <span className={styles.metricIndicatorLabel}>Built for Everyone</span>
                 </div>
               </div>
               <div className={styles.bentoTechBadgeList}>
