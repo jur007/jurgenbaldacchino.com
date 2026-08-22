@@ -70,6 +70,31 @@ export const showcaseProjects: IProject[] = [
     badgeColor: "#FF6B00",
   },
   {
+    id: "bombastic-platform",
+    title: "Bombastic",
+    subtitle: "Brand Revamp & Modern Web Architecture",
+    category: "react",
+    categoryLabel: "React Architecture",
+    role: "Senior Frontend Engineer",
+    clientOrOrg: "Bombastic.com",
+    summary:
+      "Modernized a legacy platform into a contemporary crypto casino and sportsbook web app, delivering seamless wallet streaming and high-converting reward mechanics.",
+    whatIDid: [
+      "Led the frontend brand revamp and migrated legacy views to a modular React architecture.",
+      "Built core casino and sportsbook features, including daily lootboxes, rakeback rewards, and in-house originals.",
+      "Integrated real-time crypto wallet synchronization and seamless game launching flows.",
+    ],
+    howIBuiltIt: [
+      "Standardized reusable UI tokens and responsive layout systems for seamless multi-device play.",
+      "Optimized WebSocket state streams and bundle splitting to ensure fast, responsive page transitions.",
+    ],
+    technologies: ["React", "TypeScript", "WebSockets", "CSS Modules", "Cloudflare"],
+    metrics: "Brand revamp & modern web architecture",
+    thumbnailUrl: "/assets/showcase/bombastic.png",
+    liveUrl: "https://bombastic.com",
+    badgeColor: "#FF5500",
+  },
+  {
     id: "guts-sportsbook",
     title: "Guts Sportsbook",
     subtitle: "Full Modern Architecture Rewrite",
