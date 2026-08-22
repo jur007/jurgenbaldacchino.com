@@ -1,0 +1,196 @@
+.containerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+  padding: 64px var(--layout-page-gutter) 96px;
+  margin: 0 auto;
+}
+
+.showcaseHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.showcaseEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-electric-cyan);
+  background: var(--color-cyan-subtle);
+  border: 1px solid var(--color-cyan-border);
+  border-radius: var(--radius-round);
+}
+
+.showcaseTitle {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.02em;
+  color: var(--color-text-heading);
+}
+
+.showcaseSubtitle {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-body);
+}
+
+.filterNavigationWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+.filterNavigation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px;
+  margin: 0 auto;
+  border-radius: var(--radius-round);
+  background: rgba(11, 19, 43, 0.5);
+  border: 1px solid var(--color-slate-border-subtle);
+}
+
+.filterButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-slate-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-round);
+  cursor: pointer;
+  outline: none;
+  flex-shrink: 0;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.filterButton:hover {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.filterButton:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-electric-cyan);
+}
+
+.filterButtonActive {
+  color: var(--color-electric-cyan);
+  background: rgba(0, 240, 255, 0.12);
+  border-color: var(--color-cyan-border);
+  box-shadow: 0 0 16px var(--color-cyan-glow-intense);
+}
+
+.filterCount {
+  display: inline-block;
+  opacity: 0.8;
+  font-size: var(--font-size-2xs);
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.emptyStateMessage {
+  padding: 48px;
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: var(--color-slate-muted);
+  border-radius: var(--radius-medium);
+  border: 1px dashed var(--color-slate-border);
+}
+
+@media (max-width: 1023px) {
+  .projectGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .containerWrapper {
+    padding-top: 40px;
+    padding-bottom: 64px;
+    gap: 36px;
+  }
+
+  .filterNavigationWrapper {
+    justify-content: flex-start;
+    overflow: hidden;
+    margin-inline: calc(-1 * var(--layout-page-gutter));
+    width: calc(100% + (2 * var(--layout-page-gutter)));
+  }
+
+  .filterNavigation {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    padding: 6px var(--layout-page-gutter);
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .filterNavigation::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filterButton {
+    padding: 10px 18px;
+    font-size: var(--font-size-xs);
+    background: rgba(11, 19, 43, 0.8);
+    border: 1px solid var(--color-slate-border-subtle);
+    border-radius: var(--radius-round);
+    scroll-snap-align: start;
+  }
+
+  .filterButtonActive {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--color-electric-cyan);
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+  }
+
+  .projectGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

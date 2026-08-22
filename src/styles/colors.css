@@ -27,6 +27,13 @@
   --color-emerald-glow: rgba(16, 185, 129, 0.4);
   --color-persian-red: #ef4444;
   --color-mona-lisa: #f87171;
+  --color-glass-surface: rgba(8, 15, 30, 0.75);
+  --color-glass-surface-hover: rgba(14, 25, 52, 0.85);
+  --color-glass-border: rgba(0, 240, 255, 0.15);
+  --color-glass-border-hover: rgba(0, 240, 255, 0.4);
+  --color-text-heading: #f1f5f9;
+  --color-text-body: #8e9eb5;
+  --color-action-link: #00f0ff;
   --color-black-45: rgba(0, 0, 0, 0.45);
   --color-black-60: rgba(0, 0, 0, 0.6);
   --color-black-80: rgba(0, 0, 0, 0.8);
