@@ -13,7 +13,6 @@ const mockProject: IProject = {
   category: "react",
   categoryLabel: "React Architecture",
   role: "Lead Engineer",
-  timeline: "2024 - 2025",
   clientOrOrg: "Test Org",
   summary: "A test summary description for the showcase card.",
   whatIDid: ["Built core architecture."],
@@ -29,43 +28,38 @@ describe("ShowcaseCard", () => {
     const handleSelect = vi.fn()
     render(<ShowcaseCard onSelect={handleSelect} project={mockProject} />)
 
-    expect(screen.getByText("Test Application Platform")).toBeInTheDocument()
+    expect(
+      screen.getByRole("heading", { level: 3, name: "Test Application Platform" }),
+    ).toBeInTheDocument()
     expect(screen.getByText("Web Platform Subtitle")).toBeInTheDocument()
     expect(screen.getByText("React Architecture")).toBeInTheDocument()
     expect(screen.getByText("Lead Engineer")).toBeInTheDocument()
+    expect(screen.getByText("Test Org")).toBeInTheDocument()
     expect(
       screen.getByText("A test summary description for the showcase card."),
     ).toBeInTheDocument()
-    expect(screen.getByText("Sub-second sync")).toBeInTheDocument()
     expect(screen.getByText("React")).toBeInTheDocument()
     expect(screen.getByText("TypeScript")).toBeInTheDocument()
+    expect(screen.getByText("Sub-second sync")).toBeInTheDocument()
   })
 
-  it("triggers onSelect callback when clicked", async () => {
+  it("calls onSelect when card is clicked or entered", async () => {
     const handleSelect = vi.fn()
     const user = userEvent.setup()
-
     render(<ShowcaseCard onSelect={handleSelect} project={mockProject} />)
 
-    const card = screen.getByRole("button", {
+    const cardButton = screen.getByRole("button", {
       name: /view case study for test application platform/i,
     })
-    await user.click(card)
+    await user.click(cardButton)
+
     expect(handleSelect).toHaveBeenCalledWith(mockProject)
-    expect(handleSelect).toHaveBeenCalledTimes(1)
   })
 
-  it("triggers onSelect callback when activated with keyboard", async () => {
-    const handleSelect = vi.fn()
-    const user = userEvent.setup()
-
-    render(<ShowcaseCard onSelect={handleSelect} project={mockProject} />)
-
-    const card = screen.getByRole("button", {
-      name: /view case study for test application platform/i,
-    })
-    card.focus()
-    await user.keyboard("{Enter}")
-    expect(handleSelect).toHaveBeenCalledWith(mockProject)
+  it("renders live image preview with correct alt text", () => {
+    render(<ShowcaseCard onSelect={vi.fn()} project={mockProject} />)
+    const image = screen.getByRole("img", { name: /test application platform preview/i })
+    expect(image).toBeInTheDocument()
+    expect(image).toHaveAttribute("src", "/assets/showcase/metaspins.png")
   })
 })

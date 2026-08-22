@@ -7,7 +7,6 @@ export interface IProject {
   category: "react" | "canvas"
   categoryLabel: string
   role: string
-  timeline: string
   clientOrOrg: string
   summary: string
   whatIDid: string[]
@@ -23,11 +22,10 @@ export const showcaseProjects: IProject[] = [
   {
     id: "metaspins-platform",
     title: "Metaspins",
-    subtitle: "Next-Gen Crypto Casino Platform",
+    subtitle: "Crypto Casino Platform",
     category: "react",
     categoryLabel: "React Architecture",
     role: "Head of Frontend",
-    timeline: "2023 - Present",
     clientOrOrg: "Metaspins",
     summary:
       "Built and scaled the core web app for a high-traffic crypto casino, keeping the interface snappy and wallet states synced in real time.",
@@ -37,8 +35,8 @@ export const showcaseProjects: IProject[] = [
       "Set up automated continuous delivery pipelines to speed up internal feature releases and ship with confidence.",
     ],
     howIBuiltIt: [
-      "Decoupled high-frequency balance tickers into a dedicated reactive state layer so live data never blocks UI rendering.",
-      "Implemented code splitting and asset preloading to deliver fast sub-second initial loads.",
+      "Optimized our Gatsby build processes and caching strategies to cut compilation times and deploy updates faster.",
+      "Worked hand in hand across product, design, and backend teams to turn complex feature concepts into smooth, shippable web experiences.",
     ],
     technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "TailwindCSS", "Cloudflare"],
     metrics: "Built from the ground up",
@@ -53,7 +51,6 @@ export const showcaseProjects: IProject[] = [
     category: "canvas",
     categoryLabel: "Creative / Canvas",
     role: "Lead Game Developer & Creative Engineer",
-    timeline: "2026",
     clientOrOrg: "Independent Production",
     summary:
       "A custom 2D casual game built from scratch as an isolated standalone bundle with smooth animations and physics.",
@@ -78,7 +75,6 @@ export const showcaseProjects: IProject[] = [
     category: "react",
     categoryLabel: "React Architecture",
     role: "Senior Frontend Engineer",
-    timeline: "2021 - 2023",
     clientOrOrg: "Guts.com",
     summary:
       "Rewrote a legacy monolithic sportsbook into a modern, modular React app that handles high-concurrency match days with ease.",
@@ -104,7 +100,6 @@ export const showcaseProjects: IProject[] = [
     category: "react",
     categoryLabel: "React Architecture",
     role: "Senior Frontend Engineer",
-    timeline: "2020 - 2022",
     clientOrOrg: "Rizk.com",
     summary:
       "Engineered the flagship Rizk sportsbook web platform, prioritizing fast navigation and clear live market tracking.",
@@ -116,7 +111,7 @@ export const showcaseProjects: IProject[] = [
       "Used virtualized lists for large betting markets to guarantee smooth 60 FPS scrolling on mobile.",
       "Refined keyboard navigation and accessibility standards across complex betting dialogs.",
     ],
-    technologies: ["React", "TypeScript", "State Machines", "CSS Modules"],
+    technologies: ["React", "TypeScript", "External Teams", "CSS Modules"],
     metrics: "High-traffic reliability",
     thumbnailUrl: "/assets/showcase/rizk.png",
     liveUrl: "https://rizk.com",
@@ -129,7 +124,6 @@ export const showcaseProjects: IProject[] = [
     category: "react",
     categoryLabel: "React Architecture",
     role: "Frontend Engineer",
-    timeline: "2019 - 2021",
     clientOrOrg: "Wetten.com",
     summary:
       "Delivered a fast sports betting web platform focused on clean odds presentation, simple navigation, and smooth user onboarding.",

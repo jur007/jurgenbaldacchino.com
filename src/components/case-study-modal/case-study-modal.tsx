@@ -245,11 +245,6 @@ export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStu
                   <dd className={styles.metaValue}>{project.clientOrOrg}</dd>
                 </div>
 
-                <div className={styles.metaRow}>
-                  <dt className={styles.metaLabel}>Timeline</dt>
-                  <dd className={styles.metaValue}>{project.timeline}</dd>
-                </div>
-
                 {project.metrics && (
                   <div className={styles.metaRow}>
                     <dt className={styles.metaLabel}>Key Impact</dt>

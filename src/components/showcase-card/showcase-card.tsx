@@ -74,8 +74,6 @@ export const ShowcaseCard = ({ project, onSelect, className }: IShowcaseCard) =>
                 <span>{project.clientOrOrg}</span>
               </>
             )}
-            <span className={styles.metaDivider}>·</span>
-            <span>{project.timeline}</span>
           </div>
           <h3 className={styles.projectTitle}>{project.title}</h3>
           <p className={styles.projectSubtitle}>{project.subtitle}</p>

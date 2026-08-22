@@ -9,11 +9,10 @@ import type { IProject } from "@data/showcase"
 const mockProject: IProject = {
   id: "test-project-detail",
   title: "Metaspins",
-  subtitle: "Next-Gen Crypto Casino Platform",
+  subtitle: "Crypto Casino Platform",
   category: "react",
   categoryLabel: "React Architecture",
   role: "Head of Frontend",
-  timeline: "Present",
   clientOrOrg: "Metaspins",
   summary: "Comprehensive summary of the test application platform.",
   whatIDid: ["Designed component state layers and WebSocket integration."],
