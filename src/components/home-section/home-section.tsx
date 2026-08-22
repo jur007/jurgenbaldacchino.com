@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { lazy, Suspense, useEffect, useRef, useState } from "react"
 import type { MouseEvent } from "react"
 
 import styles from "./home-section.module.css"
@@ -8,6 +8,8 @@ import { AiSection } from "@components/ai-section"
 import { ButtonLink } from "@components/button"
 import { IButtonSize, IButtonType } from "@components/button/button.types"
 import { getClassNames } from "@utils/class-names"
+
+const PhaserCanvas = lazy(() => import("@components/phaser-canvas"))
 
 const heading = "Building high-impact frontend architectures made to last."
 const emphasizedHeading = "made to last."
@@ -199,22 +201,9 @@ const UsersIcon = () => (
   </svg>
 )
 
-interface IParticle {
-  alpha: number
-  color: string
-  radius: number
-  speedX: number
-  speedY: number
-  x: number
-  y: number
-}
-
 export const HomeSection = () => {
   const [heroReference, isHeroVisible] = useRevealOnIntersection<HTMLDivElement>()
   const [bentoReference, isBentoVisible] = useRevealOnIntersection<HTMLDivElement>()
-  const [activeParticleCount, setActiveParticleCount] = useState(0)
-  const canvasReference = useRef<HTMLCanvasElement>(null)
-  const particlesReference = useRef<IParticle[]>([])
 
   const visibleHeading = useTypedHeading(isHeroVisible)
   const visibleRegularHeading = visibleHeading.slice(0, regularHeading.length)
@@ -227,132 +216,6 @@ export const HomeSection = () => {
     const y = event.clientY - rect.top
     card.style.setProperty("--mouse-x", `${x}px`)
     card.style.setProperty("--mouse-y", `${y}px`)
-  }
-
-  useEffect(() => {
-    const canvas = canvasReference.current
-    if (!canvas) {
-      return
-    }
-
-    const context = canvas.getContext("2d")
-    if (!context) {
-      return
-    }
-
-    let animationFrameId: number
-    const width = (canvas.width = canvas.offsetWidth || 280)
-    const height = (canvas.height = canvas.offsetHeight || 130)
-
-    if (particlesReference.current.length === 0) {
-      particlesReference.current = Array.from({ length: 24 }, () => ({
-        alpha: Math.random() * 0.7 + 0.3,
-        color: Math.random() > 0.35 ? "#00f0ff" : "#f59e0b",
-        radius: Math.random() * 2.2 + 1.5,
-        speedX: (Math.random() - 0.5) * 1.4,
-        speedY: (Math.random() - 0.5) * 1.4,
-        x: Math.random() * width,
-        y: Math.random() * height,
-      }))
-    }
-
-    const render = () => {
-      context.clearRect(0, 0, width, height)
-
-      // Draw subtle grid
-      context.strokeStyle = "rgba(0, 240, 255, 0.08)"
-      context.lineWidth = 1
-      for (let x = 0; x < width; x += 24) {
-        context.beginPath()
-        context.moveTo(x, 0)
-        context.lineTo(x, height)
-        context.stroke()
-      }
-      for (let y = 0; y < height; y += 24) {
-        context.beginPath()
-        context.moveTo(0, y)
-        context.lineTo(width, y)
-        context.stroke()
-      }
-
-      const particles = particlesReference.current
-
-      // Update and draw particles
-      for (let indexA = 0; indexA < particles.length; indexA += 1) {
-        const particleA = particles[indexA]
-        if (!particleA) {
-          continue
-        }
-
-        particleA.x += particleA.speedX
-        particleA.y += particleA.speedY
-
-        // Bounce on boundaries
-        if (particleA.x <= particleA.radius || particleA.x >= width - particleA.radius) {
-          particleA.speedX *= -1
-        }
-        if (particleA.y <= particleA.radius || particleA.y >= height - particleA.radius) {
-          particleA.speedY *= -1
-        }
-
-        context.beginPath()
-        context.arc(particleA.x, particleA.y, particleA.radius, 0, Math.PI * 2)
-        context.fillStyle = particleA.color
-        context.shadowColor = particleA.color
-        context.shadowBlur = 10
-        context.fill()
-
-        for (let indexB = indexA + 1; indexB < particles.length; indexB += 1) {
-          const particleB = particles[indexB]
-          if (!particleB) {
-            continue
-          }
-
-          const distance = Math.hypot(particleA.x - particleB.x, particleA.y - particleB.y)
-          if (distance < 58) {
-            context.beginPath()
-            context.moveTo(particleA.x, particleA.y)
-            context.lineTo(particleB.x, particleB.y)
-            context.strokeStyle = `rgba(0, 240, 255, ${0.4 * (1 - distance / 58)})`
-            context.stroke()
-          }
-        }
-      }
-
-      animationFrameId = window.requestAnimationFrame(render)
-    }
-
-    render()
-
-    return () => {
-      window.cancelAnimationFrame(animationFrameId)
-    }
-  }, [activeParticleCount])
-
-  const handleCanvasInteraction = (event: MouseEvent<HTMLDivElement>) => {
-    event.preventDefault()
-    const canvas = canvasReference.current
-    if (!canvas) {
-      return
-    }
-
-    const rect = canvas.getBoundingClientRect()
-    const clickX = event.clientX - rect.left
-    const clickY = event.clientY - rect.top
-
-    // Spawn interactive burst of 6 particles from click position
-    const burstParticles: IParticle[] = Array.from({ length: 6 }, () => ({
-      alpha: 1,
-      color: Math.random() > 0.5 ? "#00f0ff" : "#f59e0b",
-      radius: Math.random() * 2.5 + 2,
-      speedX: (Math.random() - 0.5) * 3.5,
-      speedY: (Math.random() - 0.5) * 3.5,
-      x: clickX,
-      y: clickY,
-    }))
-
-    particlesReference.current = [...particlesReference.current.slice(-24), ...burstParticles]
-    setActiveParticleCount((count) => count + 1)
   }
 
   return (
@@ -539,7 +402,6 @@ export const HomeSection = () => {
           <li className={getClassNames(styles.bentoGridItem, styles.bentoGridItemCreative)}>
             <article
               className={getClassNames(styles.bentoCard, styles.bentoCardCreative)}
-              onClick={handleCanvasInteraction}
               onMouseMove={handleCardMouseMove}
             >
               <div className={styles.bentoCardHeader}>
@@ -560,13 +422,15 @@ export const HomeSection = () => {
                   web games. Blending web standards with 60FPS physics and WebGL micro-interactions.
                 </p>
               </div>
-              <div
-                className={styles.canvasPreviewContainer}
-                title="Click anywhere to burst particles!"
+              <Suspense
+                fallback={
+                  <div className={styles.canvasPreviewContainer}>
+                    <span className={styles.canvasLiveBadge}>Phaser 3 · Live Physics</span>
+                  </div>
+                }
               >
-                <canvas className={styles.canvasElement} ref={canvasReference} />
-                <span className={styles.canvasLiveBadge}>Live 2D Physics · Click to Play</span>
-              </div>
+                <PhaserCanvas />
+              </Suspense>
               <div className={styles.bentoTechBadgeList}>
                 <span className={getClassNames(styles.bentoTechBadge, styles.badgeCreativeAmber)}>
                   Phaser 3

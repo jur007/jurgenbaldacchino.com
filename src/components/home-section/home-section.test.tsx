@@ -72,6 +72,6 @@ describe("HomeSection", () => {
       await user.click(creativeCard)
     }
 
-    expect(screen.getByText(/Live 2D Physics · Click to Play/i)).toBeInTheDocument()
+    expect(await screen.findByText(/Phaser 3 · Live Physics/i)).toBeInTheDocument()
   })
 })

@@ -23,7 +23,11 @@ describe("App", () => {
     render(<App />)
 
     expect(
-      await screen.findByRole("heading", { name: /Driven by curiosity, craft, and exploration/i }),
+      await screen.findByRole(
+        "heading",
+        { name: /Driven by curiosity, craft, and exploration/i },
+        { timeout: 4000 },
+      ),
     ).toBeInTheDocument()
   })
 
@@ -32,7 +36,11 @@ describe("App", () => {
     render(<App />)
 
     expect(
-      await screen.findByRole("heading", { name: /Driven by curiosity, craft, and exploration/i }),
+      await screen.findByRole(
+        "heading",
+        { name: /Driven by curiosity, craft, and exploration/i },
+        { timeout: 4000 },
+      ),
     ).toBeInTheDocument()
   })
 
@@ -41,7 +49,7 @@ describe("App", () => {
     render(<App />)
 
     expect(
-      await screen.findByRole("heading", { name: "This page wandered off." }),
+      await screen.findByRole("heading", { name: "This page wandered off." }, { timeout: 4000 }),
     ).toBeInTheDocument()
     expect(screen.getByRole("link", { name: "Return home" })).toHaveAttribute("href", "/")
   })
