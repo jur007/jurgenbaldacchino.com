@@ -98,8 +98,8 @@ export const ShowcaseSection = ({ initialProjectId, className }: IShowcaseSectio
           Showcase
         </h2>
         <p className={styles.showcaseSubtitle}>
-          A curated collection of production systems, high-concurrency iGaming platforms, real-time
-          sportsbooks, and interactive 2D canvas engines built with modern engineering craft.
+          A selection of production systems, web platforms, and interactive engines I&apos;ve been a
+          part of leading and building.
         </p>
       </header>
 
