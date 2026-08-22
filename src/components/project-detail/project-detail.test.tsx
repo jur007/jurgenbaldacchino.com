@@ -8,19 +8,19 @@ import type { IProject } from "@data/showcase"
 
 const mockProject: IProject = {
   id: "test-project-detail",
-  title: "Metaspins",
-  subtitle: "Crypto Casino Platform",
+  title: "Test Application Platform",
+  subtitle: "High-Performance Web App",
   category: "react",
   categoryLabel: "React Architecture",
   role: "Head of Frontend",
-  clientOrOrg: "Metaspins",
+  clientOrOrg: "Test Organization",
   summary: "Comprehensive summary of the test application platform.",
   whatIDid: ["Designed component state layers and WebSocket integration."],
   howIBuiltIt: ["Applied immutable cache keys and fine-grained DOM updates."],
   technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
   metrics: "Sub-second real-time sync",
-  thumbnailUrl: "/assets/showcase/metaspins.png",
-  liveUrl: "https://metaspins.com",
+  thumbnailUrl: "/assets/showcase/guts.png",
+  liveUrl: "https://example.com",
 }
 
 describe("ProjectDetail", () => {
@@ -28,16 +28,18 @@ describe("ProjectDetail", () => {
     const handleBack = vi.fn()
     render(<ProjectDetail onBack={handleBack} project={mockProject} />)
 
-    expect(screen.getByRole("heading", { level: 1, name: "Metaspins" })).toBeInTheDocument()
+    expect(
+      screen.getByRole("heading", { level: 1, name: "Test Application Platform" }),
+    ).toBeInTheDocument()
     expect(
       screen.getByText("Comprehensive summary of the test application platform."),
     ).toBeInTheDocument()
-    expect(screen.getByText("Metaspins", { selector: "dd" })).toBeInTheDocument()
+    expect(screen.getByText("Test Organization", { selector: "dd" })).toBeInTheDocument()
     expect(screen.getByText("Head of Frontend")).toBeInTheDocument()
     expect(screen.getByText("Sub-second real-time sync")).toBeInTheDocument()
     expect(screen.getByRole("link", { name: /visit live website/i })).toHaveAttribute(
       "href",
-      "https://metaspins.com",
+      "https://example.com",
     )
   })
 

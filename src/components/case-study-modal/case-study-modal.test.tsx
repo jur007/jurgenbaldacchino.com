@@ -7,20 +7,20 @@ import { CaseStudyModal } from "./case-study-modal"
 import type { IProject } from "@data/showcase"
 
 const mockProject: IProject = {
-  id: "metaspins-test",
-  title: "Metaspins",
-  subtitle: "Crypto Casino Platform",
+  id: "test-platform",
+  title: "Platform Architecture Project",
+  subtitle: "High-Performance Web App",
   category: "react",
   categoryLabel: "React Architecture",
   role: "Head of Frontend",
-  clientOrOrg: "Metaspins",
-  summary: "Comprehensive test summary for Metaspins.",
+  clientOrOrg: "Test Organization",
+  summary: "Comprehensive test summary for the test platform.",
   whatIDid: ["Led frontend team.", "Built WebSockets state."],
   howIBuiltIt: ["Isolated state slices.", "Optimized bundle size."],
   technologies: ["React", "TypeScript", "Vite"],
   metrics: "Sub-second LCP",
-  thumbnailUrl: "/assets/showcase/metaspins.png",
-  liveUrl: "https://metaspins.com",
+  thumbnailUrl: "/assets/showcase/guts.png",
+  liveUrl: "https://example.com",
   badgeColor: "#00F0FF",
 }
 
@@ -38,16 +38,20 @@ describe("CaseStudyModal", () => {
     render(<CaseStudyModal isOpen={true} onClose={vi.fn()} project={mockProject} />)
 
     expect(screen.getByRole("dialog")).toBeInTheDocument()
-    expect(screen.getByRole("heading", { level: 1, name: "Metaspins" })).toBeInTheDocument()
-    expect(screen.getByText("Crypto Casino Platform")).toBeInTheDocument()
-    expect(screen.getByText("Comprehensive test summary for Metaspins.")).toBeInTheDocument()
+    expect(
+      screen.getByRole("heading", { level: 1, name: "Platform Architecture Project" }),
+    ).toBeInTheDocument()
+    expect(screen.getByText("High-Performance Web App")).toBeInTheDocument()
+    expect(
+      screen.getByText("Comprehensive test summary for the test platform."),
+    ).toBeInTheDocument()
     expect(screen.getByText("Led frontend team.")).toBeInTheDocument()
     expect(screen.getByText("Isolated state slices.")).toBeInTheDocument()
     expect(screen.getByText("Head of Frontend")).toBeInTheDocument()
     expect(screen.getByText("Sub-second LCP")).toBeInTheDocument()
     expect(screen.getByRole("link", { name: /visit live website/i })).toHaveAttribute(
       "href",
-      "https://metaspins.com",
+      "https://example.com",
     )
     expect(document.body.style.overflow).toBe("hidden")
   })

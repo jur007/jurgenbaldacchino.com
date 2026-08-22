@@ -19,6 +19,7 @@ export interface IProject {
 }
 
 export const showcaseProjects: IProject[] = [
+  /*
   {
     id: "metaspins-platform",
     title: "Metaspins",
@@ -94,6 +95,7 @@ export const showcaseProjects: IProject[] = [
     liveUrl: "https://bombastic.com",
     badgeColor: "#F97316",
   },
+  */
   {
     id: "guts-sportsbook",
     title: "Guts Sportsbook",
