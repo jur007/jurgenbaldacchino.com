@@ -20,7 +20,7 @@ const mockProject: IProject = {
   technicalSolutions: ["Applied immutable cache keys and fine-grained DOM updates."],
   technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
   metrics: "Sub-second real-time sync",
-  thumbnailUrl: "/assets/showcase/metaspins.svg",
+  thumbnailUrl: "/assets/showcase/metaspins.png",
   liveUrl: "https://metaspins.com",
 }
 

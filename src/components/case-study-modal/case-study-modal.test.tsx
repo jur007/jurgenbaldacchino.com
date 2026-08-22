@@ -20,7 +20,7 @@ const mockProject: IProject = {
   technicalSolutions: ["Isolated state slices.", "Optimized bundle size."],
   technologies: ["React", "TypeScript", "Vite"],
   metrics: "Sub-second LCP",
-  thumbnailUrl: "/assets/showcase/metaspins.svg",
+  thumbnailUrl: "/assets/showcase/metaspins.png",
   liveUrl: "https://metaspins.com",
   badgeColor: "#00F0FF",
 }

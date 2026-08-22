@@ -20,7 +20,7 @@ const mockProject: IProject = {
   technicalSolutions: ["Applied state management."],
   technologies: ["React", "TypeScript", "Vite"],
   metrics: "Sub-second sync",
-  thumbnailUrl: "/assets/showcase/metaspins.svg",
+  thumbnailUrl: "/assets/showcase/metaspins.png",
   badgeColor: "#00F0FF",
 }
 
