@@ -32,13 +32,13 @@ export const showcaseProjects: IProject[] = [
     summary:
       "Built and scaled the core web app for a high-traffic crypto casino, keeping the interface snappy and wallet states synced in real time.",
     whatIDid: [
-      "Led the frontend team and established our core architecture and code quality standards.",
-      "Built fast, reactive casino interfaces with instant wallet balance updates and live sports betting feeds.",
-      "Set up automated CI/CD checks and streamlined our build pipelines to ship quickly with confidence.",
+      "Led the frontend team and established our core architecture, state patterns, and code quality standards.",
+      "Built key interactive engagement features including daily drops, custom lootboxes, and native in-house games.",
+      "Set up automated continuous delivery pipelines to speed up internal feature releases and ship with confidence.",
     ],
     howIBuiltIt: [
-      "Isolated high-frequency balance tickers into a dedicated reactive layer so live updates never slow down the UI.",
-      "Optimized code splitting and asset preloading to deliver fast sub-second initial loads.",
+      "Decoupled high-frequency balance tickers into a dedicated reactive state layer so live data never blocks UI rendering.",
+      "Implemented code splitting and asset preloading to deliver fast sub-second initial loads.",
     ],
     technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "TailwindCSS", "Cloudflare"],
     metrics: "Built from the ground up",
