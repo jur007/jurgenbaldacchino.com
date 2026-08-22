@@ -13,9 +13,9 @@
   padding: 12px 40px 12px 14px;
   appearance: none;
   cursor: pointer;
-  color: var(--color-white-lilac);
-  background: var(--color-revolver);
-  border: 1px solid var(--color-heliotrope-14);
+  color: var(--color-white);
+  background: var(--color-navy-elevated);
+  border: 1px solid var(--color-slate-border);
   border-radius: var(--radius-small);
   font-size: var(--font-size-3xl);
   transition:
@@ -24,13 +24,15 @@
 }
 
 .selectElement:hover:not(:disabled) {
-  border-color: var(--color-mauve-30);
+  border-color: var(--color-cyan-border-hover);
 }
 
 .selectElement:focus {
-  border-color: var(--color-mauve-62);
+  border-color: var(--color-electric-cyan);
   outline: none;
-  box-shadow: var(--shadow-electric-violet);
+  box-shadow:
+    0 0 0 3px var(--color-cyan-focus),
+    var(--shadow-cyan-sm);
 }
 
 .selectElement:disabled {
@@ -42,7 +44,7 @@
   position: absolute;
   top: 50%;
   right: 14px;
-  color: var(--color-heliotrope);
+  color: var(--color-electric-cyan);
   font-size: var(--font-size-md);
   transform: translateY(-50%);
   pointer-events: none;
@@ -53,7 +55,7 @@
 }
 
 .supportingMessage {
-  color: var(--color-mobster);
+  color: var(--color-slate-dark);
   font-size: var(--font-size-lg);
 }
 

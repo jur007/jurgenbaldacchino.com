@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--color-lavender-grey);
+  color: var(--color-slate-light);
   font-size: var(--font-size-lg);
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -10,7 +10,7 @@
 }
 
 .requiredIndicator {
-  color: var(--color-heliotrope);
+  color: var(--color-electric-cyan);
 }
 
 .disabledState {

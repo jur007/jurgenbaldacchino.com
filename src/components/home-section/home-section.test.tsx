@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest"
 import { HomeSection } from "./home-section"
 
 describe("HomeSection", () => {
-  it("renders the introduction, personal card, and five core strengths", () => {
+  it("renders the 2-column Hero section with dual CTAs and floating metric badges", () => {
     render(<HomeSection />)
 
     expect(
@@ -13,36 +13,66 @@ describe("HomeSection", () => {
         name: /Turning ideas into thoughtful frontend experiences, built together and made to last/i,
       }),
     ).toBeInTheDocument()
-    expect(
-      screen.getByRole("heading", {
-        name: /Building the systems and teams behind excellent products/i,
-      }),
-    ).toBeInTheDocument()
     expect(screen.getByRole("img", { name: "Portrait of Jurgen Baldacchino" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Core strengths" })).toBeInTheDocument()
-    expect(screen.getByRole("list", { name: "Core strengths" })).toBeInTheDocument()
-    expect(screen.getAllByRole("article")).toHaveLength(5)
-    expect(screen.getByRole("heading", { name: "React Engineering" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Creative Development" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Frontend DevOps" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "Simplicity and Clarity" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "One-Team Collaboration" })).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: "View Work" })).toHaveAttribute("href", "#expertise")
+    expect(screen.getByRole("link", { name: "Let's Talk" })).toHaveAttribute("href", "#contact")
+    expect(screen.getByText("12+ Years")).toBeInTheDocument()
+    expect(screen.getByText("Senior Lead")).toBeInTheDocument()
+    expect(screen.getByText("AI-Assisted")).toBeInTheDocument()
   })
 
-  it("opens and closes expanded strength details", async () => {
+  it("renders the asymmetric Bento Grid capabilities layout with 4 feature cards and badges", () => {
+    render(<HomeSection />)
+
+    expect(
+      screen.getByRole("heading", { name: "Engineered for speed, scale, and longevity." }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole("list", { name: "Core strengths and capabilities" }),
+    ).toBeInTheDocument()
+    expect(screen.getAllByRole("article")).toHaveLength(4)
+
+    // Card 1
+    expect(
+      screen.getByRole("heading", { name: "React Engineering & Frontend Architecture" }),
+    ).toBeInTheDocument()
+    expect(screen.getByText("TailwindCSS")).toBeInTheDocument()
+    expect(screen.getByText("State Management")).toBeInTheDocument()
+
+    // Card 2
+    expect(
+      screen.getByRole("heading", { name: "Creative Dev & Interactive Canvas" }),
+    ).toBeInTheDocument()
+    expect(screen.getByText("Web Games")).toBeInTheDocument()
+
+    // Card 3
+    expect(
+      screen.getByRole("heading", { name: "DevOps, CI/CD & Engineering Standards" }),
+    ).toBeInTheDocument()
+    expect(screen.getByText("Husky")).toBeInTheDocument()
+    expect(screen.getByText("Commitlint")).toBeInTheDocument()
+
+    // Card 4
+    expect(
+      screen.getByRole("heading", { name: "Technical Leadership & AI-Assisted Workflows" }),
+    ).toBeInTheDocument()
+    expect(screen.getByText("Team Mentoring")).toBeInTheDocument()
+    expect(screen.getByText("AI Workflows")).toBeInTheDocument()
+  })
+
+  it("interacts with the creative development canvas preview card", async () => {
     const user = userEvent.setup()
     render(<HomeSection />)
 
-    const openButton = screen.getByRole("button", { name: "Open React Engineering details" })
-    await user.click(openButton)
+    const creativeCard = screen
+      .getByRole("heading", { name: "Creative Dev & Interactive Canvas" })
+      .closest("article")
+    expect(creativeCard).toBeInTheDocument()
 
-    expect(screen.getByRole("dialog", { name: "React Engineering" })).toBeInTheDocument()
-    expect(
-      screen.getByText(/I build fast, discoverable and mobile-first products/i),
-    ).toBeInTheDocument()
+    if (creativeCard) {
+      await user.click(creativeCard)
+    }
 
-    await user.click(screen.getByRole("button", { name: "Close React Engineering details" }))
-
-    expect(screen.queryByRole("dialog", { name: "React Engineering" })).not.toBeInTheDocument()
+    expect(screen.getByText(/Live 2D Canvas · 60FPS/i)).toBeInTheDocument()
   })
 })

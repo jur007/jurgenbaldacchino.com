@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react"
-import type { FormEvent } from "react"
+import type { ChangeEvent, FormEvent } from "react"
 
 import styles from "./chat-section.module.css"
 
 import { Button } from "@components/button"
 import { Input } from "@components/input"
 import { Label } from "@components/label"
+import { getClassNames } from "@utils/class-names"
 
 const contactEmailAddress = "hello@jurgenbaldacchino.com"
 const formspreeEndpoint = "https://formspree.io/f/mzdnrraj"
@@ -88,10 +89,15 @@ const loadTurnstile = () => {
 export const ChatSection = () => {
   const [submissionStatus, setSubmissionStatus] = useState(SubmissionStatus.IDLE)
   const [turnstileStatus, setTurnstileStatus] = useState(TurnstileStatus.CHECKING)
+  const [fullName, setFullName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
+
   const turnstileContainerReference = useRef<HTMLDivElement>(null)
   const turnstileWidgetReference = useRef<string | null>(null)
   const isSubmitting = submissionStatus === SubmissionStatus.SUBMITTING
   const isVerified = turnstileStatus === TurnstileStatus.VERIFIED
+  const isFormComplete = Boolean(fullName.trim() && email.trim() && message.trim() && isVerified)
 
   useEffect(() => {
     const container = turnstileContainerReference.current
@@ -140,6 +146,18 @@ export const ChatSection = () => {
     setTurnstileStatus(TurnstileStatus.CHECKING)
   }
 
+  const handleFullNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setFullName(event.target.value)
+  }
+
+  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value)
+  }
+
+  const handleMessageChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(event.target.value)
+  }
+
   const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -165,6 +183,9 @@ export const ChatSection = () => {
       }
 
       contactForm.reset()
+      setFullName("")
+      setEmail("")
+      setMessage("")
       setSubmissionStatus(SubmissionStatus.SUCCEEDED)
     } catch {
       setSubmissionStatus(SubmissionStatus.FAILED)
@@ -194,17 +215,21 @@ export const ChatSection = () => {
           id="contact-full-name"
           label="Full name"
           name="fullName"
+          onChange={handleFullNameChange}
           placeholder="Your full name"
           required
+          value={fullName}
         />
         <Input
           autoComplete="email"
           id="contact-email-address"
           label="Email address"
           name="email"
+          onChange={handleEmailChange}
           placeholder="you@example.com"
           required
           type="email"
+          value={email}
         />
         <div className={styles.messageFieldContainer}>
           <Label htmlFor="contact-message" required>
@@ -214,9 +239,11 @@ export const ChatSection = () => {
             className={styles.messageInput}
             id="contact-message"
             name="message"
+            onChange={handleMessageChange}
             placeholder="Tell me a little about your idea, product or team."
             required
             rows={6}
+            value={message}
           ></textarea>
         </div>
         <div
@@ -236,7 +263,10 @@ export const ChatSection = () => {
         )}
         <Button
           aria-describedby={isVerified ? undefined : "turnstile-status"}
-          className={styles.submitButton}
+          className={getClassNames(
+            styles.submitButton,
+            isFormComplete && styles.submitButtonActive,
+          )}
           disabled={!isVerified}
           fullWidth
           htmlType="submit"

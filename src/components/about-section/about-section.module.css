@@ -15,7 +15,7 @@
   height: 640px;
   right: -320px;
   bottom: -360px;
-  background: var(--gradient-electric-violet-ambient);
+  background: var(--gradient-cyan-ambient);
   pointer-events: none;
 }
 
@@ -25,12 +25,13 @@
   min-height: 640px;
   margin-left: var(--layout-page-gutter);
   opacity: 0;
-  border: 8px solid var(--color-revolver);
+  border: 8px solid var(--color-navy-surface);
   border-radius: 50% 50% 0 0 / 28% 28% 0 0;
-  outline: 1px solid var(--color-mauve-30);
+  outline: 1px solid var(--color-cyan-border);
   box-shadow:
     var(--shadow-black),
-    inset 0 0 28px var(--color-black-52);
+    0 0 32px rgba(0, 240, 255, 0.15),
+    inset 0 0 28px var(--color-black-60);
   transform: translateX(-32px);
   overflow: hidden;
   animation: revealImagePanel 850ms ease 100ms forwards;
@@ -41,7 +42,7 @@
   z-index: 1;
   content: "";
   inset: 0;
-  background: linear-gradient(180deg, transparent 60%, var(--color-black-russian-74));
+  background: linear-gradient(180deg, transparent 60%, var(--color-midnight-slate));
   pointer-events: none;
 }
 
@@ -63,7 +64,7 @@
 }
 
 .aboutEyebrow {
-  color: var(--color-heliotrope);
+  color: var(--color-electric-cyan);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-lg);
   letter-spacing: 0.14em;
@@ -73,7 +74,7 @@
 .aboutContentContainer h1 {
   max-width: 12ch;
   margin-top: 20px;
-  color: var(--color-white-lilac);
+  color: var(--color-white);
   font-size: clamp(3.2rem, 6vw, 6rem);
   font-weight: var(--font-weight-book);
   letter-spacing: -0.06em;
@@ -81,14 +82,14 @@
 }
 
 .aboutContentContainer h1 em {
-  color: var(--color-mauve);
+  color: var(--color-electric-cyan);
   font-family: var(--font-family-serif);
   font-weight: var(--font-weight-regular);
 }
 
 .aboutIntroduction {
   margin-top: 40px;
-  color: var(--color-lavender-grey);
+  color: var(--color-slate-muted);
   font-size: clamp(var(--font-size-4xl), 1.45vw, var(--font-size-5xl));
   line-height: var(--line-height-loose);
 }
@@ -101,8 +102,8 @@
   grid-template-columns: repeat(5, auto);
   align-items: center;
   gap: 12px;
-  color: var(--color-mobster);
-  border-top: 1px solid var(--color-mauve-30);
+  color: var(--color-slate-dark);
+  border-top: 1px solid var(--color-cyan-border);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
   letter-spacing: 0.08em;
@@ -110,7 +111,7 @@
 }
 
 .aboutLocationContainer strong {
-  color: var(--color-mauve);
+  color: var(--color-electric-cyan);
   font-weight: var(--font-weight-medium);
 }
 

@@ -30,29 +30,33 @@
 }
 
 .primaryButton {
-  color: var(--color-black-russian);
-  background: var(--gradient-electric-violet);
-  box-shadow: var(--shadow-electric-violet);
+  color: var(--color-midnight-slate);
+  background: var(--gradient-electric-cyan);
+  box-shadow: var(--shadow-cyan-glow);
 }
 
 .secondaryButton {
-  color: var(--color-white-lilac);
-  background: var(--color-white-lilac-4);
-  border-color: var(--color-white-lilac-10);
+  color: var(--color-white);
+  background: var(--color-slate-glass);
+  border-color: var(--color-slate-border);
+  backdrop-filter: blur(8px);
 }
 
 .secondaryButton:hover:not(:disabled) {
-  border-color: var(--color-mauve-30);
+  color: var(--color-electric-cyan);
+  border-color: var(--color-cyan-border-hover);
+  background: var(--color-cyan-subtle);
+  box-shadow: var(--shadow-cyan-sm);
 }
 
 .tertiaryButton {
-  color: var(--color-mauve);
+  color: var(--color-electric-cyan);
   background: transparent;
   border-color: transparent;
 }
 
 .tertiaryButton:hover:not(:disabled) {
-  background: var(--color-electric-violet-12);
+  background: var(--color-cyan-subtle);
 }
 
 .smallButton {

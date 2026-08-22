@@ -6,12 +6,12 @@
   justify-items: start;
   overflow: hidden;
   background:
-    radial-gradient(circle at 75% 35%, var(--color-electric-violet-12), transparent 32%),
-    var(--color-black-russian-74);
+    radial-gradient(circle at 75% 35%, rgba(0, 240, 255, 0.12), transparent 32%),
+    var(--color-midnight-slate);
 }
 
 .statusCode {
-  color: var(--color-heliotrope);
+  color: var(--color-electric-cyan);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-lg);
   letter-spacing: 0.14em;
@@ -21,7 +21,7 @@
 .containerWrapper h1 {
   max-width: 10ch;
   margin-top: 20px;
-  color: var(--color-white-lilac);
+  color: var(--color-white);
   font-size: clamp(3.2rem, 7vw, 6.5rem);
   font-weight: var(--font-weight-book);
   letter-spacing: -0.06em;
@@ -31,34 +31,33 @@
 .description {
   max-width: 600px;
   margin-top: 28px;
-  color: var(--color-lavender-grey);
+  color: var(--color-slate-muted);
   font-size: var(--font-size-3xl);
   line-height: var(--line-height-relaxed);
 }
 
 .homeLink {
   margin-top: 36px;
-  padding: 12px 20px;
-  color: var(--color-mauve);
-  background: var(--gradient-revolver);
-  border: 1px solid var(--color-mauve-30);
+  padding: 12px 24px;
+  color: var(--color-midnight-slate);
+  background: var(--gradient-electric-cyan);
+  border: 1px solid transparent;
   border-radius: var(--radius-round);
-  box-shadow: var(--shadow-black);
+  box-shadow: var(--shadow-cyan-glow);
   font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   text-decoration: none;
   transition:
-    color var(--transition-fast),
-    border-color var(--transition-fast),
-    box-shadow var(--transition-fast),
-    transform var(--transition-fast);
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .homeLink:hover,
 .homeLink:focus-visible {
-  color: var(--color-white-lilac);
-  border-color: var(--color-heliotrope-48);
-  box-shadow: var(--shadow-electric-violet);
+  color: var(--color-midnight-slate);
+  box-shadow:
+    0 0 28px var(--color-cyan-glow),
+    0 0 50px rgba(0, 119, 254, 0.3);
   transform: translateY(-2px);
 }
 
