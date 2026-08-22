@@ -38,7 +38,7 @@ export const showcaseProjects: IProject[] = [
       "Optimized our Gatsby build processes and caching strategies to cut compilation times and deploy updates faster.",
       "Worked hand in hand across product, design, and backend teams to turn complex feature concepts into smooth, shippable web experiences.",
     ],
-    technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "TailwindCSS", "Cloudflare"],
+    technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "CSS3 Modules", "Cloudflare"],
     metrics: "Built from the ground up",
     thumbnailUrl: "/assets/showcase/metaspins.png",
     liveUrl: "https://metaspins.com",
@@ -62,6 +62,7 @@ export const showcaseProjects: IProject[] = [
     howIBuiltIt: [
       "Handled strict context cleanup on unmount to completely eliminate GPU and WebGL memory leaks.",
       "Optimized sprite sheets and render budgets to maintain an unbroken 60 FPS on mobile browsers.",
+      "Worked hand in hand with designers to shape the visual identity, feel, and narrative flow of the game.",
     ],
     technologies: ["Phaser 3", "HTML5 Canvas", "WebGL", "TypeScript", "Vite"],
     metrics: "Smooth, Eye catching game",
