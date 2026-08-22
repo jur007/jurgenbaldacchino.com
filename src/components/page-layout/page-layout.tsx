@@ -1,5 +1,5 @@
-import { useState } from "react"
-import type { ReactNode } from "react"
+import { useEffect, useState } from "react"
+import type { KeyboardEvent, ReactNode } from "react"
 
 import styles from "./page-layout.module.css"
 
@@ -26,6 +26,29 @@ const CloseIcon = () => (
 export const PageLayout = ({ children }: IPageLayout) => {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false)
 
+  useEffect(() => {
+    if (isNavigationOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isNavigationOpen])
+
+  useEffect(() => {
+    const handleKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape" && isNavigationOpen) {
+        setIsNavigationOpen(false)
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [isNavigationOpen])
+
   const handleMenuToggle = () => {
     setIsNavigationOpen((isOpen) => !isOpen)
   }
@@ -34,9 +57,34 @@ export const PageLayout = ({ children }: IPageLayout) => {
     setIsNavigationOpen(false)
   }
 
+  const handleBackdropClick = () => {
+    setIsNavigationOpen(false)
+  }
+
+  const handleBackdropKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault()
+      setIsNavigationOpen(false)
+    }
+  }
+
   return (
     <div className={styles.containerWrapper}>
-      <header className={styles.headerContainer}>
+      {isNavigationOpen && (
+        <div
+          aria-hidden="true"
+          className={styles.mobileBackdropOverlay}
+          onClick={handleBackdropClick}
+          onKeyDown={handleBackdropKeyDown}
+        />
+      )}
+
+      <header
+        className={getClassNames(
+          styles.headerContainer,
+          isNavigationOpen && styles.headerContainerNavOpen,
+        )}
+      >
         <a className={styles.brandLink} href="/" aria-label="Jurgen Baldacchino — home">
           <span className={styles.brandMonogram} aria-hidden="true">
             JB
@@ -46,6 +94,7 @@ export const PageLayout = ({ children }: IPageLayout) => {
             <small>Head of Frontend · React Engineer</small>
           </span>
         </a>
+
         <button
           className={getClassNames(
             styles.mobileMenuButton,
@@ -60,6 +109,7 @@ export const PageLayout = ({ children }: IPageLayout) => {
           <MenuIcon />
           <CloseIcon />
         </button>
+
         <nav
           className={getClassNames(
             styles.navigationContainer,
@@ -86,6 +136,7 @@ export const PageLayout = ({ children }: IPageLayout) => {
           </a>
         </nav>
       </header>
+
       <main id="main-content">{children}</main>
       <ChatSection />
       <SiteFooter />
