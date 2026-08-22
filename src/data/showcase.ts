@@ -11,7 +11,7 @@ export interface IProject {
   clientOrOrg: string
   summary: string
   whatIDid: string[]
-  technicalSolutions: string[]
+  howIBuiltIt: string[]
   technologies: string[]
   metrics?: string
   thumbnailUrl: string
@@ -23,11 +23,11 @@ export const showcaseProjects: IProject[] = [
   {
     id: "metaspins-platform",
     title: "Metaspins",
-    subtitle: "Next-Gen Crypto Casino Web Platform",
+    subtitle: "Next-Gen Crypto Casino Platform",
     category: "react",
     categoryLabel: "React Architecture",
     role: "Head of Frontend",
-    timeline: "2023 - Present",
+    timeline: "Present",
     clientOrOrg: "Metaspins",
     summary:
       "Built and scaled the core web app for a high-traffic crypto casino, keeping the interface snappy and wallet states synced in real time.",
@@ -36,7 +36,7 @@ export const showcaseProjects: IProject[] = [
       "Built fast, reactive casino interfaces with instant wallet balance updates and live sports betting feeds.",
       "Set up automated CI/CD checks and streamlined our build pipelines to ship quickly with confidence.",
     ],
-    technicalSolutions: [
+    howIBuiltIt: [
       "Isolated high-frequency balance tickers into a dedicated reactive layer so live updates never slow down the UI.",
       "Optimized code splitting and asset preloading to deliver fast sub-second initial loads.",
     ],
@@ -53,7 +53,7 @@ export const showcaseProjects: IProject[] = [
     category: "canvas",
     categoryLabel: "Creative / Canvas",
     role: "Lead Game Developer & Creative Engineer",
-    timeline: "2024",
+    timeline: "2026",
     clientOrOrg: "Independent Production",
     summary:
       "A custom 2D casual game built from scratch as an isolated standalone bundle with smooth animations and physics.",
@@ -62,7 +62,7 @@ export const showcaseProjects: IProject[] = [
       "Created a clean state bridge between React UI controls and the WebGL game canvas.",
       "Packaged the game engine into an independent module ready for easy host-app embedding.",
     ],
-    technicalSolutions: [
+    howIBuiltIt: [
       "Handled strict context cleanup on unmount to completely eliminate GPU and WebGL memory leaks.",
       "Optimized sprite sheets and render budgets to maintain an unbroken 60 FPS on mobile browsers.",
     ],
@@ -87,7 +87,7 @@ export const showcaseProjects: IProject[] = [
       "Engineered interactive betslip validation, combination bets, and live odds tickers.",
       "Unified the betting UI design system across desktop and mobile browsers.",
     ],
-    technicalSolutions: [
+    howIBuiltIt: [
       "Decoupled betslip state calculations from the DOM to eliminate UI stutter when odds change rapidly.",
       "Streamlined WebSocket event handling to keep live scores updating with minimal network overhead.",
     ],
@@ -112,7 +112,7 @@ export const showcaseProjects: IProject[] = [
       "Built live betting dashboards, multi-sport category trees, and real-time match visualizations.",
       "Integrated brand design tokens and custom assets into a shared multi-brand frontend library.",
     ],
-    technicalSolutions: [
+    howIBuiltIt: [
       "Used virtualized lists for large betting markets to guarantee smooth 60 FPS scrolling on mobile.",
       "Refined keyboard navigation and accessibility standards across complex betting dialogs.",
     ],
@@ -137,7 +137,7 @@ export const showcaseProjects: IProject[] = [
       "Developed high-converting sign-up flows, account verification steps, and localized sport hubs.",
       "Built responsive betting tables and bet placement widgets tailored for mobile screens.",
     ],
-    technicalSolutions: [
+    howIBuiltIt: [
       "Created modular multi-step form validation with instant client-side error feedback.",
       "Optimized layout rendering so live odds updates never cause content jumping or layout shifts.",
     ],
