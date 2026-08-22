@@ -10,7 +10,7 @@ describe("HomeSection", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /Turning ideas into thoughtful frontend experiences, built together and made to last/i,
+        name: /Building high-impact frontend architectures made to last/i,
       }),
     ).toBeInTheDocument()
     expect(screen.getByRole("img", { name: "Portrait of Jurgen Baldacchino" })).toBeInTheDocument()

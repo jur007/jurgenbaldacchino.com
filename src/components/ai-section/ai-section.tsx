@@ -87,27 +87,28 @@ const DeliverIcon = () => (
 const processSteps: IProcessStep[] = [
   {
     description:
-      "Understanding the problem, aligning on goals, and validating technical ideas early.",
+      "Deconstructing problem spaces, aligning on goals, and validating technical feasibility early.",
     icon: <DiscoverIcon />,
     stepNumber: "01",
     title: "Discover & Align",
   },
   {
     description:
-      "Designing modular systems with strict TypeScript contracts and accessible UI foundations.",
+      "Designing modular component systems with strict TypeScript contracts and accessible foundations.",
     icon: <ArchitectIcon />,
     stepNumber: "02",
     title: "Architect & Prototype",
   },
   {
     description:
-      "Writing clean React code backed by thorough test coverage and smooth performance.",
+      "Writing clean, maintainable React systems backed by strict test coverage and 60FPS performance.",
     icon: <DevelopIcon />,
     stepNumber: "03",
     title: "Build & Optimize",
   },
   {
-    description: "Automating CI/CD pipelines for fast, reliable, and continuous delivery at scale.",
+    description:
+      "Shipping via automated CI/CD pipelines with zero-downtime edge deployments and live monitoring.",
     icon: <DeliverIcon />,
     stepNumber: "04",
     title: "Deliver & Scale",
@@ -116,18 +117,18 @@ const processSteps: IProcessStep[] = [
 
 const personalTenets: ITenet[] = [
   {
-    description: "Clean, readable, and predictable code beats clever shortcuts every time.",
+    description: "Clean, readable, and predictable code beats clever shortcuts every single time.",
     icon: "🌟",
     title: "Predictability First",
   },
   {
-    description: "Strong opinions, weakly held — guided by user feedback and real-world metrics.",
+    description: "Strong opinions, weakly held — guided by user feedback and measurable metrics.",
     icon: "💡",
     title: "Pragmatic Evolution",
   },
   {
     description:
-      "Great developer tooling and ergonomics directly shape exceptional user experiences.",
+      "Investing in developer ergonomics directly compounds product velocity and user delight.",
     icon: "🚀",
     title: "DX Multiplier",
   },
@@ -151,9 +152,9 @@ export const AiSection = () => {
           AI-assisted. <em>Human-led.</em>
         </h2>
         <p className={styles.introductionCopy}>
-          I use AI to accelerate exploration, challenge technical decisions, and automate repetitive
-          tasks — while keeping architecture, product craftsmanship, and final engineering judgment
-          firmly human-led.
+          I leverage AI to speed up prototyping, challenge technical assumptions, and automate
+          busywork — while keeping system architecture, code quality, and final engineering judgment
+          strictly human-led.
         </p>
       </div>
 

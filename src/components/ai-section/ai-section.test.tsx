@@ -9,7 +9,7 @@ describe("AiSection", () => {
 
     expect(screen.getByRole("heading", { name: "AI-assisted. Human-led." })).toBeInTheDocument()
     expect(
-      screen.getByText(/I use AI to accelerate exploration, challenge technical decisions/i),
+      screen.getByText(/I leverage AI to speed up prototyping, challenge technical assumptions/i),
     ).toBeInTheDocument()
     expect(screen.getByRole("list", { name: "4-step engineering process" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { name: "Discover & Align" })).toBeInTheDocument()

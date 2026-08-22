@@ -9,8 +9,7 @@ import { ButtonLink } from "@components/button"
 import { IButtonSize, IButtonType } from "@components/button/button.types"
 import { getClassNames } from "@utils/class-names"
 
-const heading =
-  "Turning ideas into thoughtful frontend experiences, built together and made to last."
+const heading = "Building high-impact frontend architectures made to last."
 const emphasizedHeading = "made to last."
 const regularHeading = heading.slice(0, -emphasizedHeading.length)
 
@@ -381,9 +380,9 @@ export const HomeSection = () => {
           </h1>
 
           <p className={styles.heroIntroduction}>
-            I’m Jur 👋—a frontend engineer and technical leader with 12+ years experience turning
-            complex ideas into clear, scalable digital experiences while helping teams do their best
-            work.
+            I’m Jur 👋 — a frontend engineer and technical leader with 12+ years of experience. I
+            architect resilient web applications, scale frontend systems, and lead engineering teams
+            to build products users love.
           </p>
 
           <div className={styles.heroCallToActionGroup}>
@@ -466,8 +465,8 @@ export const HomeSection = () => {
           <p className={styles.bentoEyebrow}>Core Capabilities</p>
           <h2 id="bento-title">Engineered for speed, scale, and longevity.</h2>
           <p className={styles.bentoSectionSubtitle}>
-            A modern developer architecture combining clean React systems, creative 2D Phaser
-            experiences, automated DevOps, and collaborative leadership.
+            Combining high-performance React architectures, interactive 2D canvas engines, automated
+            CI/CD pipelines, and empathetic team leadership.
           </p>
         </div>
 
@@ -487,10 +486,9 @@ export const HomeSection = () => {
               <div className={styles.bentoCardBody}>
                 <h3>React Engineering & Frontend Architecture</h3>
                 <p>
-                  I build fast, scalable, and accessible web applications where performance and
-                  maintainability are treated as core features from day one. I specialize in modern
-                  React, strict TypeScript, component systems, and predictable state architectures
-                  that grow effortlessly alongside your product and team.
+                  I engineer fast, accessible web applications with performance and maintainability
+                  built in from day one. Specializing in modern React, strict TypeScript, and
+                  modular design systems that scale effortlessly.
                 </p>
               </div>
               <div className={styles.bentoMetricsBar}>
@@ -558,9 +556,9 @@ export const HomeSection = () => {
               <div className={styles.bentoCardBody}>
                 <h3>Creative Dev & Interactive Canvas</h3>
                 <p>
-                  I love bringing creative, playful ideas to life in the browser. From custom 2D
-                  canvas engines and interactive micro-experiences to full in-house Phaser games, I
-                  blend web standards with smooth 60FPS canvas graphics.
+                  Bringing creative product ideas to life with custom 2D canvas engines and playable
+                  web games. Blending web standards with smooth 60FPS physics and WebGL
+                  micro-interactions.
                 </p>
               </div>
               <div
@@ -607,10 +605,9 @@ export const HomeSection = () => {
               <div className={styles.bentoCardBody}>
                 <h3>DevOps, CI/CD & Engineering Standards</h3>
                 <p>
-                  Great developer experience leads directly to great user experience. I set up
-                  automated pipelines with GitHub Actions, Husky hooks, Commitlint, and strict
-                  ESLint/Vitest gates so teams can ship with total confidence — dropping build
-                  cycles down to under 90 seconds.
+                  Great developer experience drives exceptional product quality. I automate CI/CD
+                  pipelines with GitHub Actions, strict linting, and fast test gates so teams ship
+                  with total confidence.
                 </p>
               </div>
               <div className={styles.pipelineVisualContainer}>
@@ -672,10 +669,9 @@ export const HomeSection = () => {
               <div className={styles.bentoCardBody}>
                 <h3>Technical Leadership & AI-Assisted Workflows</h3>
                 <p>
-                  True leadership is about listening, unblocking people, and helping everyone do
-                  their finest work. I guide frontend teams through hands-on technical mentoring,
-                  thoughtful code reviews, and pragmatic AI developer workflows that speed up
-                  exploration while keeping human craft at the helm.
+                  Guiding engineering teams through hands-on mentoring, thoughtful code reviews, and
+                  clear architecture standards. Leveraging AI to accelerate delivery while keeping
+                  human craft and engineering rigor at the center.
                 </p>
               </div>
               <div className={styles.leadershipHighlights}>

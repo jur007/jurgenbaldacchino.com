@@ -207,10 +207,10 @@ export const ChatSection = () => {
     <section aria-labelledby="chat-section-title" className={styles.containerWrapper} id="contact">
       <div className={styles.introductionContainer}>
         <p className={styles.eyebrow}>Let&apos;s chat</p>
-        <h2 id="chat-section-title">Have an idea? Let&apos;s build it together.</h2>
+        <h2 id="chat-section-title">Have a project in mind? Let&apos;s talk.</h2>
         <p className={styles.introductionCopy}>
-          Whether you&apos;re shaping a product, growing a frontend team or exploring something new,
-          share a few details and let&apos;s start a conversation.
+          Whether you&apos;re scaling a web product, leveling up a frontend team, or looking for
+          senior technical leadership, drop a message and let&apos;s connect.
         </p>
         <p className={styles.directContactCopy}>
           Prefer email? Reach me directly at
