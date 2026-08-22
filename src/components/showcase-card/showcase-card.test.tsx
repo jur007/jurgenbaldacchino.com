@@ -19,7 +19,7 @@ const mockProject: IProject = {
   howIBuiltIt: ["Applied state management."],
   technologies: ["React", "TypeScript", "Vite"],
   metrics: "Sub-second sync",
-  thumbnailUrl: "/assets/showcase/metaspins.png",
+  thumbnailUrl: "/assets/showcase/guts.png",
   badgeColor: "#00F0FF",
 }
 
@@ -60,6 +60,6 @@ describe("ShowcaseCard", () => {
     render(<ShowcaseCard onSelect={vi.fn()} project={mockProject} />)
     const image = screen.getByRole("img", { name: /test application platform preview/i })
     expect(image).toBeInTheDocument()
-    expect(image).toHaveAttribute("src", "/assets/showcase/metaspins.png")
+    expect(image).toHaveAttribute("src", "/assets/showcase/guts.png")
   })
 })
