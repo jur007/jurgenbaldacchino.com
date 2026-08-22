@@ -36,7 +36,6 @@ describe("HomeSection", () => {
     expect(
       screen.getByRole("heading", { name: "React Engineering & Frontend Architecture" }),
     ).toBeInTheDocument()
-    expect(screen.getByText("TailwindCSS")).toBeInTheDocument()
     expect(screen.getByText("State Management")).toBeInTheDocument()
 
     // Card 2

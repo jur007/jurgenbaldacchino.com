@@ -526,11 +526,6 @@ export const HomeSection = () => {
                 <span
                   className={getClassNames(styles.bentoTechBadge, styles.badgeArchitectureCyan)}
                 >
-                  TailwindCSS
-                </span>
-                <span
-                  className={getClassNames(styles.bentoTechBadge, styles.badgeArchitectureCyan)}
-                >
                   Design Systems
                 </span>
                 <span
