@@ -380,9 +380,9 @@ export const HomeSection = () => {
           </h1>
 
           <p className={styles.heroIntroduction}>
-            I’m Jur 👋 — a frontend engineer and technical leader with 12+ years of experience. I
-            architect resilient web applications, scale frontend systems, and lead engineering teams
-            to build products users love.
+            I’m Jur 👋 — frontend engineer and technical leader with 12+ years of experience. I lead
+            frontend teams, architect large-scale React systems, and build web applications that
+            stay fast under load.
           </p>
 
           <div className={styles.heroCallToActionGroup}>
@@ -486,9 +486,9 @@ export const HomeSection = () => {
               <div className={styles.bentoCardBody}>
                 <h3>React Engineering & Frontend Architecture</h3>
                 <p>
-                  I engineer fast, accessible web applications with performance and maintainability
-                  built in from day one. Specializing in modern React, strict TypeScript, and
-                  modular design systems that scale effortlessly.
+                  I build accessible, high-performance web applications designed for long-term
+                  maintainability. Specializing in modern React, strict TypeScript architectures,
+                  and modular design systems.
                 </p>
               </div>
               <div className={styles.bentoMetricsBar}>
@@ -557,8 +557,7 @@ export const HomeSection = () => {
                 <h3>Creative Dev & Interactive Canvas</h3>
                 <p>
                   Bringing creative product ideas to life with custom 2D canvas engines and playable
-                  web games. Blending web standards with smooth 60FPS physics and WebGL
-                  micro-interactions.
+                  web games. Blending web standards with 60FPS physics and WebGL micro-interactions.
                 </p>
               </div>
               <div
@@ -605,9 +604,9 @@ export const HomeSection = () => {
               <div className={styles.bentoCardBody}>
                 <h3>DevOps, CI/CD & Engineering Standards</h3>
                 <p>
-                  Great developer experience drives exceptional product quality. I automate CI/CD
-                  pipelines with GitHub Actions, strict linting, and fast test gates so teams ship
-                  with total confidence.
+                  Great developer experience directly shapes product quality. I build automated
+                  CI/CD pipelines, strict linting suites, and robust test gates so teams ship
+                  quickly with zero hesitation.
                 </p>
               </div>
               <div className={styles.pipelineVisualContainer}>
@@ -670,8 +669,8 @@ export const HomeSection = () => {
                 <h3>Technical Leadership & AI-Assisted Workflows</h3>
                 <p>
                   Guiding engineering teams through hands-on mentoring, thoughtful code reviews, and
-                  clear architecture standards. Leveraging AI to accelerate delivery while keeping
-                  human craft and engineering rigor at the center.
+                  clear architecture standards. Using AI pragmatically to accelerate delivery while
+                  keeping engineering craft firmly human-led.
                 </p>
               </div>
               <div className={styles.leadershipHighlights}>

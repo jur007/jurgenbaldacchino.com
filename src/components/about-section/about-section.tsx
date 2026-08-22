@@ -22,10 +22,9 @@ export const AboutSection = () => {
           Driven by curiosity, craft, and <em>exploration.</em>
         </h1>
         <p className={styles.aboutIntroduction}>
-          Originally from Malta and working globally, I&apos;m drawn to mountains exploration, and
-          anything with an engine. Immersing myself in new environments keeps my thinking fresh,
-          bringing energetic perspective to how I approach technical architecture, complex product
-          challenges, and team leadership.
+          Originally from Malta and working globally, I’m drawn to mountain trails, exploration, and
+          anything with an engine. Stepping into new environments keeps my thinking sharp and brings
+          fresh energy to how I solve complex architecture problems and lead teams.
         </p>
         <div className={styles.aboutLocationContainer} aria-label="Location">
           <span>From</span>

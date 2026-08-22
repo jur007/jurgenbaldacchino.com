@@ -87,28 +87,28 @@ const DeliverIcon = () => (
 const processSteps: IProcessStep[] = [
   {
     description:
-      "Deconstructing problem spaces, aligning on goals, and validating technical feasibility early.",
+      "Deconstruct problem spaces, align on goals, and validate technical feasibility early.",
     icon: <DiscoverIcon />,
     stepNumber: "01",
     title: "Discover & Align",
   },
   {
     description:
-      "Designing modular component systems with strict TypeScript contracts and accessible foundations.",
+      "Design modular component systems with strict TypeScript contracts and accessible foundations.",
     icon: <ArchitectIcon />,
     stepNumber: "02",
     title: "Architect & Prototype",
   },
   {
     description:
-      "Writing clean, maintainable React systems backed by strict test coverage and 60FPS performance.",
+      "Write clean, maintainable React systems backed by solid test coverage and 60FPS performance.",
     icon: <DevelopIcon />,
     stepNumber: "03",
     title: "Build & Optimize",
   },
   {
     description:
-      "Shipping via automated CI/CD pipelines with zero-downtime edge deployments and live monitoring.",
+      "Automate releases with bulletproof CI/CD pipelines, edge deployments, and live monitoring.",
     icon: <DeliverIcon />,
     stepNumber: "04",
     title: "Deliver & Scale",
@@ -152,8 +152,8 @@ export const AiSection = () => {
           AI-assisted. <em>Human-led.</em>
         </h2>
         <p className={styles.introductionCopy}>
-          I leverage AI to speed up prototyping, challenge technical assumptions, and automate
-          busywork — while keeping system architecture, code quality, and final engineering judgment
+          I use AI to speed up prototyping, challenge technical assumptions, and automate repetitive
+          tasks — while keeping system architecture, code quality, and final engineering judgment
           strictly human-led.
         </p>
       </div>

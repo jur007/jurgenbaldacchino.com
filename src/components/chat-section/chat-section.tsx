@@ -209,8 +209,8 @@ export const ChatSection = () => {
         <p className={styles.eyebrow}>Let&apos;s chat</p>
         <h2 id="chat-section-title">Have a project in mind? Let&apos;s talk.</h2>
         <p className={styles.introductionCopy}>
-          Whether you&apos;re scaling a web product, leveling up a frontend team, or looking for
-          senior technical leadership, drop a message and let&apos;s connect.
+          Whether you&apos;re scaling a frontend application, leveling up engineering standards, or
+          looking for senior technical leadership, I’d love to hear from you.
         </p>
         <p className={styles.directContactCopy}>
           Prefer email? Reach me directly at
