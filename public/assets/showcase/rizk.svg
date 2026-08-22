@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgRizk" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E0A02" />
+      <stop offset="50%" stop-color="#241804" />
+      <stop offset="100%" stop-color="#030712" />
+    </linearGradient>
+    <linearGradient id="goldGradRizk" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="360" fill="url(#bgRizk)" rx="16" />
+
+  <!-- Outer Window Frame -->
+  <rect x="60" y="45" width="480" height="270" rx="12" fill="#0A0803" stroke="rgba(245, 158, 11, 0.25)" stroke-width="1.5" />
+
+  <!-- Top Bar -->
+  <path d="M 60 57 Q 60 45 72 45 L 528 45 Q 540 45 540 57 L 540 80 L 60 80 Z" fill="#201503" />
+  <circle cx="84" cy="62" r="4" fill="#FF5F56" />
+  <circle cx="98" cy="62" r="4" fill="#FFBD2E" />
+  <circle cx="112" cy="62" r="4" fill="#27C93F" />
+  
+  <text x="140" y="66" fill="#F59E0B" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" letter-spacing="0.1em">RIZK SPORTSBOOK &amp; LIVE TRACKER</text>
+  <text x="440" y="66" fill="#F59E0B" font-family="monospace" font-size="10">⚡ WHEEL OF RIZK</text>
+
+  <!-- Left Sidebar Navigation -->
+  <rect x="76" y="92" width="76" height="210" rx="6" fill="rgba(25, 18, 5, 0.8)" />
+  <rect x="86" y="106" width="56" height="8" rx="3" fill="#F59E0B" />
+  <rect x="86" y="124" width="45" height="6" rx="3" fill="rgba(255, 255, 255, 0.2)" />
+  <rect x="86" y="140" width="50" height="6" rx="3" fill="rgba(255, 255, 255, 0.15)" />
+  <rect x="86" y="156" width="40" height="6" rx="3" fill="rgba(255, 255, 255, 0.15)" />
+
+  <!-- Center Live Game Radar & Odds -->
+  <rect x="166" y="92" width="224" height="120" rx="8" fill="rgba(35, 24, 6, 0.9)" stroke="rgba(245, 158, 11, 0.3)" />
+  <text x="180" y="115" fill="#F59E0B" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">BASKETBALL · NBA PLAYOFFS</text>
+  <text x="180" y="138" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="13" font-weight="bold">Lakers 108 - 104 Warriors</text>
+  
+  <rect x="180" y="156" width="94" height="40" rx="6" fill="#150E02" stroke="rgba(245, 158, 11, 0.5)" />
+  <text x="190" y="172" fill="#8E9EB5" font-family="system-ui, sans-serif" font-size="8">Lakers -3.5</text>
+  <text x="190" y="188" fill="#F59E0B" font-family="monospace" font-size="11" font-weight="bold">1.92</text>
+
+  <rect x="282" y="156" width="94" height="40" rx="6" fill="#150E02" stroke="rgba(255, 255, 255, 0.1)" />
+  <text x="292" y="172" fill="#8E9EB5" font-family="system-ui, sans-serif" font-size="8">Warriors +3.5</text>
+  <text x="292" y="188" fill="#FFFFFF" font-family="monospace" font-size="11" font-weight="bold">1.90</text>
+
+  <!-- Lower Market Highlights -->
+  <rect x="166" y="224" width="224" height="78" rx="6" fill="rgba(25, 18, 5, 0.8)" stroke="rgba(255, 255, 255, 0.08)" />
+  <text x="180" y="244" fill="#8E9EB5" font-family="system-ui, sans-serif" font-size="10">Total Points · Over / Under Ticker</text>
+  <rect x="180" y="256" width="194" height="6" rx="3" fill="rgba(255, 255, 255, 0.15)" />
+  <rect x="180" y="270" width="150" height="6" rx="3" fill="rgba(245, 158, 11, 0.4)" />
+
+  <!-- Right Gamification / Bet Slip -->
+  <rect x="404" y="92" width="122" height="210" rx="8" fill="rgba(25, 18, 5, 0.95)" stroke="rgba(245, 158, 11, 0.2)" />
+  <text x="418" y="114" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Active Wager</text>
+  <rect x="418" y="128" width="94" height="50" rx="4" fill="rgba(40, 28, 8, 0.8)" />
+  <text x="424" y="146" fill="#8E9EB5" font-family="system-ui, sans-serif" font-size="8">Lakers Spread</text>
+  <text x="424" y="164" fill="#F59E0B" font-family="monospace" font-size="10" font-weight="bold">@ 1.92</text>
+  <rect x="418" y="258" width="94" height="30" rx="6" fill="url(#goldGradRizk)" />
+  <text x="430" y="277" fill="#02040A" font-family="system-ui, sans-serif" font-size="10" font-weight="bold">CONFIRM</text>
+</svg>

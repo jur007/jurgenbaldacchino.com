@@ -1,58 +1,63 @@
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { describe, expect, it } from "vitest"
+import { afterEach, describe, expect, it } from "vitest"
 
 import { ShowcaseSection } from "./showcase-section"
 
 describe("ShowcaseSection", () => {
-  it("renders showcase title, category filter buttons, and project cards", () => {
+  afterEach(() => {
+    document.body.style.overflow = ""
+  })
+
+  it("renders showcase title, category filter buttons, and 5 project cards", () => {
     render(<ShowcaseSection />)
 
-    expect(screen.getByRole("heading", { level: 1, name: "Showcase" })).toBeInTheDocument()
-    expect(screen.getByRole("button", { name: /all \(3\)/i })).toBeInTheDocument()
-    expect(screen.getByRole("button", { name: /react architecture \(1\)/i })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 2, name: "Showcase" })).toBeInTheDocument()
+    expect(screen.getByRole("button", { name: /all \(5\)/i })).toBeInTheDocument()
+    expect(screen.getByRole("button", { name: /react architecture \(4\)/i })).toBeInTheDocument()
     expect(screen.getByRole("button", { name: /creative \/ canvas \(1\)/i })).toBeInTheDocument()
-    expect(screen.getByRole("button", { name: /tooling & dx \(1\)/i })).toBeInTheDocument()
 
-    expect(screen.getByText("High-Concurrency Web Platform")).toBeInTheDocument()
-    expect(screen.getByText("Interactive 2D Canvas Engine")).toBeInTheDocument()
-    expect(screen.getByText("Frontend Architecture & CI/CD Platform")).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Metaspins" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Mines Classic" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Guts" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Rizk" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Wetten.com" })).toBeInTheDocument()
   })
 
   it("filters project cards when category pills are clicked", async () => {
     const user = userEvent.setup()
     render(<ShowcaseSection />)
 
-    const reactFilter = screen.getByRole("button", { name: /react architecture \(1\)/i })
-    await user.click(reactFilter)
+    const canvasFilter = screen.getByRole("button", { name: /creative \/ canvas \(1\)/i })
+    await user.click(canvasFilter)
 
-    expect(screen.getByText("High-Concurrency Web Platform")).toBeInTheDocument()
-    expect(screen.queryByText("Interactive 2D Canvas Engine")).not.toBeInTheDocument()
-    expect(screen.queryByText("Frontend Architecture & CI/CD Platform")).not.toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Mines Classic" })).toBeInTheDocument()
+    expect(screen.queryByRole("heading", { level: 3, name: "Metaspins" })).not.toBeInTheDocument()
+    expect(screen.queryByRole("heading", { level: 3, name: "Guts" })).not.toBeInTheDocument()
 
-    const allFilter = screen.getByRole("button", { name: /all \(3\)/i })
+    const allFilter = screen.getByRole("button", { name: /all \(5\)/i })
     await user.click(allFilter)
 
-    expect(screen.getByText("Interactive 2D Canvas Engine")).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Metaspins" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Guts" })).toBeInTheDocument()
   })
 
-  it("opens project detail when a card is selected and returns when back is clicked", async () => {
+  it("opens case study modal when a card is selected and closes when back is clicked", async () => {
     const user = userEvent.setup()
     render(<ShowcaseSection />)
 
-    const alphaCard = screen.getByRole("button", {
-      name: /view details for high-concurrency web platform/i,
+    const metaspinsCard = screen.getByRole("button", {
+      name: /view case study for metaspins/i,
     })
-    await user.click(alphaCard)
+    await user.click(metaspinsCard)
 
-    expect(
-      screen.getByRole("heading", { level: 1, name: "High-Concurrency Web Platform" }),
-    ).toBeInTheDocument()
-    expect(screen.getByText("What I Did")).toBeInTheDocument()
+    expect(screen.getByRole("dialog")).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 1, name: "Metaspins" })).toBeInTheDocument()
+    expect(screen.getByText("Key Responsibilities & Scope")).toBeInTheDocument()
 
     const backButton = screen.getByRole("button", { name: /back to showcase gallery/i })
     await user.click(backButton)
 
-    expect(screen.getByRole("heading", { level: 1, name: "Showcase" })).toBeInTheDocument()
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
   })
 })

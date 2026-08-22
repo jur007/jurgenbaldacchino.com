@@ -7,6 +7,7 @@ import profileImage from "@/assets/profile-optimized.jpg"
 import { AiSection } from "@components/ai-section"
 import { ButtonLink } from "@components/button"
 import { IButtonSize, IButtonType } from "@components/button/button.types"
+import { ShowcaseSection } from "@components/showcase-section"
 import { getClassNames } from "@utils/class-names"
 
 const PhaserCanvas = lazy(() => import("@components/phaser-canvas"))
@@ -249,7 +250,7 @@ export const HomeSection = () => {
           </p>
 
           <div className={styles.heroCallToActionGroup}>
-            <ButtonLink href="#expertise" size={IButtonSize.LARGE} type={IButtonType.PRIMARY}>
+            <ButtonLink href="#showcase" size={IButtonSize.LARGE} type={IButtonType.PRIMARY}>
               View Work
             </ButtonLink>
             <ButtonLink href="#contact" size={IButtonSize.LARGE} type={IButtonType.SECONDARY}>
@@ -561,6 +562,8 @@ export const HomeSection = () => {
           </li>
         </ul>
       </section>
+
+      <ShowcaseSection />
 
       <AiSection />
     </div>

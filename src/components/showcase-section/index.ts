@@ -1,2 +1,2 @@
-export { ShowcaseSection, default } from "./showcase-section"
-export type { IShowcaseCategory, IShowcaseSection } from "./showcase-section.types"
+export { ShowcaseSection, ShowcaseGrid, default } from "./showcase-section"
+export type { IShowcaseCategory, IShowcaseSection, IShowcaseGrid } from "./showcase-section.types"

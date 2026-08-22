@@ -105,6 +105,13 @@
   color: var(--color-electric-cyan);
 }
 
+.projectSubtitle {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  color: var(--color-electric-cyan);
+}
+
 .metaRow {
   display: flex;
   align-items: center;

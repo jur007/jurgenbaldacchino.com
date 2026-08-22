@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import styles from "./showcase-section.module.css"
 import type { IShowcaseCategory, IShowcaseSection } from "./showcase-section.types"
 
-import { ProjectDetail } from "@components/project-detail"
+import { CaseStudyModal } from "@components/case-study-modal"
 import { ShowcaseCard } from "@components/showcase-card"
 import { showcaseProjects } from "@data/showcase"
 import type { IProject } from "@data/showcase"
@@ -13,7 +13,6 @@ const categories: Array<{ id: IShowcaseCategory; label: string }> = [
   { id: "all", label: "ALL" },
   { id: "react", label: "REACT ARCHITECTURE" },
   { id: "canvas", label: "CREATIVE / CANVAS" },
-  { id: "tooling", label: "TOOLING & DX" },
 ]
 
 const getInitialProjectId = (initialProjectId?: string): string | null => {
@@ -64,7 +63,7 @@ export const ShowcaseSection = ({ initialProjectId, className }: IShowcaseSectio
     }
   }
 
-  const handleBackToGrid = () => {
+  const handleModalClose = () => {
     setSelectedProjectId(null)
     if (typeof window !== "undefined" && window.history?.pushState) {
       const url = new URL(window.location.href)
@@ -88,63 +87,69 @@ export const ShowcaseSection = ({ initialProjectId, className }: IShowcaseSectio
   }
 
   return (
-    <div className={getClassNames(styles.containerWrapper, className)} id="showcase">
-      {selectedProject ? (
-        <ProjectDetail onBack={handleBackToGrid} project={selectedProject} />
-      ) : (
-        <>
-          <header className={styles.showcaseHeader}>
-            <span className={styles.showcaseEyebrow}>Selected Work</span>
-            <h1 className={styles.showcaseTitle}>Showcase</h1>
-            <p className={styles.showcaseSubtitle}>
-              In this space I’ve collected some of my selected works, highlighting both creativity
-              and problem-solving in action. Each project reflects my approach to engineering:
-              user-centered, detail-driven, and focused on delivering clear value.
-            </p>
-          </header>
+    <section
+      aria-labelledby="showcase-title"
+      className={getClassNames(styles.containerWrapper, className)}
+      id="showcase"
+    >
+      <header className={styles.showcaseHeader}>
+        <span className={styles.showcaseEyebrow}>Selected Work</span>
+        <h2 className={styles.showcaseTitle} id="showcase-title">
+          Showcase
+        </h2>
+        <p className={styles.showcaseSubtitle}>
+          A curated collection of production systems, high-concurrency iGaming platforms, real-time
+          sportsbooks, and interactive 2D canvas engines built with modern engineering craft.
+        </p>
+      </header>
 
-          <div className={styles.filterNavigationWrapper}>
-            <nav aria-label="Filter showcase projects" className={styles.filterNavigation}>
-              {categories.map((category) => {
-                const count = getCategoryCount(category.id)
-                const isActive = selectedCategory === category.id
+      <div className={styles.filterNavigationWrapper}>
+        <nav aria-label="Filter showcase projects" className={styles.filterNavigation}>
+          {categories.map((category) => {
+            const count = getCategoryCount(category.id)
+            const isActive = selectedCategory === category.id
 
-                return (
-                  <button
-                    aria-pressed={isActive}
-                    className={getClassNames(
-                      styles.filterButton,
-                      isActive && styles.filterButtonActive,
-                    )}
-                    key={category.id}
-                    onClick={() => handleCategoryFilterChange(category.id)}
-                    type="button"
-                  >
-                    <span>{category.label}</span>
-                    <span className={styles.filterCount}>({count})</span>
-                  </button>
-                )
-              })}
-            </nav>
-          </div>
+            return (
+              <button
+                aria-pressed={isActive}
+                className={getClassNames(
+                  styles.filterButton,
+                  isActive && styles.filterButtonActive,
+                )}
+                key={category.id}
+                onClick={() => handleCategoryFilterChange(category.id)}
+                type="button"
+              >
+                <span>{category.label}</span>
+                <span className={styles.filterCount}>({count})</span>
+              </button>
+            )
+          })}
+        </nav>
+      </div>
 
-          <ul aria-label="Showcase projects gallery" className={styles.projectGrid}>
-            {filteredProjects.map((project) => (
-              <li key={project.id}>
-                <ShowcaseCard onSelect={handleProjectSelect} project={project} />
-              </li>
-            ))}
-          </ul>
+      <ul aria-label="Showcase projects gallery" className={styles.projectGrid}>
+        {filteredProjects.map((project) => (
+          <li key={project.id}>
+            <ShowcaseCard onSelect={handleProjectSelect} project={project} />
+          </li>
+        ))}
+      </ul>
 
-          {filteredProjects.length === 0 && (
-            <div className={styles.emptyStateMessage}>
-              <p>No projects found matching the selected category.</p>
-            </div>
-          )}
-        </>
+      {filteredProjects.length === 0 && (
+        <div className={styles.emptyStateMessage}>
+          <p>No projects found matching the selected category.</p>
+        </div>
       )}
-    </div>
+
+      <CaseStudyModal
+        isOpen={Boolean(selectedProject)}
+        onClose={handleModalClose}
+        project={selectedProject ?? null}
+      />
+    </section>
   )
 }
 
+export const ShowcaseGrid = ShowcaseSection
 export default ShowcaseSection

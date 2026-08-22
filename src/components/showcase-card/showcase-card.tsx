@@ -33,9 +33,11 @@ export const ShowcaseCard = ({ project, onSelect, className }: IShowcaseCard) =>
     }
   }
 
+  const activeColor = project.badgeColor || "var(--color-electric-cyan)"
+
   return (
     <div
-      aria-label={`View details for ${project.title}`}
+      aria-label={`View case study for ${project.title}`}
       className={getClassNames(styles.containerWrapper, className)}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
@@ -54,8 +56,8 @@ export const ShowcaseCard = ({ project, onSelect, className }: IShowcaseCard) =>
           <span
             className={styles.categoryDot}
             style={{
-              backgroundColor: project.previewColor || "var(--color-electric-cyan)",
-              boxShadow: `0 0 8px ${project.previewColor || "var(--color-electric-cyan)"}`,
+              backgroundColor: activeColor,
+              boxShadow: `0 0 8px ${activeColor}`,
             }}
           />
           <span>{project.categoryLabel}</span>
@@ -76,6 +78,7 @@ export const ShowcaseCard = ({ project, onSelect, className }: IShowcaseCard) =>
             <span>{project.timeline}</span>
           </div>
           <h3 className={styles.projectTitle}>{project.title}</h3>
+          <p className={styles.projectSubtitle}>{project.subtitle}</p>
         </div>
 
         <p className={styles.projectSummary}>{project.summary}</p>
@@ -89,14 +92,14 @@ export const ShowcaseCard = ({ project, onSelect, className }: IShowcaseCard) =>
 
         <div className={styles.footerContainer}>
           <div className={styles.techTagList}>
-            {project.technologies.slice(0, 4).map((technology) => (
+            {project.technologies.slice(0, 3).map((technology) => (
               <span className={styles.techTag} key={technology}>
                 {technology}
               </span>
             ))}
           </div>
           <span className={styles.viewDetailsAction}>
-            <span>Explore</span>
+            <span>View Case Study</span>
             <ArrowRightIcon />
           </span>
         </div>

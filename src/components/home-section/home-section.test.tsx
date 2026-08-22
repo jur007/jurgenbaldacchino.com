@@ -1,10 +1,14 @@
-import { render, screen } from "@testing-library/react"
+import { render, screen, within } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { describe, expect, it } from "vitest"
+import { afterEach, describe, expect, it } from "vitest"
 
 import { HomeSection } from "./home-section"
 
 describe("HomeSection", () => {
+  afterEach(() => {
+    document.body.style.overflow = ""
+  })
+
   it("renders the 2-column Hero section with dual CTAs and floating metric badges", () => {
     render(<HomeSection />)
 
@@ -14,7 +18,7 @@ describe("HomeSection", () => {
       }),
     ).toBeInTheDocument()
     expect(screen.getByRole("img", { name: "Portrait of Jurgen Baldacchino" })).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: "View Work" })).toHaveAttribute("href", "#expertise")
+    expect(screen.getByRole("link", { name: "View Work" })).toHaveAttribute("href", "#showcase")
     expect(screen.getByRole("link", { name: "Let's Talk" })).toHaveAttribute("href", "#contact")
     expect(screen.getByText("12+ Years")).toBeInTheDocument()
     expect(screen.getByText("Senior Lead")).toBeInTheDocument()
@@ -27,36 +31,44 @@ describe("HomeSection", () => {
     expect(
       screen.getByRole("heading", { name: "Engineered for speed, scale, and longevity." }),
     ).toBeInTheDocument()
-    expect(
-      screen.getByRole("list", { name: "Core strengths and capabilities" }),
-    ).toBeInTheDocument()
-    expect(screen.getAllByRole("article")).toHaveLength(4)
+
+    const bentoList = screen.getByRole("list", { name: "Core strengths and capabilities" })
+    expect(bentoList).toBeInTheDocument()
+    expect(within(bentoList).getAllByRole("article")).toHaveLength(4)
 
     // Card 1
     expect(
-      screen.getByRole("heading", { name: "React Engineering & Frontend Architecture" }),
+      within(bentoList).getByRole("heading", {
+        name: "React Engineering & Frontend Architecture",
+      }),
     ).toBeInTheDocument()
-    expect(screen.getByText("State Management")).toBeInTheDocument()
+    expect(within(bentoList).getByText("State Management")).toBeInTheDocument()
 
     // Card 2
     expect(
-      screen.getByRole("heading", { name: "Creative Dev & Interactive Canvas" }),
+      within(bentoList).getByRole("heading", {
+        name: "Creative Dev & Interactive Canvas",
+      }),
     ).toBeInTheDocument()
-    expect(screen.getByText("Web Games")).toBeInTheDocument()
+    expect(within(bentoList).getByText("Web Games")).toBeInTheDocument()
 
     // Card 3
     expect(
-      screen.getByRole("heading", { name: "DevOps, CI/CD & Engineering Standards" }),
+      within(bentoList).getByRole("heading", {
+        name: "DevOps, CI/CD & Engineering Standards",
+      }),
     ).toBeInTheDocument()
-    expect(screen.getByText("Husky")).toBeInTheDocument()
-    expect(screen.getByText("Commitlint")).toBeInTheDocument()
+    expect(within(bentoList).getByText("Husky")).toBeInTheDocument()
+    expect(within(bentoList).getByText("Commitlint")).toBeInTheDocument()
 
     // Card 4
     expect(
-      screen.getByRole("heading", { name: "Technical Leadership & AI-Assisted Workflows" }),
+      within(bentoList).getByRole("heading", {
+        name: "Technical Leadership & AI-Assisted Workflows",
+      }),
     ).toBeInTheDocument()
-    expect(screen.getByText("Team Mentoring")).toBeInTheDocument()
-    expect(screen.getByText("AI Workflows")).toBeInTheDocument()
+    expect(within(bentoList).getByText("Team Mentoring")).toBeInTheDocument()
+    expect(within(bentoList).getByText("AI Workflows")).toBeInTheDocument()
   })
 
   it("interacts with the creative development canvas preview card", async () => {

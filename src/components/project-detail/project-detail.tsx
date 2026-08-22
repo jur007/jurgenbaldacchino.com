@@ -67,6 +67,7 @@ export const ProjectDetail = ({ project, onBack, className }: IProjectDetail) =>
           <header className={styles.titleHeader}>
             <span className={styles.categoryTag}>{project.categoryLabel}</span>
             <h1 className={styles.projectTitle}>{project.title}</h1>
+            {project.subtitle && <p className={styles.projectSubtitle}>{project.subtitle}</p>}
             <p className={styles.projectSummary}>{project.summary}</p>
           </header>
 
@@ -84,14 +85,22 @@ export const ProjectDetail = ({ project, onBack, className }: IProjectDetail) =>
                 onClick={handleToggleWhatIDid}
                 type="button"
               >
-                <span>What I Did</span>
+                <span>Key Responsibilities &amp; Scope</span>
                 <span className={styles.accordionToggleSymbol} aria-hidden="true">
                   {isWhatIDidOpen ? "−" : "+"}
                 </span>
               </button>
               {isWhatIDidOpen && (
                 <div className={styles.accordionContent} id="accordion-what-i-did">
-                  <p>{project.whatIDid}</p>
+                  {Array.isArray(project.whatIDid) ? (
+                    <ul>
+                      {project.whatIDid.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>{project.whatIDid}</p>
+                  )}
                 </div>
               )}
             </div>
@@ -109,14 +118,22 @@ export const ProjectDetail = ({ project, onBack, className }: IProjectDetail) =>
                 onClick={handleToggleSolutions}
                 type="button"
               >
-                <span>Solutions</span>
+                <span>Technical Architecture &amp; Solutions</span>
                 <span className={styles.accordionToggleSymbol} aria-hidden="true">
                   {isSolutionsOpen ? "−" : "+"}
                 </span>
               </button>
               {isSolutionsOpen && (
                 <div className={styles.accordionContent} id="accordion-solutions">
-                  <p>{project.solutions}</p>
+                  {Array.isArray(project.technicalSolutions) ? (
+                    <ul>
+                      {project.technicalSolutions.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>{project.technicalSolutions}</p>
+                  )}
                 </div>
               )}
             </div>
@@ -128,21 +145,19 @@ export const ProjectDetail = ({ project, onBack, className }: IProjectDetail) =>
 
           <dl className={styles.metaTable}>
             <div className={styles.metaRow}>
-              <dt className={styles.metaLabel}>Date</dt>
-              <dd className={styles.metaValue}>{project.timeline}</dd>
-            </div>
-
-            <div className={styles.metaRow}>
               <dt className={styles.metaLabel}>Role</dt>
               <dd className={styles.metaValue}>{project.role}</dd>
             </div>
 
-            {project.clientOrOrg && (
-              <div className={styles.metaRow}>
-                <dt className={styles.metaLabel}>Client</dt>
-                <dd className={styles.metaValue}>{project.clientOrOrg}</dd>
-              </div>
-            )}
+            <div className={styles.metaRow}>
+              <dt className={styles.metaLabel}>Client / Org</dt>
+              <dd className={styles.metaValue}>{project.clientOrOrg}</dd>
+            </div>
+
+            <div className={styles.metaRow}>
+              <dt className={styles.metaLabel}>Timeline</dt>
+              <dd className={styles.metaValue}>{project.timeline}</dd>
+            </div>
 
             {project.metrics && (
               <div className={styles.metaRow}>
@@ -167,31 +182,19 @@ export const ProjectDetail = ({ project, onBack, className }: IProjectDetail) =>
             </div>
           </dl>
 
-          <div className={styles.sidebarActions}>
-            {project.liveUrl && (
+          {project.liveUrl && (
+            <div className={styles.sidebarActions}>
               <a
                 className={styles.actionButtonPrimary}
                 href={project.liveUrl}
                 rel="noreferrer"
                 target="_blank"
               >
-                <span>Live Prototype</span>
+                <span>Visit Live Website</span>
                 <ExternalLinkIcon />
               </a>
-            )}
-
-            {project.githubUrl && (
-              <a
-                className={styles.actionButtonSecondary}
-                href={project.githubUrl}
-                rel="noreferrer"
-                target="_blank"
-              >
-                <span>View Repository</span>
-                <ExternalLinkIcon />
-              </a>
-            )}
-          </div>
+            </div>
+          )}
 
           <div className={styles.sidebarFooterText}>
             Engineered with Modern TypeScript &amp; Performance Standards
