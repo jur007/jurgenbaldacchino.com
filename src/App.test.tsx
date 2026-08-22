@@ -44,6 +44,15 @@ describe("App", () => {
     ).toBeInTheDocument()
   })
 
+  it("renders the showcase page at the showcase path", async () => {
+    window.history.pushState({}, "", "/showcase")
+    render(<App />)
+
+    expect(
+      await screen.findByRole("heading", { name: "Showcase" }, { timeout: 4000 }),
+    ).toBeInTheDocument()
+  })
+
   it("renders the not found page for an unknown path", async () => {
     window.history.pushState({}, "", "/missing-page")
     render(<App />)

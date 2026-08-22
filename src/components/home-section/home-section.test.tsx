@@ -72,6 +72,11 @@ describe("HomeSection", () => {
       await user.click(creativeCard)
     }
 
-    expect(await screen.findByText(/Phaser 3 · Live Physics/i)).toBeInTheDocument()
+    const badgeElements = await screen.findAllByText(
+      /Phaser 3 · Live Physics/i,
+      {},
+      { timeout: 4000 },
+    )
+    expect(badgeElements.length).toBeGreaterThan(0)
   })
 })

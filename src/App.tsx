@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react"
 import { HomePage } from "@pages/home-page"
 
 const AboutPage = lazy(() => import("@pages/about-page"))
+const ShowcasePage = lazy(() => import("@pages/showcase-page"))
 const NotFoundPage = lazy(() => import("@pages/not-found-page"))
 
 export const App = () => {
@@ -12,6 +13,14 @@ export const App = () => {
     return (
       <Suspense fallback={null}>
         <AboutPage />
+      </Suspense>
+    )
+  }
+
+  if (pathname === "/showcase") {
+    return (
+      <Suspense fallback={null}>
+        <ShowcasePage />
       </Suspense>
     )
   }
