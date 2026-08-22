@@ -229,7 +229,7 @@ export const HomeSection = () => {
         <div className={styles.heroContentColumn}>
           <div className={styles.heroAvailabilityBadge}>
             <span className={styles.availabilityIndicator} aria-hidden="true"></span>
-            <span>Available for Senior Lead & Architecture Roles</span>
+            <span>Available for Senior Frontend & Architecture Roles</span>
           </div>
 
           <h1 id="hero-title" aria-label={heading}>
