@@ -85,7 +85,7 @@ export const ProjectDetail = ({ project, onBack, className }: IProjectDetail) =>
                 onClick={handleToggleWhatIDid}
                 type="button"
               >
-                <span>Key Responsibilities &amp; Scope</span>
+                <span>What I Did</span>
                 <span className={styles.accordionToggleSymbol} aria-hidden="true">
                   {isWhatIDidOpen ? "−" : "+"}
                 </span>
@@ -118,21 +118,21 @@ export const ProjectDetail = ({ project, onBack, className }: IProjectDetail) =>
                 onClick={handleToggleSolutions}
                 type="button"
               >
-                <span>Technical Architecture &amp; Solutions</span>
+                <span>How I Built It</span>
                 <span className={styles.accordionToggleSymbol} aria-hidden="true">
                   {isSolutionsOpen ? "−" : "+"}
                 </span>
               </button>
               {isSolutionsOpen && (
                 <div className={styles.accordionContent} id="accordion-solutions">
-                  {Array.isArray(project.technicalSolutions) ? (
+                  {Array.isArray(project.howIBuiltIt) ? (
                     <ul>
-                      {project.technicalSolutions.map((item, index) => (
+                      {project.howIBuiltIt.map((item, index) => (
                         <li key={index}>{item}</li>
                       ))}
                     </ul>
                   ) : (
-                    <p>{project.technicalSolutions}</p>
+                    <p>{project.howIBuiltIt}</p>
                   )}
                 </div>
               )}

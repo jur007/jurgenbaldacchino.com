@@ -9,15 +9,15 @@ import type { IProject } from "@data/showcase"
 const mockProject: IProject = {
   id: "metaspins-test",
   title: "Metaspins",
-  subtitle: "Web3 Crypto Casino & Sportsbook",
+  subtitle: "Next-Gen Crypto Casino Platform",
   category: "react",
   categoryLabel: "React Architecture",
   role: "Head of Frontend",
-  timeline: "2022 - 2024",
+  timeline: "Present",
   clientOrOrg: "Metaspins",
   summary: "Comprehensive test summary for Metaspins.",
   whatIDid: ["Led frontend team.", "Built WebSockets state."],
-  technicalSolutions: ["Isolated state slices.", "Optimized bundle size."],
+  howIBuiltIt: ["Isolated state slices.", "Optimized bundle size."],
   technologies: ["React", "TypeScript", "Vite"],
   metrics: "Sub-second LCP",
   thumbnailUrl: "/assets/showcase/metaspins.png",
@@ -40,7 +40,7 @@ describe("CaseStudyModal", () => {
 
     expect(screen.getByRole("dialog")).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 1, name: "Metaspins" })).toBeInTheDocument()
-    expect(screen.getByText("Web3 Crypto Casino & Sportsbook")).toBeInTheDocument()
+    expect(screen.getByText("Next-Gen Crypto Casino Platform")).toBeInTheDocument()
     expect(screen.getByText("Comprehensive test summary for Metaspins.")).toBeInTheDocument()
     expect(screen.getByText("Led frontend team.")).toBeInTheDocument()
     expect(screen.getByText("Isolated state slices.")).toBeInTheDocument()
@@ -70,13 +70,13 @@ describe("CaseStudyModal", () => {
     const user = userEvent.setup()
     render(<CaseStudyModal isOpen={true} onClose={vi.fn()} project={mockProject} />)
 
-    const scopeButton = screen.getByRole("button", { name: /key responsibilities & scope/i })
+    const whatIDidButton = screen.getByRole("button", { name: /what i did/i })
     expect(screen.getByText("Led frontend team.")).toBeInTheDocument()
 
-    await user.click(scopeButton)
+    await user.click(whatIDidButton)
     expect(screen.queryByText("Led frontend team.")).not.toBeInTheDocument()
 
-    await user.click(scopeButton)
+    await user.click(whatIDidButton)
     expect(screen.getByText("Led frontend team.")).toBeInTheDocument()
   })
 })

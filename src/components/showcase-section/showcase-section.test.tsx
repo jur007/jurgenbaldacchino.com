@@ -55,7 +55,7 @@ describe("ShowcaseSection", () => {
 
     expect(screen.getByRole("dialog")).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 1, name: "Metaspins" })).toBeInTheDocument()
-    expect(screen.getByText("Key Responsibilities & Scope")).toBeInTheDocument()
+    expect(screen.getByText("What I Did")).toBeInTheDocument()
 
     const backButton = screen.getByRole("button", { name: /back to showcase gallery/i })
     await user.click(backButton)

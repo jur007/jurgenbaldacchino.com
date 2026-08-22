@@ -9,15 +9,15 @@ import type { IProject } from "@data/showcase"
 const mockProject: IProject = {
   id: "test-project-detail",
   title: "Metaspins",
-  subtitle: "Web3 Crypto Casino Platform",
+  subtitle: "Next-Gen Crypto Casino Platform",
   category: "react",
   categoryLabel: "React Architecture",
   role: "Head of Frontend",
-  timeline: "2022 - 2024",
+  timeline: "Present",
   clientOrOrg: "Metaspins",
   summary: "Comprehensive summary of the test application platform.",
   whatIDid: ["Designed component state layers and WebSocket integration."],
-  technicalSolutions: ["Applied immutable cache keys and fine-grained DOM updates."],
+  howIBuiltIt: ["Applied immutable cache keys and fine-grained DOM updates."],
   technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
   metrics: "Sub-second real-time sync",
   thumbnailUrl: "/assets/showcase/metaspins.png",
@@ -52,7 +52,7 @@ describe("ProjectDetail", () => {
     ).toBeInTheDocument()
 
     const whatIDidButton = screen.getByRole("button", {
-      name: /key responsibilities & scope/i,
+      name: /what i did/i,
     })
     await user.click(whatIDidButton)
 

@@ -180,7 +180,7 @@ export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStu
                     onClick={handleToggleScope}
                     type="button"
                   >
-                    <span>Key Responsibilities &amp; Scope</span>
+                    <span>What I Did</span>
                     <span className={styles.accordionToggleSymbol} aria-hidden="true">
                       {isScopeOpen ? "−" : "+"}
                     </span>
@@ -211,7 +211,7 @@ export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStu
                     onClick={handleToggleSolutions}
                     type="button"
                   >
-                    <span>Technical Architecture &amp; Solutions</span>
+                    <span>How I Built It</span>
                     <span className={styles.accordionToggleSymbol} aria-hidden="true">
                       {isSolutionsOpen ? "−" : "+"}
                     </span>
@@ -219,7 +219,7 @@ export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStu
                   {isSolutionsOpen && (
                     <div className={styles.accordionContent} id="accordion-solutions">
                       <ul className={styles.bulletList}>
-                        {project.technicalSolutions.map((item, index) => (
+                        {project.howIBuiltIt.map((item, index) => (
                           <li className={styles.bulletListItem} key={index}>
                             {item}
                           </li>
