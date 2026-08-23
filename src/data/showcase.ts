@@ -20,6 +20,56 @@ export interface IProject {
 
 export const showcaseProjects: IProject[] = [
   {
+    id: "crypto-casinos-web3-services",
+    title: "Crypto Casinos and Web3 Services",
+    subtitle: "Crypto Casino Platforms & Modern Web Architecture",
+    category: "react",
+    categoryLabel: "React Architecture",
+    role: "Head of Frontend",
+    clientOrOrg: "Crypto Gaming & Web3 Platforms",
+    summary:
+      "Built, modernized, and scaled web applications for high-traffic crypto casinos, keeping the interface snappy, wallet states synced in real time, and delivering high-converting reward mechanics.",
+    whatIDid: [
+      "Led the frontend team and established core architecture, state patterns, and code quality standards.",
+      "Built key interactive engagement features including daily drops, custom lootboxes, rakeback rewards, and native in-house games.",
+      "Integrated real-time crypto wallet synchronization, seamless game launching flows, and automated continuous delivery pipelines.",
+    ],
+    howIBuiltIt: [
+      "Optimized Gatsby build processes, caching strategies, and bundle splitting to cut compilation times and deploy updates faster.",
+      "Standardized reusable UI tokens and responsive layout systems for seamless multi-device play across desktop and mobile.",
+      "Worked hand in hand across product, design, and backend teams to turn complex feature concepts into smooth, shippable web experiences.",
+    ],
+    technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "CSS Modules", "Cloudflare"],
+    metrics: "Built from the ground up & modernized",
+    thumbnailUrl: "/assets/showcase/crypto-casinos-web3.jpg",
+    badgeColor: "#00F0FF",
+  },
+  {
+    id: "phaser-2d-casino-games",
+    title: "Phaser 2D Games for Casinos",
+    subtitle: "Custom 2D Canvas & WebGL Game Engine",
+    category: "canvas",
+    categoryLabel: "Creative / Canvas",
+    role: "Lead Game Developer & Creative Engineer",
+    clientOrOrg: "Independent Production",
+    summary:
+      "A custom 2D casual game built from scratch as an isolated standalone bundle with smooth animations and physics.",
+    whatIDid: [
+      "Built the full 2D interactive canvas game loop, custom particle effects, and sprite animations using Phaser 3.",
+      "Created a clean state bridge between React UI controls and the WebGL game canvas.",
+      "Packaged the game engine into an independent module ready for easy host-app embedding.",
+    ],
+    howIBuiltIt: [
+      "Handled strict context cleanup on unmount to completely eliminate GPU and WebGL memory leaks.",
+      "Optimized sprite sheets and render budgets to maintain an unbroken 60 FPS on mobile browsers.",
+      "Worked hand in hand with designers to shape the visual identity, feel, and narrative flow of the game.",
+    ],
+    technologies: ["Phaser 3", "HTML5 Canvas", "WebGL", "TypeScript", "Vite"],
+    metrics: "Smooth 60 FPS mobile gameplay",
+    thumbnailUrl: "/assets/showcase/phaser-2d-games.jpg",
+    badgeColor: "#F97316",
+  },
+  {
     id: "guts-sportsbook",
     title: "Guts Sportsbook",
     subtitle: "Full Modern Architecture Rewrite",
