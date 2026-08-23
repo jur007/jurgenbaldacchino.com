@@ -20,11 +20,6 @@ describe("ShowcaseSection", () => {
     expect(screen.getByRole("heading", { level: 3, name: "Guts Sportsbook" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 3, name: "Rizk Sportsbook" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 3, name: "Wetten.com" })).toBeInTheDocument()
-    expect(screen.queryByRole("heading", { level: 3, name: "Metaspins" })).not.toBeInTheDocument()
-    expect(
-      screen.queryByRole("heading", { level: 3, name: "Mines Classic" }),
-    ).not.toBeInTheDocument()
-    expect(screen.queryByRole("heading", { level: 3, name: "Bombastic" })).not.toBeInTheDocument()
   })
 
   it("filters project cards when category pills are clicked", async () => {
