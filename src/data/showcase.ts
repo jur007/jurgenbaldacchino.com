@@ -20,28 +20,27 @@ export interface IProject {
 
 export const showcaseProjects: IProject[] = [
   {
-    id: "crypto-casinos-web3-services",
-    title: "Crypto Casinos and Web3 Services",
-    subtitle: "Crypto Casino Platforms & Modern Web Architecture",
+    id: "crypto-casino-platform",
+    title: "Crypto Casino Platform",
+    subtitle: "Crypto Casino Platform Architecture",
     category: "react",
     categoryLabel: "React Architecture",
     role: "Head of Frontend",
-    clientOrOrg: "Crypto Gaming & Web3 Platforms",
+    clientOrOrg: "Confidential (NDA)",
     summary:
-      "Built, modernized, and scaled web applications for high-traffic crypto casinos, keeping the interface snappy, wallet states synced in real time, and delivering high-converting reward mechanics.",
+      "Built and scaled the core web app for a high-traffic crypto casino, keeping the interface snappy and wallet states synced in real time.",
     whatIDid: [
-      "Led the frontend team and established core architecture, state patterns, and code quality standards.",
-      "Built key interactive engagement features including daily drops, custom lootboxes, rakeback rewards, and native in-house games.",
-      "Integrated real-time crypto wallet synchronization, seamless game launching flows, and automated continuous delivery pipelines.",
+      "Led the frontend team and established our core architecture, state patterns, and code quality standards.",
+      "Built key interactive engagement features including daily drops, custom lootboxes, and native in-house games.",
+      "Set up automated continuous delivery pipelines to speed up internal feature releases and ship with confidence.",
     ],
     howIBuiltIt: [
-      "Optimized Gatsby build processes, caching strategies, and bundle splitting to cut compilation times and deploy updates faster.",
-      "Standardized reusable UI tokens and responsive layout systems for seamless multi-device play across desktop and mobile.",
+      "Optimized our Gatsby build processes and caching strategies to cut compilation times and deploy updates faster.",
       "Worked hand in hand across product, design, and backend teams to turn complex feature concepts into smooth, shippable web experiences.",
     ],
     technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "CSS Modules", "Cloudflare"],
-    metrics: "Built from the ground up & modernized",
-    thumbnailUrl: "/assets/showcase/crypto-casinos-web3.jpg",
+    metrics: "Built from the ground up",
+    thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
     badgeColor: "#00F0FF",
   },
   {
@@ -51,7 +50,7 @@ export const showcaseProjects: IProject[] = [
     category: "canvas",
     categoryLabel: "Creative / Canvas",
     role: "Lead Game Developer & Creative Engineer",
-    clientOrOrg: "Independent Production",
+    clientOrOrg: "Confidential (NDA)",
     summary:
       "A custom 2D casual game built from scratch as an isolated standalone bundle with smooth animations and physics.",
     whatIDid: [
@@ -66,7 +65,31 @@ export const showcaseProjects: IProject[] = [
     ],
     technologies: ["Phaser 3", "HTML5 Canvas", "WebGL", "TypeScript", "Vite"],
     metrics: "Smooth 60 FPS mobile gameplay",
-    thumbnailUrl: "/assets/showcase/phaser-2d-games.jpg",
+    thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
+    badgeColor: "#FF6B00",
+  },
+  {
+    id: "crypto-sportsbook-revamp",
+    title: "Crypto Casino & Sportsbook",
+    subtitle: "Brand Revamp & Modern Web Architecture",
+    category: "react",
+    categoryLabel: "React Architecture",
+    role: "Head of Frontend",
+    clientOrOrg: "Confidential (NDA)",
+    summary:
+      "Modernized a legacy platform into a contemporary crypto casino and sportsbook web app, delivering smooth wallet streaming and high-converting reward mechanics.",
+    whatIDid: [
+      "Led the frontend brand revamp and migrated legacy views to a modular React architecture.",
+      "Built core casino and sportsbook features, including daily lootboxes, rakeback rewards, and in-house originals.",
+      "Integrated real-time crypto wallet synchronization and seamless game launching flows.",
+    ],
+    howIBuiltIt: [
+      "Standardized reusable UI tokens and responsive layout systems for seamless multi-device play.",
+      "Optimized WebSocket state streams and bundle splitting to ensure fast, responsive page transitions.",
+    ],
+    technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "CSS Modules", "Cloudflare"],
+    metrics: "Modern architecture revamp",
+    thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
     badgeColor: "#F97316",
   },
   {
