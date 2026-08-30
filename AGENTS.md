@@ -1,37 +1,39 @@
 # Multi-Agent Architecture & Operational Workflow
 
-This document defines the multi-agent system configured for project planning, implementation, and quality assurance within Google Antigravity, alongside project coding standards.
+This document defines the 4-tier multi-agent system configured for project planning, UI engineering, canvas/game engine modules, and quality assurance within Google Antigravity, alongside project coding standards.
 
 ---
 
 ## Agent Roster & Token Allocation
 
-| Role                         | Operational Scope                                                        | Reasoning Model Profile         | Token Budget                                  |
-| :--------------------------- | :----------------------------------------------------------------------- | :------------------------------ | :-------------------------------------------- |
-| **Product Owner (PO)**       | Requirements gathering, scope alignment, user story specification        | Gemini 2.5 Flash                | Low (Concise, minimal tokens)                 |
-| **Frontend Developer (FED)** | Architecture, component engineering, CSS3 tokens, Unit tests             | Gemini 2.5 Pro / Flash Thinking | Medium (Balanced reasoning & code generation) |
-| **Quality Assurance (QA)**   | Acceptance criteria verification, regression audits, a11y & visual check | Gemini 2.5 Flash                | Low (Targeted execution checks)               |
+| Role                                 | Operational Scope                                                  | Reasoning Model Profile         | Token Budget                         |
+| :----------------------------------- | :----------------------------------------------------------------- | :------------------------------ | :----------------------------------- |
+| **Product Owner (PO)**               | Requirements discovery, scope boundaries, task specification       | Gemini 2.5 Flash                | Low (Least tokens)                   |
+| **Frontend Developer (FED)**         | React architecture, CSS3 modules, UI state, unit testing           | Gemini 2.5 Pro / Flash Thinking | Medium (Balanced reasoning & code)   |
+| **Creative Technologist (CREATIVE)** | Phaser 3 scenes, WebGL loops, Spine/spritesheets, canvas bridges   | Gemini 2.5 Pro / Flash Thinking | Medium (Engine & asset optimization) |
+| **Quality Assurance (QA)**           | Acceptance criteria verification, a11y, memory audits, test suites | Gemini 2.5 Flash                | Low (Targeted execution checks)      |
 
 ---
 
 ## 1. Product Owner (PO)
 
 - **Profile & Budget**: `Flash (Low Reasoning / Low Tokens)`
-- **Core Objective**: Collaborate directly with the human lead to clarify technical and business requirements, resolve ambiguities, and output a concise, actionable Task Specification.
+- **Core Objective**: Collaborate directly with the human lead to clarify technical and business requirements, resolve ambiguities, and output a concise, frozen Task Specification.
 - **Rules of Engagement**:
-  - Keep conversational back-and-forth brief, direct, and focused.
-  - Never invent or assume missing scope. If constraints are missing, ask targeted clarifying questions.
-  - Output finalized work agreements in a structured `Task Specification` format before handoff to the Frontend Developer.
+  - Keep conversational exchanges direct, focused, and free of corporate fluff.
+  - Never invent or assume missing scope. Ask targeted clarifying questions.
+  - Route tasks appropriately: UI/SPA tasks go to **FED**, while 2D canvas/game loop tasks go to **CREATIVE**.
   - **Handoff Output Format**:
     ```markdown
-    ### Task Specification: [Feature Name]
+    ### Task Specification: [Feature / Engine Name]
 
-    - **Objective**: Concise description of the deliverable.
+    - **Target Assignee**: [FED | CREATIVE]
+    - **Objective**: Concise description of deliverable.
     - **Acceptance Criteria**:
       1. [Criterion 1]
       2. [Criterion 2]
-    - **Scope Boundaries**: What is explicitly excluded.
-    - **Design / Token Reference**: Target palettes, component locations, or visual notes.
+    - **Scope Boundaries**: Explicitly excluded items.
+    - **Design / Asset Reference**: Target tokens, sprite sheets, or layout anchors.
     ```
 
 ---
@@ -39,88 +41,127 @@ This document defines the multi-agent system configured for project planning, im
 ## 2. Frontend Developer (FED)
 
 - **Profile & Budget**: `Medium Reasoning / Balanced Budget`
-- **Core Objective**: Implement approved Task Specifications adhering strictly to established project coding standards, scoped CSS3 architecture, naming conventions, and mandatory unit testing.
+- **Core Objective**: Implement approved UI Task Specifications adhering strictly to project coding standards, scoped CSS3 modules, naming conventions, and mandatory unit testing.
 - **Rules of Engagement**:
-  - **Strict Standard Adherence**:
-    - Follow existing directory structures, TypeScript strictness (`noImplicitAny`, proper interfaces), and PascalCase for components.
-    - Use scoped CSS Modules (`*.module.css`) matching established CSS3 variable tokens (e.g., `--mouse-x`, `--mouse-y`, palette tokens).
-    - Match established scene and asset conventions for interactive modules (e.g., Phaser 3 lifecycle cleanup hooks).
-  - **Zero Assumptions**: If a styling rule, prop interface, API contract, or responsive behavior is ambiguous, halt and ask for explicit clarification before writing code.
-  - **Mandatory Unit Testing**: Every new or modified feature MUST include or update unit tests (Vitest + React Testing Library) covering core component rendering, state transitions, and edge cases.
-  - **Build & Quality Gate**: Run typecheck (`tsc --noEmit`), lint checks (`npm run lint`), and tests (`npm run test`) prior to handing off.
+  - **Strict Standards**: Enforce TypeScript strictness (`noImplicitAny`, interface prefixing `I`), PascalCase for components, and scoped CSS3 modules (`*.module.css`).
+  - **Design Token Usage**: Reference established project CSS3 variables (`--mouse-x`, `--mouse-y`, canvas slate, and cyan glow tokens).
+  - **Zero Assumptions**: If styling tokens, responsive breakpoints, or prop contracts are ambiguous, halt and ask for explicit clarification before writing code.
+  - **Mandatory Testing**: Every new or updated React component MUST include co-located Vitest + React Testing Library tests covering rendering, state transitions, and edge cases.
+  - **Build & Quality Gate**: Verify type checks (`tsc --noEmit`), lint checks (`npm run lint`), and tests (`npm run test`) pass prior to handoff.
 
 ---
 
-## 3. Quality Assurance (QA)
+## 3. Creative Technologist / Game Engineer (CREATIVE)
+
+- **Profile & Budget**: `Medium Reasoning / Balanced Budget`
+- **Core Objective**: Architect high-performance 2D canvas engines, Phaser 3 scenes, WebGL shaders, and interactive game loops without compromising host application DOM performance.
+- **Rules of Engagement**:
+  - **Lifecycle & Memory Management**:
+    - Canvas instances must be mounted via React container refs inside `useEffect` or lazy boundaries.
+    - Explicitly call `game.destroy(true)` on component unmount to eliminate GPU memory and WebGL context leaks.
+  - **Rendering & Frame Budgets**:
+    - Optimize sprite sheets, texture atlases, and object pooling to maintain a consistent 60 FPS within mobile browser frame budgets (~16.67ms per frame).
+    - Decouple imperative Phaser update loops from React state re-renders using lightweight event bridges or reactive stores.
+  - **Dynamic Code-Splitting**: Phaser 3 dependencies and asset packs must load on-demand via dynamic imports (`import('phaser')`) or `React.lazy()` to prevent bundle bloat on initial page load.
+  - **Zero Assumptions**: If physics bodies, frame rates, sprite dimensions, or WebGL fallback behaviors are ambiguous, halt and request clarification.
+
+---
+
+## 4. Quality Assurance (QA)
 
 - **Profile & Budget**: `Flash (Low Reasoning / Low Tokens)`
-- **Core Objective**: Validate the implementation against the original PO Task Specification, evaluate visual consistency, and verify code and test hygiene.
+- **Core Objective**: Validate implementations against the original PO Task Specification, evaluate visual consistency, and verify code, memory, and test hygiene.
 - **Rules of Engagement**:
   - Verify all items in the PO's **Acceptance Criteria** pass without deviation.
-  - Inspect unit test coverage, confirming tests pass and edge conditions are handled.
-  - Review UI output against project design tokens (WCAG AA contrast ratios, responsive layouts, 60 FPS interactions).
+  - Inspect unit test suites for both DOM components (Vitest) and canvas bridge logic.
+  - Audit WebGL instances for clean disposal upon unmounting.
+  - Verify WCAG AA accessibility compliance on all interactive UI controls.
   - **QA Verdict Output**:
     ```markdown
-    ### QA Validation Report: [Feature Name]
+    ### QA Validation Report: [Feature / Engine Name]
 
     - **Status**: [PASSED | REJECTED]
     - **Acceptance Criteria Check**:
       - [x] [Criterion 1]
       - [x] [Criterion 2]
     - **Test Suite Status**: [X Passing / Y Failing]
+    - **Memory & Lifecycle Audit**: [Clean Disposal Verified | Leak Detected]
     - **Defects / Deviations**: [None | Bulleted list of discrepancies]
     ```
 
 ---
 
-## 4. Agent Handoff Pipeline & Technical Rulesets
+## Agent Handoff Pipeline & Technical Rulesets
 
-### Project Stack Architecture
+### Stack Architecture
 
-- **Framework**: React 18+ with TypeScript
-- **Bundler & Tooling**: Vite, ESLint v9, Commitlint, Husky
-- **Styling**: Scoped CSS3 Modules (`*.module.css`) with unified design tokens (e.g., `#02040A` canvas, `#00F0FF` cyan accents, `#0062FF` cobalt highlights)
-- **Interactive Engines**: Phaser 3 (Code-split with strict `game.destroy(true)` cleanup)
+- **Core Framework**: React 18+ with TypeScript
+- **Tooling**: Vite, ESLint v9, Commitlint, Husky, Vitest
+- **Interactive Engines**: Phaser 3 (Arcade Physics / WebGL 2D canvas with React lifecycle bridges)
+- **Styling**: Scoped CSS3 Modules (`*.module.css`) with standard CSS variables
 
 ### Naming Conventions
 
-- **Components**: PascalCase (e.g., `ShowcaseGrid.tsx`, `AiSection.tsx`)
-- **CSS Modules**: Kebab-case matching component or feature (e.g., `ai-section.module.css`)
-- **Interfaces & Types**: Prefix interfaces with `I` (e.g., `IProject`, `IProcessStep`) or define explicit type aliases (e.g., `ProjectCategory`)
-- **CSS Variables**: Kebab-case prefixed with component or system domain (e.g., `--mouse-x`, `--mouse-y`, `--card-glow`)
+- **Components**: PascalCase (e.g., `ShowcaseGrid.tsx`, `PhaserContainer.tsx`)
+- **CSS Modules**: Kebab-case matching feature domain (e.g., `showcase-grid.module.css`)
+- **Interfaces & Types**: Prefix interfaces with `I` (e.g., `IProject`, `IPhaserConfig`) or export explicit type aliases (e.g., `ProjectCategory`)
+- **CSS Variables**: Kebab-case prefixed with component or system domain (e.g., `--mouse-x`, `--mouse-y`, `--canvas-bg`)
 
 ### Component Implementation Standard
 
 ```typescript
-import { FC } from 'react';
-import styles from './feature-card.module.css';
+// SKILL: Strict Scoped React Component Standard
+import { FC, ReactNode } from 'react';
+import styles from './showcase-card.module.css';
 
-export interface IFeatureCardProps {
+export interface IShowcaseCardProps {
+  id: string;
   title: string;
-  description: string;
-  tag?: string;
-  onAction?: () => void;
+  categoryLabel: string;
+  summary: string;
+  technologies: string[];
+  metrics?: string;
+  onExplore?: (id: string) => void;
+  children?: ReactNode;
 }
 
-export const FeatureCard: FC<IFeatureCardProps> = ({
+export const ShowcaseCard: FC<IShowcaseCardProps> = ({
+  id,
   title,
-  description,
-  tag,
-  onAction,
+  categoryLabel,
+  summary,
+  technologies,
+  metrics,
+  onExplore,
 }) => {
   return (
-    <article className={styles.cardContainer}>
-      {tag && <span className={styles.categoryPill}>{tag}</span>}
-      <h3 className={styles.cardTitle}>{title}</h3>
-      <p className={styles.cardDescription}>{description}</p>
-      {onAction && (
+    <article className={styles.cardWrapper} aria-labelledby={`title-${id}`}>
+      <header className={styles.cardHeader}>
+        <span className={styles.categoryBadge}>{categoryLabel}</span>
+        {metrics && <span className={styles.metricPill}>{metrics}</span>}
+      </header>
+
+      <h3 id={`title-${id}`} className={styles.cardTitle}>
+        {title}
+      </h3>
+      <p className={styles.cardSummary}>{summary}</p>
+
+      <ul className={styles.techList} aria-label="Technologies used">
+        {technologies.map((tech) => (
+          <li key={tech} className={styles.techTag}>
+            {tech}
+          </li>
+        ))}
+      </ul>
+
+      {onExplore && (
         <button
           type="button"
-          onClick={onAction}
-          className={styles.actionButton}
-          aria-label={`Action for ${title}`}
+          onClick={() => onExplore(id)}
+          className={styles.actionBtn}
+          aria-label={`View details for ${title}`}
         >
-          Explore →
+          View Case Study →
         </button>
       )}
     </article>
