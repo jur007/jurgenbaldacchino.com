@@ -60,6 +60,12 @@ jobs:
           TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
         run: |
           npm ci
+          # phaser-games package.json has "files": ["dist"], so npm only unpacks package.json
+          # Clone the full built dist branch into node_modules so all bundles and assets are present
+          rm -rf node_modules/@jurgenbaldacchino/phaser-showcase
+          git clone --depth 1 -b dist "https://${TOKEN}@github.com/jur007/phaser-games.git" node_modules/@jurgenbaldacchino/phaser-showcase
+          mkdir -p public/assets/games
+          cp -r node_modules/@jurgenbaldacchino/phaser-showcase/assets/games/* public/assets/games/ 2>/dev/null || true
 
       - name: Verify formatting
         run: npm run format:check
