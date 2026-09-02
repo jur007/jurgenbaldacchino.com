@@ -6,6 +6,16 @@ import { CaseStudyModal } from "./case-study-modal"
 
 import type { IProject } from "@data/showcase"
 
+vi.mock("@components/minescrypt-modal", () => ({
+  MinesCryptModal: ({ isOpen }: { isOpen: boolean }) =>
+    isOpen ? <div aria-label="Crypt of the Cursed Game Engine" role="dialog" /> : null,
+}))
+
+vi.mock("@components/mines-vanilla-modal", () => ({
+  MinesVanillaModal: ({ isOpen }: { isOpen: boolean }) =>
+    isOpen ? <div aria-label="Mines Classic Game Engine" role="dialog" /> : null,
+}))
+
 const mockProject: IProject = {
   id: "test-platform",
   title: "Platform Architecture Project",

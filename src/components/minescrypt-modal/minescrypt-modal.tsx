@@ -4,28 +4,13 @@ import type { FC, KeyboardEvent, MouseEvent } from "react"
 import styles from "./minescrypt-modal.module.css"
 import type { IMinesCryptModalProps } from "./minescrypt-modal.types"
 
+import { CloseIcon } from "@components/icons"
 import { getClassNames } from "@utils/class-names"
 
 const MinesCryptGame = lazy(() =>
   import("@jurgenbaldacchino/phaser-showcase/minescrypt").then((module) => ({
     default: module.MinesCryptGame,
   })),
-)
-
-const CloseIcon = () => (
-  <svg
-    aria-hidden="true"
-    className={styles.closeIcon}
-    fill="none"
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth="2"
-    viewBox="0 0 24 24"
-  >
-    <line x1="18" x2="6" y1="6" y2="18" />
-    <line x1="6" x2="18" y1="6" y2="18" />
-  </svg>
 )
 
 export const MinesCryptModal: FC<IMinesCryptModalProps> = ({ isOpen, onClose, className }) => {
@@ -92,7 +77,7 @@ export const MinesCryptModal: FC<IMinesCryptModalProps> = ({ isOpen, onClose, cl
           onClick={onClose}
           type="button"
         >
-          <CloseIcon />
+          <CloseIcon className={styles.closeIcon} />
         </button>
 
         <div className={styles.canvasViewportFrame}>

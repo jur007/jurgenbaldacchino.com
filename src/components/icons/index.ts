@@ -1,0 +1,6 @@
+export { ArrowRightIcon } from "./arrow-right-icon"
+export { BackArrowIcon } from "./back-arrow-icon"
+export { CloseIcon } from "./close-icon"
+export { ExternalLinkIcon } from "./external-link-icon"
+export { PlayIcon } from "./play-icon"
+export type { IIconProps } from "./icons.types"
