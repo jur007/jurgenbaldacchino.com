@@ -48,7 +48,7 @@ jobs:
         env:
           # Failsafe: if git still attempts SSH, force it to fail visibly instead of hanging/erroring on keys
           GIT_SSH_COMMAND: "false"
-        run: npm ci
+        run: npm i
 
       - name: Verify formatting
         run: npm run format:check
