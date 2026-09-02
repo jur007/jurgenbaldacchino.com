@@ -20,13 +20,22 @@ if (token) {
       { stdio: "ignore" },
     )
     execSync(
+      `git config --global url."https://${token}@github.com/".insteadOf "git+https://github.com/"`,
+      { stdio: "ignore" },
+    )
+    execSync(
       `git config --global url."https://${token}@github.com/".insteadOf "ssh://git@github.com/"`,
       { stdio: "ignore" },
     )
     execSync(`git config --global url."https://${token}@github.com/".insteadOf "git@github.com:"`, {
       stdio: "ignore",
     })
+    console.log("[setup-git-auth] GitHub token detected; Git credentials configured successfully.")
   } catch (err) {
     console.warn("[setup-git-auth] Warning: could not configure git credentials:", err.message)
   }
+} else {
+  console.warn(
+    "[setup-git-auth] Notice: No GitHub token found in environment variables (JURGENBALDACCHINO_PHASER_READ_TOKEN).",
+  )
 }
