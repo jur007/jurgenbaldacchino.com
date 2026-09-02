@@ -21,6 +21,7 @@ const mockProject: IProject = {
   metrics: "Sub-second real-time sync",
   thumbnailUrl: "/assets/showcase/guts.png",
   liveUrl: "https://example.com",
+  isPrivate: false,
 }
 
 describe("ProjectDetail", () => {

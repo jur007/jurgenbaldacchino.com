@@ -17,6 +17,7 @@ export interface IProject {
   thumbnailUrl: string
   liveUrl?: string
   badgeColor?: string
+  isPrivate: boolean
 }
 
 export const showcaseProjects: IProject[] = [
@@ -44,31 +45,7 @@ export const showcaseProjects: IProject[] = [
     metrics: "60 FPS WebGL • Zero Memory Leaks",
     thumbnailUrl: "/assets/showcase/crypt-of-the-cursed.jpg",
     badgeColor: "#38E5A7",
-  },
-  {
-    id: "mines-vanilla-game",
-    title: "Mines Classic",
-    subtitle: "Lightweight 2D Arcade Engine",
-    category: "canvas",
-    categoryLabel: "Creative / Canvas",
-    role: "Lead Game Developer & Creative Engineer",
-    timeline: "2026",
-    clientOrOrg: "Independent Production",
-    summary:
-      "A fast, classic 5x5 mines game focused on snappy input response, crisp particle bursts, and dynamic multiplier curves.",
-    whatIDid: [
-      "Engineered the 60 FPS Phaser 3 arcade loop with animated tile reveals and responsive board scaling.",
-      "Built decoupled React controls for custom grid sizes, mine density, and real-time cashout states.",
-      "Wrote strict teardown hooks to ensure zero GPU or canvas memory leaks when closing the game.",
-    ],
-    howIBuiltIt: [
-      "Structured the engine as a standalone sub-module within the multi-entry showcase package.",
-      "Batched spritesheets and audio cues for instant, zero-latency touch response on mobile browsers.",
-    ],
-    technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
-    metrics: "60 FPS Arcade • Instant Touch Response",
-    thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
-    badgeColor: "#F59E0B",
+    isPrivate: false,
   },
   {
     id: "guts-sportsbook",
@@ -94,6 +71,7 @@ export const showcaseProjects: IProject[] = [
     thumbnailUrl: "/assets/showcase/guts.png",
     liveUrl: "https://guts.com",
     badgeColor: "#E11D48",
+    isPrivate: false,
   },
   {
     id: "rizk-sportsbook",
@@ -118,6 +96,7 @@ export const showcaseProjects: IProject[] = [
     thumbnailUrl: "/assets/showcase/rizk.png",
     liveUrl: "https://rizk.com",
     badgeColor: "#FACC15",
+    isPrivate: false,
   },
   {
     id: "wetten-sportsbook",
@@ -142,6 +121,33 @@ export const showcaseProjects: IProject[] = [
     thumbnailUrl: "/assets/showcase/wetten.png",
     liveUrl: "https://wetten.com",
     badgeColor: "#38BDF8",
+    isPrivate: false,
+  },
+  {
+    id: "mines-vanilla-game",
+    title: "Mines Classic",
+    subtitle: "Lightweight 2D Arcade Engine",
+    category: "canvas",
+    categoryLabel: "Creative / Canvas",
+    role: "Lead Game Developer & Creative Engineer",
+    timeline: "2026",
+    clientOrOrg: "Independent Production",
+    summary:
+      "A fast, classic 5x5 mines game focused on snappy input response, crisp particle bursts, and dynamic multiplier curves.",
+    whatIDid: [
+      "Engineered the 60 FPS Phaser 3 arcade loop with animated tile reveals and responsive board scaling.",
+      "Built decoupled React controls for custom grid sizes, mine density, and real-time cashout states.",
+      "Wrote strict teardown hooks to ensure zero GPU or canvas memory leaks when closing the game.",
+    ],
+    howIBuiltIt: [
+      "Structured the engine as a standalone sub-module within the multi-entry showcase package.",
+      "Batched spritesheets and audio cues for instant, zero-latency touch response on mobile browsers.",
+    ],
+    technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
+    metrics: "60 FPS Arcade • Instant Touch Response",
+    thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
+    badgeColor: "#F59E0B",
+    isPrivate: true,
   },
   {
     id: "crypto-casino-platform",
@@ -166,6 +172,7 @@ export const showcaseProjects: IProject[] = [
     metrics: "Built from the ground up",
     thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
     badgeColor: "#00F0FF",
+    isPrivate: true,
   },
   {
     id: "crypto-sportsbook-revamp",
@@ -190,5 +197,6 @@ export const showcaseProjects: IProject[] = [
     metrics: "Modern architecture revamp",
     thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
     badgeColor: "#F97316",
+    isPrivate: true,
   },
 ]

@@ -32,6 +32,7 @@ const mockProject: IProject = {
   thumbnailUrl: "/assets/showcase/guts.png",
   liveUrl: "https://example.com",
   badgeColor: "#00F0FF",
+  isPrivate: false,
 }
 
 describe("CaseStudyModal", () => {
