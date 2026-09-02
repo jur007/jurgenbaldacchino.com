@@ -37,21 +37,24 @@ jobs:
             exit 1
           fi
 
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "ssh://git@github.com:"
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git@github.com:"
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git@github.com/"
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com/"
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com:"
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git+https://github.com/"
+          # 1. Unset default checkout extraheader which overrides PAT authentication
+          git config --local --unset-all "http.https://github.com/.extraheader" || true
+          git config --global --unset-all "http.https://github.com/.extraheader" || true
 
-          git config --global credential.helper store
-          echo "https://x-access-token:${TOKEN}@github.com" > ~/.git-credentials
-          chmod 600 ~/.git-credentials
+          # 2. Direct all git/ssh/https queries through token authentication
+          git config --global url."https://${TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
+          git config --global url."https://${TOKEN}@github.com/".insteadOf "ssh://git@github.com:"
+          git config --global url."https://${TOKEN}@github.com/".insteadOf "git@github.com:"
+          git config --global url."https://${TOKEN}@github.com/".insteadOf "git@github.com/"
+          git config --global url."https://${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com/"
+          git config --global url."https://${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com:"
+          git config --global url."https://${TOKEN}@github.com/".insteadOf "git+https://github.com/"
 
       - name: Install dependencies
-        run: npm i
+        env:
+          GITHUB_TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
+        run: npm ci
 
       - name: Verify formatting
         run: npm run format:check
