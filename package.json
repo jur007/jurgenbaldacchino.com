@@ -29,10 +29,11 @@
     ]
   },
   "dependencies": {
-    "@jurgenbaldacchino/phaser-showcase": "git+https://${GITHUB_TOKEN}@github.com/jur007/phaser-games.git#dist",
-    "phaser": "^4.2.1",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "@jurgenbaldacchino/phaser-showcase": "git+https://github.com/jur007/phaser-games.git#dist",
+    "classnames": "^2.5.1",
+    "phaser": "^3.88.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.1.0",
