@@ -19,12 +19,33 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: "npm"
+
+      - name: Configure Git for Private Dependencies
+        env:
+          TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::error::Secret JURGENBALDACCHINO_PHASER_READ_TOKEN is empty!"
+            exit 1
+          fi
+
+          # 1. Reroute any SSH or git+ssh calls to HTTPS
+          git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+          git config --global url."https://github.com/".insteadOf "git@github.com:"
+          git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"
+
+          # 2. Store credentials explicitly so git provides the PAT on HTTPS queries
+          git config --global credential.helper store
+          echo "https://x-access-token:${TOKEN}@github.com" > ~/.git-credentials
+          chmod 600 ~/.git-credentials
 
       - name: Install dependencies
         run: npm ci
