@@ -37,15 +37,11 @@ jobs:
             exit 1
           fi
 
-          # 1. Reroute any SSH or git+ssh calls to HTTPS
-          git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
-          git config --global url."https://github.com/".insteadOf "git@github.com:"
-          git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"
-
-          # 2. Store credentials explicitly so git provides the PAT on HTTPS queries
-          git config --global credential.helper store
-          echo "https://x-access-token:${TOKEN}@github.com" > ~/.git-credentials
-          chmod 600 ~/.git-credentials
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git@github.com:"
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com/"
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com"
 
       - name: Install dependencies
         run: npm ci
