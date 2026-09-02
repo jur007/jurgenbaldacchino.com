@@ -63,7 +63,7 @@ jobs:
         env:
           JURGENBALDACCHINO_PHASER_READ_TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
         run: |
-          npm i
+          npm ci
 
       - name: Verify formatting
         run: npm run format:check
