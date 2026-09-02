@@ -27,6 +27,8 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
+        env:
+          GITHUB_TOKEN: ${{ secrets.PHASER_GAMES_REPO_TOKEN }}
         run: npm ci
 
       - name: Verify formatting
