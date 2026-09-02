@@ -19,15 +19,53 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: "npm"
+
+      - name: Configure Git for Private Dependencies
+        env:
+          TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::error::Secret JURGENBALDACCHINO_PHASER_READ_TOKEN is empty!"
+            exit 1
+          fi
+
+          # 1. Clean any stale npm cacache
+          rm -rf ~/.npm || true
+
+          # 2. Unset default checkout extraheader which overrides authentication
+          git config --local --unset-all "http.https://github.com/.extraheader" || true
+          git config --global --unset-all "http.https://github.com/.extraheader" || true
+
+          # 3. Create ~/.netrc without leading whitespace for standard Git/curl authentication
+          printf "machine github.com\nlogin oauth2\npassword %s\n\nmachine api.github.com\nlogin oauth2\npassword %s\n" "${TOKEN}" "${TOKEN}" > ~/.netrc
+          chmod 600 ~/.netrc
+
+          # 4. Reroute all SSH, git+ssh, and https queries to authenticated token HTTPS
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git@github.com:"
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com/"
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git+https://github.com/"
 
       - name: Install dependencies
-        run: npm ci
+        env:
+          GIT_TERMINAL_PROMPT: 0
+          TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
+        run: |
+          npm ci
+          # phaser-games package.json has "files": ["dist"], so npm only unpacks package.json
+          # Clone the full built dist branch into node_modules so all bundles and assets are present
+          rm -rf node_modules/@jurgenbaldacchino/phaser-showcase
+          git clone --depth 1 -b dist "https://${TOKEN}@github.com/jur007/phaser-games.git" node_modules/@jurgenbaldacchino/phaser-showcase
+          mkdir -p public/assets/games
+          cp -r node_modules/@jurgenbaldacchino/phaser-showcase/assets/games/* public/assets/games/ 2>/dev/null || true
 
       - name: Verify formatting
         run: npm run format:check

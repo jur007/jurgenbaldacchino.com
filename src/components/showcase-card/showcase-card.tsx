@@ -3,22 +3,8 @@ import type { KeyboardEvent, MouseEvent } from "react"
 import styles from "./showcase-card.module.css"
 import type { IShowcaseCard } from "./showcase-card.types"
 
+import { ArrowRightIcon } from "@components/icons"
 import { getClassNames } from "@utils/class-names"
-
-const ArrowRightIcon = () => (
-  <svg
-    aria-hidden="true"
-    className={styles.actionIcon}
-    fill="none"
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth="2"
-    viewBox="0 0 24 24"
-  >
-    <path d="M5 12h14M12 5l7 7-7 7" />
-  </svg>
-)
 
 export const ShowcaseCard = ({ project, onSelect, className }: IShowcaseCard) => {
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
@@ -98,7 +84,7 @@ export const ShowcaseCard = ({ project, onSelect, className }: IShowcaseCard) =>
           </div>
           <span className={styles.viewDetailsAction}>
             <span>View Case Study</span>
-            <ArrowRightIcon />
+            <ArrowRightIcon className={styles.actionIcon} />
           </span>
         </div>
       </div>

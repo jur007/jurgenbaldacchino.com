@@ -21,6 +21,7 @@ const mockProject: IProject = {
   metrics: "Sub-second sync",
   thumbnailUrl: "/assets/showcase/guts.png",
   badgeColor: "#00F0FF",
+  isPrivate: false,
 }
 
 describe("ShowcaseCard", () => {

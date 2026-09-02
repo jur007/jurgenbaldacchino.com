@@ -6,6 +6,16 @@ import { CaseStudyModal } from "./case-study-modal"
 
 import type { IProject } from "@data/showcase"
 
+vi.mock("@components/minescrypt-modal", () => ({
+  MinesCryptModal: ({ isOpen }: { isOpen: boolean }) =>
+    isOpen ? <div aria-label="Crypt of the Cursed Game Engine" role="dialog" /> : null,
+}))
+
+vi.mock("@components/mines-vanilla-modal", () => ({
+  MinesVanillaModal: ({ isOpen }: { isOpen: boolean }) =>
+    isOpen ? <div aria-label="Mines Classic Game Engine" role="dialog" /> : null,
+}))
+
 const mockProject: IProject = {
   id: "test-platform",
   title: "Platform Architecture Project",
@@ -22,6 +32,7 @@ const mockProject: IProject = {
   thumbnailUrl: "/assets/showcase/guts.png",
   liveUrl: "https://example.com",
   badgeColor: "#00F0FF",
+  isPrivate: false,
 }
 
 describe("CaseStudyModal", () => {
@@ -81,5 +92,41 @@ describe("CaseStudyModal", () => {
 
     await user.click(whatIDidButton)
     expect(screen.getByText("Led frontend team.")).toBeInTheDocument()
+  })
+
+  it("renders launch game button for mines-crypt-game and opens MinesCryptModal", async () => {
+    const user = userEvent.setup()
+    const cryptProject: IProject = {
+      ...mockProject,
+      id: "mines-crypt-game",
+      title: "Crypt of the Cursed",
+      liveUrl: undefined,
+    }
+
+    render(<CaseStudyModal isOpen={true} onClose={vi.fn()} project={cryptProject} />)
+
+    const launchButton = screen.getByRole("button", { name: /launch webgl game/i })
+    expect(launchButton).toBeInTheDocument()
+
+    await user.click(launchButton)
+    expect(screen.getByLabelText("Crypt of the Cursed Game Engine")).toBeInTheDocument()
+  })
+
+  it("renders launch game button for mines-vanilla-game and opens MinesVanillaModal", async () => {
+    const user = userEvent.setup()
+    const vanillaProject: IProject = {
+      ...mockProject,
+      id: "mines-vanilla-game",
+      title: "Mines Vanilla",
+      liveUrl: undefined,
+    }
+
+    render(<CaseStudyModal isOpen={true} onClose={vi.fn()} project={vanillaProject} />)
+
+    const launchButton = screen.getByRole("button", { name: /launch webgl game/i })
+    expect(launchButton).toBeInTheDocument()
+
+    await user.click(launchButton)
+    expect(screen.getByLabelText("Mines Classic Game Engine")).toBeInTheDocument()
   })
 })

@@ -7,6 +7,7 @@ export interface IProject {
   category: "react" | "canvas"
   categoryLabel: string
   role: string
+  timeline?: string
   clientOrOrg: string
   summary: string
   whatIDid: string[]
@@ -16,81 +17,61 @@ export interface IProject {
   thumbnailUrl: string
   liveUrl?: string
   badgeColor?: string
+  isPrivate: boolean
 }
 
 export const showcaseProjects: IProject[] = [
   {
-    id: "crypto-casino-platform",
-    title: "Crypto Casino Platform",
-    subtitle: "Crypto Casino Platform Architecture",
-    category: "react",
-    categoryLabel: "React Architecture",
-    role: "Head of Frontend",
-    clientOrOrg: "Confidential (NDA)",
-    summary:
-      "Built and scaled the core web app for a high-traffic crypto casino, keeping the interface snappy and wallet states synced in real time.",
-    whatIDid: [
-      "Led the frontend team and established our core architecture, state patterns, and code quality standards.",
-      "Built key interactive engagement features including daily drops, custom lootboxes, and native in-house games.",
-      "Set up automated continuous delivery pipelines to speed up internal feature releases and ship with confidence.",
-    ],
-    howIBuiltIt: [
-      "Optimized our Gatsby build processes and caching strategies to cut compilation times and deploy updates faster.",
-      "Worked hand in hand across product, design, and backend teams to turn complex feature concepts into smooth, shippable web experiences.",
-    ],
-    technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "CSS Modules", "Cloudflare"],
-    metrics: "Built from the ground up",
-    thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
-    badgeColor: "#00F0FF",
-  },
-  {
-    id: "phaser-2d-casino-games",
-    title: "Phaser 2D Games for Casinos",
-    subtitle: "Custom 2D Canvas & WebGL Game Engine",
+    id: "mines-crypt-game",
+    title: "Crypt of the Cursed",
+    subtitle: "Dark Fantasy 2D WebGL Game Engine",
     category: "canvas",
     categoryLabel: "Creative / Canvas",
     role: "Lead Game Developer & Creative Engineer",
-    clientOrOrg: "Confidential (NDA)",
+    timeline: "2026",
+    clientOrOrg: "Independent Production",
     summary:
-      "A custom 2D casual game built from scratch as an isolated standalone bundle with smooth animations and physics.",
+      "A horror-themed 5x5 grid game built from scratch in Phaser 3 inspired by the original mine-sweeper game. Features custom WebGL point lighting, ambient particle mist, and reactive audio pipelines.",
     whatIDid: [
-      "Built the full 2D interactive canvas game loop, custom particle effects, and sprite animations using Phaser 3.",
-      "Created a clean state bridge between React UI controls and the WebGL game canvas.",
-      "Packaged the game engine into an independent module ready for easy host-app embedding.",
+      "Designed the look and feel of the game from assets, to audio, to animation.",
+      "Connected the React  controls and hotkeys (Q/Space) directly to the canvas without re-rendering the game.",
+      "Enforced clean WebGL context disposal on unmount so the engine never leaks memory.",
     ],
     howIBuiltIt: [
-      "Handled strict context cleanup on unmount to completely eliminate GPU and WebGL memory leaks.",
-      "Optimized sprite sheets and render budgets to maintain an unbroken 60 FPS on mobile browsers.",
-      "Worked hand in hand with designers to shape the visual identity, feel, and narrative flow of the game.",
+      "Packaged the game into an isolated, tree-shakeable npm module using Vite multi-entry library mode.",
+      "Tuned draw calls and light pipelines so high-DPI viewports stay smooth on both desktop and mobile.",
     ],
-    technologies: ["Phaser 3", "HTML5 Canvas", "WebGL", "TypeScript", "Vite"],
-    metrics: "Smooth 60 FPS mobile gameplay",
-    thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
-    badgeColor: "#FF6B00",
+    technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
+    metrics: "WebGL • Own Design",
+    thumbnailUrl: "/assets/showcase/crypt-of-the-cursed.jpeg",
+    badgeColor: "#38E5A7",
+    isPrivate: false,
   },
   {
-    id: "crypto-sportsbook-revamp",
-    title: "Crypto Casino & Sportsbook",
-    subtitle: "Brand Revamp & Modern Web Architecture",
-    category: "react",
-    categoryLabel: "React Architecture",
-    role: "Head of Frontend",
-    clientOrOrg: "Confidential (NDA)",
+    id: "mines-vanilla-game",
+    title: "Mines Vanilla",
+    subtitle: "Lightweight 2D Arcade Engine",
+    category: "canvas",
+    categoryLabel: "Creative / Canvas",
+    role: "Lead Game Developer & Creative Engineer",
+    timeline: "2026",
+    clientOrOrg: "Independent Production",
     summary:
-      "Modernized a legacy platform into a contemporary crypto casino and sportsbook web app, delivering smooth wallet streaming and high-converting reward mechanics.",
+      "A fast, vanilla experience of a 5x5 mines game focused on snappy input response, crisp particle bursts, and dynamic multiplier curves.",
     whatIDid: [
-      "Led the frontend brand revamp and migrated legacy views to a modular React architecture.",
-      "Built core casino and sportsbook features, including daily lootboxes, rakeback rewards, and in-house originals.",
-      "Integrated real-time crypto wallet synchronization and seamless game launching flows.",
+      "Engineered the 60 FPS Phaser 3 arcade loop with animated tile reveals and responsive board scaling.",
+      "Built decoupled React controls for custom grid sizes, mine density, and real-time cashout states.",
+      "Wrote strict teardown hooks to ensure zero GPU or canvas memory leaks when closing the game.",
     ],
     howIBuiltIt: [
-      "Standardized reusable UI tokens and responsive layout systems for seamless multi-device play.",
-      "Optimized WebSocket state streams and bundle splitting to ensure fast, responsive page transitions.",
+      "Structured the engine as a standalone sub-module within the multi-entry showcase package.",
+      "Batched spritesheets and audio cues for instant, zero-latency touch response on mobile browsers.",
     ],
-    technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "CSS Modules", "Cloudflare"],
-    metrics: "Modern architecture revamp",
-    thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
-    badgeColor: "#F97316",
+    technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
+    metrics: "60 FPS Arcade • Instant Touch Response",
+    thumbnailUrl: "/assets/showcase/mines-vanilla.jpeg",
+    badgeColor: "#F59E0B",
+    isPrivate: false,
   },
   {
     id: "guts-sportsbook",
@@ -116,6 +97,7 @@ export const showcaseProjects: IProject[] = [
     thumbnailUrl: "/assets/showcase/guts.png",
     liveUrl: "https://guts.com",
     badgeColor: "#E11D48",
+    isPrivate: false,
   },
   {
     id: "rizk-sportsbook",
@@ -140,6 +122,7 @@ export const showcaseProjects: IProject[] = [
     thumbnailUrl: "/assets/showcase/rizk.png",
     liveUrl: "https://rizk.com",
     badgeColor: "#FACC15",
+    isPrivate: false,
   },
   {
     id: "wetten-sportsbook",
@@ -164,5 +147,56 @@ export const showcaseProjects: IProject[] = [
     thumbnailUrl: "/assets/showcase/wetten.png",
     liveUrl: "https://wetten.com",
     badgeColor: "#38BDF8",
+    isPrivate: false,
+  },
+  {
+    id: "crypto-casino-platform",
+    title: "Crypto Casino Platform",
+    subtitle: "Crypto Casino Platform Architecture",
+    category: "react",
+    categoryLabel: "React Architecture",
+    role: "Head of Frontend",
+    clientOrOrg: "Confidential (NDA)",
+    summary:
+      "Built and scaled the core web app for a high-traffic crypto casino, keeping the interface snappy and wallet states synced in real time.",
+    whatIDid: [
+      "Led the frontend team and established our core architecture, state patterns, and code quality standards.",
+      "Built key interactive engagement features including daily drops, custom lootboxes, and native in-house games.",
+      "Set up automated continuous delivery pipelines to speed up internal feature releases and ship with confidence.",
+    ],
+    howIBuiltIt: [
+      "Optimized our Gatsby build processes and caching strategies to cut compilation times and deploy updates faster.",
+      "Worked hand in hand across product, design, and backend teams to turn complex feature concepts into smooth, shippable web experiences.",
+    ],
+    technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "CSS Modules", "Cloudflare"],
+    metrics: "Built from the ground up",
+    thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
+    badgeColor: "#00F0FF",
+    isPrivate: true,
+  },
+  {
+    id: "crypto-sportsbook-revamp",
+    title: "Crypto Casino & Sportsbook",
+    subtitle: "Brand Revamp & Modern Web Architecture",
+    category: "react",
+    categoryLabel: "React Architecture",
+    role: "Head of Frontend",
+    clientOrOrg: "Confidential (NDA)",
+    summary:
+      "Modernized a legacy platform into a contemporary crypto casino and sportsbook web app, delivering smooth wallet streaming and high-converting reward mechanics.",
+    whatIDid: [
+      "Led the frontend brand revamp and migrated legacy views to a modular React architecture.",
+      "Built core casino and sportsbook features, including daily lootboxes, rakeback rewards, and in-house originals.",
+      "Integrated real-time crypto wallet synchronization and seamless game launching flows.",
+    ],
+    howIBuiltIt: [
+      "Standardized reusable UI tokens and responsive layout systems for seamless multi-device play.",
+      "Optimized WebSocket state streams and bundle splitting to ensure fast, responsive page transitions.",
+    ],
+    technologies: ["React", "TypeScript", "Gatsby", "WebSockets", "CSS Modules", "Cloudflare"],
+    metrics: "Modern architecture revamp",
+    thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
+    badgeColor: "#F97316",
+    isPrivate: true,
   },
 ]

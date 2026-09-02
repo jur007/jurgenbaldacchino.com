@@ -117,7 +117,7 @@ const processSteps: IProcessStep[] = [
 
 const personalTenets: ITenet[] = [
   {
-    description: "Clean, readable, and predictable code beats clever shortcuts every single time.",
+    description: "Focused on clean readible code first and foremost.",
     icon: "🌟",
     title: "Predictability First",
   },
@@ -128,7 +128,7 @@ const personalTenets: ITenet[] = [
   },
   {
     description:
-      "Investing in developer ergonomics directly compounds product velocity and user delight.",
+      "Developer Experience is important for both ease of use of the project and overall day to day productivity.",
     icon: "🚀",
     title: "DX Multiplier",
   },

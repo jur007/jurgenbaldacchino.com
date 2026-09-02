@@ -1,63 +1,23 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import type { KeyboardEvent, MouseEvent } from "react"
 
 import styles from "./case-study-modal.module.css"
 import type { ICaseStudyModal } from "./case-study-modal.types"
 
+import { BackArrowIcon, CloseIcon, ExternalLinkIcon, PlayIcon } from "@components/icons"
+import { MinesCryptModal } from "@components/minescrypt-modal"
+import { MinesVanillaModal } from "@components/mines-vanilla-modal"
 import { getClassNames } from "@utils/class-names"
-
-const BackArrowIcon = () => (
-  <svg
-    aria-hidden="true"
-    className={styles.backIcon}
-    fill="none"
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth="2"
-    viewBox="0 0 24 24"
-  >
-    <line x1="19" x2="5" y1="12" y2="12" />
-    <polyline points="12 19 5 12 12 5" />
-  </svg>
-)
-
-const CloseIcon = () => (
-  <svg
-    aria-hidden="true"
-    className={styles.closeIcon}
-    fill="none"
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth="2"
-    viewBox="0 0 24 24"
-  >
-    <line x1="18" x2="6" y1="6" y2="18" />
-    <line x1="6" x2="18" y1="6" y2="18" />
-  </svg>
-)
-
-const ExternalLinkIcon = () => (
-  <svg
-    aria-hidden="true"
-    className={styles.externalIcon}
-    fill="none"
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth="2"
-    viewBox="0 0 24 24"
-  >
-    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-    <polyline points="15 3 21 3 21 9" />
-    <line x1="10" x2="21" y1="14" y2="3" />
-  </svg>
-)
 
 export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStudyModal) => {
   const [isScopeOpen, setIsScopeOpen] = useState(true)
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(true)
+  const [isGameModalOpen, setIsGameModalOpen] = useState(false)
+
+  const handleModalClose = useCallback(() => {
+    setIsGameModalOpen(false)
+    onClose()
+  }, [onClose])
 
   useEffect(() => {
     if (isOpen) {
@@ -74,26 +34,30 @@ export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStu
   useEffect(() => {
     const handleKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.key === "Escape" && isOpen) {
-        onClose()
+        if (isGameModalOpen) {
+          setIsGameModalOpen(false)
+        } else {
+          handleModalClose()
+        }
       }
     }
 
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [isOpen, onClose])
+  }, [isOpen, isGameModalOpen, handleModalClose])
 
   if (!isOpen || !project) {
     return null
   }
 
   const handleBackdropClick = () => {
-    onClose()
+    handleModalClose()
   }
 
   const handleBackdropKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault()
-      onClose()
+      handleModalClose()
     }
   }
 
@@ -128,20 +92,20 @@ export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStu
           <button
             aria-label="Back to showcase gallery"
             className={styles.backButton}
-            onClick={onClose}
+            onClick={handleModalClose}
             type="button"
           >
-            <BackArrowIcon />
+            <BackArrowIcon className={styles.backIcon} />
             <span>Back to Showcase</span>
           </button>
 
           <button
             aria-label="Close case study modal"
             className={styles.closeButton}
-            onClick={onClose}
+            onClick={handleModalClose}
             type="button"
           >
-            <CloseIcon />
+            <CloseIcon className={styles.closeIcon} />
           </button>
         </header>
 
@@ -268,6 +232,17 @@ export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStu
                 </div>
               </dl>
 
+              {(project.id === "mines-crypt-game" || project.id === "mines-vanilla-game") && (
+                <button
+                  className={styles.actionButtonPrimary}
+                  onClick={() => setIsGameModalOpen(true)}
+                  type="button"
+                >
+                  <span>Launch WebGL Game</span>
+                  <PlayIcon className={styles.externalIcon} />
+                </button>
+              )}
+
               {project.liveUrl && (
                 <a
                   className={styles.actionButtonPrimary}
@@ -276,7 +251,7 @@ export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStu
                   target="_blank"
                 >
                   <span>Visit Live Website</span>
-                  <ExternalLinkIcon />
+                  <ExternalLinkIcon className={styles.externalIcon} />
                 </a>
               )}
 
@@ -287,6 +262,14 @@ export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStu
           </div>
         </div>
       </div>
+
+      {project.id === "mines-crypt-game" && (
+        <MinesCryptModal isOpen={isGameModalOpen} onClose={() => setIsGameModalOpen(false)} />
+      )}
+
+      {project.id === "mines-vanilla-game" && (
+        <MinesVanillaModal isOpen={isGameModalOpen} onClose={() => setIsGameModalOpen(false)} />
+      )}
     </div>
   )
 }

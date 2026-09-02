@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:pages": "node scripts/setup-git-auth.mjs && npm ci && npm run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
@@ -16,7 +17,9 @@
     "validate:branch": "node scripts/validate-branch-name.mjs",
     "test": "vitest",
     "test:run": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "preinstall": "node scripts/setup-git-auth.mjs",
+    "postinstall": "node scripts/postinstall-phaser.mjs"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -28,9 +31,11 @@
     ]
   },
   "dependencies": {
-    "phaser": "^4.2.1",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "@jurgenbaldacchino/phaser-showcase": "git+https://github.com/jur007/phaser-games.git#dist",
+    "classnames": "^2.5.1",
+    "phaser": "^3.90.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.1.0",

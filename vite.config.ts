@@ -45,6 +45,34 @@ export default defineConfig({
         find: /^@utils\/(.*)$/,
         replacement: `${fileURLToPath(new URL("./src/utils/", import.meta.url))}$1`,
       },
+      {
+        find: /^@jurgenbaldacchino\/phaser-showcase\/minescrypt$/,
+        replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/games/minescrypt/index.js", import.meta.url))}`,
+      },
+      {
+        find: /^@jurgenbaldacchino\/phaser-showcase\/mines\/vanilla$/,
+        replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/games/mines/vanilla/index.js", import.meta.url))}`,
+      },
+      {
+        find: /^@jurgenbaldacchino\/phaser-showcase\/mines\/crypt$/,
+        replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/games/mines/crypt/index.js", import.meta.url))}`,
+      },
+      {
+        find: /^@jurgenbaldacchino\/phaser-showcase\/mines$/,
+        replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/games/mines/index.js", import.meta.url))}`,
+      },
+      {
+        find: /^@jurgenbaldacchino\/phaser-showcase\/dist\/phaser-showcase\.css$/,
+        replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/phaser-showcase.css", import.meta.url))}`,
+      },
+      {
+        find: /^@jurgenbaldacchino\/phaser-showcase\/phaser-showcase\.css$/,
+        replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/phaser-showcase.css", import.meta.url))}`,
+      },
+      {
+        find: /^@jurgenbaldacchino\/phaser-showcase\/(.*)$/,
+        replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/", import.meta.url))}$1`,
+      },
     ],
   },
   test: {

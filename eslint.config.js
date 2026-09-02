@@ -35,7 +35,12 @@ export default defineConfig([
       },
     },
     rules: {
-      "import/no-unresolved": "error",
+      "import/no-unresolved": [
+        "error",
+        {
+          ignore: ["^@jurgenbaldacchino/phaser-showcase", "\\.css$"],
+        },
+      ],
     },
   },
 ])

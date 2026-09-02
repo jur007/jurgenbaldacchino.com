@@ -13,16 +13,17 @@ describe("ShowcaseSection", () => {
     render(<ShowcaseSection />)
 
     expect(screen.getByRole("heading", { level: 2, name: "Showcase" })).toBeInTheDocument()
-    expect(screen.getByRole("button", { name: /all \(6\)/i })).toBeInTheDocument()
+    expect(screen.getByRole("button", { name: /all \(7\)/i })).toBeInTheDocument()
     expect(screen.getByRole("button", { name: /react architecture \(5\)/i })).toBeInTheDocument()
-    expect(screen.getByRole("button", { name: /creative \/ canvas \(1\)/i })).toBeInTheDocument()
+    expect(screen.getByRole("button", { name: /creative \/ canvas \(2\)/i })).toBeInTheDocument()
 
     expect(
       screen.getByRole("heading", { level: 3, name: "Crypto Casino Platform" }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { level: 3, name: "Phaser 2D Games for Casinos" }),
+      screen.getByRole("heading", { level: 3, name: "Crypt of the Cursed" }),
     ).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Mines Vanilla" })).toBeInTheDocument()
     expect(
       screen.getByRole("heading", { level: 3, name: "Crypto Casino & Sportsbook" }),
     ).toBeInTheDocument()
@@ -35,12 +36,13 @@ describe("ShowcaseSection", () => {
     const user = userEvent.setup()
     render(<ShowcaseSection />)
 
-    const canvasFilter = screen.getByRole("button", { name: /creative \/ canvas \(1\)/i })
+    const canvasFilter = screen.getByRole("button", { name: /creative \/ canvas \(2\)/i })
     await user.click(canvasFilter)
 
     expect(
-      screen.getByRole("heading", { level: 3, name: "Phaser 2D Games for Casinos" }),
+      screen.getByRole("heading", { level: 3, name: "Crypt of the Cursed" }),
     ).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Mines Vanilla" })).toBeInTheDocument()
     expect(
       screen.queryByRole("heading", { level: 3, name: "Crypto Casino Platform" }),
     ).not.toBeInTheDocument()
@@ -55,15 +57,16 @@ describe("ShowcaseSection", () => {
     ).not.toBeInTheDocument()
     expect(screen.queryByRole("heading", { level: 3, name: "Wetten.com" })).not.toBeInTheDocument()
 
-    const allFilter = screen.getByRole("button", { name: /all \(6\)/i })
+    const allFilter = screen.getByRole("button", { name: /all \(7\)/i })
     await user.click(allFilter)
 
     expect(
       screen.getByRole("heading", { level: 3, name: "Crypto Casino Platform" }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { level: 3, name: "Phaser 2D Games for Casinos" }),
+      screen.getByRole("heading", { level: 3, name: "Crypt of the Cursed" }),
     ).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Mines Vanilla" })).toBeInTheDocument()
     expect(
       screen.getByRole("heading", { level: 3, name: "Crypto Casino & Sportsbook" }),
     ).toBeInTheDocument()
