@@ -1,4 +1,17 @@
 import "@testing-library/jest-dom/vitest"
+import { vi } from "vitest"
+
+vi.mock("@jurgenbaldacchino/phaser-showcase/minescrypt", () => ({
+  MinesCryptGame: () => null,
+}))
+
+vi.mock("@jurgenbaldacchino/phaser-showcase/mines/vanilla", () => ({
+  MinesVanillaGame: () => null,
+  MinesGame: () => null,
+}))
+
+vi.mock("@jurgenbaldacchino/phaser-showcase/dist/phaser-showcase.css", () => ({}))
+vi.mock("@jurgenbaldacchino/phaser-showcase/phaser-showcase.css", () => ({}))
 
 if (typeof window !== "undefined" && window.HTMLCanvasElement) {
   HTMLCanvasElement.prototype.getContext = function () {

@@ -1,5 +1,4 @@
-import { lazy, Suspense, useEffect } from "react"
-import type { FC, KeyboardEvent, MouseEvent } from "react"
+import { lazy, Suspense, useEffect, type FC, type KeyboardEvent, type MouseEvent } from "react"
 
 import styles from "./minescrypt-modal.module.css"
 import type { IMinesCryptModalProps } from "./minescrypt-modal.types"

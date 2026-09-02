@@ -1,5 +1,4 @@
-import { lazy, Suspense, useEffect } from "react"
-import type { FC, KeyboardEvent, MouseEvent } from "react"
+import { lazy, Suspense, useEffect, type FC, type KeyboardEvent, type MouseEvent } from "react"
 
 import styles from "./mines-vanilla-modal.module.css"
 import type { IMinesVanillaModalProps } from "./mines-vanilla-modal.types"
