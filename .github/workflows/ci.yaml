@@ -48,11 +48,11 @@ jobs:
           chmod 600 ~/.netrc
 
           # 4. Reroute all SSH, git+ssh, and https queries to authenticated token HTTPS
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git@github.com:"
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com/"
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git+https://github.com/"
+          git config --global --add url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global --add url."https://x-access-token:${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
+          git config --global --add url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git@github.com:"
+          git config --global --add url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com/"
+          git config --global --add url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git+https://github.com/"
 
       - name: Install dependencies
         env:
