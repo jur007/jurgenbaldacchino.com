@@ -41,20 +41,32 @@ jobs:
           git config --local --unset-all "http.https://github.com/.extraheader" || true
           git config --global --unset-all "http.https://github.com/.extraheader" || true
 
-          # 2. Direct all git/ssh/https queries through token authentication
-          git config --global url."https://${TOKEN}@github.com/".insteadOf "https://github.com/"
-          git config --global url."https://${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
-          git config --global url."https://${TOKEN}@github.com/".insteadOf "ssh://git@github.com:"
-          git config --global url."https://${TOKEN}@github.com/".insteadOf "git@github.com:"
-          git config --global url."https://${TOKEN}@github.com/".insteadOf "git@github.com/"
-          git config --global url."https://${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com/"
-          git config --global url."https://${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com:"
-          git config --global url."https://${TOKEN}@github.com/".insteadOf "git+https://github.com/"
+          # 2. Add multiple URL rewrites to authenticated HTTPS using --add
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "ssh://git@github.com:"
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git@github.com:"
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git@github.com/"
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com/"
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com:"
+          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git+https://github.com/"
+
+          # 3. Store credentials directly for git credential helper
+          git config --global credential.helper store
+          echo "https://${TOKEN}@github.com" > ~/.git-credentials
+          chmod 600 ~/.git-credentials
 
       - name: Install dependencies
         env:
           JURGENBALDACCHINO_PHASER_READ_TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
-        run: npm ci
+        run: |
+          npm ci || {
+            echo "=== GIT CONFIG ==="
+            git config --list --show-origin
+            echo "=== NPM LOGS ==="
+            cat ~/.npm/_logs/*-debug-0.log 2>/dev/null || true
+            exit 1
+          }
 
       - name: Verify formatting
         run: npm run format:check
