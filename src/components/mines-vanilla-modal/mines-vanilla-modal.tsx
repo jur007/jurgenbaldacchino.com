@@ -9,7 +9,9 @@ import { getClassNames } from "@utils/class-names"
 
 const MinesVanillaGame = lazy(() =>
   import("@jurgenbaldacchino/phaser-showcase/mines/vanilla").then((module) => ({
-    default: module.MinesVanillaGame,
+    default:
+      module.MinesVanillaGame ??
+      (module as unknown as { MinesGame: typeof module.MinesVanillaGame }).MinesGame,
   })),
 )
 
