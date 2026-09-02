@@ -36,27 +36,31 @@ jobs:
             exit 1
           fi
 
-          # 1. Clean any stale or corrupted npm cacache
+          # 1. Clean any stale npm cacache
           rm -rf ~/.npm || true
 
-          # 2. Unset default checkout extraheader which overrides PAT authentication
+          # 2. Unset default checkout extraheader which overrides authentication
           git config --local --unset-all "http.https://github.com/.extraheader" || true
           git config --global --unset-all "http.https://github.com/.extraheader" || true
 
-          # 3. Add multiple URL rewrites to authenticated HTTPS using --add
-          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "https://github.com/"
-          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
-          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "ssh://git@github.com:"
-          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git@github.com:"
-          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git@github.com/"
-          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com/"
-          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com:"
-          git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git+https://github.com/"
+          # 3. Create ~/.netrc for standard Git & curl HTTPS authentication
+          cat <<EOF > ~/.netrc
+          machine github.com
+          login x-access-token
+          password ${TOKEN}
 
-          # 4. Store credentials directly for git credential helper
-          git config --global credential.helper store
-          echo "https://${TOKEN}@github.com" > ~/.git-credentials
-          chmod 600 ~/.git-credentials
+          machine api.github.com
+          login x-access-token
+          password ${TOKEN}
+          EOF
+          chmod 600 ~/.netrc
+
+          # 4. Reroute all SSH / git+ssh requests to HTTPS so they use ~/.netrc
+          git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+          git config --global url."https://github.com/".insteadOf "git@github.com:"
+          git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"
+          git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com:"
+          git config --global url."https://github.com/".insteadOf "git+https://github.com/"
 
       - name: Install dependencies
         env:
