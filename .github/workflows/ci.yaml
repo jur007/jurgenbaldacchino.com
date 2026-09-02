@@ -26,7 +26,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: "npm"
 
       - name: Configure Git for Private Dependencies
         env:
@@ -37,11 +36,14 @@ jobs:
             exit 1
           fi
 
-          # 1. Unset default checkout extraheader which overrides PAT authentication
+          # 1. Clean any stale or corrupted npm cacache
+          rm -rf ~/.npm || true
+
+          # 2. Unset default checkout extraheader which overrides PAT authentication
           git config --local --unset-all "http.https://github.com/.extraheader" || true
           git config --global --unset-all "http.https://github.com/.extraheader" || true
 
-          # 2. Add multiple URL rewrites to authenticated HTTPS using --add
+          # 3. Add multiple URL rewrites to authenticated HTTPS using --add
           git config --global --add url."https://${TOKEN}@github.com/".insteadOf "https://github.com/"
           git config --global --add url."https://${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
           git config --global --add url."https://${TOKEN}@github.com/".insteadOf "ssh://git@github.com:"
@@ -51,7 +53,7 @@ jobs:
           git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com:"
           git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git+https://github.com/"
 
-          # 3. Store credentials directly for git credential helper
+          # 4. Store credentials directly for git credential helper
           git config --global credential.helper store
           echo "https://${TOKEN}@github.com" > ~/.git-credentials
           chmod 600 ~/.git-credentials
