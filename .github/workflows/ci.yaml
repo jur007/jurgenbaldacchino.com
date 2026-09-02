@@ -53,7 +53,7 @@ jobs:
 
       - name: Install dependencies
         env:
-          GITHUB_TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
+          JURGENBALDACCHINO_PHASER_READ_TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
         run: npm ci
 
       - name: Verify formatting

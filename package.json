@@ -29,7 +29,7 @@
     ]
   },
   "dependencies": {
-    "@jurgenbaldacchino/phaser-showcase": "git+https://${GITHUB_TOKEN}@github.com/jur007/phaser-games.git#dist",
+    "@jurgenbaldacchino/phaser-showcase": "git+https://${JURGENBALDACCHINO_PHASER_READ_TOKEN}@github.com/jur007/phaser-games.git#dist",
     "classnames": "^2.5.1",
     "phaser": "^3.88.2",
     "react": "^19.0.0",
