@@ -52,9 +52,9 @@ jobs:
           git config --global --add url."https://x-access-token:${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
           git config --global --add url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git@github.com:"
           git config --global --add url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com/"
-          # 5. Verify token access to private repository
-          echo "Testing access to jur007/phaser-games..."
-          git ls-remote "https://x-access-token:${TOKEN}@github.com/jur007/phaser-games.git" HEAD || {
+          # 5. Verify token access and print phaser-games refs
+          echo "=== PHASER-GAMES REFS ==="
+          git ls-remote "https://x-access-token:${TOKEN}@github.com/jur007/phaser-games.git" || {
             echo "::error::Authentication failed! Your JURGENBALDACCHINO_PHASER_READ_TOKEN cannot read https://github.com/jur007/phaser-games.git"
             exit 1
           }
