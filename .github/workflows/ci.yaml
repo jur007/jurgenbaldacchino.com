@@ -28,10 +28,10 @@ jobs:
 
       - name: Configure Git for Private Dependencies
         env:
-          PHASER_TOKEN: ${{ secrets.PHASER_GAMES_REPO_TOKEN }}
+          PHASER_TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
         run: |
           if [ -z "$PHASER_TOKEN" ]; then
-            echo "::error::PHASER_GAMES_REPO_TOKEN secret is missing or empty!"
+            echo "::error::JURGENBALDACCHINO_PHASER_READ_TOKEN secret is missing or empty!"
             exit 1
           fi
 
