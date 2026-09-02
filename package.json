@@ -31,7 +31,7 @@
   "dependencies": {
     "@jurgenbaldacchino/phaser-showcase": "git+https://github.com/jur007/phaser-games.git#dist",
     "classnames": "^2.5.1",
-    "phaser": "^3.88.2",
+    "phaser": "^3.90.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
