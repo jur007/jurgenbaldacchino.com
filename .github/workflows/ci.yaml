@@ -48,7 +48,7 @@ jobs:
           chmod 600 ~/.git-credentials
 
       - name: Install dependencies
-        run: npm ci
+        run: npm i
 
       - name: Verify formatting
         run: npm run format:check
