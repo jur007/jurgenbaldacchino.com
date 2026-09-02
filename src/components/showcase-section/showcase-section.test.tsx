@@ -23,7 +23,7 @@ describe("ShowcaseSection", () => {
     expect(
       screen.getByRole("heading", { level: 3, name: "Crypt of the Cursed" }),
     ).toBeInTheDocument()
-    expect(screen.getByRole("heading", { level: 3, name: "Mines Classic" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Mines Vanilla" })).toBeInTheDocument()
     expect(
       screen.getByRole("heading", { level: 3, name: "Crypto Casino & Sportsbook" }),
     ).toBeInTheDocument()
@@ -42,7 +42,7 @@ describe("ShowcaseSection", () => {
     expect(
       screen.getByRole("heading", { level: 3, name: "Crypt of the Cursed" }),
     ).toBeInTheDocument()
-    expect(screen.getByRole("heading", { level: 3, name: "Mines Classic" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Mines Vanilla" })).toBeInTheDocument()
     expect(
       screen.queryByRole("heading", { level: 3, name: "Crypto Casino Platform" }),
     ).not.toBeInTheDocument()
@@ -66,7 +66,7 @@ describe("ShowcaseSection", () => {
     expect(
       screen.getByRole("heading", { level: 3, name: "Crypt of the Cursed" }),
     ).toBeInTheDocument()
-    expect(screen.getByRole("heading", { level: 3, name: "Mines Classic" })).toBeInTheDocument()
+    expect(screen.getByRole("heading", { level: 3, name: "Mines Vanilla" })).toBeInTheDocument()
     expect(
       screen.getByRole("heading", { level: 3, name: "Crypto Casino & Sportsbook" }),
     ).toBeInTheDocument()

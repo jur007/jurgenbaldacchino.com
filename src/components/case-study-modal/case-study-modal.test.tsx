@@ -117,7 +117,7 @@ describe("CaseStudyModal", () => {
     const vanillaProject: IProject = {
       ...mockProject,
       id: "mines-vanilla-game",
-      title: "Mines Classic",
+      title: "Mines Vanilla",
       liveUrl: undefined,
     }
 

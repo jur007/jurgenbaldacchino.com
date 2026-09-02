@@ -69,7 +69,7 @@ export const showcaseProjects: IProject[] = [
     ],
     technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
     metrics: "60 FPS Arcade • Instant Touch Response",
-    thumbnailUrl: "/assets/showcase/mines-classic.jpg",
+    thumbnailUrl: "/assets/showcase/mines-vanilla.jpeg",
     badgeColor: "#F59E0B",
     isPrivate: false,
   },
