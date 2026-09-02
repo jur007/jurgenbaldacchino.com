@@ -26,6 +26,14 @@ jobs:
           node-version: "22"
           cache: "npm"
 
+      - name: Configure Git for Private Dependencies
+        env:
+          PHASER_TOKEN: ${{ secrets.PHASER_GAMES_REPO_TOKEN }}
+        run: |
+          git config --global url."https://${PHASER_TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://${PHASER_TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
+          git config --global url."https://${PHASER_TOKEN}@github.com/".insteadOf "git@github.com:"
+
       - name: Install dependencies
         env:
           GITHUB_TOKEN: ${{ secrets.PHASER_GAMES_REPO_TOKEN }}
