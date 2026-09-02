@@ -43,24 +43,16 @@ jobs:
           git config --local --unset-all "http.https://github.com/.extraheader" || true
           git config --global --unset-all "http.https://github.com/.extraheader" || true
 
-          # 3. Create ~/.netrc for standard Git & curl HTTPS authentication
-          cat <<EOF > ~/.netrc
-          machine github.com
-          login x-access-token
-          password ${TOKEN}
-
-          machine api.github.com
-          login x-access-token
-          password ${TOKEN}
-          EOF
+          # 3. Create ~/.netrc without leading whitespace for standard Git/curl authentication
+          printf "machine github.com\nlogin x-access-token\npassword %s\n\nmachine api.github.com\nlogin x-access-token\npassword %s\n" "${TOKEN}" "${TOKEN}" > ~/.netrc
           chmod 600 ~/.netrc
 
-          # 4. Reroute all SSH / git+ssh requests to HTTPS so they use ~/.netrc
-          git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
-          git config --global url."https://github.com/".insteadOf "git@github.com:"
-          git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"
-          git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com:"
-          git config --global url."https://github.com/".insteadOf "git+https://github.com/"
+          # 4. Reroute all SSH, git+ssh, and https queries to authenticated token HTTPS
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "ssh://git@github.com/"
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git@github.com:"
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com/"
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "git+https://github.com/"
 
       - name: Install dependencies
         env:
