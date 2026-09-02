@@ -17,7 +17,8 @@
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "postinstall": "mkdir -p public/assets/games && cp -r node_modules/@jurgenbaldacchino/phaser-showcase/assets/games/* public/assets/games/ 2>/dev/null || true"
+    "preinstall": "node scripts/setup-git-auth.mjs",
+    "postinstall": "node scripts/postinstall-phaser.mjs"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
