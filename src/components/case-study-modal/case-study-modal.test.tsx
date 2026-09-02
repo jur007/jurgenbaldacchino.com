@@ -100,4 +100,22 @@ describe("CaseStudyModal", () => {
     await user.click(launchButton)
     expect(screen.getByLabelText("Crypt of the Cursed Game Engine")).toBeInTheDocument()
   })
+
+  it("renders launch game button for mines-vanilla-game and opens MinesVanillaModal", async () => {
+    const user = userEvent.setup()
+    const vanillaProject: IProject = {
+      ...mockProject,
+      id: "mines-vanilla-game",
+      title: "Mines Classic",
+      liveUrl: undefined,
+    }
+
+    render(<CaseStudyModal isOpen={true} onClose={vi.fn()} project={vanillaProject} />)
+
+    const launchButton = screen.getByRole("button", { name: /launch webgl game/i })
+    expect(launchButton).toBeInTheDocument()
+
+    await user.click(launchButton)
+    expect(screen.getByLabelText("Mines Classic Game Engine")).toBeInTheDocument()
+  })
 })

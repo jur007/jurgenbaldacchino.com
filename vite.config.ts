@@ -45,6 +45,14 @@ export default defineConfig({
         find: /^@utils\/(.*)$/,
         replacement: `${fileURLToPath(new URL("./src/utils/", import.meta.url))}$1`,
       },
+      {
+        find: /^@jurgenbaldacchino\/phaser-showcase\/dist\/phaser-showcase\.css$/,
+        replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/phaser-showcase.css", import.meta.url))}`,
+      },
+      {
+        find: /^@jurgenbaldacchino\/phaser-showcase\/phaser-showcase\.css$/,
+        replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/phaser-showcase.css", import.meta.url))}`,
+      },
     ],
   },
   test: {

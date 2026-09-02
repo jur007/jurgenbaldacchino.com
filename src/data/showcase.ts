@@ -21,6 +21,56 @@ export interface IProject {
 
 export const showcaseProjects: IProject[] = [
   {
+    id: "mines-crypt-game",
+    title: "Crypt of the Cursed",
+    subtitle: "Modular 2D WebGL Game Engine & Custom Shaders",
+    category: "canvas",
+    categoryLabel: "Creative / Canvas",
+    role: "Lead Game Developer & Creative Engineer",
+    timeline: "2026",
+    clientOrOrg: "Independent Production",
+    summary:
+      "A dark occult 5x5 runic minesweeper inspired game engineered as an isolated, standalone WebGL library featuring dynamic lighting, responsive viewports, and custom audio pipelines.",
+    whatIDid: [
+      "Engineered the complete 60 FPS WebGL game loop, dynamic Light2D point braziers, and custom ambient mist shaders in Phaser 3.",
+      "Built a fully decoupled React HUD bridge linking betting states, hotkey ergonomics (Q/Space), and responsive scaling.",
+      "Implemented zero-leak memory management (game.destroy) and debounced orientation realignment across mobile and ultrawide viewports.",
+    ],
+    howIBuiltIt: [
+      "Packaged the engine into an isolated, tree-shakeable npm module via multi-entry Vite library mode.",
+      "Optimized WebGL draw calls and responsive conal spotlights for seamless high-DPI (1440p) rendering without bilinear blur.",
+    ],
+    technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
+    metrics: "60 FPS WebGL • 0kb Runtime Leaks",
+    thumbnailUrl: "/assets/showcase/crypt-of-the-cursed.jpg",
+    badgeColor: "#38E5A7",
+  },
+  {
+    id: "mines-vanilla-game",
+    title: "Mines Classic",
+    subtitle: "High-Performance 2D WebGL Arcade Engine",
+    category: "canvas",
+    categoryLabel: "Creative / Canvas",
+    role: "Lead Game Developer & Creative Engineer",
+    timeline: "2026",
+    clientOrOrg: "Independent Production",
+    summary:
+      "A fast-paced, high-performance 5x5 classic mines grid game with reactive multiplier curves, tactile audio, and dynamic particle bursts.",
+    whatIDid: [
+      "Engineered the full 60 FPS Phaser 3 arcade loop with animated gem reveals and responsive scaling.",
+      "Integrated decoupled React controls for custom grid sizes, mine density selection, and live payout multipliers.",
+      "Implemented strict lifecycle teardown to ensure zero GPU and WebGL memory leaks on unmount.",
+    ],
+    howIBuiltIt: [
+      "Built as an isolated, tree-shakeable submodule within the multi-entry showcase library.",
+      "Optimized sprite sheet batching and audio synthesis pipelines for zero-latency mobile performance.",
+    ],
+    technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
+    metrics: "60 FPS WebGL • Instant Touch Response",
+    thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
+    badgeColor: "#F59E0B",
+  },
+  {
     id: "crypto-casino-platform",
     title: "Crypto Casino Platform",
     subtitle: "Crypto Casino Platform Architecture",
@@ -43,31 +93,6 @@ export const showcaseProjects: IProject[] = [
     metrics: "Built from the ground up",
     thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
     badgeColor: "#00F0FF",
-  },
-  {
-    id: "mines-crypt-game",
-    title: "Crypt of the Cursed",
-    subtitle: "Modular 2D WebGL Game Engine & Custom Shaders",
-    category: "canvas",
-    categoryLabel: "Creative / Canvas",
-    role: "Lead Game Developer & Creative Engineer",
-    timeline: "2026",
-    clientOrOrg: "Independent Production",
-    summary:
-      "A dark occult 5x5 runic puzzle game engineered as an isolated, standalone WebGL library featuring dynamic lighting, responsive viewports, and custom audio pipelines.",
-    whatIDid: [
-      "Engineered the complete 60 FPS WebGL game loop, dynamic Light2D point braziers, and custom ambient mist shaders in Phaser 3.",
-      "Built a fully decoupled React HUD bridge linking betting states, hotkey ergonomics (Q/Space), and responsive scaling.",
-      "Implemented zero-leak memory management (game.destroy) and debounced orientation realignment across mobile and ultrawide viewports.",
-    ],
-    howIBuiltIt: [
-      "Packaged the engine into an isolated, tree-shakeable npm module via multi-entry Vite library mode.",
-      "Optimized WebGL draw calls and responsive conal spotlights for seamless high-DPI (1440p) rendering without bilinear blur.",
-    ],
-    technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
-    metrics: "60 FPS WebGL • 0kb Runtime Leaks",
-    thumbnailUrl: "/assets/showcase/crypt-of-the-cursed.jpg",
-    badgeColor: "#38E5A7",
   },
   {
     id: "crypto-sportsbook-revamp",
