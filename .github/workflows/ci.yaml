@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -35,20 +37,18 @@ jobs:
             exit 1
           fi
 
-          # 1. Format fine-grained PAT with x-access-token Basic Auth header
-          AUTH_HEADER=$(echo -n "x-access-token:${TOKEN}" | base64)
-          git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic ${AUTH_HEADER}"
-
-          # 2. Intercept URLs
-          git config --global url."https://github.com/".insteadOf "git@github.com:"
+          # 1. Reroute any SSH or git+ssh calls to HTTPS
           git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+          git config --global url."https://github.com/".insteadOf "git@github.com:"
           git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"
 
+          # 2. Store credentials explicitly so git provides the PAT on HTTPS queries
+          git config --global credential.helper store
+          echo "https://x-access-token:${TOKEN}@github.com" > ~/.git-credentials
+          chmod 600 ~/.git-credentials
+
       - name: Install dependencies
-        env:
-          # Failsafe: if git still attempts SSH, force it to fail visibly instead of hanging/erroring on keys
-          GIT_SSH_COMMAND: "false"
-        run: npm i
+        run: npm ci
 
       - name: Verify formatting
         run: npm run format:check
