@@ -30,13 +30,18 @@ jobs:
         env:
           PHASER_TOKEN: ${{ secrets.PHASER_GAMES_REPO_TOKEN }}
         run: |
-          # 1. Reroute any SSH calls to clean HTTPS
-          git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
-          git config --global url."https://github.com/".insteadOf "git@github.com:"
+          if [ -z "$PHASER_TOKEN" ]; then
+            echo "::error::PHASER_GAMES_REPO_TOKEN secret is missing or empty!"
+            exit 1
+          fi
 
-          # 2. Inject the fine-grained PAT via HTTP Basic Auth header
-          AUTH_HEADER=$(echo -n "x-access-token:${PHASER_TOKEN}" | base64)
-          git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic ${AUTH_HEADER}"
+          # 1. Rewrite HTTPS calls targeting the private repository to inject the PAT
+          git config --global url."https://${PHASER_TOKEN}@github.com/jur007/phaser-games.git".insteadOf "https://github.com/jur007/phaser-games.git"
+          git config --global url."https://${PHASER_TOKEN}@github.com/jur007/phaser-games".insteadOf "https://github.com/jur007/phaser-games"
+
+          # 2. Intercept SSH fallback URLs and route them to authenticated HTTPS
+          git config --global url."https://${PHASER_TOKEN}@github.com/jur007/phaser-games.git".insteadOf "ssh://git@github.com/jur007/phaser-games.git"
+          git config --global url."https://${PHASER_TOKEN}@github.com/jur007/phaser-games.git".insteadOf "git@github.com:jur007/phaser-games.git"
 
       - name: Install dependencies
         run: npm ci
