@@ -58,13 +58,7 @@ jobs:
         env:
           JURGENBALDACCHINO_PHASER_READ_TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
         run: |
-          npm ci || {
-            echo "=== GIT CONFIG ==="
-            git config --list --show-origin
-            echo "=== NPM LOGS ==="
-            cat ~/.npm/_logs/*-debug-0.log 2>/dev/null || true
-            exit 1
-          }
+          npm i
 
       - name: Verify formatting
         run: npm run format:check
