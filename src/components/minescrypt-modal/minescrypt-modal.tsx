@@ -1,4 +1,5 @@
-import { lazy, Suspense, useEffect, type FC, type KeyboardEvent, type MouseEvent } from "react"
+import { lazy, Suspense, useEffect } from "react"
+import type * as React from "react"
 
 import styles from "./minescrypt-modal.module.css"
 import type { IMinesCryptModalProps } from "./minescrypt-modal.types"
@@ -12,7 +13,11 @@ const MinesCryptGame = lazy(() =>
   })),
 )
 
-export const MinesCryptModal: FC<IMinesCryptModalProps> = ({ isOpen, onClose, className }) => {
+export const MinesCryptModal: React.FC<IMinesCryptModalProps> = ({
+  isOpen,
+  onClose,
+  className,
+}) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden"
@@ -44,14 +49,14 @@ export const MinesCryptModal: FC<IMinesCryptModalProps> = ({ isOpen, onClose, cl
     onClose()
   }
 
-  const handleBackdropKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+  const handleBackdropKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault()
       onClose()
     }
   }
 
-  const handleDialogClick = (event: MouseEvent<HTMLDivElement>) => {
+  const handleDialogClick = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation()
   }
 

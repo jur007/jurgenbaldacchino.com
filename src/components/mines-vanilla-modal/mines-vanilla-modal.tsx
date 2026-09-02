@@ -1,4 +1,5 @@
-import { lazy, Suspense, useEffect, type FC, type KeyboardEvent, type MouseEvent } from "react"
+import { lazy, Suspense, useEffect } from "react"
+import type * as React from "react"
 
 import styles from "./mines-vanilla-modal.module.css"
 import type { IMinesVanillaModalProps } from "./mines-vanilla-modal.types"
@@ -14,7 +15,11 @@ const MinesVanillaGame = lazy(() =>
   })),
 )
 
-export const MinesVanillaModal: FC<IMinesVanillaModalProps> = ({ isOpen, onClose, className }) => {
+export const MinesVanillaModal: React.FC<IMinesVanillaModalProps> = ({
+  isOpen,
+  onClose,
+  className,
+}) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden"
@@ -46,14 +51,14 @@ export const MinesVanillaModal: FC<IMinesVanillaModalProps> = ({ isOpen, onClose
     onClose()
   }
 
-  const handleBackdropKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+  const handleBackdropKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault()
       onClose()
     }
   }
 
-  const handleDialogClick = (event: MouseEvent<HTMLDivElement>) => {
+  const handleDialogClick = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation()
   }
 
