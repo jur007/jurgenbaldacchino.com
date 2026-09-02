@@ -21,7 +21,7 @@ describe("ShowcaseSection", () => {
       screen.getByRole("heading", { level: 3, name: "Crypto Casino Platform" }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { level: 3, name: "Phaser 2D Games for Casinos" }),
+      screen.getByRole("heading", { level: 3, name: "Crypt of the Cursed" }),
     ).toBeInTheDocument()
     expect(
       screen.getByRole("heading", { level: 3, name: "Crypto Casino & Sportsbook" }),
@@ -39,7 +39,7 @@ describe("ShowcaseSection", () => {
     await user.click(canvasFilter)
 
     expect(
-      screen.getByRole("heading", { level: 3, name: "Phaser 2D Games for Casinos" }),
+      screen.getByRole("heading", { level: 3, name: "Crypt of the Cursed" }),
     ).toBeInTheDocument()
     expect(
       screen.queryByRole("heading", { level: 3, name: "Crypto Casino Platform" }),
@@ -62,7 +62,7 @@ describe("ShowcaseSection", () => {
       screen.getByRole("heading", { level: 3, name: "Crypto Casino Platform" }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { level: 3, name: "Phaser 2D Games for Casinos" }),
+      screen.getByRole("heading", { level: 3, name: "Crypt of the Cursed" }),
     ).toBeInTheDocument()
     expect(
       screen.getByRole("heading", { level: 3, name: "Crypto Casino & Sportsbook" }),

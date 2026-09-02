@@ -82,4 +82,22 @@ describe("CaseStudyModal", () => {
     await user.click(whatIDidButton)
     expect(screen.getByText("Led frontend team.")).toBeInTheDocument()
   })
+
+  it("renders launch game button for mines-crypt-game and opens MinesCryptModal", async () => {
+    const user = userEvent.setup()
+    const cryptProject: IProject = {
+      ...mockProject,
+      id: "mines-crypt-game",
+      title: "Crypt of the Cursed",
+      liveUrl: undefined,
+    }
+
+    render(<CaseStudyModal isOpen={true} onClose={vi.fn()} project={cryptProject} />)
+
+    const launchButton = screen.getByRole("button", { name: /launch webgl game/i })
+    expect(launchButton).toBeInTheDocument()
+
+    await user.click(launchButton)
+    expect(screen.getByLabelText("Crypt of the Cursed Game Engine")).toBeInTheDocument()
+  })
 })

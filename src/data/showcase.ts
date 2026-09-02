@@ -7,6 +7,7 @@ export interface IProject {
   category: "react" | "canvas"
   categoryLabel: string
   role: string
+  timeline?: string
   clientOrOrg: string
   summary: string
   whatIDid: string[]
@@ -44,29 +45,29 @@ export const showcaseProjects: IProject[] = [
     badgeColor: "#00F0FF",
   },
   {
-    id: "phaser-2d-casino-games",
-    title: "Phaser 2D Games for Casinos",
-    subtitle: "Custom 2D Canvas & WebGL Game Engine",
+    id: "mines-crypt-game",
+    title: "Crypt of the Cursed",
+    subtitle: "Modular 2D WebGL Game Engine & Custom Shaders",
     category: "canvas",
     categoryLabel: "Creative / Canvas",
     role: "Lead Game Developer & Creative Engineer",
-    clientOrOrg: "Confidential (NDA)",
+    timeline: "2026",
+    clientOrOrg: "Independent Production",
     summary:
-      "A custom 2D casual game built from scratch as an isolated standalone bundle with smooth animations and physics.",
+      "A dark occult 5x5 runic puzzle game engineered as an isolated, standalone WebGL library featuring dynamic lighting, responsive viewports, and custom audio pipelines.",
     whatIDid: [
-      "Built the full 2D interactive canvas game loop, custom particle effects, and sprite animations using Phaser 3.",
-      "Created a clean state bridge between React UI controls and the WebGL game canvas.",
-      "Packaged the game engine into an independent module ready for easy host-app embedding.",
+      "Engineered the complete 60 FPS WebGL game loop, dynamic Light2D point braziers, and custom ambient mist shaders in Phaser 3.",
+      "Built a fully decoupled React HUD bridge linking betting states, hotkey ergonomics (Q/Space), and responsive scaling.",
+      "Implemented zero-leak memory management (game.destroy) and debounced orientation realignment across mobile and ultrawide viewports.",
     ],
     howIBuiltIt: [
-      "Handled strict context cleanup on unmount to completely eliminate GPU and WebGL memory leaks.",
-      "Optimized sprite sheets and render budgets to maintain an unbroken 60 FPS on mobile browsers.",
-      "Worked hand in hand with designers to shape the visual identity, feel, and narrative flow of the game.",
+      "Packaged the engine into an isolated, tree-shakeable npm module via multi-entry Vite library mode.",
+      "Optimized WebGL draw calls and responsive conal spotlights for seamless high-DPI (1440p) rendering without bilinear blur.",
     ],
-    technologies: ["Phaser 3", "HTML5 Canvas", "WebGL", "TypeScript", "Vite"],
-    metrics: "Smooth 60 FPS mobile gameplay",
-    thumbnailUrl: "/assets/showcase/confidential-crypto.jpg",
-    badgeColor: "#FF6B00",
+    technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
+    metrics: "60 FPS WebGL • 0kb Runtime Leaks",
+    thumbnailUrl: "/assets/showcase/crypt-of-the-cursed.jpg",
+    badgeColor: "#38E5A7",
   },
   {
     id: "crypto-sportsbook-revamp",

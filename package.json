@@ -16,7 +16,8 @@
     "validate:branch": "node scripts/validate-branch-name.mjs",
     "test": "vitest",
     "test:run": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "postinstall": "mkdir -p public/assets/games && cp -r node_modules/@jurgenbaldacchino/phaser-showcase/assets/games/* public/assets/games/ 2>/dev/null || true"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -28,6 +29,7 @@
     ]
   },
   "dependencies": {
+    "@jurgenbaldacchino/phaser-showcase": "git+https://${GITHUB_TOKEN}@github.com/jur007/phaser-games.git#dist",
     "phaser": "^4.2.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
