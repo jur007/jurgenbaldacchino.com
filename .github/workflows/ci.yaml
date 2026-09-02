@@ -54,27 +54,12 @@ jobs:
           git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git+ssh://git@github.com/"
           git config --global --add url."https://${TOKEN}@github.com/".insteadOf "git+https://github.com/"
 
-          # 5. Verify token access and print phaser-games refs
-          echo "=== PHASER-GAMES REFS ==="
-          git ls-remote "https://${TOKEN}@github.com/jur007/phaser-games.git" || {
-            echo "::error::Authentication failed! Your JURGENBALDACCHINO_PHASER_READ_TOKEN cannot read https://github.com/jur007/phaser-games.git"
-            exit 1
-          }
-
       - name: Install dependencies
         env:
           GIT_TERMINAL_PROMPT: 0
           TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
-          JURGENBALDACCHINO_PHASER_READ_TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
         run: |
-          npm cache clean --force || true
-          rm -rf /home/runner/.npm /home/runner/.cache || true
-          npm ci || {
-            echo "================ NPM DEBUG LOG ================"
-            cat /home/runner/.npm/_logs/*-debug-0.log || true
-            echo "==============================================="
-            exit 1
-          }
+          npm ci
 
       - name: Verify formatting
         run: npm run format:check
