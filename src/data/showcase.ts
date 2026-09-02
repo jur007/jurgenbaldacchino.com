@@ -33,8 +33,8 @@ export const showcaseProjects: IProject[] = [
     summary:
       "A horror-themed 5x5 grid game built from scratch in Phaser 3 inspired by the original mine-sweeper game. Features custom WebGL point lighting, ambient particle mist, and reactive audio pipelines.",
     whatIDid: [
-      "Built the full WebGL game, dynamic torchlight bounce, and ambient mist shaders.",
-      "Connected the React betting controls and hotkeys (Q/Space) directly to the canvas without re-rendering the game.",
+      "Designed the look and feel of the game from assets, to audio, to animation.",
+      "Connected the React  controls and hotkeys (Q/Space) directly to the canvas without re-rendering the game.",
       "Enforced clean WebGL context disposal on unmount so the engine never leaks memory.",
     ],
     howIBuiltIt: [
@@ -42,7 +42,7 @@ export const showcaseProjects: IProject[] = [
       "Tuned draw calls and light pipelines so high-DPI viewports stay smooth on both desktop and mobile.",
     ],
     technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
-    metrics: "60 FPS WebGL • Zero Memory Leaks",
+    metrics: "WebGL • Own Design",
     thumbnailUrl: "/assets/showcase/crypt-of-the-cursed.jpeg",
     badgeColor: "#38E5A7",
     isPrivate: false,
