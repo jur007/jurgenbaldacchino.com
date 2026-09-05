@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:pages": "node scripts/setup-git-auth.mjs && npm ci && npm run build",
+    "build:pages": "node scripts/setup-git-auth.mjs && npm ci --ignore-scripts && node scripts/postinstall-phaser.mjs && npm run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
