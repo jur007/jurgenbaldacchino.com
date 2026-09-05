@@ -18,7 +18,7 @@
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "update:games": "npm install @jurgenbaldacchino/phaser-showcase@git+https://github.com/jur007/phaser-games.git#dist",
+    "update:games": "node scripts/update-games.mjs",
     "preinstall": "node scripts/setup-git-auth.mjs",
     "postinstall": "node scripts/postinstall-phaser.mjs"
   },

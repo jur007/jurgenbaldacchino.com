@@ -16,6 +16,11 @@ vi.mock("@components/mines-vanilla-modal", () => ({
     isOpen ? <div aria-label="Mines Classic Game Engine" role="dialog" /> : null,
 }))
 
+vi.mock("@components/plinko-vanilla-modal", () => ({
+  PlinkoVanillaModal: ({ isOpen }: { isOpen: boolean }) =>
+    isOpen ? <div aria-label="Plinko Classic Game Engine" role="dialog" /> : null,
+}))
+
 const mockProject: IProject = {
   id: "test-platform",
   title: "Platform Architecture Project",
@@ -128,5 +133,23 @@ describe("CaseStudyModal", () => {
 
     await user.click(launchButton)
     expect(screen.getByLabelText("Mines Classic Game Engine")).toBeInTheDocument()
+  })
+
+  it("renders launch game button for plinko-vanilla-game and opens PlinkoVanillaModal", async () => {
+    const user = userEvent.setup()
+    const plinkoProject: IProject = {
+      ...mockProject,
+      id: "plinko-vanilla-game",
+      title: "Plinko Vanilla",
+      liveUrl: undefined,
+    }
+
+    render(<CaseStudyModal isOpen={true} onClose={vi.fn()} project={plinkoProject} />)
+
+    const launchButton = screen.getByRole("button", { name: /launch webgl game/i })
+    expect(launchButton).toBeInTheDocument()
+
+    await user.click(launchButton)
+    expect(screen.getByLabelText("Plinko Classic Game Engine")).toBeInTheDocument()
   })
 })

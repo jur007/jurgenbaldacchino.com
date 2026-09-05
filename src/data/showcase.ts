@@ -74,6 +74,32 @@ export const showcaseProjects: IProject[] = [
     isPrivate: false,
   },
   {
+    id: "plinko-vanilla-game",
+    title: "Plinko Vanilla",
+    subtitle: "Physics-Driven Peg Drop Arcade Engine",
+    category: "canvas",
+    categoryLabel: "Creative / Canvas",
+    role: "Lead Game Developer & Creative Engineer",
+    timeline: "2026",
+    clientOrOrg: "Independent Production",
+    summary:
+      "A high-performance 2D Plinko arcade experience built with Phaser 3, featuring precision peg collisions, customizable risk rows, and reactive multiplier drop zones.",
+    whatIDid: [
+      "Engineered real-time physics arcade loop simulating accurate ball-peg deflection and realistic bounce decay.",
+      "Built decoupled React wagering controls, selectable row counts (8-16 rows), and adjustable volatility matrices.",
+      "Ensured zero-leak lifecycle cleanup, disposing Matter/Arcade physics bodies and WebGL textures on unmount.",
+    ],
+    howIBuiltIt: [
+      "Packaged the Plinko engine as an isolated sub-entry in the multi-entry showcase library.",
+      "Optimized collision solver iterations and particle bursts for sustained 60 FPS performance on low-end devices.",
+    ],
+    technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
+    metrics: "60 FPS Physics • Instant Payout Curves",
+    thumbnailUrl: "/assets/showcase/plinko-vanilla.png",
+    badgeColor: "#00F0FF",
+    isPrivate: false,
+  },
+  {
     id: "guts-sportsbook",
     title: "Guts Sportsbook",
     subtitle: "Full Modern Architecture Rewrite",
