@@ -10,6 +10,11 @@ vi.mock("@jurgenbaldacchino/phaser-showcase/mines/vanilla", () => ({
   MinesGame: () => null,
 }))
 
+vi.mock("@jurgenbaldacchino/phaser-showcase/plinko", () => ({
+  PlinkoVanillaGame: () => null,
+  PlinkoGame: () => null,
+}))
+
 vi.mock("@jurgenbaldacchino/phaser-showcase/dist/phaser-showcase.css", () => ({}))
 vi.mock("@jurgenbaldacchino/phaser-showcase/phaser-showcase.css", () => ({}))
 

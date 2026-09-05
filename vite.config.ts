@@ -62,6 +62,14 @@ export default defineConfig({
         replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/games/mines/index.js", import.meta.url))}`,
       },
       {
+        find: /^@jurgenbaldacchino\/phaser-showcase\/plinko$/,
+        replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/games/plinko/index.js", import.meta.url))}`,
+      },
+      {
+        find: /^@jurgenbaldacchino\/phaser-showcase\/plinko\/vanilla$/,
+        replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/games/plinko/vanilla/index.js", import.meta.url))}`,
+      },
+      {
         find: /^@jurgenbaldacchino\/phaser-showcase\/dist\/phaser-showcase\.css$/,
         replacement: `${fileURLToPath(new URL("./node_modules/@jurgenbaldacchino/phaser-showcase/phaser-showcase.css", import.meta.url))}`,
       },

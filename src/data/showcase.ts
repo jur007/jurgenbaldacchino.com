@@ -59,7 +59,7 @@ export const showcaseProjects: IProject[] = [
     summary:
       "A fast, vanilla experience of a 5x5 mines game focused on snappy input response, crisp particle bursts, and dynamic multiplier curves.",
     whatIDid: [
-      "Engineered the 60 FPS Phaser 3 arcade loop with animated tile reveals and responsive board scaling.",
+      "Engineered the Phaser 3 arcade loop with animated tile reveals and responsive board scaling.",
       "Built decoupled React controls for custom grid sizes, mine density, and real-time cashout states.",
       "Wrote strict teardown hooks to ensure zero GPU or canvas memory leaks when closing the game.",
     ],
@@ -68,9 +68,33 @@ export const showcaseProjects: IProject[] = [
       "Batched spritesheets and audio cues for instant, zero-latency touch response on mobile browsers.",
     ],
     technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
-    metrics: "60 FPS Arcade • Instant Touch Response",
-    thumbnailUrl: "/assets/showcase/mines-vanilla.jpeg",
+    metrics: "Arcade • Own Design",
+    thumbnailUrl: "/assets/showcase/mines-vanilla.png",
     badgeColor: "#F59E0B",
+    isPrivate: false,
+  },
+  {
+    id: "plinko-vanilla-game",
+    title: "Plinko Vanilla",
+    subtitle: "Physics-Driven Peg Drop Arcade Engine",
+    category: "canvas",
+    categoryLabel: "Creative / Canvas",
+    role: "Lead Game Developer & Creative Engineer",
+    timeline: "2026",
+    clientOrOrg: "Independent Production",
+    summary:
+      "A high-performance 2D Plinko arcade experience built with Phaser 3, featuring precision peg collisions, customizable risk rows, and reactive multiplier drop zones.",
+    whatIDid: [
+      "Engineered real-time physics arcade loop simulating accurate ball-peg deflection and realistic bounce decay.",
+      "Built decoupled React wagering controls, selectable row counts (8-16 rows), and adjustable volatility matrices.",
+    ],
+    howIBuiltIt: [
+      "Packaged the Plinko engine as an isolated sub-entry in the multi-entry showcase library.",
+    ],
+    technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
+    metrics: "Arcade • Own Design",
+    thumbnailUrl: "/assets/showcase/plinko-vanilla.png",
+    badgeColor: "#00F0FF",
     isPrivate: false,
   },
   {

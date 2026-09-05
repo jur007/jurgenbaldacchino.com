@@ -7,6 +7,7 @@ import type { ICaseStudyModal } from "./case-study-modal.types"
 import { BackArrowIcon, CloseIcon, ExternalLinkIcon, PlayIcon } from "@components/icons"
 import { MinesCryptModal } from "@components/minescrypt-modal"
 import { MinesVanillaModal } from "@components/mines-vanilla-modal"
+import { PlinkoVanillaModal } from "@components/plinko-vanilla-modal"
 import { getClassNames } from "@utils/class-names"
 
 export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStudyModal) => {
@@ -232,7 +233,9 @@ export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStu
                 </div>
               </dl>
 
-              {(project.id === "mines-crypt-game" || project.id === "mines-vanilla-game") && (
+              {(project.id === "mines-crypt-game" ||
+                project.id === "mines-vanilla-game" ||
+                project.id === "plinko-vanilla-game") && (
                 <button
                   className={styles.actionButtonPrimary}
                   onClick={() => setIsGameModalOpen(true)}
@@ -269,6 +272,10 @@ export const CaseStudyModal = ({ project, isOpen, onClose, className }: ICaseStu
 
       {project.id === "mines-vanilla-game" && (
         <MinesVanillaModal isOpen={isGameModalOpen} onClose={() => setIsGameModalOpen(false)} />
+      )}
+
+      {project.id === "plinko-vanilla-game" && (
+        <PlinkoVanillaModal isOpen={isGameModalOpen} onClose={() => setIsGameModalOpen(false)} />
       )}
     </div>
   )
