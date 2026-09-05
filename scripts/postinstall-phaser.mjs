@@ -11,18 +11,15 @@ const token =
 const targetDir = path.resolve("node_modules/@jurgenbaldacchino/phaser-showcase")
 const gamesDir = path.join(targetDir, "games")
 
-const repoUrl = token
-  ? `https://${token}@github.com/jur007/phaser-games.git`
-  : "https://github.com/jur007/phaser-games.git"
-
-// If games directory is missing (e.g. npm omitted files due to "files": ["dist"]), fetch full dist bundle
-if (!fs.existsSync(gamesDir)) {
+// If games directory is missing (e.g. npm omitted files due to "files": ["dist"]), fetch full dist branch
+if (!fs.existsSync(gamesDir) && token) {
   try {
     console.log("[postinstall-phaser] Fetching complete phaser-showcase dist bundle...")
     fs.rmSync(targetDir, { recursive: true, force: true })
-    execSync(`git clone --depth 1 -b dist "${repoUrl}" "${targetDir}"`, {
-      stdio: "inherit",
-    })
+    execSync(
+      `git clone --depth 1 -b dist "https://${token}@github.com/jur007/phaser-games.git" "${targetDir}"`,
+      { stdio: "inherit" },
+    )
   } catch (err) {
     console.warn("[postinstall-phaser] Warning: could not clone phaser-showcase dist:", err.message)
   }

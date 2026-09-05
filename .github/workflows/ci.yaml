@@ -59,7 +59,7 @@ jobs:
           GIT_TERMINAL_PROMPT: 0
           TOKEN: ${{ secrets.JURGENBALDACCHINO_PHASER_READ_TOKEN }}
         run: |
-          npm ci --ignore-scripts
+          npm ci
           # phaser-games package.json has "files": ["dist"], so npm only unpacks package.json
           # Clone the full built dist branch into node_modules so all bundles and assets are present
           rm -rf node_modules/@jurgenbaldacchino/phaser-showcase
