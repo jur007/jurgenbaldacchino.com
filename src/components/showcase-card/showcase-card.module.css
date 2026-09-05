@@ -138,6 +138,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  margin-top: auto;
   padding: 6px 12px;
   width: fit-content;
   font-size: var(--font-size-xs);
@@ -164,6 +165,10 @@
   padding-top: 14px;
   border-top: 1px solid var(--color-slate-border-subtle);
   gap: 12px;
+}
+
+.metricBadge + .footerContainer {
+  margin-top: 0;
 }
 
 .techTagList {

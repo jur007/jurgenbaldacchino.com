@@ -59,7 +59,7 @@ export const showcaseProjects: IProject[] = [
     summary:
       "A fast, vanilla experience of a 5x5 mines game focused on snappy input response, crisp particle bursts, and dynamic multiplier curves.",
     whatIDid: [
-      "Engineered the 60 FPS Phaser 3 arcade loop with animated tile reveals and responsive board scaling.",
+      "Engineered the Phaser 3 arcade loop with animated tile reveals and responsive board scaling.",
       "Built decoupled React controls for custom grid sizes, mine density, and real-time cashout states.",
       "Wrote strict teardown hooks to ensure zero GPU or canvas memory leaks when closing the game.",
     ],
@@ -68,8 +68,8 @@ export const showcaseProjects: IProject[] = [
       "Batched spritesheets and audio cues for instant, zero-latency touch response on mobile browsers.",
     ],
     technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
-    metrics: "60 FPS Arcade • Instant Touch Response",
-    thumbnailUrl: "/assets/showcase/mines-vanilla.jpeg",
+    metrics: "Arcade • Own Design",
+    thumbnailUrl: "/assets/showcase/mines-vanilla.png",
     badgeColor: "#F59E0B",
     isPrivate: false,
   },
@@ -94,7 +94,7 @@ export const showcaseProjects: IProject[] = [
       "Optimized collision solver iterations and particle bursts for sustained 60 FPS performance on low-end devices.",
     ],
     technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
-    metrics: "60 FPS Physics • Instant Payout Curves",
+    metrics: "Arcade • Own Design",
     thumbnailUrl: "/assets/showcase/plinko-vanilla.png",
     badgeColor: "#00F0FF",
     isPrivate: false,
