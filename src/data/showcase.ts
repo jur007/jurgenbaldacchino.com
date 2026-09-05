@@ -87,11 +87,9 @@ export const showcaseProjects: IProject[] = [
     whatIDid: [
       "Engineered real-time physics arcade loop simulating accurate ball-peg deflection and realistic bounce decay.",
       "Built decoupled React wagering controls, selectable row counts (8-16 rows), and adjustable volatility matrices.",
-      "Ensured zero-leak lifecycle cleanup, disposing Matter/Arcade physics bodies and WebGL textures on unmount.",
     ],
     howIBuiltIt: [
       "Packaged the Plinko engine as an isolated sub-entry in the multi-entry showcase library.",
-      "Optimized collision solver iterations and particle bursts for sustained 60 FPS performance on low-end devices.",
     ],
     technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
     metrics: "Arcade • Own Design",
