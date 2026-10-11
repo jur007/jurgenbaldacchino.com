@@ -23,7 +23,7 @@ export interface IProject {
 export const showcaseProjects: IProject[] = [
   {
     id: "mines-crypt-game",
-    title: "Crypt of the Cursed",
+    title: "Mines: Crypt of the Cursed",
     subtitle: "Dark Fantasy 2D WebGL Game Engine",
     category: "canvas",
     categoryLabel: "Creative / Canvas",
@@ -31,7 +31,7 @@ export const showcaseProjects: IProject[] = [
     timeline: "2026",
     clientOrOrg: "Independent Production",
     summary:
-      "A horror-themed 5x5 grid game built from scratch in Phaser 3 inspired by the original mine-sweeper game. Features custom WebGL point lighting, ambient particle mist, and reactive audio pipelines.",
+      "A dark fantasy 5x5 Mines game built from scratch in Phaser 3 inspired by classic mine-sweeper mechanics. Features custom WebGL point lighting, ambient particle mist, and reactive audio pipelines.",
     whatIDid: [
       "Designed the look and feel of the game from assets, to audio, to animation.",
       "Connected the React  controls and hotkeys (Q/Space) directly to the canvas without re-rendering the game.",
@@ -49,7 +49,7 @@ export const showcaseProjects: IProject[] = [
   },
   {
     id: "plinko-descent-game",
-    title: "Descent of the Damned",
+    title: "Plinko: Descent of the Damned",
     subtitle: "Dark Fantasy 2D Physics Plinko Engine",
     category: "canvas",
     categoryLabel: "Creative / Canvas",

@@ -21,10 +21,10 @@ describe("ShowcaseSection", () => {
       screen.getByRole("heading", { level: 3, name: "Crypto Casino Platform" }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { level: 3, name: "Crypt of the Cursed" }),
+      screen.getByRole("heading", { level: 3, name: "Mines: Crypt of the Cursed" }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { level: 3, name: "Descent of the Damned" }),
+      screen.getByRole("heading", { level: 3, name: "Plinko: Descent of the Damned" }),
     ).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 3, name: "Mines Vanilla" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 3, name: "Plinko Vanilla" })).toBeInTheDocument()
@@ -44,10 +44,10 @@ describe("ShowcaseSection", () => {
     await user.click(canvasFilter)
 
     expect(
-      screen.getByRole("heading", { level: 3, name: "Crypt of the Cursed" }),
+      screen.getByRole("heading", { level: 3, name: "Mines: Crypt of the Cursed" }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { level: 3, name: "Descent of the Damned" }),
+      screen.getByRole("heading", { level: 3, name: "Plinko: Descent of the Damned" }),
     ).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 3, name: "Mines Vanilla" })).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 3, name: "Plinko Vanilla" })).toBeInTheDocument()
@@ -72,10 +72,10 @@ describe("ShowcaseSection", () => {
       screen.getByRole("heading", { level: 3, name: "Crypto Casino Platform" }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { level: 3, name: "Crypt of the Cursed" }),
+      screen.getByRole("heading", { level: 3, name: "Mines: Crypt of the Cursed" }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("heading", { level: 3, name: "Descent of the Damned" }),
+      screen.getByRole("heading", { level: 3, name: "Plinko: Descent of the Damned" }),
     ).toBeInTheDocument()
     expect(screen.getByRole("heading", { level: 3, name: "Mines Vanilla" })).toBeInTheDocument()
     expect(

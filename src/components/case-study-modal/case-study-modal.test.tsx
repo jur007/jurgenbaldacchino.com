@@ -109,7 +109,7 @@ describe("CaseStudyModal", () => {
     const cryptProject: IProject = {
       ...mockProject,
       id: "mines-crypt-game",
-      title: "Crypt of the Cursed",
+      title: "Mines: Crypt of the Cursed",
       liveUrl: undefined,
     }
 
@@ -163,7 +163,7 @@ describe("CaseStudyModal", () => {
     const descentProject: IProject = {
       ...mockProject,
       id: "plinko-descent-game",
-      title: "Descent of the Damned",
+      title: "Plinko: Descent of the Damned",
       liveUrl: undefined,
     }
 
