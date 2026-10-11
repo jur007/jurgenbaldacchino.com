@@ -57,18 +57,18 @@ export const showcaseProjects: IProject[] = [
     timeline: "2026",
     clientOrOrg: "Independent Production",
     summary:
-      "A dark fantasy Plinko game engineered in Phaser 3 featuring Matter.js rigid-body physics, procedural particle mist, dynamic ambient lighting, and reactive soul-orb collisions.",
+      "A dark fantasy Plinko game engineered in Phaser 3 featuring dynamic 2D physics, procedural particle mist, dynamic ambient lighting, and reactive soul-orb collisions.",
     whatIDid: [
       "Designed the visual aesthetic, procedural textures, atmospheric mist, and soundscape architecture.",
       "Engineered real-time physics arcade loop simulating accurate soul orb peg deflections and sacrificial altar landings.",
       "Connected React HUD controls, auto-play sequences, and keyboard shortcuts seamlessly to the canvas.",
     ],
     howIBuiltIt: [
-      "Built with Matter.js and Phaser 3 inside a high-performance decoupled React bridge.",
+      "Built with Phaser 3 inside a high-performance decoupled React bridge.",
       "Optimized lighting pipelines, collision callbacks, and WebGL lifecycle cleanup for zero memory leaks.",
     ],
-    technologies: ["Phaser 3", "Matter.js", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
-    metrics: "Matter.js • Own Design",
+    technologies: ["Phaser 3", "WebGL", "TypeScript", "React", "Vite", "CSS Modules"],
+    metrics: "Phaser 3 Physics • Own Design",
     thumbnailUrl: "/assets/showcase/descent-of-the-damned.jpg",
     badgeColor: "#8B5CF6",
     isPrivate: false,
