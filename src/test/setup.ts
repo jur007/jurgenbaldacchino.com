@@ -15,6 +15,10 @@ vi.mock("@jurgenbaldacchino/phaser-showcase/plinko", () => ({
   PlinkoGame: () => null,
 }))
 
+vi.mock("@jurgenbaldacchino/phaser-showcase/plinko/descent", () => ({
+  PlinkoDescentGame: () => null,
+}))
+
 vi.mock("@jurgenbaldacchino/phaser-showcase/dist/phaser-showcase.css", () => ({}))
 vi.mock("@jurgenbaldacchino/phaser-showcase/phaser-showcase.css", () => ({}))
 

@@ -16,6 +16,11 @@ vi.mock("@components/mines-vanilla-modal", () => ({
     isOpen ? <div aria-label="Mines Classic Game Engine" role="dialog" /> : null,
 }))
 
+vi.mock("@components/plinko-descent-modal", () => ({
+  PlinkoDescentModal: ({ isOpen }: { isOpen: boolean }) =>
+    isOpen ? <div aria-label="Descent of the Damned Game Engine" role="dialog" /> : null,
+}))
+
 vi.mock("@components/plinko-vanilla-modal", () => ({
   PlinkoVanillaModal: ({ isOpen }: { isOpen: boolean }) =>
     isOpen ? <div aria-label="Plinko Classic Game Engine" role="dialog" /> : null,
@@ -151,5 +156,23 @@ describe("CaseStudyModal", () => {
 
     await user.click(launchButton)
     expect(screen.getByLabelText("Plinko Classic Game Engine")).toBeInTheDocument()
+  })
+
+  it("renders launch game button for plinko-descent-game and opens PlinkoDescentModal", async () => {
+    const user = userEvent.setup()
+    const descentProject: IProject = {
+      ...mockProject,
+      id: "plinko-descent-game",
+      title: "Descent of the Damned",
+      liveUrl: undefined,
+    }
+
+    render(<CaseStudyModal isOpen={true} onClose={vi.fn()} project={descentProject} />)
+
+    const launchButton = screen.getByRole("button", { name: /launch webgl game/i })
+    expect(launchButton).toBeInTheDocument()
+
+    await user.click(launchButton)
+    expect(screen.getByLabelText("Descent of the Damned Game Engine")).toBeInTheDocument()
   })
 })
